@@ -1,0 +1,8 @@
+#!/bin/bash
+################################################################################
+## cd up until a Makefile is found, then call make. Save return code to a file
+################################################################################
+LAST_MAKE_EXIT_CODE_FILENAME=/tmp/last-make-exit-code
+while [ ! -e Makefile ] && [ "$PWD" != "/" ]; do cd ..; done
+make $@
+echo $? > ${LAST_MAKE_EXIT_CODE_FILENAME}

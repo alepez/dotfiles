@@ -1,0 +1,15 @@
+## @filename: ~/.agignore
+
+*/tmp/*
+*.so
+*.o
+*.cpp.o
+*.d
+*.gcda
+*.gcno
+node_modules/*
+*.png
+*.jpg
+*.zip
+Debug_*/*
+Release_*/*
