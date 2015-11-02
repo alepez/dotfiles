@@ -39,9 +39,9 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'ervandew/supertab'
 Plugin 'benmills/vimux' " Run commands inside tmux window
 Plugin 'mhinz/vim-startify' " A fancy start screen for vim
-Plugin 'reedes/vim-pencil' " Prose editing improved (markdown etc...)
-Plugin 'skammer/vim-swaplines' " Swap lines with ease
+"Plugin 'skammer/vim-swaplines' " Swap lines with ease
 Plugin 'tpope/vim-fugitive' " git gui
+Plugin 'Chiel92/vim-autoformat' " Provide easy code formatting in Vim by integrating existing code formatters.
 Plugin 'scrooloose/syntastic.git' " check syntax
 Plugin 'kien/ctrlp.vim' " Fuzzy file, buffer, mru, tag, etc finder.
 Plugin 'bling/vim-bufferline'
@@ -49,10 +49,7 @@ Plugin 'bling/vim-airline' " lean & mean status/tabline for vim that's light as 
 Plugin 'scrooloose/nerdcommenter' " Vim plugin for intensely orgasmic commenting
 Plugin 'godlygeek/tabular' " Vim script for text filtering and alignment
 Plugin 'terryma/vim-multiple-cursors' " True Sublime Text style multiple selections for Vim
-Plugin 'plasticboy/vim-markdown' " Markdown Vim Mode
 Plugin 'bronson/vim-trailing-whitespace' " Highlights trailing whitespace in red and provides :FixWhitespace to fix it.
-Plugin 'ap/vim-css-color' " Preview colours in source code while editing
-Plugin 'smarty-syntax' " Syntax highlight for Smarty Template Engine
 Plugin 'peterhoeg/vim-qml' " QML syntax highlighting for VIM
 Plugin 'rdnetto/YCM-Generator' " Automatically generates YouCompleteMe configuration based on Makefile
 Plugin 'scrooloose/nerdtree' " tree explorer
@@ -72,14 +69,23 @@ Plugin 'SirVer/ultisnips' " Snippets engine
 Plugin 'honza/vim-snippets' " Snippets are separated from the engine
 Plugin 'Valloric/YouCompleteMe' " A code-completion engine for Vim
 Plugin 'tpope/vim-dispatch' " build in bakcground
-Plugin 'jaxbot/browserlink.vim' " like livereload
 Plugin 'vitalk/vim-simple-todo'
 Plugin 'Raimondi/delimitMate' " automatically close quotes, parens, brackets, etc.
 Plugin 'tpope/vim-surround' " surround.vim: quoting/parenthesizing made simple
+Plugin 'reedes/vim-pencil' " Prose editing improved (markdown etc...)
+Plugin 'plasticboy/vim-markdown' " Markdown Vim Mode
+Plugin 'ap/vim-css-color' " Preview colours in source code while editing
+Plugin 'jaxbot/browserlink.vim' " like livereload
 Plugin 'suan/vim-instant-markdown' " preview markdown in browser (needs `npm -g install instant-markdown-d`)
-"Plugin 'mattn/emmet-vim' " emmet for vim: http://emmet.io/
-"Plugin 'pangloss/vim-javascript' "
-"Plugin 'easymotion/vim-easymotion' " Vim motions on speed!
+Plugin 'mattn/emmet-vim' " emmet for vim: http://emmet.io/
+Plugin 'pangloss/vim-javascript' "
+Plugin 'easymotion/vim-easymotion' " Vim motions on speed!
+Plugin 'smarty-syntax' " Syntax highlight for Smarty Template Engine
+Plugin 'tpope/vim-repeat' " repeat.vim: enable repeating supported plugin maps with .
+Plugin 'tpope/vim-speeddating' " speeddating.vim: use CTRL-A/CTRL-X to increment dates, times, and more
+Plugin 'tpope/vim-unimpaired' " pairs of handy bracket mappings
+Plugin 'svermeulen/vim-easyclip' " Simplified clipboard functionality for Vim
+Plugin 'tpope/vim-commentary' " Comment stuff out
 " }}}
 
 " vim-devicons must be loaded after all other plugins
@@ -164,9 +170,11 @@ map <F2> <Esc>]`
 
 " next/prev buffer - Map ctrl+shift-left and ctrl+shift-right
 " Note: konsole needs a remapping
+nnoremap [1;4D :e#<CR>
 nnoremap [1;6D :bprevious<CR>
 nnoremap [1;6C :bnext<CR>
 " When switching buffer, exit from insert mode
+nnoremap <ESC>[1;4D :e#<CR>
 inoremap <ESC>[1;6D <ESC>:bprevious<CR>
 inoremap <ESC>[1;6C <ESC>:bnext<CR>
 
@@ -192,7 +200,7 @@ nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>f :Ag<space>
 
 " Reindent all and return the same line where you were
-nnoremap <leader>af mzgg=G`z
+nnoremap <leader>af :Autoformat<CR>
 
 " Switch header/implementation (plugin a.vim)
 nnoremap <F4> :A<CR>
@@ -224,6 +232,8 @@ let g:ctrlp_root_markers = ['.project'] " ctrlp uses .git, .svn, ... as project 
 " Use ag, the silver searcher, for ctrlp search.
 " Note: wildignore doesn't apply with this option, you need .agignore file
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+" FIXME: I want ctrlp to give precedence to mru: when searching for a file,
+" show first the mru.
 
 "--------- Set Syntastic checkers {{{
 " Note: checkers must be installed
@@ -368,6 +378,21 @@ let g:airline#extensions#syntastic#enabled = 1
 
 " Disable echo of current buffer in commandline
 let g:bufferline_echo = 0
+
+
+"---------- web
+" Enable browserlink livereload for these types:
+let g:bl_pagefiletypes = ['html', 'javascript', 'php']
+augroup Javascript
+	autocmd!
+	autocmd FileType javascript setlocal expandtab
+  let g:formatterpath = [ $NVM_BIN . '/js-beautify' ]
+augroup END
+
+augroup PHP
+	autocmd!
+	autocmd FileType php setlocal expandtab
+augroup END
 
 "------------------------------------------------------------------------------
 " Include local vimrc

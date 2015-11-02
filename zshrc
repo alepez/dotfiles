@@ -107,6 +107,9 @@ alias lsg='ll | grep'
 alias ka9='killall -9'
 alias k9='kill -9'
 
+alias nvminit='[[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh'
+alias svndiff='svn diff | colordiff | less'
+
 ## FIXME go to zshrc.local
 alias tt='st ~/workspace/gestione/data/timetracker/$( date +%Y-%m ).yml'
 
