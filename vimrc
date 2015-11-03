@@ -36,6 +36,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 "------ plugins {{{
 
+Plugin 'tpope/vim-abolish'
 Plugin 'ervandew/supertab'
 Plugin 'benmills/vimux' " Run commands inside tmux window
 Plugin 'mhinz/vim-startify' " A fancy start screen for vim
@@ -69,7 +70,6 @@ Plugin 'SirVer/ultisnips' " Snippets engine
 Plugin 'honza/vim-snippets' " Snippets are separated from the engine
 Plugin 'Valloric/YouCompleteMe' " A code-completion engine for Vim
 Plugin 'tpope/vim-dispatch' " build in bakcground
-Plugin 'vitalk/vim-simple-todo'
 Plugin 'Raimondi/delimitMate' " automatically close quotes, parens, brackets, etc.
 Plugin 'tpope/vim-surround' " surround.vim: quoting/parenthesizing made simple
 Plugin 'reedes/vim-pencil' " Prose editing improved (markdown etc...)
@@ -84,7 +84,6 @@ Plugin 'smarty-syntax' " Syntax highlight for Smarty Template Engine
 Plugin 'tpope/vim-repeat' " repeat.vim: enable repeating supported plugin maps with .
 Plugin 'tpope/vim-speeddating' " speeddating.vim: use CTRL-A/CTRL-X to increment dates, times, and more
 Plugin 'tpope/vim-unimpaired' " pairs of handy bracket mappings
-Plugin 'svermeulen/vim-easyclip' " Simplified clipboard functionality for Vim
 Plugin 'tpope/vim-commentary' " Comment stuff out
 " }}}
 
@@ -160,6 +159,10 @@ let mapleader = ","
 
 " :W as :w
 command! W  write
+nnoremap <silent> <leader>w :bd<CR>
+inoremap <silent> <leader>w :bd<CR>
+
+" close buffer
 
 " Paste from yank register. Because yes.
 nnoremap <leader>p "0p
@@ -227,7 +230,7 @@ let g:ctrlp_map = '<C-p>' " If it's called ctrlp...
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_by_filename = 0 " 0: use full path, 1: use filename only
 let g:ctrlp_switch_buffer = 'E' " Jump to the file with <CR>
-let g:ctrlp_root_markers = ['.project'] " ctrlp uses .git, .svn, ... as project root. Use these markers too
+"let g:ctrlp_root_markers = ['.project'] " ctrlp uses .git, .svn, ... as project root. Use these markers too
 
 " Use ag, the silver searcher, for ctrlp search.
 " Note: wildignore doesn't apply with this option, you need .agignore file
@@ -331,6 +334,7 @@ set makeprg=~/.dotfiles/bin/make-closest-makefile
 nnoremap <F8> <Esc>:update<CR>:VimuxRunLastCommand<CR> " Run last vimux command
 nnoremap <F11> <Esc>:update<CR>:Make!<CR> " Make in background
 nnoremap <F12> <Esc>:update<CR>:Make<CR> " Make in foreground
+nnoremap <leader>b <Esc>:update<CR>:Make<CR> " Make in foreground
 
 "---------- the silver search
 let g:ag_working_path_mode="r" " Search in project directory
@@ -392,6 +396,12 @@ augroup END
 augroup PHP
 	autocmd!
 	autocmd FileType php setlocal expandtab
+augroup END
+
+"---------- qml
+augroup QML
+	autocmd!
+	autocmd FileType qml setlocal expandtab
 augroup END
 
 "------------------------------------------------------------------------------
