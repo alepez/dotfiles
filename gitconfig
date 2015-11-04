@@ -1,10 +1,12 @@
+################################################################################
+# Git Config
+################################################################################
 
 [push]
 	default = current
 
 [color]
   ui = auto
-
 
 [color "branch"]
   current = yellow reverse
@@ -107,9 +109,6 @@
   excludesfile = ~/.gitignore
   autocrlf = input
 
-[merge]
-  ff = only
-
 [fetch]
   prune = true
 
@@ -130,6 +129,9 @@
   summary = true
   verbosity = 1
   tool = vimdiff
+	## no one likes merge commits. Force fast-forward. When not possible, you'll get a gentle reminder to a rebase.
+	## To force merge: `git merge --no-ff`
+  ff = only
 
 [diff]
 	# Detect copies as well as renames

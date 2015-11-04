@@ -48,7 +48,7 @@ Plugin 'kien/ctrlp.vim' " Fuzzy file, buffer, mru, tag, etc finder.
 Plugin 'bling/vim-bufferline'
 Plugin 'bling/vim-airline' " lean & mean status/tabline for vim that's light as air
 Plugin 'scrooloose/nerdcommenter' " Vim plugin for intensely orgasmic commenting
-Plugin 'godlygeek/tabular' " Vim script for text filtering and alignment
+Plugin 'godlygeek/tabular' " Vim script for text filtering and alignment. Note: must come before vim-markdown
 Plugin 'terryma/vim-multiple-cursors' " True Sublime Text style multiple selections for Vim
 Plugin 'bronson/vim-trailing-whitespace' " Highlights trailing whitespace in red and provides :FixWhitespace to fix it.
 Plugin 'peterhoeg/vim-qml' " QML syntax highlighting for VIM
