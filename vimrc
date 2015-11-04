@@ -7,6 +7,7 @@ set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
+
 " Awesome font for coding, with a lot of useful icons.
 " https://github.com/ryanoasis/nerd-fonts
 set guifont=Sauce\ Code\ Powerline\ PNFT\ Mono
@@ -159,10 +160,14 @@ let mapleader = ","
 
 " :W as :w
 command! W  write
+
+" Close buffers without pain
 nnoremap <silent> <leader>w :bd<CR>
 inoremap <silent> <leader>w :bd<CR>
 
-" close buffer
+" Save without pain
+nnoremap <silent> <leader>s :w<CR>
+inoremap <silent> <leader>s :w<CR>
 
 " Paste from yank register. Because yes.
 nnoremap <leader>p "0p
@@ -230,7 +235,7 @@ let g:ctrlp_map = '<C-p>' " If it's called ctrlp...
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_by_filename = 0 " 0: use full path, 1: use filename only
 let g:ctrlp_switch_buffer = 'E' " Jump to the file with <CR>
-"let g:ctrlp_root_markers = ['.project'] " ctrlp uses .git, .svn, ... as project root. Use these markers too
+let g:ctrlp_root_markers = ['.ycm_extra_conf.py'] " ctrlp uses .git, .svn, ... as project root. Use these markers too
 
 " Use ag, the silver searcher, for ctrlp search.
 " Note: wildignore doesn't apply with this option, you need .agignore file
