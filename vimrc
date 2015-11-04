@@ -154,6 +154,9 @@ set noerrorbells
 " Don’t reset cursor to start of line when moving around.
 set nostartofline
 
+" With a powerful PC, we can have a huge history.
+set history=8192
+
 "--------- shortcuts {{{
 " Change leader to a more efficient button
 let mapleader = ","
@@ -337,8 +340,11 @@ set makeprg=~/.dotfiles/bin/make-closest-makefile
 
 " F shortcuts
 nnoremap <F8> <Esc>:update<CR>:VimuxRunLastCommand<CR> " Run last vimux command
+" FIXME: <F9> is doing something... what???
 nnoremap <F11> <Esc>:update<CR>:Make!<CR> " Make in background
 nnoremap <F12> <Esc>:update<CR>:Make<CR> " Make in foreground
+
+" Like F12, less painful
 nnoremap <leader>b <Esc>:update<CR>:Make<CR> " Make in foreground
 
 "---------- the silver search
@@ -388,6 +394,8 @@ let g:airline#extensions#syntastic#enabled = 1
 " Disable echo of current buffer in commandline
 let g:bufferline_echo = 0
 
+"---------- vimux
+let g:VimuxOrientation = "h"
 
 "---------- web
 " Enable browserlink livereload for these types:
