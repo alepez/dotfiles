@@ -303,6 +303,11 @@ set tags=./.tags;,.tags; " tags files are hidden
 set completeopt=menu,menuone " complete menu visibility
 " }}}
 
+" Silently execute external commands, without needing to redraw
+command! -nargs=1 Silent
+\ | execute ':silent !'.<q-args>
+\ | execute ':redraw!'
+
 "---------- Turn off swap files and backups
 
 set noswapfile
@@ -328,11 +333,12 @@ let g:cpp_class_scope_highlight=1
 
 " Map some shortcuts only for C and CPP files
 augroup Cpp
+	autocmd BufRead,BufNewFile *.h set filetype=cpp " Set extra filetypes
 	autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 	autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
 	autocmd FileType c,cpp,objc nmap <Leader>C :ClangFormatAutoToggle<CR>
-	autocmd BufRead,BufNewFile *.h set filetype=cpp " Set extra filetypes
-	map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q -I _GLIBCXX_NOEXCEPT -f .tags .
+	" Refresh tags with ctags
+	autocmd FileType cpp nnoremap <leader>R :Silent !ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q -I _GLIBCXX_NOEXCEPT -f .tags . <CR>
 augroup END
 
 " This script cd up until a Makefile is found, then call make.
@@ -345,14 +351,14 @@ nnoremap <F11> <Esc>:update<CR>:Make!<CR> " Make in background
 nnoremap <F12> <Esc>:update<CR>:Make<CR> " Make in foreground
 
 " Like F12, less painful
-nnoremap <leader>b <Esc>:update<CR>:Make<CR> " Make in foreground
+nnoremap zz <Esc>:update<CR>:Make<CR> " Make in foreground
 
 "---------- the silver search
 let g:ag_working_path_mode="r" " Search in project directory
 
 "---------- Snippets and YouCompleteMe
 let g:ycm_confirm_extra_conf = 0 " load local ycm configuration silently.
-let g:ycm_use_ultisnips_completer = 1 " Enable UltiSnips for YCM
+let g:ycm_use_ultisnips_completer = 0 " Disable UltiSnips for YCM
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
