@@ -115,6 +115,7 @@ alias tt='st ~/workspace/gestione/data/timetracker/$( date +%Y-%m ).yml'
 
 ################################################################################
 ## Git Aliases
+## See ~/.gitconfig
 alias gs='git status'         # show Status
 alias gcm='git commit -m'     # Commit, Message as argument
 alias ga='git add -A'         # Add all files, remove from index delete files
@@ -128,7 +129,7 @@ alias gds='git diff --cached' # show Staged changes
 alias gpl='git pull'          # Pull
 alias gps='git push'          # Push
 alias gnb='git nb'            # New Branch aka checkout -b
-alias gco='git co'            # Commit
+alias gco='git co'            # Checkout
 
 ## Add all files, Commit, Message as argument
 function gacm { git add -A && git commit -m "$*" }
@@ -141,6 +142,14 @@ function gac { git add -A && git commit }
 ## Add all files, Commit, Message as argument, then Push
 function gacmps { git add -A && git commit -m "$*" && git push }
 alias ggo="gacmps" # Go! shortcut for gacmps
+
+################################################################################
+## Svn Aliases
+alias sst='svn status'
+alias sci='svn commit'
+alias sa='svn add'
+alias slog='svn log'
+alias sd='svndiff'
 
 ################################################################################
 ## Environment
