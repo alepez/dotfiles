@@ -57,7 +57,7 @@ Plugin 'rdnetto/YCM-Generator' " Automatically generates YouCompleteMe configura
 Plugin 'scrooloose/nerdtree' " tree explorer
 Plugin 'jreybert/vimagit' " Quick git commit
 Plugin 'mhinz/vim-signify' " show diff in gutter
-Plugin 'c.vim' " C/C++
+"Plugin 'c.vim' " C/C++
 Plugin 'jszakmeister/vim-togglecursor' " Show different cursor for different modes (konsole support)
 Plugin 'mattn/gist-vim' " vimscript for gist
 Plugin 'fisadev/vim-ctrlp-cmdpalette' " fuzzy command search
@@ -360,8 +360,14 @@ nnoremap <F8> <Esc>:update<CR>:VimuxRunLastCommand<CR> " Run last vimux command
 nnoremap <F11> <Esc>:update<CR>:Make!<CR> " Make in background
 nnoremap <F12> <Esc>:update<CR>:Make<CR> " Make in foreground
 
+" Like F8, less painful
+nmap zzz <F8>
+
 " Like F12, less painful
-nnoremap zz <Esc>:update<CR>:Make<CR> " Make in foreground
+nmap zz <F12>
+
+" Refresh Signify
+nnoremap <leader>RS :SignifyRefresh<CR>
 
 "---------- the silver search
 let g:ag_working_path_mode="r" " Search in project directory
