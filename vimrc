@@ -176,18 +176,28 @@ inoremap <silent> <leader>s :w<CR>
 nnoremap <leader>p "0p
 nnoremap <leader>P "0P
 
+" Visual selection search
+vnoremap // y/<C-R>"<CR>
+
+" Visual selection search with the silver searcher
+vnoremap <leader>f y:Ag '<C-r>"'<CR>
+
 " Navigate marks with F2, like in SublimeText
 map <F2> <Esc>]`
 
 " next/prev buffer - Map ctrl+shift-left and ctrl+shift-right
 " Note: konsole needs a remapping
-nnoremap [1;4D :e#<CR>
+"nnoremap [1;4D :e#<CR>
 nnoremap [1;6D :bprevious<CR>
 nnoremap [1;6C :bnext<CR>
 " When switching buffer, exit from insert mode
-nnoremap <ESC>[1;4D :e#<CR>
+"inoremap <ESC>[1;4D :e#<CR>
 inoremap <ESC>[1;6D <ESC>:bprevious<CR>
 inoremap <ESC>[1;6C <ESC>:bnext<CR>
+
+" Disable ctrl-tab (konsole)
+nnoremap [1;4D <Nop>
+inoremap <ESC>[1;4D <Nop>
 
 " Disable arrows and mouse wheel in insert mode
 inoremap <silent> <ESC>OA <Nop>
