@@ -73,8 +73,9 @@ Plugin 'Valloric/YouCompleteMe' " A code-completion engine for Vim
 Plugin 'tpope/vim-dispatch' " build in bakcground
 Plugin 'Raimondi/delimitMate' " automatically close quotes, parens, brackets, etc.
 Plugin 'tpope/vim-surround' " surround.vim: quoting/parenthesizing made simple
+Plugin 'tpope/vim-markdown'
+"Plugin 'plasticboy/vim-markdown' " Markdown Vim Mode
 Plugin 'reedes/vim-pencil' " Prose editing improved (markdown etc...)
-Plugin 'plasticboy/vim-markdown' " Markdown Vim Mode
 Plugin 'ap/vim-css-color' " Preview colours in source code while editing
 Plugin 'jaxbot/browserlink.vim' " like livereload
 Plugin 'suan/vim-instant-markdown' " preview markdown in browser (needs `npm -g install instant-markdown-d`)
@@ -277,6 +278,7 @@ highlight DiffChange        cterm=bold ctermbg=none ctermfg=227
 highlight SignifySignAdd    cterm=bold ctermbg=235  ctermfg=119
 highlight SignifySignDelete cterm=bold ctermbg=235 ctermfg=167
 highlight SignifySignChange cterm=bold ctermbg=235 ctermfg=227
+let g:signify_update_on_bufenter = 1
 
 "--------- Standard Vim settings {{{
 set showcmd
@@ -332,6 +334,11 @@ augroup WrapLineInMarkdownFile
 	autocmd FileType markdown setlocal textwidth=80
 	autocmd FileType markdown setlocal wrap
 	autocmd BufRead,BufNewFile *.md set filetype=markdown " Set extra filetypes
+augroup END
+
+augroup Pencil
+  autocmd!
+  autocmd FileType markdown call pencil#init()
 augroup END
 
 "---------- c.vim C/C++
