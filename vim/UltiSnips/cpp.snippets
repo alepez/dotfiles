@@ -1,3 +1,4 @@
+################################################################################
 snippet once "Include header once only guard"
 #ifndef ${1:`!p
 if not snip.c:
@@ -14,10 +15,26 @@ ${VISUAL}${0}
 #endif /* end of include guard: $1 */
 endsnippet
 
-snippet inc " Include header"
+################################################################################
+snippet inc "Include header"
 #include <${1}>
 endsnippet
 
-snippet inc" " Include header"
+################################################################################
+snippet inc" "Include header"
 #include "${1}"
+endsnippet
+
+################################################################################
+snippet fori "for loop with int i"
+for (int i = 0; i < ${1}; ++i) {
+	${2}
+}
+endsnippet
+
+################################################################################
+snippet forr "for loop with range"
+for (auto&& ${1}: ${2}) {
+	$1;
+}
 endsnippet
