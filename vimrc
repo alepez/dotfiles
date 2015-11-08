@@ -40,7 +40,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-abolish'
 Plugin 'ervandew/supertab'
 Plugin 'benmills/vimux' " Run commands inside tmux window
-Plugin 'mhinz/vim-startify' " A fancy start screen for vim
+"Plugin 'mhinz/vim-startify' " A fancy start screen for vim
 "Plugin 'skammer/vim-swaplines' " Swap lines with ease
 Plugin 'tpope/vim-fugitive' " git gui
 Plugin 'Chiel92/vim-autoformat' " Provide easy code formatting in Vim by integrating existing code formatters.
@@ -313,6 +313,7 @@ set smartcase "don't ignore Capitals when present
 set splitright " ensures new splits are to the right of current
 set tags=./.tags;,.tags; " tags files are hidden
 set completeopt=menu,menuone " complete menu visibility
+set shortmess=I " I: no intro message.
 " }}}
 
 " Silently execute external commands, without needing to redraw
@@ -419,6 +420,10 @@ let g:airline_powerline_fonts = 1
 
 " Enable syntastic
 let g:airline#extensions#syntastic#enabled = 1
+let g:syntastic_mode_map = {
+		\ "mode": "passive",
+		\ "active_filetypes": [],
+		\ "passive_filetypes": [] }
 
 " Disable echo of current buffer in commandline
 let g:bufferline_echo = 0
@@ -429,6 +434,16 @@ let g:VimuxOrientation = "h"
 "---------- web
 " Enable browserlink livereload for these types:
 let g:bl_pagefiletypes = ['html', 'javascript', 'php']
+augroup Css
+	autocmd!
+	autocmd FileType css setlocal expandtab
+augroup END
+
+augroup Xml
+	autocmd!
+	autocmd FileType xml setlocal expandtab
+augroup END
+
 augroup Javascript
 	autocmd!
 	autocmd FileType javascript setlocal expandtab
