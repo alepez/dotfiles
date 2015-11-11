@@ -330,17 +330,17 @@ set nowb
 "---------- Markdown
 augroup WrapLineInMarkdownFile
 	autocmd!
-	autocmd FileType markdown setlocal formatoptions=nt
+	"autocmd FileType markdown setlocal formatoptions=nt
 	autocmd FileType markdown setlocal wrapmargin=0
 	autocmd FileType markdown setlocal textwidth=80
 	autocmd FileType markdown setlocal wrap
 	autocmd BufRead,BufNewFile *.md set filetype=markdown " Set extra filetypes
 augroup END
 
-augroup Pencil
-  autocmd!
-  autocmd FileType markdown call pencil#init()
-augroup END
+"augroup Pencil
+  "autocmd!
+  "autocmd FileType markdown call pencil#init()
+"augroup END
 
 "---------- c.vim C/C++
 let g:C_MapLeader  = '\' " All c.vim shortcuts with this leader
