@@ -173,16 +173,19 @@ function findup {
 
 ## Push my time to a remote machine via ssh
 function ssh-time-push {
-	datetime=$( date +%m%d%H%M%Y )
-	ssh $@ "( date $datetime; /sbin/hwclock --systohc )"
+	datetime=$( date --utc +%m%d%H%M%Y )
+	ssh $@ "( date --utc $datetime; /sbin/hwclock --systohc )"
 }
 
 ## Use time from a remote machine to set my local time.
 function ssh-time-pull {
-	datetime=$( ssh $@ "date +%m%d%H%M%Y" )
-	sudo date $datetime; sudo /sbin/hwclock --systohc
+	datetime=$( ssh $@ "date --utc +%m%d%H%M%Y" )
+	sudo date --utc $datetime; sudo /sbin/hwclock --systohc
 }
-
+function screencast {
+	ffmpeg -video_size $1 -framerate 25 -f x11grab -i :0.0+$2 \
+		~/screencast-$( date +%Y%m%d-%H%M%S ).mp4
+}
 ###############################################################################
 ## Source local configurations
 if [ -e ~/.zshrc.local ]; then source ~/.zshrc.local; fi
