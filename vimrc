@@ -237,7 +237,7 @@ nnoremap <F3> :IH<CR>
 :let NERDTreeQuitOnOpen = 1
 
 "---------- Ignore these files
-" (apply to ctrlp if ctrlp_user_command isn't set)
+" (apply even to ctrlp if ctrlp_user_command isn't set)
 set wildignore+=*/tmp/*
 set wildignore+=*.so,*.o,*.d,*.gcda,*.gcno
 set wildignore+=*.zip,*.tar,*.tar.gz,*.tar.bz2,*.tgz
@@ -250,6 +250,7 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_by_filename = 0 " 0: use full path, 1: use filename only
 let g:ctrlp_switch_buffer = 'E' " Jump to the file with <CR>
 let g:ctrlp_root_markers = ['.ycm_extra_conf.py', '.git', '.svn'] " ctrlp uses .git, .svn, ... as project root. Use these markers too
+let g:ctrlp_open_multiple_files = 'i' " open selected files in hidden buffers
 
 " Use ag, the silver searcher, for ctrlp search.
 " Note: wildignore doesn't apply with this option, you need .agignore file
@@ -270,6 +271,10 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_mode_map = {
+		\ "mode": "passive",
+		\ "active_filetypes": [],
+		\ "passive_filetypes": [] }
 
 "--------- signify
 highlight DiffAdd           cterm=bold ctermbg=none ctermfg=119
@@ -337,10 +342,10 @@ augroup WrapLineInMarkdownFile
 	autocmd BufRead,BufNewFile *.md set filetype=markdown " Set extra filetypes
 augroup END
 
-"augroup Pencil
-  "autocmd!
-  "autocmd FileType markdown call pencil#init()
-"augroup END
+augroup Pencil
+	autocmd!
+	autocmd FileType markdown call pencil#init()
+augroup END
 
 "---------- c.vim C/C++
 let g:C_MapLeader  = '\' " All c.vim shortcuts with this leader
@@ -420,10 +425,6 @@ let g:airline_powerline_fonts = 1
 
 " Enable syntastic
 let g:airline#extensions#syntastic#enabled = 1
-let g:syntastic_mode_map = {
-		\ "mode": "passive",
-		\ "active_filetypes": [],
-		\ "passive_filetypes": [] }
 
 " Disable echo of current buffer in commandline
 let g:bufferline_echo = 0
