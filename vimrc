@@ -167,11 +167,9 @@ command! W  write
 
 " Close buffers without pain
 nnoremap <silent> <leader>w :bd<CR>
-inoremap <silent> <leader>w :bd<CR>
 
 " Save without pain
 nnoremap <silent> <leader>s :w<CR>
-inoremap <silent> <leader>s :w<CR>
 
 " Paste from yank register. Because yes.
 nnoremap <leader>p "0p
@@ -283,7 +281,7 @@ highlight DiffChange        cterm=bold ctermbg=none ctermfg=227
 highlight SignifySignAdd    cterm=bold ctermbg=235  ctermfg=119
 highlight SignifySignDelete cterm=bold ctermbg=235 ctermfg=167
 highlight SignifySignChange cterm=bold ctermbg=235 ctermfg=227
-let g:signify_update_on_bufenter = 1
+let g:signify_update_on_bufenter = 1 " FIXME: this is not working
 
 "--------- Standard Vim settings {{{
 set showcmd
