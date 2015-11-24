@@ -148,7 +148,7 @@ alias ggo="gacmps" # Go! shortcut for gacmps
 alias sst='svn status'
 alias sci='svn commit'
 alias sa='svn add'
-alias slog='svn log'
+alias slog='svn log | less'
 alias sd='svndiff'
 
 ################################################################################

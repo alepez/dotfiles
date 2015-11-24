@@ -40,8 +40,6 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-abolish'
 Plugin 'ervandew/supertab'
 Plugin 'benmills/vimux' " Run commands inside tmux window
-"Plugin 'mhinz/vim-startify' " A fancy start screen for vim
-"Plugin 'skammer/vim-swaplines' " Swap lines with ease
 Plugin 'tpope/vim-fugitive' " git gui
 Plugin 'Chiel92/vim-autoformat' " Provide easy code formatting in Vim by integrating existing code formatters.
 Plugin 'scrooloose/syntastic.git' " check syntax
@@ -57,14 +55,12 @@ Plugin 'rdnetto/YCM-Generator' " Automatically generates YouCompleteMe configura
 Plugin 'scrooloose/nerdtree' " tree explorer
 Plugin 'jreybert/vimagit' " Quick git commit
 Plugin 'mhinz/vim-signify' " show diff in gutter
-"Plugin 'c.vim' " C/C++
 Plugin 'jszakmeister/vim-togglecursor' " Show different cursor for different modes (konsole support)
 Plugin 'mattn/gist-vim' " vimscript for gist
 Plugin 'fisadev/vim-ctrlp-cmdpalette' " fuzzy command search
 Plugin 'rking/ag.vim' " the silver searcher
 Plugin 'a.vim' " Alternate files quickly (header/implementation etc...)
 Plugin 'sjl/gundo.vim' " Gundo is a Vim plugin for visualizing your undo tree to make it usable
-Plugin 'rhysd/vim-clang-format' " Auto format with clang
 Plugin 'kshenoy/vim-signature' " bookmark manager
 Plugin 'octol/vim-cpp-enhanced-highlight' " smarter c++ highlight
 Plugin 'SirVer/ultisnips' " Snippets engine
@@ -74,7 +70,6 @@ Plugin 'tpope/vim-dispatch' " build in bakcground
 Plugin 'Raimondi/delimitMate' " automatically close quotes, parens, brackets, etc.
 Plugin 'tpope/vim-surround' " surround.vim: quoting/parenthesizing made simple
 Plugin 'tpope/vim-markdown'
-"Plugin 'plasticboy/vim-markdown' " Markdown Vim Mode
 Plugin 'reedes/vim-pencil' " Prose editing improved (markdown etc...)
 Plugin 'ap/vim-css-color' " Preview colours in source code while editing
 Plugin 'jaxbot/browserlink.vim' " like livereload
@@ -187,17 +182,11 @@ map <F2> <Esc>]`
 
 " next/prev buffer - Map ctrl+shift-left and ctrl+shift-right
 " Note: konsole needs a remapping
-"nnoremap [1;4D :e#<CR>
 nnoremap [1;6D :bprevious<CR>
 nnoremap [1;6C :bnext<CR>
-" When switching buffer, exit from insert mode
-"inoremap <ESC>[1;4D :e#<CR>
+" You can switch buffer in insert mode, set mode to normal before switching
 inoremap <ESC>[1;6D <ESC>:bprevious<CR>
 inoremap <ESC>[1;6C <ESC>:bnext<CR>
-
-" Disable ctrl-tab (konsole)
-nnoremap [1;4D <Nop>
-inoremap <ESC>[1;4D <Nop>
 
 " Disable arrows and mouse wheel in insert mode
 inoremap <silent> <ESC>OA <Nop>
@@ -335,31 +324,25 @@ set nowb
 "---------- Markdown
 augroup WrapLineInMarkdownFile
 	autocmd!
+	autocmd BufRead,BufNewFile *.md set filetype=markdown " Set extra filetypes
 	"autocmd FileType markdown setlocal formatoptions=nt
 	autocmd FileType markdown setlocal wrapmargin=0
 	autocmd FileType markdown setlocal textwidth=80
 	autocmd FileType markdown setlocal wrap
-	autocmd BufRead,BufNewFile *.md set filetype=markdown " Set extra filetypes
-augroup END
-
-augroup Pencil
-	autocmd!
 	autocmd FileType markdown call pencil#init()
 augroup END
 
-"---------- c.vim C/C++
-let g:C_MapLeader  = '\' " All c.vim shortcuts with this leader
-let g:clang_format#detect_style_file=1 " search for .clang-format file
-let g:clang_format#auto_formatexpr=1 " Use clang as default formatter
+"---------- C/C++
 let g:cpp_experimental_template_highlight=1
 let g:cpp_class_scope_highlight=1
+
+" Special configuratation for cpp AutoFormat (see Chiel92/vim-autoformat plugin)
+let g:formatdef_clangformat_cpp = "'clang-format -lines='.a:firstline.':'.a:lastline.' --assume-filename='.bufname('%').' -style=file'"
+let g:formatters_cpp = ['clangformat_cpp']
 
 " Map some shortcuts only for C and CPP files
 augroup Cpp
 	autocmd BufRead,BufNewFile *.h set filetype=cpp " Set extra filetypes
-	autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
-	autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
-	autocmd FileType c,cpp,objc nmap <Leader>C :ClangFormatAutoToggle<CR>
 	" Refresh tags with ctags
 	autocmd FileType cpp nnoremap <leader>R :Silent !ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q -I _GLIBCXX_NOEXCEPT -f .tags . <CR>
 augroup END
