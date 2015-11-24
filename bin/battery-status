@@ -18,3 +18,5 @@ elif [ $level -gt 0 ]; then echo -n "";
 fi
 
 echo "${level}%"
+
+if [ $level -lt 10 ]; then kdialog --sorry "battery level is low"; fi

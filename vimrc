@@ -87,6 +87,7 @@ Plugin 'tpope/vim-repeat' " repeat.vim: enable repeating supported plugin maps w
 Plugin 'tpope/vim-speeddating' " speeddating.vim: use CTRL-A/CTRL-X to increment dates, times, and more
 Plugin 'tpope/vim-unimpaired' " pairs of handy bracket mappings
 Plugin 'tpope/vim-commentary' " Comment stuff out
+Plugin 'jamessan/vim-gnupg' " transparent editing of gpg encrypted files
 " }}}
 
 " vim-devicons must be loaded after all other plugins
