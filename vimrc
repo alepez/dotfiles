@@ -1,7 +1,6 @@
-" vim:fdm=marker
 " @filename: ~/.vimrc
 
-"---------- gvim
+"---------- gvim {{{
 " I don't always use gvim, but when I do, I want it minimal.
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
@@ -11,8 +10,9 @@ set guioptions-=L  "remove left-hand scroll bar
 " Awesome font for coding, with a lot of useful icons.
 " https://github.com/ryanoasis/nerd-fonts
 set guifont=Sauce\ Code\ Powerline\ PNFT\ Mono
+" }}}
 
-"---------- colors
+"---------- colors {{{
 " I  colors
 syntax on
 set t_Co=256
@@ -23,8 +23,9 @@ colorscheme molokai
 " Default matching parent highlight is too visible.
 " This is a more discrete highlight.
 hi MatchParen cterm=bold ctermbg=grey ctermfg=black
+" }}}
 
-"---------- vundle
+"---------- vundle {{{
 set nocompatible              " required
 filetype off                  " required
 
@@ -34,8 +35,9 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+" }}}
 
-"------ plugins {{{
+"---------- plugins {{{
 
 Plugin 'tpope/vim-abolish'
 Plugin 'ervandew/supertab'
@@ -84,25 +86,29 @@ Plugin 'tpope/vim-unimpaired' " pairs of handy bracket mappings
 Plugin 'tpope/vim-commentary' " Comment stuff out
 Plugin 'jamessan/vim-gnupg' " transparent editing of gpg encrypted files
 Plugin 'lyuts/vim-rtags' " Vim bindings for rtags, llvm/clang based c++ code indexer.
-" }}}
+Plugin 'klen/python-mode' " Python
 
 " vim-devicons must be loaded after all other plugins
 " needs a good font with icons, like patched fonts you can find at
 " https://github.com/ryanoasis/nerd-fonts
 Plugin 'ryanoasis/vim-devicons' " Add fonts icons
+" }}}
 
+"---------- vundle end {{{
 " Plugins cannot be loaded below this line
 call vundle#end()            " required
 filetype plugin indent on    " required
+" }}}
 
-"---------- autoreload vimrc on changes
+"---------- autoreload vimrc on changes {{{
 " $MYVIMRC (~/.vimrc) and $MYGVIMRC (~/.gvimrc) must exists or an error will appear
 augroup AutoreloadVimrc
     au!
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc nested so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
+" }}}
 
-"--------- general options
+"---------- general options {{{
 
 " turn off soft wrap
 set nowrap
@@ -132,11 +138,12 @@ set list
 " Prevent changing directory when opening files
 set noautochdir
 
-" Always show the sign (also called gutter)
+"---------- Always show the sign (also called gutter) {{{
 augroup AlwaysShowTheSign
 	autocmd BufEnter * sign define dummy
 	autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 augroup END
+" }}}
 
 " Enable per-directory .vimrc files and disable unsafe commands in them
 set exrc
@@ -154,8 +161,9 @@ set nostartofline
 
 " With a powerful PC, we can have a huge history.
 set history=8192
+" }}}
 
-"--------- shortcuts {{{
+"---------- shortcuts {{{
 " Change leader to a more efficient button
 let mapleader = ","
 
@@ -220,20 +228,38 @@ nnoremap <F4> :A<CR>
 nnoremap <F3> :IH<CR>
 
 " Replace any parens pair with curly parens
-:nnoremap <leader>{ %R}<Esc><C-o>R{<Esc>
+nnoremap <leader>{ %R}<Esc><C-o>R{<Esc>
 
-" NERDTree
+nnoremap <F8> <Esc>:update<CR>:VimuxRunLastCommand<CR> " Run last vimux command
+" FIXME: <F9> is doing something... what???
+nnoremap <F11> <Esc>:update<CR>:Make!<CR> " Make in background
+nnoremap <F12> <Esc>:update<CR>:Make<CR> " Make in foreground
+
+" Like F8, less painful
+nmap zzz <F8>
+
+" Like F12, less painful
+nmap zz <F12>
+
+" Refresh Signify
+nnoremap <leader>RS :SignifyRefresh<CR>
+
+" }}}
+
+"---------- NERDTree {{{
 :let NERDTreeQuitOnOpen = 1
+" }}}
 
-"---------- Ignore these files
+"---------- Ignore these files {{{
 " (apply even to ctrlp if ctrlp_user_command isn't set)
 set wildignore+=*/tmp/*
 set wildignore+=*.so,*.o,*.d,*.gcda,*.gcno
 set wildignore+=*.zip,*.tar,*.tar.gz,*.tar.bz2,*.tgz
 set wildignore+=*.png,*.jpg,*.gif
 set wildignore+=*/node_modules
+" }}}
 
-"--------- ctrlp {{{
+"---------- ctrlp {{{
 let g:ctrlp_map = '<C-p>' " If it's called ctrlp...
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_by_filename = 0 " 0: use full path, 1: use filename only
@@ -247,7 +273,9 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 " FIXME: I want ctrlp to give precedence to mru: when searching for a file,
 " show first the mru.
 
-"--------- Set Syntastic checkers {{{
+" }}}
+
+"---------- Set Syntastic checkers {{{
 " Note: checkers must be installed
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_cpp_compile = '/usr/bin/clang-3.8'
@@ -265,8 +293,9 @@ let g:syntastic_mode_map = {
 		\ "mode": "passive",
 		\ "active_filetypes": [],
 		\ "passive_filetypes": [] }
+" }}}
 
-"--------- signify
+"---------- signify {{{
 highlight DiffAdd           cterm=bold ctermbg=none ctermfg=119
 highlight DiffDelete        cterm=bold ctermbg=none ctermfg=167
 highlight DiffChange        cterm=bold ctermbg=none ctermfg=227
@@ -274,8 +303,9 @@ highlight SignifySignAdd    cterm=bold ctermbg=235  ctermfg=119
 highlight SignifySignDelete cterm=bold ctermbg=235 ctermfg=167
 highlight SignifySignChange cterm=bold ctermbg=235 ctermfg=227
 let g:signify_update_on_bufenter = 1 " FIXME: this is not working
+" }}}
 
-"--------- Standard Vim settings {{{
+"---------- Standard Vim settings {{{
 set showcmd
 set showmode
 set title
@@ -309,20 +339,23 @@ set splitright " ensures new splits are to the right of current
 set tags=./.tags;,.tags; " tags files are hidden
 set completeopt=menu,menuone " complete menu visibility
 set shortmess=I " I: no intro message.
+set modelines=1
 " }}}
 
-" Silently execute external commands, without needing to redraw
+"---------- Silently execute external commands, without needing to redraw {{{
 command! -nargs=1 Silent
 \ | execute ':silent !'.<q-args>
 \ | execute ':redraw!'
+" }}}
 
-"---------- Turn off swap files and backups
+"---------- Turn off swap files and backups {{{
 
 set noswapfile
 set nobackup
 set nowb
+" }}}
 
-"---------- Markdown
+"---------- Markdown {{{
 augroup WrapLineInMarkdownFile
 	autocmd!
 	autocmd BufRead,BufNewFile *.md set filetype=markdown " Set extra filetypes
@@ -332,8 +365,9 @@ augroup WrapLineInMarkdownFile
 	autocmd FileType markdown setlocal wrap
 	autocmd FileType markdown call pencil#init()
 augroup END
+" }}}
 
-"---------- C/C++
+"---------- C/C++ {{{
 let g:cpp_experimental_template_highlight=1
 let g:cpp_class_scope_highlight=1
 
@@ -350,26 +384,13 @@ augroup END
 
 " This script cd up until a Makefile is found, then call make.
 set makeprg=~/.dotfiles/bin/make-closest-makefile
+" }}}
 
-" F shortcuts
-nnoremap <F8> <Esc>:update<CR>:VimuxRunLastCommand<CR> " Run last vimux command
-" FIXME: <F9> is doing something... what???
-nnoremap <F11> <Esc>:update<CR>:Make!<CR> " Make in background
-nnoremap <F12> <Esc>:update<CR>:Make<CR> " Make in foreground
-
-" Like F8, less painful
-nmap zzz <F8>
-
-" Like F12, less painful
-nmap zz <F12>
-
-" Refresh Signify
-nnoremap <leader>RS :SignifyRefresh<CR>
-
-"---------- the silver search
+"---------- the silver search {{{
 let g:ag_working_path_mode="r" " Search in project directory
+" }}}
 
-"---------- Snippets and YouCompleteMe
+"---------- Snippets and YouCompleteMe {{{
 let g:ycm_confirm_extra_conf = 0 " load local ycm configuration silently.
 let g:ycm_use_ultisnips_completer = 0 " Disable UltiSnips for YCM
 
@@ -383,8 +404,9 @@ let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:UltiSnipsEditSplit="vertical"
+" }}}
 
-"--------- airline
+"---------- airline {{{
 
 " the theme
 let g:airline_theme='pez' " Sometime this does not work... why?
@@ -412,11 +434,13 @@ let g:airline#extensions#syntastic#enabled = 1
 
 " Disable echo of current buffer in commandline
 let g:bufferline_echo = 0
+" }}}
 
-"---------- vimux
+"---------- vimux {{{
 let g:VimuxOrientation = "h"
+" }}}
 
-"---------- web
+"---------- web {{{
 " Enable browserlink livereload for these types:
 let g:bl_pagefiletypes = ['html', 'javascript', 'php']
 augroup Css
@@ -439,22 +463,31 @@ augroup PHP
 	autocmd!
 	autocmd FileType php setlocal expandtab
 augroup END
+" }}}
 
-"---------- qml
+"---------- qml {{{
 augroup QML
 	autocmd!
 	autocmd FileType qml setlocal expandtab
 augroup END
+" }}}
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Include local vimrc
+"---------- python {{{
+augroup python
+	autocmd!
+	autocmd FileType python setlocal expandtab ts=4 autoindent shiftwidth=4
+augroup END
+" }}}
+
+"---------- Dependencies {{{
+"
+" - https://github.com/Andersbakken/rtags
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
+
+"---------- Include local vimrc {{{
 if filereadable(glob("~/.vimrc.local"))
 	source ~/.vimrc.local
 endif
+" }}}
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-" Dependencies:
-"
-" - https://github.com/Andersbakken/rtags
-
+" vim:foldmethod=marker:foldlevel=0
