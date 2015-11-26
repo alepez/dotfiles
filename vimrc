@@ -165,7 +165,7 @@ set history=8192
 
 "---------- shortcuts {{{
 " Change leader to a more efficient button
-let mapleader = ","
+let mapleader = "\<Space>"
 
 " :W as :w
 command! W  write
