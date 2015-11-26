@@ -194,7 +194,7 @@ function screencast {
 ## switch from console to vim
 function fancy_ctrl_z {
   if [[ $#BUFFER -eq 0 ]]; then
-    BUFFER="fg"
+    BUFFER=" fg"
     zle accept-line
   else
     zle push-input
