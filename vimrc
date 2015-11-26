@@ -210,7 +210,7 @@ nmap <leader>ne :NERDTreeToggle<cr>
 nmap <leader>: :CtrlPCmdPalette<CR>
 
 " turn off search highlight
-nnoremap <leader><space> :nohlsearch<CR>
+nnoremap <leader><leader> :nohlsearch<CR>
 
 " toggle gundo
 nnoremap <leader>u :GundoToggle<CR>
