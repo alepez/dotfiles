@@ -83,6 +83,7 @@ Plugin 'tpope/vim-speeddating' " speeddating.vim: use CTRL-A/CTRL-X to increment
 Plugin 'tpope/vim-unimpaired' " pairs of handy bracket mappings
 Plugin 'tpope/vim-commentary' " Comment stuff out
 Plugin 'jamessan/vim-gnupg' " transparent editing of gpg encrypted files
+Plugin 'lyuts/vim-rtags' " Vim bindings for rtags, llvm/clang based c++ code indexer.
 " }}}
 
 " vim-devicons must be loaded after all other plugins
@@ -445,8 +446,15 @@ augroup QML
 	autocmd FileType qml setlocal expandtab
 augroup END
 
-"------------------------------------------------------------------------------
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Include local vimrc
 if filereadable(glob("~/.vimrc.local"))
 	source ~/.vimrc.local
 endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Dependencies:
+"
+" - https://github.com/Andersbakken/rtags
+
