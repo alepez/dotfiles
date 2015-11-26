@@ -85,6 +85,7 @@ Plugin 'tpope/vim-speeddating' " speeddating.vim: use CTRL-A/CTRL-X to increment
 Plugin 'tpope/vim-unimpaired' " pairs of handy bracket mappings
 Plugin 'tpope/vim-commentary' " Comment stuff out
 Plugin 'jamessan/vim-gnupg' " transparent editing of gpg encrypted files
+Plugin 'klen/python-mode' " Python
 
 " vim-devicons must be loaded after all other plugins
 " needs a good font with icons, like patched fonts you can find at
