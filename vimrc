@@ -486,6 +486,10 @@ augroup python
 augroup END
 " }}}
 
+"---------- zsh {{{
+set shell=/bin/zsh
+" }}}
+
 "---------- Dependencies {{{
 "
 " - https://github.com/Andersbakken/rtags
