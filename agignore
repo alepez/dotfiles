@@ -13,3 +13,5 @@ node_modules/*
 *.zip
 Debug_*/*
 Release_*/*
+__pycache__
+*.pyc

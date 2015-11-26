@@ -78,7 +78,7 @@ Plugin 'jaxbot/browserlink.vim' " like livereload
 Plugin 'suan/vim-instant-markdown' " preview markdown in browser (needs `npm -g install instant-markdown-d`)
 Plugin 'mattn/emmet-vim' " emmet for vim: http://emmet.io/
 Plugin 'pangloss/vim-javascript' " Vastly improved Javascript indentation and syntax support in Vim.
-Plugin 'easymotion/vim-easymotion' " Vim motions on speed!
+"Plugin 'easymotion/vim-easymotion' " Vim motions on speed!
 Plugin 'smarty-syntax' " Syntax highlight for Smarty Template Engine
 Plugin 'tpope/vim-repeat' " repeat.vim: enable repeating supported plugin maps with .
 Plugin 'tpope/vim-speeddating' " speeddating.vim: use CTRL-A/CTRL-X to increment dates, times, and more
@@ -261,6 +261,7 @@ set wildignore+=*/tmp/*
 set wildignore+=*.so,*.o,*.d,*.gcda,*.gcno
 set wildignore+=*.zip,*.tar,*.tar.gz,*.tar.bz2,*.tgz
 set wildignore+=*.png,*.jpg,*.gif
+set wildignore+=*/__pycache__
 set wildignore+=*/node_modules
 " }}}
 

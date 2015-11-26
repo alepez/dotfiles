@@ -1,12 +1,15 @@
 ## @filename: ~/.zshrc
+
+## oh-my-zsh {{{
+
 ## Path to your oh-my-zsh installation.
 export ZSH=/opt/oh-my-zsh
 
 ## Path to custom themes/plugins etc...
 export ZSH_CUSTOM=~/.oh-my-zsh/custom
 
-# Set name of the theme to load.
-# Look in $ZSH/themes/
+## Set name of the theme to load.
+## Look in $ZSH/themes/
 ZSH_THEME="pez"
 
 ## Uncomment the following line to use case-sensitive completion.
@@ -28,18 +31,22 @@ COMPLETION_WAITING_DOTS="true"
 ## status check for large repositories much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+## }}}
+
+## tmux {{{
 ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_AUTOCONNECT=false
+## }}}
 
+## plugins {{{
 ## Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(common-aliases dirhistory web-search tmux)
 
 source $ZSH/oh-my-zsh.sh
 
-## Path
+## }}}
 
-################################################################################
-## History
+## History {{{
 HISTFILE=~/.history
 HISTSIZE=10000
 SAVEHIST=10000
@@ -50,10 +57,10 @@ setopt appendhistory
 
 ## ignore duplicates
 setopt hist_ignore_all_dups
-
+## }}}
 
 ################################################################################
-## zsh options
+## zsh options {{{
 
 ## cd to directory without writing cd
 setopt autocd
@@ -71,25 +78,30 @@ unsetopt beep
 ## disable extended glob
 unsetopt extendedglob
 
-################################################################################
-## ssh agent
-eval $( easy-ssh-agent start --env 2>/dev/null ) 2>/dev/null
+## }}}
 
 ################################################################################
-## key bindings
+## ssh agent {{{
+eval $( easy-ssh-agent start --env 2>/dev/null ) 2>/dev/null
+## }}}
+
+################################################################################
+## key bindings {{{
 bindkey "^[[5~" history-beginning-search-backward
 bindkey "^[[6~" history-beginning-search-forward
+## }}}
 
 ################################################################################
-## cache
+## cache {{{
 
 ## use this directory for zsh cache. I keep this in RAM (tmpfs)
 mkdir -p ~/.cache/zsh
 zstyle ':completion:*' use-cache yes
 zstyle ':completion:*' cache-path ~/.cache/zsh
+## }}}
 
 ################################################################################
-## alias
+## alias {{{
 
 alias bowi="bower install --save"
 alias npmi="npm install --save"
@@ -116,8 +128,16 @@ alias tt='st ~/workspace/gestione/data/timetracker/$( date +%Y-%m ).yml'
 ## I don't use dc, and somtime i mispell cd
 alias dc='cd'
 
+## fuzzy find password with `pass` password manager
+## See
+## - http://www.passwordstore.org/
+## - https://github.com/junegunn/fzf
+alias P='pass -c $( cd ~/.password-store && git ls-files | grep -v "^\." | fzf-tmux | sed "s/\.gpg$//" )'
+
+## }}}
+
 ################################################################################
-## Git Aliases
+## Git Aliases {{{
 ## See ~/.gitconfig
 alias gs='git status'         # show Status
 alias gcm='git commit -m'     # Commit, Message as argument
@@ -146,26 +166,31 @@ function gac { git add -A && git commit }
 function gacmps { git add -A && git commit -m "$*" && git push }
 alias ggo="gacmps" # Go! shortcut for gacmps
 
+## }}}
+
 ################################################################################
-## Svn Aliases
+## Svn Aliases {{{
 alias sst='svn status'
 alias sci='svn commit'
 alias sa='svn add'
 alias slog='svn log | less'
 alias sd='svndiff'
+## }}}
 
 ################################################################################
-## Environment
+## Environment {{{
 
 export EDITOR=/usr/bin/vim
 
 ## Add user's bin directory to path if it exists
 if [ -d $HOME/bin ]; then export PATH="$HOME/bin:${PATH}"; fi
 
+## }}}
+
 ###############################################################################
 ## miscellaneus functions
 
-## Find a file in current directory or parents
+## Find a file in current directory or parents {{{
 function findup {
   path=$(pwd)
   while [[ "$path" != "" && ! -e "$path/$1" ]]; do
@@ -173,25 +198,31 @@ function findup {
   done
   echo "$path/$1"
 }
+## }}}
 
-## Push my time to a remote machine via ssh
+## Push my time to a remote machine via ssh {{{
 function ssh-time-push {
 	datetime=$( date --utc +%m%d%H%M%Y )
 	ssh $@ "( date --utc $datetime; /sbin/hwclock --systohc )"
 }
+## }}}
 
-## Use time from a remote machine to set my local time.
+## Use time from a remote machine to set my local time. {{{
 function ssh-time-pull {
 	datetime=$( ssh $@ "date --utc +%m%d%H%M%Y" )
 	sudo date --utc $datetime; sudo /sbin/hwclock --systohc
 }
+## }}}
+
+## Record screen with ffmpeg {{{
 function screencast {
 	ffmpeg -video_size $1 -framerate 25 -f x11grab -i :0.0+$2 \
 		~/screencast-$( date +%Y%m%d-%H%M%S ).mp4
 }
+## }}}
 
+## switch from console to vim {{{
 ## http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
-## switch from console to vim
 function fancy_ctrl_z {
   if [[ $#BUFFER -eq 0 ]]; then
     BUFFER=" fg"
@@ -203,8 +234,13 @@ function fancy_ctrl_z {
 }
 zle -N fancy_ctrl_z
 bindkey '^Z' fancy_ctrl_z
+## }}}
+
+## fzf https://github.com/junegunn/fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ###############################################################################
 ## Source local configurations
 if [ -e ~/.zshrc.local ]; then source ~/.zshrc.local; fi
 
+# vim:foldmethod=marker:foldlevel=0
