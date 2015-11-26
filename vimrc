@@ -13,7 +13,7 @@ set guifont=Sauce\ Code\ Powerline\ PNFT\ Mono
 " }}}
 
 "---------- colors {{{
-" I  colors
+" I ♥ colors
 syntax on
 set t_Co=256
 let g:molokai_original = 1
@@ -39,14 +39,14 @@ Plugin 'VundleVim/Vundle.vim'
 
 "---------- plugins {{{
 
-Plugin 'tpope/vim-abolish'
-Plugin 'ervandew/supertab'
+Plugin 'tpope/vim-abolish' " easily search for, substitute, and abbreviate multiple variants of a word
+Plugin 'ervandew/supertab' " Supertab allows you to use <Tab> for all your insert completion needs
 Plugin 'benmills/vimux' " Run commands inside tmux window
 Plugin 'tpope/vim-fugitive' " git gui
 Plugin 'Chiel92/vim-autoformat' " Provide easy code formatting in Vim by integrating existing code formatters.
 Plugin 'scrooloose/syntastic.git' " check syntax
 Plugin 'kien/ctrlp.vim' " Fuzzy file, buffer, mru, tag, etc finder.
-Plugin 'bling/vim-bufferline'
+Plugin 'bling/vim-bufferline' " super simple vim plugin to show the list of buffers in the command bar
 Plugin 'bling/vim-airline' " lean & mean status/tabline for vim that's light as air
 Plugin 'scrooloose/nerdcommenter' " Vim plugin for intensely orgasmic commenting
 Plugin 'godlygeek/tabular' " Vim script for text filtering and alignment. Note: must come before vim-markdown
@@ -71,13 +71,13 @@ Plugin 'Valloric/YouCompleteMe' " A code-completion engine for Vim
 Plugin 'tpope/vim-dispatch' " build in bakcground
 Plugin 'Raimondi/delimitMate' " automatically close quotes, parens, brackets, etc.
 Plugin 'tpope/vim-surround' " surround.vim: quoting/parenthesizing made simple
-Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-markdown' " for markdown editing, with concealing support
 Plugin 'reedes/vim-pencil' " Prose editing improved (markdown etc...)
 Plugin 'ap/vim-css-color' " Preview colours in source code while editing
 Plugin 'jaxbot/browserlink.vim' " like livereload
 Plugin 'suan/vim-instant-markdown' " preview markdown in browser (needs `npm -g install instant-markdown-d`)
 Plugin 'mattn/emmet-vim' " emmet for vim: http://emmet.io/
-Plugin 'pangloss/vim-javascript' "
+Plugin 'pangloss/vim-javascript' " Vastly improved Javascript indentation and syntax support in Vim.
 Plugin 'easymotion/vim-easymotion' " Vim motions on speed!
 Plugin 'smarty-syntax' " Syntax highlight for Smarty Template Engine
 Plugin 'tpope/vim-repeat' " repeat.vim: enable repeating supported plugin maps with .
@@ -482,6 +482,9 @@ augroup END
 "---------- Dependencies {{{
 "
 " - https://github.com/Andersbakken/rtags
+" - https://github.com/ryanoasis/nerd-fonts
+" - https://github.com/ggreer/the_silver_searcher
+"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
 
 "---------- Include local vimrc {{{
