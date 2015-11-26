@@ -230,6 +230,7 @@ nnoremap <F3> :IH<CR>
 " Replace any parens pair with curly parens
 nnoremap <leader>{ %R}<Esc><C-o>R{<Esc>
 
+nnoremap <F7> <Esc>q:k<CR> " Repeat last command
 nnoremap <F8> <Esc>:update<CR>:VimuxRunLastCommand<CR> " Run last vimux command
 " FIXME: <F9> is doing something... what???
 nnoremap <F11> <Esc>:update<CR>:Make!<CR> " Make in background
@@ -244,6 +245,9 @@ nmap zz <F12>
 " Refresh Signify
 nnoremap <leader>RS :SignifyRefresh<CR>
 
+" make < > shifts keep selection
+vnoremap < <gv
+vnoremap > >gv
 " }}}
 
 "---------- NERDTree {{{
@@ -325,6 +329,7 @@ set ttimeout " (Hopefully) removes the delay when hitting esc in insert mode
 set ttimeoutlen=1 " (Hopefully) removes the delay when hitting esc in insert mode
 set tabstop=2 " The default is 8 which is MASSIVE!!
 set shiftwidth=2 " indent by 2 spaces
+set wildmode=list:longest,list:full " Show a list of completions
 set wildmenu " visually autocomplete the command menu
 set lazyredraw " only redraw when needed
 set ttyfast " sends more characters to the screen for fast terminal connections
@@ -352,7 +357,7 @@ command! -nargs=1 Silent
 
 set noswapfile
 set nobackup
-set nowb
+set nowritebackup
 " }}}
 
 "---------- Markdown {{{
