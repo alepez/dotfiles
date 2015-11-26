@@ -204,13 +204,14 @@ inoremap <silent> <ESC>OC <Nop>
 inoremap <silent> <ESC>OD <Nop>
 
 " Nerd Tree shortcut
-nmap <leader>ne :NERDTreeToggle<cr>
+nnoremap <leader>ne :NERDTreeToggle<cr>
 
 " cltrp command palette
-nmap <leader>: :CtrlPCmdPalette<CR>
+nnoremap <leader>: :CtrlPCmdPalette<CR>
 
-" turn off search highlight
-nnoremap <leader><leader> :nohlsearch<CR>
+" turn off search highlight and close quickfix FIXME this doesn't work
+nnoremap <leader><leader> :nohlsearch \| ccl<CR>
+"nnoremap <leader><leader> :nohlsearch<CR> :ccl<CR>
 
 " toggle gundo
 nnoremap <leader>u :GundoToggle<CR>

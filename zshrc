@@ -113,6 +113,9 @@ alias svndiff='svn diff | colordiff | less'
 ## FIXME go to zshrc.local
 alias tt='st ~/workspace/gestione/data/timetracker/$( date +%Y-%m ).yml'
 
+## I don't use dc, and somtime i mispell cd
+alias dc='cd'
+
 ################################################################################
 ## Git Aliases
 ## See ~/.gitconfig
@@ -186,6 +189,21 @@ function screencast {
 	ffmpeg -video_size $1 -framerate 25 -f x11grab -i :0.0+$2 \
 		~/screencast-$( date +%Y%m%d-%H%M%S ).mp4
 }
+
+## http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
+## switch from console to vim
+function fancy_ctrl_z {
+  if [[ $#BUFFER -eq 0 ]]; then
+    BUFFER="fg"
+    zle accept-line
+  else
+    zle push-input
+    zle clear-screen
+  fi
+}
+zle -N fancy_ctrl_z
+bindkey '^Z' fancy_ctrl_z
+
 ###############################################################################
 ## Source local configurations
 if [ -e ~/.zshrc.local ]; then source ~/.zshrc.local; fi
