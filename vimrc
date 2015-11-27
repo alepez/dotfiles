@@ -87,6 +87,7 @@ Plugin 'tpope/vim-commentary' " Comment stuff out
 Plugin 'jamessan/vim-gnupg' " transparent editing of gpg encrypted files
 Plugin 'lyuts/vim-rtags' " Vim bindings for rtags, llvm/clang based c++ code indexer.
 Plugin 'klen/python-mode' " Python
+Plugin 'alfredodeza/pytest.vim' " unit test runner for python
 
 " vim-devicons must be loaded after all other plugins
 " needs a good font with icons, like patched fonts you can find at
