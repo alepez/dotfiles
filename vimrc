@@ -101,8 +101,9 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 " }}}
 
-"---------- other plugins
+"---------- other plugins {{{
 set rtp+=~/.fzf
+" }}}
 
 "---------- autoreload vimrc on changes {{{
 " $MYVIMRC (~/.vimrc) and $MYGVIMRC (~/.gvimrc) must exists or an error will appear
@@ -184,22 +185,19 @@ nnoremap <silent> <leader>w :w<CR>
 nnoremap <leader>p "0p
 nnoremap <leader>P "0P
 
-" Visual selection search
+" Search current visual selection
 vnoremap // y/<C-R>"<CR>
 
 " Visual selection search with the silver searcher
 vnoremap <leader>f y:Ag '<C-r>"'<CR>
 
-" Navigate marks with F2, like in SublimeText
-map <F2> <Esc>]`
-
 " next/prev buffer - Map ctrl+shift-left and ctrl+shift-right
-" Note: konsole needs a remapping
+" Note: konsole (and other terminal emulators) may need remapping
 nnoremap [1;6D :bprevious<CR>
 nnoremap [1;6C :bnext<CR>
 " You can switch buffer in insert mode, set mode to normal before switching
-inoremap <ESC>[1;6D <ESC>:bprevious<CR>
-inoremap <ESC>[1;6C <ESC>:bnext<CR>
+inoremap [1;6D <ESC>:bprevious<CR>
+inoremap [1;6C <ESC>:bnext<CR>
 
 " Disable arrows and mouse wheel in insert mode
 inoremap <silent> <ESC>OA <Nop>
@@ -226,25 +224,22 @@ nnoremap <leader>f :Ag<space>
 " Reindent all and return the same line where you were
 nnoremap <leader>af :Autoformat<CR>
 
-" Switch header/implementation (plugin a.vim)
-nnoremap <F4> :A<CR>
-
-" Switch to file under cursor (plugin a.vim)
-nnoremap <F3> :IH<CR>
-
-" Replace any parens pair with curly parens
+" Replace any parens pair with other parens
+nnoremap <leader>( %R}<Esc><C-o>R{<Esc>
+nnoremap <leader>[ %R}<Esc><C-o>R{<Esc>
 nnoremap <leader>{ %R}<Esc><C-o>R{<Esc>
 
-nnoremap <F7> <Esc>q:k<CR> " Repeat last command
-nnoremap <F8> <Esc>:update<CR>:VimuxRunLastCommand<CR> " Run last vimux command
-" FIXME: <F9> is doing something... what???
-nnoremap <F11> <Esc>:update<CR>:Make!<CR> " Make in background
-nnoremap <F12> <Esc>:update<CR>:Make<CR> " Make in foreground
+nmap <F2> <Esc>]` " Navigate marks with F2, like in ST
+noremap <F3> :IH<CR> " Switch to file under cursor (plugin a.vim)
+noremap <F4> :A<CR> " Switch header/implementation (plugin a.vim)
+noremap <F6> <Esc>:cn<CR> " To next error
+noremap <F7> <Esc>q:k<CR> " Repeat last command
+noremap <F8> <Esc>:update<CR>:VimuxRunLastCommand<CR> " Run last vimux command
+noremap <F11> <Esc>:update<CR>:Make!<CR> " Make in background
+noremap <F12> <Esc>:update<CR>:Make<CR> " Make in foreground
 
-" Like F8, less painful
+" z repeat mapped to most used F#
 nmap zzz <F8>
-
-" Like F12, less painful
 nmap zz <F12>
 
 " Refresh Signify
@@ -288,7 +283,8 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 "---------- Set Syntastic checkers {{{
 " Note: checkers must be installed
 let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_cpp_compile = '/usr/bin/clang-3.8'
+let g:syntastic_cpp_compiler = '/usr/bin/clang-3.8'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 
 let g:syntastic_error_symbol=''
 let g:syntastic_warning_symbol=''
