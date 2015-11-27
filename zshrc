@@ -59,7 +59,6 @@ setopt appendhistory
 setopt hist_ignore_all_dups
 ## }}}
 
-################################################################################
 ## zsh options {{{
 
 ## cd to directory without writing cd
@@ -80,18 +79,15 @@ unsetopt extendedglob
 
 ## }}}
 
-################################################################################
 ## ssh agent {{{
 eval $( easy-ssh-agent start --env 2>/dev/null ) 2>/dev/null
 ## }}}
 
-################################################################################
 ## key bindings {{{
 bindkey "^[[5~" history-beginning-search-backward
 bindkey "^[[6~" history-beginning-search-forward
 ## }}}
 
-################################################################################
 ## cache {{{
 
 ## use this directory for zsh cache. I keep this in RAM (tmpfs)
@@ -100,7 +96,6 @@ zstyle ':completion:*' use-cache yes
 zstyle ':completion:*' cache-path ~/.cache/zsh
 ## }}}
 
-################################################################################
 ## Environment {{{
 
 export EDITOR=/usr/bin/vim
@@ -110,7 +105,6 @@ if [ -d $HOME/bin ]; then export PATH="$HOME/bin:${PATH}"; fi
 
 ## }}}
 
-###############################################################################
 ## miscellaneus functions
 
 ## Find a file in current directory or parents {{{
@@ -161,6 +155,9 @@ bindkey '^Z' fancy_ctrl_z
 
 ## fzf https://github.com/junegunn/fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+## Set ag, the silver searcher, as the default command, so it can skip files in
+## ~/.agignore
+export FZF_DEFAULT_COMMAND='ag -g ""'
 
 ###############################################################################
 ## Source local configurations
