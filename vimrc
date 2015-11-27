@@ -101,6 +101,9 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 " }}}
 
+"---------- other plugins
+set rtp+=~/.fzf
+
 "---------- autoreload vimrc on changes {{{
 " $MYVIMRC (~/.vimrc) and $MYGVIMRC (~/.gvimrc) must exists or an error will appear
 augroup AutoreloadVimrc
@@ -152,7 +155,7 @@ set secure
 
 " Enable mouse only in normal and visual mode.
 " to disable: `set mouse=""`
-set mouse=nv
+"set mouse=nv
 
 " Disable error bells
 set noerrorbells
@@ -172,10 +175,10 @@ let mapleader = "\<Space>"
 command! W  write
 
 " Close buffers without pain
-nnoremap <silent> <leader>w :bd<CR>
+nnoremap <silent> <leader>x :bd<CR>
 
 " Save without pain
-nnoremap <silent> <leader>s :w<CR>
+nnoremap <silent> <leader>w :w<CR>
 
 " Paste from yank register. Because yes.
 nnoremap <leader>p "0p
