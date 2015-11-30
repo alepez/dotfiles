@@ -10,7 +10,7 @@ alias bowi="bower install --save"
 alias npmi="npm install --save"
 alias automocha="supervisor -q -n exit -x mocha -- -b --recursive"
 
-alias M="mkdir"
+alias D="mkdir"
 alias W='cd ~/workspace'
 
 alias stt='subl3 -n .'
@@ -35,7 +35,7 @@ alias dc='cd'
 ## See
 ## - http://www.passwordstore.org/
 ## - https://github.com/junegunn/fzf
-alias P='pass -c $( cd ~/.password-store && git ls-files | grep -v "^\." | fzf-tmux | sed "s/\.gpg$//" )'
+function Pass { pass -c $( cd ~/.password-store && git ls-files | grep -v "^\." | fzf-tmux | sed "s/\.gpg$//" ) }
 
 ## }}}
 
