@@ -15,3 +15,6 @@ Debug_*/*
 Release_*/*
 __pycache__
 *.pyc
+dist
+deps
+build
