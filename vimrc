@@ -195,9 +195,6 @@ vnoremap <leader>f y:Ag '<C-r>"'<CR>
 " Note: konsole (and other terminal emulators) may need remapping
 nnoremap [1;6D :bprevious<CR>
 nnoremap [1;6C :bnext<CR>
-" You can switch buffer in insert mode, set mode to normal before switching
-inoremap [1;6D <ESC>:bprevious<CR>
-inoremap [1;6C <ESC>:bnext<CR>
 
 " Disable arrows and mouse wheel in insert mode
 inoremap <silent> <ESC>OA <Nop>
