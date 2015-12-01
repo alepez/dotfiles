@@ -1,3 +1,4 @@
+## Headers {{{
 ################################################################################
 snippet once "Include header once only guard"
 #ifndef ${1:`!p
@@ -24,7 +25,8 @@ endsnippet
 snippet inc" "Include header"
 #include "${1}"
 endsnippet
-
+## }}}
+## Loops {{{
 ################################################################################
 snippet fori "for loop with int i"
 for (int i = 0; i < ${1}; ++i) {
@@ -38,13 +40,39 @@ for (auto&& ${1}: ${2}) {
 	$1;
 }
 endsnippet
+## }}}
+## Comments {{{
 ################################################################################
 snippet dox "doxygen comment"
 /**
  * ${1}
  */
 endsnippet
+## }}}
+## Qt {{{
+################################################################################
 snippet qpro
 Q_PROPERTY(${1} ${2} MEMBER $2_ NOTIFY $2Changed);
 endsnippet
+## }}}
+## Exceptions {{{
+################################################################################
+snippet try "try/catch block"
+try {
+	
+} catch (const ${2}& e) {
+	
+}
+endsnippet
+################################################################################
+snippet try... "try/catch(...) block"
+try {
+	
+} catch (...) {
+	
+}
+endsnippet
 
+## }}}
+
+# vim:foldmethod=marker:foldlevel=0
