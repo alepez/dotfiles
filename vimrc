@@ -212,7 +212,6 @@ nnoremap <leader>: :CtrlPCmdPalette<CR>
 
 " turn off search highlight and close quickfix FIXME this doesn't work
 nnoremap <leader><leader> :nohlsearch \| ccl<CR>
-"nnoremap <leader><leader> :nohlsearch<CR> :ccl<CR>
 
 " toggle gundo
 nnoremap <leader>u :GundoToggle<CR>

@@ -17,7 +17,7 @@ alias stt='subl3 -n .'
 alias st='subl3'
 
 alias df='df -h'
-alias du='du -h -d 2'
+alias du='du -sh'
 alias lsg='ll | grep'
 alias ka9='killall -9'
 alias k9='kill -9'
