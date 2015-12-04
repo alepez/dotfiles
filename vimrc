@@ -187,6 +187,9 @@ nnoremap <silent> <leader>w :w<CR>
 nnoremap <leader>p "0p
 nnoremap <leader>P "0P
 
+" Krack line under cursor (insert a line break)
+nnoremap K i<CR><Esc>
+
 " Search current visual selection
 vnoremap // y/<C-R>"<CR>
 
