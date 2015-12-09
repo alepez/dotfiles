@@ -249,6 +249,11 @@ nnoremap <leader>RS :SignifyRefresh<CR>
 " make < > shifts keep selection
 vnoremap < <gv
 vnoremap > >gv
+
+" I don't use default <C-^> in insert mode (toggle the use of typing language
+" characters) so I prefer to have this shortcut working as in normal mode
+" (toggle between current and last buffer)
+imap <C-^> <Esc><C-^>
 " }}}
 
 "---------- NERDTree {{{
