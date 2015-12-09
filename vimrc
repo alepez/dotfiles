@@ -24,7 +24,7 @@ let &t_ZR="\e[23m"
 
 " Default matching parent highlight is too visible.
 " This is a more discrete highlight.
-hi MatchParen cterm=bold ctermbg=grey ctermfg=black
+hi MatchParen cterm=bold ctermbg=black ctermfg=white
 " }}}
 
 "---------- vundle {{{
