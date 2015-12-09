@@ -378,6 +378,9 @@ augroup WrapLineInMarkdownFile
 	autocmd FileType markdown setlocal wrap
 	autocmd FileType markdown call pencil#init()
 augroup END
+
+let g:instant_markdown_autostart = 0
+
 " }}}
 
 "---------- C/C++ {{{
