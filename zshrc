@@ -136,6 +136,10 @@ function screencast {
 	ffmpeg -video_size $1 -framerate 25 -f x11grab -i :0.0+$2 \
 		~/screencast-$( date +%Y%m%d-%H%M%S ).mp4
 }
+function screencast-gif {
+	ffmpeg -video_size $1 -framerate 25 -f x11grab -i :0.0+$2 \
+		~/screencast-$( date +%Y%m%d-%H%M%S ).gif
+}
 ## }}}
 
 ## switch from console to vim {{{

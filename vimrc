@@ -19,6 +19,8 @@ set t_Co=256
 let g:molokai_original = 1
 let g:rehash256 = 1
 colorscheme molokai
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
 
 " Default matching parent highlight is too visible.
 " This is a more discrete highlight.
@@ -184,6 +186,9 @@ nnoremap <silent> <leader>w :w<CR>
 " Paste from yank register. Because yes.
 nnoremap <leader>p "0p
 nnoremap <leader>P "0P
+
+" Krack line under cursor (insert a line break)
+nnoremap K i<CR><Esc>
 
 " Search current visual selection
 vnoremap // y/<C-R>"<CR>
