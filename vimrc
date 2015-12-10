@@ -257,13 +257,16 @@ nnoremap <leader>RS :SignifyRefresh<CR>
 " make < > shifts keep selection
 vnoremap < <gv
 vnoremap > >gv
+" }}}
 
+"---------- caps-lock {{{
 " Execute 'lnoremap x X' and 'lnoremap X x' for each letter a-z.
 " <C-^> to toggle caps-lock
 for c in range(char2nr('A'), char2nr('Z'))
   execute 'lnoremap ' . nr2char(c+32) . ' ' . nr2char(c)
   execute 'lnoremap ' . nr2char(c) . ' ' . nr2char(c+32)
 endfor
+" }}}
 
 "---------- NERDTree {{{
 :let NERDTreeQuitOnOpen = 1
@@ -355,7 +358,6 @@ set foldenable " enable folding
 set foldlevelstart=10 " open most folds by default
 set foldnestmax=10 " 10 nested folders max
 set nospell " Disable spell check
-set virtualedit=onemore " Allow the cursor to move just past the end of the line
 set smartcase "don't ignore Capitals when present
 set splitright " ensures new splits are to the right of current
 set tags=./.tags;,.tags; " tags files are hidden
