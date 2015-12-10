@@ -257,6 +257,11 @@ nnoremap <leader>RS :SignifyRefresh<CR>
 " make < > shifts keep selection
 vnoremap < <gv
 vnoremap > >gv
+
+" Search without escaping slash
+command! -nargs=1 Ss let @/ = <q-args>|set hlsearch
+nnoremap <leader>/ :Ss<space>
+
 " }}}
 
 "---------- caps-lock {{{
