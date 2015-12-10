@@ -1,5 +1,6 @@
 ## @filename: ~/.agignore
 
+*~
 */tmp/*
 *.so
 *.o
