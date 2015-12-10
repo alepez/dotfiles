@@ -134,11 +134,8 @@ function ssh-time-pull {
 ## Record screen with ffmpeg {{{
 function screencast {
 	ffmpeg -video_size $1 -framerate 25 -f x11grab -i :0.0+$2 \
+		-nostats -loglevel quiet \
 		~/screencast-$( date +%Y%m%d-%H%M%S ).mp4
-}
-function screencast-gif {
-	ffmpeg -video_size $1 -framerate 25 -f x11grab -i :0.0+$2 \
-		~/screencast-$( date +%Y%m%d-%H%M%S ).gif
 }
 ## }}}
 
