@@ -230,14 +230,22 @@ nnoremap <leader>( %R}<Esc><C-o>R{<Esc>
 nnoremap <leader>[ %R}<Esc><C-o>R{<Esc>
 nnoremap <leader>{ %R}<Esc><C-o>R{<Esc>
 
-nmap <F2> <Esc>]` " Navigate marks with F2, like in ST
-noremap <F3> :IH<CR> " Switch to file under cursor (plugin a.vim)
-noremap <F4> :A<CR> " Switch header/implementation (plugin a.vim)
-noremap <F6> <Esc>:cn<CR> " To next error
-noremap <F7> <Esc>q:k<CR> " Repeat last command
-noremap <F8> <Esc>:update<CR>:VimuxRunLastCommand<CR> " Run last vimux command
-noremap <F11> <Esc>:update<CR>:Make!<CR> " Make in background
-noremap <F12> <Esc>:update<CR>:Make<CR> " Make in foreground
+" Navigate marks with F2, like in ST
+nmap <F2> <Esc>]`
+" Switch to file under cursor (plugin a.vim)
+noremap <F3> :IH<CR>
+" Switch header/implementation (plugin a.vim)
+noremap <F4> :A<CR>
+" To next error
+noremap <F6> Esc>:cn<CR>
+" Repeat last command
+noremap <F7> <Esc>qk<CR>
+" Run last vimux command
+noremap <F8> <Esc>:updte<CR>:VimuxRunLastCommand<CR>
+" Make in background
+noremap <F11> <Esc:update<CR>:Make!<CR>
+" Make in foreground
+noremap <F12> <Esc:update<CR>:Make<CR>
 
 " z repeat mapped to most used F#
 nmap zzz <F8>
@@ -250,11 +258,12 @@ nnoremap <leader>RS :SignifyRefresh<CR>
 vnoremap < <gv
 vnoremap > >gv
 
-" I don't use default <C-^> in insert mode (toggle the use of typing language
-" characters) so I prefer to have this shortcut working as in normal mode
-" (toggle between current and last buffer)
-imap <C-^> <Esc><C-^>
-" }}}
+" Execute 'lnoremap x X' and 'lnoremap X x' for each letter a-z.
+" <C-^> to toggle caps-lock
+for c in range(char2nr('A'), char2nr('Z'))
+  execute 'lnoremap ' . nr2char(c+32) . ' ' . nr2char(c)
+  execute 'lnoremap ' . nr2char(c) . ' ' . nr2char(c+32)
+endfor
 
 "---------- NERDTree {{{
 :let NERDTreeQuitOnOpen = 1
