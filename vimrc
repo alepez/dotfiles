@@ -214,7 +214,7 @@ nnoremap <leader>ne :NERDTreeToggle<cr>
 nnoremap <leader>: :CtrlPCmdPalette<CR>
 
 " turn off search highlight and close quickfix FIXME this doesn't work
-nnoremap <silent> <leader><leader> :nohlsearch \| ccl<CR>
+nnoremap <silent> <leader><leader> :nohlsearch \| ccl \| SignifyRefresh<CR>
 
 " toggle gundo
 nnoremap <leader>u :GundoToggle<CR>
