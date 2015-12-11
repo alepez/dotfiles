@@ -213,8 +213,11 @@ nnoremap <leader>ne :NERDTreeToggle<cr>
 " cltrp command palette
 nnoremap <leader>: :CtrlPCmdPalette<CR>
 
-" turn off search highlight and close quickfix FIXME this doesn't work
+" turn off search highlight and close quickfix
 nnoremap <silent> <leader><leader> :nohlsearch \| ccl \| SignifyRefresh<CR>
+" FIXME: enable VimuxCloseRunner when you can call last vimux command even
+" whtn vimux is closed
+"nnoremap <silent> <leader><leader> :nohlsearch \| ccl \| SignifyRefresh \| VimuxCloseRunner<CR>
 
 " toggle gundo
 nnoremap <leader>u :GundoToggle<CR>
