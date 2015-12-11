@@ -237,15 +237,15 @@ noremap <F3> :IH<CR>
 " Switch header/implementation (plugin a.vim)
 noremap <F4> :A<CR>
 " To next error
-noremap <F6> Esc>:cn<CR>
+noremap <F6> <Esc>:cn<CR>
 " Repeat last command
-noremap <F7> <Esc>qk<CR>
+noremap <F7> <Esc>q:k<CR>
 " Run last vimux command
-noremap <F8> <Esc>:updte<CR>:VimuxRunLastCommand<CR>
+noremap <F8> <Esc>:update<CR>:VimuxRunLastCommand<CR>
 " Make in background
-noremap <F11> <Esc:update<CR>:Make!<CR>
+noremap <F11> <Esc>:update<CR>:Make!<CR>
 " Make in foreground
-noremap <F12> <Esc:update<CR>:Make<CR>
+noremap <F12> <Esc>:update<CR>:Make<CR>
 
 " z repeat mapped to most used F#
 nmap zzz <F8>
