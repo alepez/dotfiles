@@ -146,7 +146,7 @@ function screencast {
 ## Creates a new file, with the same name as the source and the output extension
 function doconv {
 	local out="$( basename "${1}" .md ).${2:=pdf}";
-	pandoc -f markdown_github -s -o "${out}" $1 && xdg-open "${out}";
+	pandoc -f markdown -s -o "${out}" $1 && xdg-open "${out}";
 }
 ## }}}
 
