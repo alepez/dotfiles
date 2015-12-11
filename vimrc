@@ -233,6 +233,9 @@ nnoremap <leader>( %R}<Esc><C-o>R{<Esc>
 nnoremap <leader>[ %R}<Esc><C-o>R{<Esc>
 nnoremap <leader>{ %R}<Esc><C-o>R{<Esc>
 
+" git commit with message all in command line (needs zsh alias)
+nnoremap <leader>gg :silent !gg<space>
+
 " Navigate marks with F2, like in ST
 nmap <F2> <Esc>]`
 " Switch to file under cursor (plugin a.vim)
