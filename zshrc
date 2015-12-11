@@ -105,6 +105,11 @@ if [ -d $HOME/bin ]; then export PATH="$HOME/bin:${PATH}"; fi
 
 ## }}}
 
+## flow control {{{
+stty stop undef
+stty start undef
+## }}}
+
 ## miscellaneus functions
 
 ## Find a file in current directory or parents {{{
