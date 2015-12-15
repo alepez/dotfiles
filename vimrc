@@ -105,6 +105,7 @@ filetype plugin indent on    " required
 
 "---------- other plugins {{{
 set rtp+=~/.fzf
+set rtp+=~/.vim/bundle/vim-gtest
 " }}}
 
 "---------- autoreload vimrc on changes {{{
