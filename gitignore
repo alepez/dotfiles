@@ -1,0 +1,22 @@
+## @filename: ~/.gitignore
+
+*~
+*/tmp/*
+*.so
+*.o
+*.cpp.o
+*.d
+*.gcda
+*.gcno
+node_modules/*
+*.png
+*.jpg
+*.zip
+Debug_*/*
+Release_*/*
+__pycache__
+*.pyc
+/dist
+/deps
+/build
+

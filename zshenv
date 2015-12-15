@@ -25,9 +25,6 @@ alias k9='kill -9'
 alias nvminit='[[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh'
 alias svndiff='svn diff | colordiff | less'
 
-## FIXME go to zshrc.local
-alias tt='st ~/workspace/gestione/data/timetracker/$( date +%Y-%m ).yml'
-
 ## I don't use dc, and somtime i mispell cd
 alias dc='cd'
 
@@ -79,4 +76,8 @@ alias sa='svn add'
 alias slog='svn log | less'
 alias sd='svndiff'
 ## }}}
+
+###############################################################################
+## Source local configurations
+if [ -e ~/.zshenv.local ]; then source ~/.zshenv.local; fi
 
