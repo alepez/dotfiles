@@ -10,7 +10,7 @@ alias bowi="bower install --save"
 alias npmi="npm install --save"
 alias automocha="supervisor -q -n exit -x mocha -- -b --recursive"
 
-alias D="mkdir -p"
+function D { mkdir -p $1 && cd $1 }
 alias W='cd ~/workspace'
 
 alias stt='subl3 -n .'
