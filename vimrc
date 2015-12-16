@@ -443,9 +443,11 @@ let g:ag_working_path_mode="r" " Search in project directory
 
 "---------- gtest {{{
 "let g:gtest#gtest_command = ""
-nnoremap <leader>tt :GTestRun<CR>
-nnoremap <leader>tc :GTestCase<space>
-nnoremap <leader>tn :GTestName<space>
+augroup Cpp
+	autocmd FileType cpp nnoremap <leader>tt :GTestRun<CR>
+	autocmd FileType cpp nnoremap <leader>tc :GTestCase<space>
+	autocmd FileType cpp nnoremap <leader>tn :GTestName<space>
+augroup END
 " }}}
 
 "---------- Snippets and YouCompleteMe {{{
