@@ -441,6 +441,13 @@ set makeprg=~/.dotfiles/bin/make-closest-makefile
 let g:ag_working_path_mode="r" " Search in project directory
 " }}}
 
+"---------- gtest {{{
+"let g:gtest#gtest_command = ""
+nnoremap <leader>tt :GTestRun<CR>
+nnoremap <leader>tc :GTestCase<space>
+nnoremap <leader>tn :GTestName<space>
+" }}}
+
 "---------- Snippets and YouCompleteMe {{{
 let g:ycm_confirm_extra_conf = 0 " load local ycm configuration silently.
 let g:ycm_use_ultisnips_completer = 0 " Disable UltiSnips for YCM
@@ -520,6 +527,13 @@ augroup END
 augroup QML
 	autocmd!
 	autocmd FileType qml setlocal expandtab
+augroup END
+" }}}
+
+"---------- vim {{{
+augroup VimScript
+	autocmd!
+	autocmd FileType vim setlocal expandtab
 augroup END
 " }}}
 
