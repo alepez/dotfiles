@@ -176,6 +176,10 @@ function fancy_ctrl_z {
 }
 zle -N fancy_ctrl_z
 bindkey '^Z' fancy_ctrl_z
+
+## Wordreference
+function wr { xdg-open http://wordreference.com/$1/$2 &>/dev/null }
+
 ## }}}
 
 ## fzf https://github.com/junegunn/fzf
