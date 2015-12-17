@@ -40,7 +40,6 @@ Plugin 'VundleVim/Vundle.vim'
 " }}}
 
 "---------- disabled plugins {{{
-"Plugin 'scrooloose/nerdcommenter' " Vim plugin for intensely orgasmic commenting
 "Plugin 'lyuts/vim-rtags' " Vim bindings for rtags, llvm/clang based c++ code indexer.
 "Plugin 'tpope/vim-speeddating' " speeddating.vim: use CTRL-A/CTRL-X to increment dates, times, and more
 "Plugin 'tpope/vim-repeat' " repeat.vim: enable repeating supported plugin maps with .
@@ -51,6 +50,7 @@ Plugin 'VundleVim/Vundle.vim'
 " }}}
 
 "---------- plugins {{{
+Plugin 'scrooloose/nerdcommenter' " Vim plugin for intensely orgasmic commenting
 Plugin 'ervandew/supertab' " Supertab allows you to use <Tab> for all your insert completion needs
 Plugin 'benmills/vimux' " Run commands inside tmux window
 Plugin 'alepez/vim-gtest' " Run google tests inside vim
@@ -472,6 +472,21 @@ augroup END
 
 "---------- zsh {{{
 set shell=/bin/zsh
+" }}}
+
+"---------- cmdheight {{{
+function! ResizeCmdHeight()
+  if &columns < 120
+    set cmdheight=2
+  else
+    set cmdheight=1
+  endif
+endfunction
+
+augroup ResizeCmdOnVimResizedx
+    autocmd!
+    autocmd VimResized * call ResizeCmdHeight()
+augroup END
 " }}}
 
 "---------- Dependencies {{{
