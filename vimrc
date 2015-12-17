@@ -44,6 +44,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-abolish' " easily search for, substitute, and abbreviate multiple variants of a word
 Plugin 'ervandew/supertab' " Supertab allows you to use <Tab> for all your insert completion needs
 Plugin 'benmills/vimux' " Run commands inside tmux window
+Plugin 'alessandro-pezzato/vim-gtest' " Run google tests inside vim
 Plugin 'tpope/vim-fugitive' " git gui
 Plugin 'Chiel92/vim-autoformat' " Provide easy code formatting in Vim by integrating existing code formatters.
 Plugin 'scrooloose/syntastic.git' " check syntax
@@ -105,7 +106,6 @@ filetype plugin indent on    " required
 
 "---------- other plugins {{{
 set rtp+=~/.fzf
-set rtp+=~/.vim/bundle/vim-gtest
 " }}}
 
 "---------- autoreload vimrc on changes {{{
