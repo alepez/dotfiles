@@ -39,9 +39,19 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 " }}}
 
-"---------- plugins {{{
+"---------- disabled plugins {{{
+"Plugin 'lyuts/vim-rtags' " Vim bindings for rtags, llvm/clang based c++ code indexer.
+"Plugin 'scrooloose/nerdtree' " tree explorer
+"Plugin 'tpope/vim-speeddating' " speeddating.vim: use CTRL-A/CTRL-X to increment dates, times, and more
+"Plugin 'tpope/vim-repeat' " repeat.vim: enable repeating supported plugin maps with .
+"Plugin 'fisadev/vim-ctrlp-cmdpalette' " fuzzy command search
+"Plugin 'jszakmeister/vim-togglecursor' " Show different cursor for different modes (konsole support)
+"Plugin 'tpope/vim-abolish' " easily search for, substitute, and abbreviate multiple variants of a word
+"Plugin 'terryma/vim-multiple-cursors' " True Sublime Text style multiple selections for Vim
 
-Plugin 'tpope/vim-abolish' " easily search for, substitute, and abbreviate multiple variants of a word
+" }}}
+
+"---------- plugins {{{
 Plugin 'ervandew/supertab' " Supertab allows you to use <Tab> for all your insert completion needs
 Plugin 'benmills/vimux' " Run commands inside tmux window
 Plugin 'alessandro-pezzato/vim-gtest' " Run google tests inside vim
@@ -53,15 +63,11 @@ Plugin 'bling/vim-bufferline' " super simple vim plugin to show the list of buff
 Plugin 'bling/vim-airline' " lean & mean status/tabline for vim that's light as air
 Plugin 'scrooloose/nerdcommenter' " Vim plugin for intensely orgasmic commenting
 Plugin 'godlygeek/tabular' " Vim script for text filtering and alignment. Note: must come before vim-markdown
-Plugin 'terryma/vim-multiple-cursors' " True Sublime Text style multiple selections for Vim
 Plugin 'bronson/vim-trailing-whitespace' " Highlights trailing whitespace in red and provides :FixWhitespace to fix it.
 Plugin 'peterhoeg/vim-qml' " QML syntax highlighting for VIM
 Plugin 'rdnetto/YCM-Generator' " Automatically generates YouCompleteMe configuration based on Makefile
-Plugin 'scrooloose/nerdtree' " tree explorer
 Plugin 'mhinz/vim-signify' " show diff in gutter
-Plugin 'jszakmeister/vim-togglecursor' " Show different cursor for different modes (konsole support)
 Plugin 'mattn/gist-vim' " vimscript for gist
-Plugin 'fisadev/vim-ctrlp-cmdpalette' " fuzzy command search
 Plugin 'rking/ag.vim' " the silver searcher
 Plugin 'a.vim' " Alternate files quickly (header/implementation etc...)
 Plugin 'sjl/gundo.vim' " Gundo is a Vim plugin for visualizing your undo tree to make it usable
@@ -80,14 +86,10 @@ Plugin 'jaxbot/browserlink.vim' " like livereload
 Plugin 'suan/vim-instant-markdown' " preview markdown in browser (needs `npm -g install instant-markdown-d`)
 Plugin 'mattn/emmet-vim' " emmet for vim: http://emmet.io/
 Plugin 'pangloss/vim-javascript' " Vastly improved Javascript indentation and syntax support in Vim.
-"Plugin 'easymotion/vim-easymotion' " Vim motions on speed!
 Plugin 'smarty-syntax' " Syntax highlight for Smarty Template Engine
-Plugin 'tpope/vim-repeat' " repeat.vim: enable repeating supported plugin maps with .
-Plugin 'tpope/vim-speeddating' " speeddating.vim: use CTRL-A/CTRL-X to increment dates, times, and more
 Plugin 'tpope/vim-unimpaired' " pairs of handy bracket mappings
 Plugin 'tpope/vim-commentary' " Comment stuff out
 Plugin 'jamessan/vim-gnupg' " transparent editing of gpg encrypted files
-Plugin 'lyuts/vim-rtags' " Vim bindings for rtags, llvm/clang based c++ code indexer.
 Plugin 'klen/python-mode' " Python
 Plugin 'alfredodeza/pytest.vim' " unit test runner for python
 
