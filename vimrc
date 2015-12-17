@@ -48,7 +48,7 @@ Plugin 'alessandro-pezzato/vim-gtest' " Run google tests inside vim
 Plugin 'tpope/vim-fugitive' " git gui
 Plugin 'Chiel92/vim-autoformat' " Provide easy code formatting in Vim by integrating existing code formatters.
 Plugin 'scrooloose/syntastic.git' " check syntax
-Plugin 'kien/ctrlp.vim' " Fuzzy file, buffer, mru, tag, etc finder.
+Plugin 'ctrlpvim/ctrlp.vim' " Fuzzy file, buffer, mru, tag, etc finder.
 Plugin 'bling/vim-bufferline' " super simple vim plugin to show the list of buffers in the command bar
 Plugin 'bling/vim-airline' " lean & mean status/tabline for vim that's light as air
 Plugin 'scrooloose/nerdcommenter' " Vim plugin for intensely orgasmic commenting
@@ -58,7 +58,6 @@ Plugin 'bronson/vim-trailing-whitespace' " Highlights trailing whitespace in red
 Plugin 'peterhoeg/vim-qml' " QML syntax highlighting for VIM
 Plugin 'rdnetto/YCM-Generator' " Automatically generates YouCompleteMe configuration based on Makefile
 Plugin 'scrooloose/nerdtree' " tree explorer
-Plugin 'jreybert/vimagit' " Quick git commit
 Plugin 'mhinz/vim-signify' " show diff in gutter
 Plugin 'jszakmeister/vim-togglecursor' " Show different cursor for different modes (konsole support)
 Plugin 'mattn/gist-vim' " vimscript for gist
