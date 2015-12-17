@@ -40,8 +40,8 @@ Plugin 'VundleVim/Vundle.vim'
 " }}}
 
 "---------- disabled plugins {{{
+"Plugin 'scrooloose/nerdcommenter' " Vim plugin for intensely orgasmic commenting
 "Plugin 'lyuts/vim-rtags' " Vim bindings for rtags, llvm/clang based c++ code indexer.
-"Plugin 'scrooloose/nerdtree' " tree explorer
 "Plugin 'tpope/vim-speeddating' " speeddating.vim: use CTRL-A/CTRL-X to increment dates, times, and more
 "Plugin 'tpope/vim-repeat' " repeat.vim: enable repeating supported plugin maps with .
 "Plugin 'fisadev/vim-ctrlp-cmdpalette' " fuzzy command search
@@ -59,9 +59,9 @@ Plugin 'tpope/vim-fugitive' " git gui
 Plugin 'Chiel92/vim-autoformat' " Provide easy code formatting in Vim by integrating existing code formatters.
 Plugin 'scrooloose/syntastic.git' " check syntax
 Plugin 'ctrlpvim/ctrlp.vim' " Fuzzy file, buffer, mru, tag, etc finder.
+Plugin 'scrooloose/nerdtree' " tree explorer
 Plugin 'bling/vim-bufferline' " super simple vim plugin to show the list of buffers in the command bar
 Plugin 'bling/vim-airline' " lean & mean status/tabline for vim that's light as air
-Plugin 'scrooloose/nerdcommenter' " Vim plugin for intensely orgasmic commenting
 Plugin 'godlygeek/tabular' " Vim script for text filtering and alignment. Note: must come before vim-markdown
 Plugin 'bronson/vim-trailing-whitespace' " Highlights trailing whitespace in red and provides :FixWhitespace to fix it.
 Plugin 'peterhoeg/vim-qml' " QML syntax highlighting for VIM
@@ -184,6 +184,11 @@ nnoremap <silent> <leader>x :bd<CR>
 
 " Save without pain
 nnoremap <silent> <leader>w :w<CR>
+" I've mapped all ctrl to esc. Sometimes I hit <c-space>w instead of
+" <esc><space>w when saving in insert mode.
+" In terminals, <c-space> is mapped to <Nul>
+inoremap <silent> <Nul>w <Esc>:w<CR>
+nnoremap <silent> <Nul>w <Esc>:w<CR>
 
 " Paste from yank register. Because yes.
 nnoremap <leader>p "0p
