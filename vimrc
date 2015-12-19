@@ -450,9 +450,13 @@ let g:ag_working_path_mode="r" " Search in project directory
 "---------- gtest {{{
 "let g:gtest#gtest_command = ""
 augroup Cpp
-	autocmd FileType cpp nnoremap <leader>tt :GTestRun<CR>
+	autocmd FileType cpp nnoremap <silent> <leader>tt :GTestRun<CR>
+	autocmd FileType cpp nnoremap <silent> <leader>tu :GTestRunUnderCursor<CR>
 	autocmd FileType cpp nnoremap <leader>tc :GTestCase<space>
 	autocmd FileType cpp nnoremap <leader>tn :GTestName<space>
+	autocmd FileType cpp nnoremap <silent> ]T :GTestNext<CR>
+	autocmd FileType cpp nnoremap <silent> [T :GTestPrev<CR>
+	autocmd FileType cpp nnoremap <silent> <leader>tf :CtrlPGTest<CR>
 augroup END
 " }}}
 
