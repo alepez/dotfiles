@@ -144,6 +144,14 @@ function screencast {
 }
 ## }}}
 
+## video to gif
+function video2gif {
+	local gif="${1%.*}.gif"
+	ffmpeg -i ${1} -vf fps=5,scale=640:-1:flags=lanczos,palettegen palette.png
+	ffmpeg -i ${1} -i palette.png -filter_complex "fps=5,scale=640:-1:flags=lanczos[x];[x][1:v]paletteuse" ${gif}
+}
+## }}}
+
 ## Convert markdown to other formats with pandoc {{{
 ## \param 1 markdown source file path
 ## \param 2 output format, as file extension (default: pdf)
