@@ -48,7 +48,6 @@ Plugin 'VundleVim/Vundle.vim'
 "Plugin 'jszakmeister/vim-togglecursor' " Show different cursor for different modes (konsole support)
 "Plugin 'tpope/vim-abolish' " easily search for, substitute, and abbreviate multiple variants of a word
 "Plugin 'terryma/vim-multiple-cursors' " True Sublime Text style multiple selections for Vim
-
 " }}}
 
 "---------- plugins {{{
@@ -106,6 +105,7 @@ filetype plugin indent on    " required
 " }}}
 
 "---------- other plugins {{{
+" fzf is not only a vim plugin, must be installed. See https://github.com/junegunn/fzf
 set rtp+=~/.fzf
 " }}}
 
@@ -117,36 +117,6 @@ augroup AutoreloadVimrc
 augroup END
 " }}}
 
-"---------- general options {{{
-
-" turn off soft wrap
-set nowrap
-
-" this turns off physical line wrapping (ie: automatic insertion of newlines)
-set textwidth=0 wrapmargin=0
-
-" show columns at 80 and 120
-set colorcolumn=80,120
-
-" Indent automatically depending on filetype
-filetype indent on
-set autoindent
-
-" yank to clipboard
-set clipboard=unnamedplus
-
-" When to start scrolling
-set scrolloff=8
-set sidescrolloff=15
-set sidescroll=1
-
-" Show invisible characters
-set listchars=eol:¬,tab:▸\ ,trail:·,nbsp:⎵
-set list
-
-" Prevent changing directory when opening files
-set noautochdir
-
 "---------- Always show the sign (also called gutter) {{{
 augroup AlwaysShowTheSign
 	autocmd BufEnter * sign define dummy
@@ -154,30 +124,9 @@ augroup AlwaysShowTheSign
 augroup END
 " }}}
 
-" Enable per-directory .vimrc files and disable unsafe commands in them
-set exrc
-set secure
-
-" Enable mouse only in normal and visual mode.
-" to disable: `set mouse=""`
-"set mouse=nv
-
-" Disable error bells
-set noerrorbells
-
-" Don’t reset cursor to start of line when moving around.
-set nostartofline
-
-" With a powerful PC, we can have a huge history.
-set history=8192
-" }}}
-
 "---------- shortcuts {{{
 " Change leader to a more efficient button
 let mapleader = "\<Space>"
-
-" :W as :w
-command! W  write
 
 " Close buffers without pain
 nnoremap <silent> <leader>x :bd<CR>
@@ -190,18 +139,20 @@ nnoremap <silent> <leader>w :w<CR>
 inoremap <silent> <Nul>w <Esc>:w<CR>
 nnoremap <silent> <Nul>w <Esc>:w<CR>
 
-" Paste from yank register. Because yes.
-nnoremap <leader>p "0p
-nnoremap <leader>P "0P
-
 " Krack line under cursor (insert a line break)
 nnoremap K i<CR><Esc>
 
 " Search current visual selection
 vnoremap // y/<C-R>"<CR>
 
-" Visual selection search with the silver searcher
-vnoremap <leader>f y:Ag '<C-r>"'<CR>
+" Search with ag, the silver searcher
+nnoremap <leader>f :Ag<space>
+
+" Search yanked text with the silver searcher
+nnoremap <leader>fy :Ag '<C-r>0'<CR>
+
+" Search visual selction with ag
+vnoremap <leader>f y:Ag '<C-r>0'<CR>
 
 " next/prev buffer - Map ctrl+shift-left and ctrl+shift-right
 " Note: konsole (and other terminal emulators) may need remapping
@@ -222,23 +173,12 @@ nnoremap <leader>: :CtrlPCmdPalette<CR>
 
 " turn off search highlight and close quickfix
 nnoremap <silent> <leader><leader> :nohlsearch \| ccl \| SignifyRefresh<CR>
-" FIXME: enable VimuxCloseRunner when you can call last vimux command even
-" whtn vimux is closed
-"nnoremap <silent> <leader><leader> :nohlsearch \| ccl \| SignifyRefresh \| VimuxCloseRunner<CR>
 
 " toggle gundo
 nnoremap <leader>u :GundoToggle<CR>
 
-" show ag, the silver searcher
-nnoremap <leader>f :Ag<space>
-
 " Reindent all and return the same line where you were
 nnoremap <leader>af :Autoformat<CR>
-
-" Replace any parens pair with other parens
-nnoremap <leader>( %R}<Esc><C-o>R{<Esc>
-nnoremap <leader>[ %R}<Esc><C-o>R{<Esc>
-nnoremap <leader>{ %R}<Esc><C-o>R{<Esc>
 
 " git commit with message all in command line (needs zsh alias)
 nnoremap <leader>gg :silent !gg<space>
@@ -263,9 +203,6 @@ noremap <F12> <Esc>:update<CR>:Make<CR>
 " z repeat mapped to most used F#
 nmap zzz <F8>
 nmap zz <F12>
-
-" Refresh Signify
-nnoremap <leader>RS :SignifyRefresh<CR>
 
 " make < > shifts keep selection
 vnoremap < <gv
@@ -311,9 +248,6 @@ let g:ctrlp_open_multiple_files = 'i' " open selected files in hidden buffers
 " Use ag, the silver searcher, for ctrlp search.
 " Note: wildignore doesn't apply with this option, you need .agignore file
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-" FIXME: I want ctrlp to give precedence to mru: when searching for a file,
-" show first the mru.
-
 " }}}
 
 "---------- Set Syntastic checkers {{{
@@ -348,40 +282,52 @@ let g:signify_update_on_bufenter = 1 " FIXME: this is not working
 " }}}
 
 "---------- Standard Vim settings {{{
-set showcmd
-set showmode
-set title
-set number " Show line number
-set relativenumber " ...but show relative numbers except for the current line
-set ruler " Show ruler on the statusline
-set cursorline " Highlight current line
-set hidden " Set hidden to allow buffers to be browsed
-set incsearch " as I start to search, the file jumps to the match as I type.
-set hlsearch " Highlight search results
-set gdefault " assume the /g flag on :s substitutions to replace all matches in a line
+set autoindent " always set autoindenting on
 set autoread " Make Vim automatically open changed files
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
-set autoindent " always set autoindenting on
-set noesckeys " (Hopefully) removes the delay when hitting esc in insert mode
-set ttimeout " (Hopefully) removes the delay when hitting esc in insert mode
-set ttimeoutlen=1 " (Hopefully) removes the delay when hitting esc in insert mode
-set tabstop=2 " The default is 8 which is MASSIVE!!
-set shiftwidth=2 " indent by 2 spaces
-set wildmode=list:longest,list:full " Show a list of completions
-set wildmenu " visually autocomplete the command menu
-set lazyredraw " only redraw when needed
-set ttyfast " sends more characters to the screen for fast terminal connections
-set showmatch " highlight matching [{()}]
+set clipboard=unnamedplus " yank to clipboard
+set colorcolumn=80,120 " show columns at 80 and 120
+set completeopt=menu,menuone " complete menu visibility
+set cursorline " Highlight current line
+set exrc secure " per-directory .vimrc files, unsafe commands disabled
 set foldenable " enable folding
 set foldlevelstart=10 " open most folds by default
 set foldnestmax=10 " 10 nested folders max
+set gdefault " assume the /g flag on :s substitutions to replace all matches
+set hidden " Set hidden to allow buffers to be browsed
+set history=8192 " With a powerful PC, we can have a huge history.
+set hlsearch " Highlight search results
+set incsearch " as I start to search, the file jumps to the match as I type.
+set lazyredraw " only redraw when needed
+set list " Show invisible characters
+set listchars=eol:¬,tab:▸\ ,trail:·,nbsp:⎵ " Use these symbols for invisible
+set modelines=1 " The number of lines that is checked for set commands
+set noautochdir " Prevent changing directory when opening files
+set noerrorbells " Disable error bells
+set noesckeys " (Hopefully) removes the delay when hitting esc in insert mode
 set nospell " Disable spell check
+set nostartofline " Don’t reset cursor to start of line when moving around.
+set nowrap " turn off soft wrap
+set number " Show line number
+set relativenumber " ...but show relative numbers except for the current line
+set ruler " Show ruler on the statusline
+set scrolloff=8 sidescrolloff=15 sidescroll=1 " When to start scrolling
+set shiftwidth=2 " indent by 2 spaces
+set shortmess=I " I: no intro message.
+set showcmd " Show command line
+set showmatch " highlight matching [{()}]
+set showmode " Show mode
 set smartcase "don't ignore Capitals when present
 set splitright " ensures new splits are to the right of current
+set tabstop=2 " The default is 8 which is MASSIVE!!
 set tags=./.tags;,.tags; " tags files are hidden
-set completeopt=menu,menuone " complete menu visibility
-set shortmess=I " I: no intro message.
-set modelines=1
+set textwidth=0 wrapmargin=0 " turn off hard line wrapping
+set title " Vim sets terminal title
+set ttimeout " removes the delay when hitting esc in insert mode
+set ttimeoutlen=1 " removes the delay when hitting esc in insert mode
+set ttyfast " sends more characters to the screen for fast terminal connections
+set wildmenu " visually autocomplete the command menu
+set wildmode=list:longest,list:full " Show a list of completions
 " }}}
 
 "---------- Silently execute external commands, without needing to redraw {{{
@@ -391,7 +337,6 @@ command! -nargs=1 Silent
 " }}}
 
 "---------- Turn off swap files and backups {{{
-
 set noswapfile
 set nobackup
 set nowritebackup
@@ -402,19 +347,14 @@ augroup WrapLineInMarkdownFile
 	autocmd!
 	" assign markdown filetype to files with .md extension
 	autocmd BufRead,BufNewFile *.md set filetype=markdown
-
 	" Number of characters from the right window border where wrapping starts
 	autocmd FileType markdown setlocal wrapmargin=0
-
 	" Maximum width of text
 	autocmd FileType markdown setlocal textwidth=80
-
 	" Wrap lines
 	autocmd FileType markdown setlocal wrap
-
 	" Initialize pencil plugin
 	autocmd FileType markdown call pencil#init()
-
 	" Add specific shortcuts for markdown
 	" <leader>- add a new element to the bullet list
 	autocmd FileType markdown nnoremap <leader>- o<Esc>S<space>-<space>
@@ -449,7 +389,7 @@ let g:ag_working_path_mode="r" " Search in project directory
 
 "---------- gtest {{{
 "let g:gtest#gtest_command = ""
-augroup Cpp
+augroup GTest
 	autocmd FileType cpp nnoremap <silent> <leader>tt :GTestRun<CR>
 	autocmd FileType cpp nnoremap <silent> <leader>tu :GTestRunUnderCursor<CR>
 	autocmd FileType cpp nnoremap <leader>tc :GTestCase<space>
