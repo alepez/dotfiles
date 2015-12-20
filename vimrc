@@ -289,6 +289,7 @@ set clipboard=unnamedplus " yank to clipboard
 set colorcolumn=80,120 " show columns at 80 and 120
 set completeopt=menu,menuone " complete menu visibility
 set cursorline " Highlight current line
+set expandtab " expand tabs to spaces
 set exrc secure " per-directory .vimrc files, unsafe commands disabled
 set foldenable " enable folding
 set foldlevelstart=10 " open most folds by default
@@ -451,48 +452,21 @@ let g:VimuxOrientation = "h"
 " }}}
 
 "---------- web {{{
+
 " Enable browserlink livereload for these types:
 let g:bl_pagefiletypes = ['html', 'javascript', 'php']
-augroup Css
-	autocmd!
-	autocmd FileType css setlocal expandtab
-augroup END
-
-augroup Xml
-	autocmd!
-	autocmd FileType xml setlocal expandtab
-augroup END
 
 augroup Javascript
 	autocmd!
-	autocmd FileType javascript setlocal expandtab
   let g:formatterpath = [ $NVM_BIN . '/js-beautify' ]
 augroup END
-
-augroup PHP
-	autocmd!
-	autocmd FileType php setlocal expandtab
-augroup END
 " }}}
 
-"---------- qml {{{
-augroup QML
-	autocmd!
-	autocmd FileType qml setlocal expandtab
-augroup END
-" }}}
-
-"---------- vim {{{
-augroup VimScript
-	autocmd!
-	autocmd FileType vim setlocal expandtab
-augroup END
-" }}}
 
 "---------- python {{{
 augroup python
 	autocmd!
-	autocmd FileType python setlocal expandtab ts=4 autoindent shiftwidth=4
+	autocmd FileType python ts=4 autoindent shiftwidth=4
 augroup END
 " }}}
 
