@@ -462,11 +462,10 @@ augroup Javascript
 augroup END
 " }}}
 
-
 "---------- python {{{
 augroup python
 	autocmd!
-	autocmd FileType python ts=4 autoindent shiftwidth=4
+	autocmd FileType python set ts=4 autoindent shiftwidth=4
 augroup END
 " }}}
 
