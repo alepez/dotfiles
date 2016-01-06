@@ -172,7 +172,7 @@ nnoremap <leader>ne :NERDTreeToggle<cr>
 nnoremap <leader>: :CtrlPCmdPalette<CR>
 
 " turn off search highlight and close quickfix
-nnoremap <silent> <leader><leader> :nohlsearch \| ccl \| SignifyRefresh<CR>
+nnoremap <silent> <leader><leader> :nohlsearch \| ccl \| SignifyRefresh \| redraw!<CR>
 
 " toggle gundo
 nnoremap <leader>u :GundoToggle<CR>
@@ -182,6 +182,7 @@ nnoremap <leader>af :Autoformat<CR>
 
 " git commit with message all in command line (needs zsh alias)
 nnoremap <leader>gg :silent !gg<space>
+nnoremap <leader>gps :silent Dispatch! gps<CR>
 
 " Navigate marks with F2, like in ST
 nmap <F2> <Esc>]`
@@ -454,7 +455,12 @@ let g:VimuxOrientation = "h"
 "---------- web {{{
 
 " Enable browserlink livereload for these types:
-let g:bl_pagefiletypes = ['html', 'javascript', 'php']
+let g:bl_pagefiletypes = ['html', 'javascript', 'php', 'tpl']
+
+augroup Css
+	autocmd!
+  autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+augroup END
 
 augroup Javascript
 	autocmd!
