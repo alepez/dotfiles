@@ -43,7 +43,6 @@ Plugin 'VundleVim/Vundle.vim'
 "Plugin 'lyuts/vim-rtags' " Vim bindings for rtags, llvm/clang based c++ code indexer.
 "Plugin 'tpope/vim-speeddating' " speeddating.vim: use CTRL-A/CTRL-X to increment dates, times, and more
 "Plugin 'tpope/vim-repeat' " repeat.vim: enable repeating supported plugin maps with .
-"Plugin 'fisadev/vim-ctrlp-cmdpalette' " fuzzy command search
 "Plugin 'jszakmeister/vim-togglecursor' " Show different cursor for different modes (konsole support)
 "Plugin 'tpope/vim-abolish' " easily search for, substitute, and abbreviate multiple variants of a word
 "Plugin 'terryma/vim-multiple-cursors' " True Sublime Text style multiple selections for Vim
@@ -58,6 +57,7 @@ Plugin 'tpope/vim-fugitive' " git gui
 Plugin 'Chiel92/vim-autoformat' " Provide easy code formatting in Vim by integrating existing code formatters.
 Plugin 'scrooloose/syntastic.git' " check syntax
 Plugin 'ctrlpvim/ctrlp.vim' " Fuzzy file, buffer, mru, tag, etc finder.
+Plugin 'fisadev/vim-ctrlp-cmdpalette' " fuzzy command search
 Plugin 'scrooloose/nerdtree' " tree explorer
 Plugin 'bling/vim-bufferline' " super simple vim plugin to show the list of buffers in the command bar
 Plugin 'bling/vim-airline' " lean & mean status/tabline for vim that's light as air
