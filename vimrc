@@ -290,6 +290,7 @@ set clipboard=unnamedplus " yank to clipboard
 set colorcolumn=80,120 " show columns at 80 and 120
 set completeopt=menu,menuone " complete menu visibility
 set cursorline " Highlight current line
+set diffopt+=vertical
 set expandtab " expand tabs to spaces
 set exrc secure " per-directory .vimrc files, unsafe commands disabled
 set foldenable " enable folding
