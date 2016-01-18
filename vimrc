@@ -179,13 +179,22 @@ nnoremap <leader>u :GundoToggle<CR>
 
 " Reindent all and return the same line where you were
 nnoremap <leader>af :Autoformat<CR>
+"}}}
 
-" git commit with message all in command line (needs zsh alias)
-nnoremap <leader>gg :silent !gg<space>
+" git add -A . && git commit with message all in command line
+fu! GitCommitQuick(...)
+  let l:message=join(a:000, " ")
+  execute 'silent !git add . -A && git commit -m "' . l:message . '"'
+  redraw!
+  echom l:message
+endf
+command! -nargs=1 GitCommitQuick call GitCommitQuick(<f-args>)
+nnoremap <leader>gg :GitCommitQuick<space>
+
 nnoremap <leader>gps :silent Dispatch! gps<CR>
 nnoremap <leader>gd :!gd<CR><CR>
 nnoremap <leader>gl :!gl<CR><CR>
-
+"{{{
 " Navigate marks with F2, like in ST
 nmap <F2> <Esc>]`
 " Switch to file under cursor (plugin a.vim)
