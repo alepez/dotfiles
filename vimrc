@@ -183,6 +183,8 @@ nnoremap <leader>af :Autoformat<CR>
 " git commit with message all in command line (needs zsh alias)
 nnoremap <leader>gg :silent !gg<space>
 nnoremap <leader>gps :silent Dispatch! gps<CR>
+nnoremap <leader>gd :!gd<CR><CR>
+nnoremap <leader>gl :!gl<CR><CR>
 
 " Navigate marks with F2, like in ST
 nmap <F2> <Esc>]`
@@ -403,6 +405,8 @@ augroup GTest
 	autocmd FileType cpp nnoremap <silent> ]T :GTestNext<CR>
 	autocmd FileType cpp nnoremap <silent> [T :GTestPrev<CR>
 	autocmd FileType cpp nnoremap <silent> <leader>tf :CtrlPGTest<CR>
+	autocmd FileType cpp nnoremap <leader>te :GTestToggleEnabled<space>
+	autocmd FileType cpp nnoremap <silent> <leader>tj :GTestJump<CR>
 augroup END
 " }}}
 
