@@ -380,6 +380,8 @@ augroup Cpp
 	autocmd BufRead,BufNewFile *.h set filetype=cpp " Set extra filetypes
 	" Refresh tags with ctags
 	autocmd FileType cpp nnoremap <leader>R :Silent !ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q -I _GLIBCXX_NOEXCEPT -f .tags . <CR>
+  autocmd FileType cpp set noexpandtab
+  autocmd FileType cpp setlocal commentstring=//\ %s
 augroup END
 
 " This script cd up until a Makefile is found, then call make.
