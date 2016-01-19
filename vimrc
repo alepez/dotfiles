@@ -186,6 +186,7 @@ fu! GitCommitQuick(...)
   let l:message=join(a:000, " ")
   execute 'silent !git add . -A && git commit -m "' . l:message . '"'
   redraw!
+  execute 'SignifyRefresh'
   echom l:message
 endf
 command! -nargs=1 GitCommitQuick call GitCommitQuick(<f-args>)

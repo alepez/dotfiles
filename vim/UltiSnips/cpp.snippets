@@ -72,7 +72,31 @@ try {
 	
 }
 endsnippet
-
 ## }}}
-
+## GTest {{{
+################################################################################
+snippet incgt "include gtest"
+#include <gtest/gtest.h>
+endsnippet
+################################################################################
+snippet fixt "define a fixture"
+struct ${1}Test: public testing::Test {
+	$1 ${2};
+	void SetUp() {}
+	void TearDown() {}
+};
+endsnippet
+################################################################################
+snippet test "define a TEST"
+TEST(${1}Test, ${2}) {
+	
+}
+endsnippet
+################################################################################
+snippet testf "define a TEST_F"
+TEST_F(${1}Test, ${2}) {
+	
+}
+endsnippet
+## }}}
 # vim:foldmethod=marker:foldlevel=0
