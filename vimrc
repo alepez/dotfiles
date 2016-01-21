@@ -182,6 +182,7 @@ nnoremap <leader>af :Autoformat<CR>
 "}}}
 
 " git add -A . && git commit with message all in command line
+let g:gtest#highlight_failing_tests = 1
 fu! GitCommitQuick(...)
   let l:message=join(a:000, " ")
   execute 'silent !git add . -A && git commit -m "' . l:message . '"'
@@ -415,7 +416,6 @@ augroup GTest
 	autocmd FileType cpp nnoremap <silent> ]T :GTestNext<CR>
 	autocmd FileType cpp nnoremap <silent> [T :GTestPrev<CR>
 	autocmd FileType cpp nnoremap <silent> <leader>tf :CtrlPGTest<CR>
-	autocmd FileType cpp nnoremap <leader>te :GTestToggleEnabled<space>
 	autocmd FileType cpp nnoremap <silent> <leader>tj :GTestJump<CR>
 augroup END
 " }}}
