@@ -53,6 +53,7 @@ Plugin 'scrooloose/nerdcommenter' " Vim plugin for intensely orgasmic commenting
 Plugin 'ervandew/supertab' " Supertab allows you to use <Tab> for all your insert completion needs
 Plugin 'benmills/vimux' " Run commands inside tmux window
 Plugin 'alepez/vim-gtest' " Run google tests inside vim
+Plugin 'alepez/vim-llvmcov' " Show test coverage
 Plugin 'tpope/vim-fugitive' " git gui
 Plugin 'Chiel92/vim-autoformat' " Provide easy code formatting in Vim by integrating existing code formatters.
 Plugin 'scrooloose/syntastic.git' " check syntax
@@ -179,7 +180,6 @@ nnoremap <leader>u :GundoToggle<CR>
 
 " Reindent all and return the same line where you were
 nnoremap <leader>af :Autoformat<CR>
-"}}}
 
 " git add -A . && git commit with message all in command line
 let g:gtest#highlight_failing_tests = 1
@@ -196,7 +196,6 @@ nnoremap <leader>gg :GitCommitQuick<space>
 nnoremap <leader>gps :silent Dispatch! gps<CR>
 nnoremap <leader>gd :!gd<CR><CR>
 nnoremap <leader>gl :!gl<CR><CR>
-"{{{
 " Navigate marks with F2, like in ST
 nmap <F2> <Esc>]`
 " Switch to file under cursor (plugin a.vim)
@@ -393,7 +392,7 @@ augroup Cpp
 	autocmd BufRead,BufNewFile *.h set filetype=cpp " Set extra filetypes
 	" Refresh tags with ctags
 	autocmd FileType cpp nnoremap <leader>R :Silent !ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q -I _GLIBCXX_NOEXCEPT -f .tags . <CR>
-  autocmd FileType cpp set noexpandtab
+  autocmd FileType cpp setlocal noexpandtab
   autocmd FileType cpp setlocal commentstring=//\ %s
 augroup END
 
