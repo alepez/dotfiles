@@ -54,8 +54,11 @@ endsnippet
 ## }}}
 ## Qt {{{
 ################################################################################
-snippet qpro
+snippet qprm
 Q_PROPERTY(${1} ${2} MEMBER $2_ NOTIFY $2Changed);
+endsnippet
+snippet qprw
+Q_PROPERTY(${1} ${2} READ $2 WRITE set${2/\w+\s*/\u$0/} NOTIFY $2Changed);
 endsnippet
 ## }}}
 ## Exceptions {{{
