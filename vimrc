@@ -265,8 +265,8 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
 "---------- Set Syntastic checkers {{{
 " Note: checkers must be installed
-let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_cpp_compiler = '/usr/bin/clang-3.8'
+let g:syntastic_javascript_checkers = [ $NVM_BIN . '/jshint' ]
+let g:syntastic_cpp_compiler = '/usr/bin/clang'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 
 let g:syntastic_error_symbol=''

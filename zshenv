@@ -15,6 +15,7 @@ alias W='cd ~/workspace'
 
 alias stt='subl3 -n .'
 alias st='subl3'
+alias v='vim'
 
 alias df='df -h'
 alias du='du -sh'
