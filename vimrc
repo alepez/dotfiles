@@ -173,7 +173,7 @@ nnoremap <leader>ne :NERDTreeToggle<cr>
 nnoremap <leader>: :CtrlPCmdPalette<CR>
 
 " turn off search highlight and close quickfix
-nnoremap <silent> <leader><leader> :nohlsearch \| ccl \| SignifyRefresh \| redraw!<CR>
+nnoremap <silent> <leader><leader> :nohlsearch \| ccl \| lclose \| SignifyRefresh \| redraw!<CR>
 
 " toggle gundo
 nnoremap <leader>u :GundoToggle<CR>
@@ -265,7 +265,7 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
 "---------- Set Syntastic checkers {{{
 " Note: checkers must be installed
-let g:syntastic_javascript_checkers = [ $NVM_BIN . '/jshint' ]
+let g:syntastic_javascript_checkers = [ 'jshint' ]
 let g:syntastic_cpp_compiler = '/usr/bin/clang'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 
