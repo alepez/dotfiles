@@ -61,7 +61,8 @@ Plugin 'ctrlpvim/ctrlp.vim' " Fuzzy file, buffer, mru, tag, etc finder.
 Plugin 'fisadev/vim-ctrlp-cmdpalette' " fuzzy command search
 Plugin 'scrooloose/nerdtree' " tree explorer
 Plugin 'bling/vim-bufferline' " super simple vim plugin to show the list of buffers in the command bar
-Plugin 'bling/vim-airline' " lean & mean status/tabline for vim that's light as air
+Plugin 'vim-airline/vim-airline' " lean & mean status/tabline for vim that's light as air
+Plugin 'vim-airline/vim-airline-themes' " airline themes
 Plugin 'godlygeek/tabular' " Vim script for text filtering and alignment. Note: must come before vim-markdown
 Plugin 'bronson/vim-trailing-whitespace' " Highlights trailing whitespace in red and provides :FixWhitespace to fix it.
 Plugin 'peterhoeg/vim-qml' " QML syntax highlighting for VIM
@@ -150,7 +151,7 @@ vnoremap // y/<C-R>"<CR>
 nnoremap <leader>f :Ag<space>
 
 " Search yanked text with the silver searcher
-nnoremap <leader>fy :Ag '<C-r>0'<CR>
+nnoremap <leader>F :Ag '<C-r>0'<CR>
 
 " Search visual selction with ag
 vnoremap <leader>f y:Ag '<C-r>0'<CR>
@@ -170,7 +171,7 @@ inoremap <silent> <ESC>OD <Nop>
 nnoremap <leader>ne :NERDTreeToggle<cr>
 
 " cltrp command palette
-nnoremap <leader>: :CtrlPCmdPalette<CR>
+nnoremap <leader>; :CtrlPCmdPalette<CR>
 
 " turn off search highlight and close quickfix
 nnoremap <silent> <leader><leader> :nohlsearch \| ccl \| lclose \| SignifyRefresh \| redraw!<CR>
