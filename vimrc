@@ -196,6 +196,7 @@ command! -nargs=1 GitCommitQuick call GitCommitQuick(<f-args>)
 nnoremap <leader>gg :GitCommitQuick<space>
 
 nnoremap <leader>gps :silent Dispatch! gps<CR>
+nnoremap <leader>gpl :silent Dispatch! gpl<CR>
 nnoremap <leader>gd :!gd<CR><CR>
 nnoremap <leader>gl :!gl<CR><CR>
 " Navigate marks with F2, like in ST
