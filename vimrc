@@ -181,6 +181,7 @@ nnoremap <leader>u :GundoToggle<CR>
 
 " Reindent all and return the same line where you were
 nnoremap <leader>af :Autoformat<CR>
+vnoremap <leader>af :'<,'>Autoformat<CR>
 
 " git add -A . && git commit with message all in command line
 let g:gtest#highlight_failing_tests = 1
