@@ -226,6 +226,8 @@ vnoremap > >gv
 command! -nargs=1 Ss let @/ = <q-args>|set hlsearch
 nnoremap <leader>/ :Ss<space>
 
+nnoremap gC I/* A */
+
 " }}}
 
 "---------- caps-lock {{{
