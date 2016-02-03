@@ -24,7 +24,10 @@ alias ka9='killall -9'
 alias k9='kill -9'
 
 alias nvminit='[[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh'
-alias svndiff='svn diff | colordiff | less'
+
+function svndiff {
+  svn diff $@ | colordiff | less
+}
 
 ## I don't use dc, and somtime i mispell cd
 alias dc='cd'
