@@ -489,6 +489,11 @@ augroup Javascript
 	autocmd!
   let g:formatterpath = [ $NVM_BIN . '/js-beautify' ]
 augroup END
+
+augroup Smarty
+	autocmd!
+  autocmd FileType smarty setlocal commentstring={*\ %s\ *}
+augroup END
 " }}}
 
 "---------- python {{{
