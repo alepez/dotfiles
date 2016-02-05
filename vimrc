@@ -405,6 +405,13 @@ augroup END
 set makeprg=~/.dotfiles/bin/make-closest-makefile
 " }}}
 
+"---------- CMake {{{
+augroup CMake
+  autocmd!
+  autocmd FileType cmake setlocal commentstring=#\ %s
+augroup END
+" }}}
+
 "---------- the silver search {{{
 let g:ag_working_path_mode="r" " Search in project directory
 " }}}
