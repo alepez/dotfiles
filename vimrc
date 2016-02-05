@@ -108,6 +108,11 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 " }}}
 
+"---------- Plugins developed by me {{{
+set rtp+=~/.vim/bundle/vim-gtest
+set rtp+=~/.vim/bundle/vim-llvmcov
+" }}}
+
 "---------- other plugins {{{
 " fzf is not only a vim plugin, must be installed. See https://github.com/junegunn/fzf
 set rtp+=~/.fzf
@@ -136,7 +141,7 @@ let mapleader = "\<Space>"
 nnoremap <silent> <leader>x :bd<CR>
 
 " Save without pain
-nnoremap <silent> <leader>w :w<CR>
+nnoremap <silent> z :w<CR>
 " I've mapped all ctrl to esc. Sometimes I hit <c-space>w instead of
 " <esc><space>w when saving in insert mode.
 " In terminals, <c-space> is mapped to <Nul>
