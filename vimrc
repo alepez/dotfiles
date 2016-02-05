@@ -49,11 +49,11 @@ Plugin 'VundleVim/Vundle.vim'
 " }}}
 
 "---------- plugins {{{
+"Plugin 'alepez/vim-gtest' " Run google tests inside vim (I'm the dev, so I don't want this to be handled by Vundle)
+"Plugin 'alepez/vim-llvmcov' " Show test coverage (I'm the dev, so I don't want this to be handled by Vundle)
 Plugin 'scrooloose/nerdcommenter' " Vim plugin for intensely orgasmic commenting
 Plugin 'ervandew/supertab' " Supertab allows you to use <Tab> for all your insert completion needs
 Plugin 'benmills/vimux' " Run commands inside tmux window
-Plugin 'alepez/vim-gtest' " Run google tests inside vim
-Plugin 'alepez/vim-llvmcov' " Show test coverage
 Plugin 'tpope/vim-fugitive' " git gui
 Plugin 'Chiel92/vim-autoformat' " Provide easy code formatting in Vim by integrating existing code formatters.
 Plugin 'scrooloose/syntastic.git' " check syntax
@@ -93,6 +93,8 @@ Plugin 'tpope/vim-commentary' " Comment stuff out
 Plugin 'jamessan/vim-gnupg' " transparent editing of gpg encrypted files
 Plugin 'klen/python-mode' " Python
 Plugin 'alfredodeza/pytest.vim' " unit test runner for python
+Plugin 'terryma/vim-expand-region' " visually select increasingly larger regions of text using the same key combination
+Plugin 'christoomey/vim-tmux-navigator' " Seamless navigation between tmux panes and vim splits
 
 " vim-devicons must be loaded after all other plugins
 " needs a good font with icons, like patched fonts you can find at
@@ -172,6 +174,7 @@ nnoremap <leader>ne :NERDTreeToggle<cr>
 
 " cltrp command palette
 nnoremap <leader>; :CtrlPCmdPalette<CR>
+nnoremap <leader>o :CtrlPBuffer<CR>
 
 " turn off search highlight and close quickfix
 nnoremap <silent> <leader><leader> :nohlsearch \| ccl \| lclose \| SignifyRefresh \| redraw!<CR>
@@ -229,6 +232,26 @@ command! -nargs=1 Ss let @/ = <q-args>|set hlsearch
 nnoremap <leader>/ :Ss<space>
 
 nnoremap gC I/* A */
+
+" Copy/Paste system clipboard in visual mode
+vmap <Leader>y "+y
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+
+" Expand/Shrink region with v/C-v
+" Thanks to: https://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
+
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+
+" Type 12<Enter> to go to line 12 (12G breaks my wrist)
+" Hit Enter to go to end of file.
+" Hit Backspace to go to beginning of file.
+" Thanks to: https://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
+nnoremap <CR> G
+nnoremap <BS> gg
 
 " }}}
 
@@ -303,7 +326,7 @@ let g:signify_update_on_bufenter = 1 " FIXME: this is not working
 set autoindent " always set autoindenting on
 set autoread " Make Vim automatically open changed files
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
-set clipboard=unnamedplus " yank to clipboard
+set clipboard=unnamed " yank to clipboard
 set colorcolumn=80,120 " show columns at 80 and 120
 set completeopt=menu,menuone " complete menu visibility
 set cursorline " Highlight current line
