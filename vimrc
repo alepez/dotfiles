@@ -253,12 +253,13 @@ nmap <Leader>P "+P
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
+" FIXME: this is useful, but breaks QuickFix
 " Type 12<Enter> to go to line 12 (12G breaks my wrist)
 " Hit Enter to go to end of file.
 " Hit Backspace to go to beginning of file.
 " Thanks to: https://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
-nnoremap <CR> G
-nnoremap <BS> gg
+" nnoremap <CR> G
+" nnoremap <BS> gg
 
 " }}}
 
@@ -421,6 +422,10 @@ let g:cpp_class_scope_highlight=1
 " Special configuratation for cpp AutoFormat (see Chiel92/vim-autoformat plugin)
 let g:formatdef_clangformat_cpp = "'clang-format -lines='.a:firstline.':'.a:lastline.' --assume-filename='.bufname('%').' -style=file'"
 let g:formatters_cpp = ['clangformat_cpp']
+
+fu! CInclude()
+  normal gg/#incOinc
+endf
 
 " Map some shortcuts only for C and CPP files
 augroup Cpp
