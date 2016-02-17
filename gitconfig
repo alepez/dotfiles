@@ -107,7 +107,7 @@
 
 [core]
   excludesfile = ~/.gitignore
-  autocrlf = input
+  autocrlf = false
 
 [fetch]
   prune = true

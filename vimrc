@@ -95,7 +95,8 @@ Plugin 'klen/python-mode' " Python
 Plugin 'alfredodeza/pytest.vim' " unit test runner for python
 Plugin 'terryma/vim-expand-region' " visually select increasingly larger regions of text using the same key combination
 Plugin 'christoomey/vim-tmux-navigator' " Seamless navigation between tmux panes and vim splits
-
+Plugin 'vim-scripts/SyntaxRange'
+Plugin 'vim-scripts/ingo-library'
 " vim-devicons must be loaded after all other plugins
 " needs a good font with icons, like patched fonts you can find at
 " https://github.com/ryanoasis/nerd-fonts
@@ -281,7 +282,7 @@ endfor
 set wildignore+=*/tmp/*
 set wildignore+=*.so,*.o,*.d,*.gcda,*.gcno
 set wildignore+=*.zip,*.tar,*.tar.gz,*.tar.bz2,*.tgz
-set wildignore+=*.png,*.jpg,*.gif
+" set wildignore+=*.png,*.jpg,*.gif
 set wildignore+=*/__pycache__
 set wildignore+=*/node_modules
 " }}}
@@ -520,7 +521,7 @@ let g:VimuxOrientation = "h"
 "---------- web {{{
 
 " Enable browserlink livereload for these types:
-let g:bl_pagefiletypes = ['html', 'javascript', 'php', 'tpl']
+let g:bl_pagefiletypes = ['html', 'javascript', 'php', 'smarty']
 
 augroup Css
 	autocmd!
