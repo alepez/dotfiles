@@ -560,7 +560,8 @@ function! ResizeCmdHeight()
 endfunction
 
 call ResizeCmdHeight()
-augroup ResizeCmdOnVimResizedx
+
+augroup ResizeCmdOnVimResized
     autocmd!
     autocmd VimResized * call ResizeCmdHeight()
 augroup END
