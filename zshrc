@@ -103,6 +103,9 @@ export EDITOR=/usr/bin/vim
 ## Add user's bin directory to path if it exists
 if [ -d $HOME/bin ]; then export PATH="$HOME/bin:${PATH}"; fi
 
+## Add neovim bin directory to path if it exists
+if [ -d $HOME/.neovim ]; then export PATH="$HOME/.neovim/bin:${PATH}"; fi
+
 ## }}}
 
 ## flow control {{{
