@@ -87,6 +87,7 @@ Plugin 'jaxbot/browserlink.vim' " like livereload
 Plugin 'suan/vim-instant-markdown' " preview markdown in browser (needs `npm -g install instant-markdown-d`)
 Plugin 'mattn/emmet-vim' " emmet for vim: http://emmet.io/
 Plugin 'pangloss/vim-javascript' " Vastly improved Javascript indentation and syntax support in Vim.
+Plugin 'mxw/vim-jsx' " reactjs
 Plugin 'smarty-syntax' " Syntax highlight for Smarty Template Engine
 Plugin 'tpope/vim-unimpaired' " pairs of handy bracket mappings
 Plugin 'tpope/vim-commentary' " Comment stuff out
@@ -317,9 +318,12 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = {
 		\ "mode": "passive",
-		\ "active_filetypes": [ 'javascript' ],
+		\ "active_filetypes": [],
 		\ "passive_filetypes": [] }
 " }}}
+
+" Force check with this shortcut
+nnoremap <leader>s :SyntasticCheck<CR>
 
 "---------- signify {{{
 highlight DiffAdd           cterm=bold ctermbg=none ctermfg=119
@@ -406,7 +410,7 @@ augroup WrapLineInMarkdownFile
 	" Wrap lines
 	autocmd FileType markdown setlocal wrap
 	" Initialize pencil plugin
-	autocmd FileType markdown call pencil#init()
+	" autocmd FileType markdown call pencil#init()
 	" Add specific shortcuts for markdown
 	" <leader>- add a new element to the bullet list
 	autocmd FileType markdown nnoremap <leader>- o<Esc>S<space>-<space>
@@ -522,15 +526,14 @@ let g:VimuxOrientation = "h"
 
 " Enable browserlink livereload for these types:
 let g:bl_pagefiletypes = ['html', 'javascript', 'php', 'smarty']
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+
+" let g:formatdef_esformatter_javascript = '"esformatter '.bufname('%').'"'
+" let g:formatters_javascript = [ 'esformatter_javascript' ]
 
 augroup Css
 	autocmd!
   autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-augroup END
-
-augroup Javascript
-	autocmd!
-  let g:formatterpath = [ $NVM_BIN . '/js-beautify' ]
 augroup END
 
 augroup Smarty
