@@ -24,6 +24,7 @@ alias ka9='killall -9'
 alias k9='kill -9'
 
 alias nvminit='[[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh'
+alias kiexinit='test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex" && kiex use 1.2.3'
 
 function svndiff {
   svn diff $@ | colordiff | less
@@ -44,8 +45,8 @@ function Pass { pass -c $( cd ~/.password-store && git ls-files | grep -v "^\." 
 ## Git Aliases {{{
 ## See ~/.gitconfig
 alias gs='git status'         # show Status
-alias gcm='git commit -m'     # Commit, Message as argument
-alias ga='git add -A'         # Add all files, remove from index delete files
+alias ga='git add'            # Add files to the index
+alias gA='git add -A'         # Add all files, remove from index deleted files
 alias grv='git remote -v'     # show all Remotes Verbosely
 alias glog='git l'            # log --graph --date=short
 alias gl='glog'               # shortcut to glog
@@ -57,6 +58,9 @@ alias gpl='git pull'          # Pull
 alias gps='git push'          # Push
 alias gnb='git nb'            # New Branch aka checkout -b
 alias gco='git co'            # Checkout
+
+## Commit, message as arguments, quotes not needed
+function gcm { git commit -m "$*" }
 
 ## Add all files, Commit, Message as argument
 function gacm { git add -A && git commit -m "$*" }

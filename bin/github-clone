@@ -2,6 +2,8 @@
 
 REPO="${1}"
 
+REPO="$( echo "${REPO}" | sed 's+https://github.com/++' )"
+
 USER=$( echo ${REPO} | sed 's/\/.*$//' )
 REPO=$( echo ${REPO} | sed 's/^.*\///' )
 
@@ -10,5 +12,6 @@ echo repo=${REPO}
 
 test -n ${USER} || exit 1
 test -n ${REPO} || exit 2
+
 mkdir -p ~/github/${USER} || exit 4
 git clone git@github.com:${USER}/${REPO}.git ~/github/${USER}/${REPO}
