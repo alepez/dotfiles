@@ -98,6 +98,7 @@ Plugin 'terryma/vim-expand-region' " visually select increasingly larger regions
 Plugin 'christoomey/vim-tmux-navigator' " Seamless navigation between tmux panes and vim splits
 Plugin 'vim-scripts/SyntaxRange'
 Plugin 'vim-scripts/ingo-library'
+Plugin 'elixir-lang/vim-elixir'
 " vim-devicons must be loaded after all other plugins
 " needs a good font with icons, like patched fonts you can find at
 " https://github.com/ryanoasis/nerd-fonts
@@ -210,6 +211,7 @@ nnoremap <leader>gps :silent Dispatch! gps<CR>
 nnoremap <leader>gpl :silent Dispatch! gpl<CR>
 nnoremap <leader>gd :!gd<CR><CR>
 nnoremap <leader>gl :!gl<CR><CR>
+nnoremap <leader>gs :!clear;gs<CR>
 " Navigate marks with F2, like in ST
 nmap <F2> <Esc>]`
 " Switch to file under cursor (plugin a.vim)
@@ -525,11 +527,12 @@ let g:VimuxOrientation = "h"
 "---------- web {{{
 
 " Enable browserlink livereload for these types:
-let g:bl_pagefiletypes = ['html', 'javascript', 'php', 'smarty']
-let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+let g:bl_pagefiletypes = ['html', 'javascript', 'php', 'smarty', 'javascript.jsx']
 
-" let g:formatdef_esformatter_javascript = '"esformatter '.bufname('%').'"'
-" let g:formatters_javascript = [ 'esformatter_javascript' ]
+" react.js jsx
+let g:jsx_ext_required = 1 " Disallow JSX in normal JS files
+let g:formatdef_esformatter_javascript_jsx = '"esformatter "'
+let g:formatters_javascript_jsx = [ 'esformatter_javascript_jsx' ]
 
 augroup Css
 	autocmd!
