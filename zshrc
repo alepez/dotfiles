@@ -106,6 +106,8 @@ if [ -d $HOME/bin ]; then export PATH="$HOME/bin:${PATH}"; fi
 ## Add neovim bin directory to path if it exists
 if [ -d $HOME/.neovim ]; then export PATH="$HOME/.neovim/bin:${PATH}"; fi
 
+if [ -d /opt/heroku-client/bin ]; then export PATH="/opt/heroku-client/bin:${PATH}"; fi
+
 ## }}}
 
 ## flow control {{{
