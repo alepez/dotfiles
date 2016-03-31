@@ -12,6 +12,7 @@ alias automocha="supervisor -q -n exit -x mocha -- -b --recursive"
 
 function D { mkdir -p $1 && cd $1 }
 alias W='cd ~/workspace'
+alias O='xdg-open'
 
 alias stt='subl3 -n .'
 alias st='subl3'

@@ -146,6 +146,13 @@ nnoremap <silent> <leader>x :bd<CR>
 " Save without pain
 nnoremap <silent> <leader>w :w<CR>
 nnoremap <silent> z<space> :w<CR>
+
+" Save and make
+nnoremap <silent> <leader>e <Esc>:update<CR>:Make<CR>
+
+" Save and exit
+nnoremap <silent> <leader>q <Esc>:update<CR>:q<CR>
+
 " I've mapped all ctrl to esc. Sometimes I hit <c-space>w instead of
 " <esc><space>w when saving in insert mode.
 " In terminals, <c-space> is mapped to <Nul>
