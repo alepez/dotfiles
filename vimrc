@@ -151,7 +151,7 @@ nnoremap <silent> z<space> :w<CR>
 nnoremap <silent> <leader>e <Esc>:update<CR>:Make<CR>
 
 " Save and exit
-nnoremap <silent> <leader>q <Esc>:update<CR>:q<CR>
+" nnoremap <silent> <leader>q <Esc>:update<CR>:q<CR>
 
 " I've mapped all ctrl to esc. Sometimes I hit <c-space>w instead of
 " <esc><space>w when saving in insert mode.
