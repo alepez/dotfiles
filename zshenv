@@ -38,7 +38,7 @@ alias dc='cd'
 ## See
 ## - http://www.passwordstore.org/
 ## - https://github.com/junegunn/fzf
-function Pass { pass -c $( cd ~/.password-store && git ls-files | grep -v "^\." | fzf-tmux | sed "s/\.gpg$//" ) }
+function Pass { local passpath=$( cd ~/.password-store && git ls-files | grep -v "^\." | fzf-tmux | sed "s/\.gpg$//" ); pass -c "${passpath}"; pass "${passpath}"; }
 
 ## }}}
 
