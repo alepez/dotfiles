@@ -103,6 +103,11 @@ Plugin 'elixir-lang/vim-elixir'
 " needs a good font with icons, like patched fonts you can find at
 " https://github.com/ryanoasis/nerd-fonts
 Plugin 'ryanoasis/vim-devicons' " Add fonts icons
+
+if has('nvim')
+  Plugin 'benekastah/neomake'
+endif
+
 " }}}
 
 "---------- vundle end {{{
@@ -345,6 +350,7 @@ let g:signify_update_on_bufenter = 1 " FIXME: this is not working
 " }}}
 
 "---------- Standard Vim settings {{{
+set mouse="" " Disable mouse (neovim enables it by default)
 set autoindent " always set autoindenting on
 set autoread " Make Vim automatically open changed files
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
