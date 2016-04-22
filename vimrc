@@ -414,6 +414,12 @@ set nowritebackup
 " }}}
 
 "---------- Markdown {{{
+
+" FIXME
+" function! TodoDone()
+"  silent normal! d/DONEjp`` 
+" endfunction
+
 augroup WrapLineInMarkdownFile
 	autocmd!
 	" assign markdown filetype to files with .md extension
