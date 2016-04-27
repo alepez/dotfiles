@@ -49,8 +49,8 @@ Plugin 'VundleVim/Vundle.vim'
 " }}}
 
 "---------- plugins {{{
-"Plugin 'alepez/vim-gtest' " Run google tests inside vim (I'm the dev, so I don't want this to be handled by Vundle)
-"Plugin 'alepez/vim-llvmcov' " Show test coverage (I'm the dev, so I don't want this to be handled by Vundle)
+Plugin 'alepez/vim-gtest' " Run google tests inside vim (I'm the dev, so I don't want this to be handled by Vundle)
+Plugin 'alepez/vim-llvmcov' " Show test coverage (I'm the dev, so I don't want this to be handled by Vundle)
 Plugin 'scrooloose/nerdcommenter' " Vim plugin for intensely orgasmic commenting
 Plugin 'ervandew/supertab' " Supertab allows you to use <Tab> for all your insert completion needs
 Plugin 'benmills/vimux' " Run commands inside tmux window
@@ -117,8 +117,8 @@ filetype plugin indent on    " required
 " }}}
 
 "---------- Plugins developed by me {{{
-set rtp+=~/.vim/bundle/vim-gtest
-set rtp+=~/.vim/bundle/vim-llvmcov
+" set rtp+=~/.vim/bundle/vim-gtest
+" set rtp+=~/.vim/bundle/vim-llvmcov
 " }}}
 
 "---------- other plugins {{{
