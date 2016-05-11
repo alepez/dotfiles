@@ -49,8 +49,8 @@ Plugin 'VundleVim/Vundle.vim'
 " }}}
 
 "---------- plugins {{{
-"Plugin 'alepez/vim-gtest' " Run google tests inside vim (I'm the dev, so I don't want this to be handled by Vundle)
-"Plugin 'alepez/vim-llvmcov' " Show test coverage (I'm the dev, so I don't want this to be handled by Vundle)
+Plugin 'alepez/vim-gtest' " Run google tests inside vim (I'm the dev, so I don't want this to be handled by Vundle)
+Plugin 'alepez/vim-llvmcov' " Show test coverage (I'm the dev, so I don't want this to be handled by Vundle)
 Plugin 'scrooloose/nerdcommenter' " Vim plugin for intensely orgasmic commenting
 Plugin 'ervandew/supertab' " Supertab allows you to use <Tab> for all your insert completion needs
 Plugin 'benmills/vimux' " Run commands inside tmux window
@@ -103,6 +103,11 @@ Plugin 'elixir-lang/vim-elixir'
 " needs a good font with icons, like patched fonts you can find at
 " https://github.com/ryanoasis/nerd-fonts
 Plugin 'ryanoasis/vim-devicons' " Add fonts icons
+
+if has('nvim')
+  Plugin 'benekastah/neomake'
+endif
+
 " }}}
 
 "---------- vundle end {{{
@@ -112,8 +117,8 @@ filetype plugin indent on    " required
 " }}}
 
 "---------- Plugins developed by me {{{
-set rtp+=~/.vim/bundle/vim-gtest
-set rtp+=~/.vim/bundle/vim-llvmcov
+" set rtp+=~/.vim/bundle/vim-gtest
+" set rtp+=~/.vim/bundle/vim-llvmcov
 " }}}
 
 "---------- other plugins {{{
@@ -345,6 +350,7 @@ let g:signify_update_on_bufenter = 1 " FIXME: this is not working
 " }}}
 
 "---------- Standard Vim settings {{{
+set mouse="" " Disable mouse (neovim enables it by default)
 set autoindent " always set autoindenting on
 set autoread " Make Vim automatically open changed files
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
