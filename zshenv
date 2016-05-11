@@ -61,7 +61,7 @@ alias gnb='git nb'            # New Branch aka checkout -b
 alias gco='git co'            # Checkout
 
 # Quick merge from origin/master, no fast forward
-function gqm { git fetch ; git merge origin/master --no-ff }
+function gqm { if [ -z "${1}" ]; then git status -bs; echo -e "\nbranch?"; return; fi; git fetch ; git merge origin/${1} --no-ff }
 
 ## Commit, message as arguments, quotes not needed
 function gcm { git commit -m "$*" }
