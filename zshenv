@@ -14,8 +14,13 @@ function D { mkdir -p $1 && cd $1 }
 alias W='cd ~/workspace'
 alias O='xdg-open'
 
-# Useful for remote hosts with tmux, open a new konsole window with remote.
-alias S="konsole -e ssh"
+# Useful for remote hosts with tmux, open a new terminal window with its own
+# tmux session. Understand which terminal emulator is currently in use.
+if [ "${COLORTERM}" = "gnome-terminal" ]; then
+  alias S="gnome-terminal -x ssh"
+else
+  alias S="konsole -e ssh"
+fi
 
 alias stt='subl3 -n .'
 alias st='subl3'
