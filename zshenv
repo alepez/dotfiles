@@ -17,6 +17,9 @@ alias O='xdg-open'
 # Useful for remote hosts with tmux, open a new konsole window with remote.
 alias S="konsole -e ssh"
 
+# Generate pronounce pronounceable password
+alias genpassword='pwgen --capitalize --numerals --ambiguous 12 6'
+
 alias stt='subl3 -n .'
 alias st='subl3'
 alias v='vim'
