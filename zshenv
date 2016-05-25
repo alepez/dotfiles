@@ -92,6 +92,23 @@ alias ggo="gacmps" # Go! shortcut for gacmps
 ## }}}
 
 ################################################################################
+## rsync ssh tunnel with ControlPath {{{
+## see: http://unix.stackexchange.com/a/50515/12662
+function ssh-rsync-fast-start {
+  mkdir -p ~/.ssh/ctl
+  ssh -nNf -o ControlMaster=yes -o ControlPath="$HOME/.ssh/ctl/%L-%r@%h:%p" $@
+}
+
+function ssh-rsync-fast {
+  rsync -e "ssh -o 'ControlPath=$HOME/.ssh/ctl/%L-%r@%h:%p'" $@
+}
+
+function ssh-rsync-fast-stop {
+  ssh -O exit -o ControlPath="$HOME/.ssh/ctl/%L-%r@%h:%p" $@
+}
+## }}}
+
+################################################################################
 ## Svn Aliases {{{
 alias sst='svn status'
 alias sa='svn add'
