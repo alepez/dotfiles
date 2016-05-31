@@ -1,4 +1,10 @@
 #!/bin/bash
+################################################################################
+## Download a github repository to ~/github
+## given the github url or user/repo
+## e.g. https://github.com/alepez/dotfiles
+## e.g.                    alepez/dotfiles
+################################################################################
 
 REPO="${1}"
 
