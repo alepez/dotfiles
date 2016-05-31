@@ -587,9 +587,11 @@ function! ResizeCmdHeight()
   endif
 endfunction
 
-" FIXME neovim size is 80 when vimrc is sourced. So neovim always start with
-" cmdheight=2
-call ResizeCmdHeight()
+" neovim size is 80 when vimrc is sourced. So we need to resize on VimEnter
+augroup ResizeCmdOnVimEnter
+    autocmd!
+    autocmd VimEnter * call ResizeCmdHeight()
+augroup END
 
 augroup ResizeCmdOnVimResized
     autocmd!
