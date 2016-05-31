@@ -221,9 +221,17 @@ nnoremap <leader>gg :GitCommitQuick<space>
 
 nnoremap <leader>gps :silent Dispatch! gps<CR>
 nnoremap <leader>gpl :silent Dispatch! gpl<CR>
-nnoremap <leader>gd :!gd<CR><CR>
-nnoremap <leader>gl :!gl<CR><CR>
-nnoremap <leader>gs :!clear;gs<CR>
+
+if has('nvim')
+  nnoremap <leader>gd :term gd<CR>
+  nnoremap <leader>gl :term gl<CR>
+  nnoremap <leader>gs :term gs<CR>
+else
+  nnoremap <leader>gd :!gd<CR><CR>
+  nnoremap <leader>gl :!gl<CR><CR>
+  nnoremap <leader>gs :!clear;gs<CR>
+endif
+
 " Navigate marks with F2, like in ST
 nmap <F2> <Esc>]`
 " Switch to file under cursor (plugin a.vim)
