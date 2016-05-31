@@ -6,7 +6,7 @@
 export ZSH=/opt/oh-my-zsh
 
 ## Path to custom themes/plugins etc...
-export ZSH_CUSTOM=~/.oh-my-zsh/custom
+export ZSH_CUSTOM=~/.dotfiles/zsh/oh-my-zsh
 
 ## Set name of the theme to load.
 ## Look in $ZSH/themes/
