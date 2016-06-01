@@ -28,8 +28,13 @@ hi MatchParen cterm=bold ctermbg=black ctermfg=white
 " }}}
 
 "---------- vundle {{{
-set nocompatible              " required
-filetype off                  " required
+
+" vim needs nocompatible flag to run vundle
+if !has('nvim')
+  set nocompatible
+endif
+
+filetype off " required
 
 " Initialize Vundle plugin manager
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -96,14 +101,17 @@ Plugin 'klen/python-mode' " Python
 Plugin 'alfredodeza/pytest.vim' " unit test runner for python
 Plugin 'terryma/vim-expand-region' " visually select increasingly larger regions of text using the same key combination
 Plugin 'christoomey/vim-tmux-navigator' " Seamless navigation between tmux panes and vim splits
-Plugin 'vim-scripts/SyntaxRange'
-Plugin 'vim-scripts/ingo-library'
-Plugin 'elixir-lang/vim-elixir'
+Plugin 'vim-scripts/SyntaxRange' " Define a different filetype syntax on regions of a buffer.
+Plugin 'vim-scripts/ingo-library' " Vimscript library of common functions.
+Plugin 'elixir-lang/vim-elixir' " Vim configuration files for Elixir http://elixir-lang.org/
+
 " vim-devicons must be loaded after all other plugins
 " needs a good font with icons, like patched fonts you can find at
 " https://github.com/ryanoasis/nerd-fonts
 Plugin 'ryanoasis/vim-devicons' " Add fonts icons
 
+" neovim plugins
+" these plugins need features not available in classic vim
 if has('nvim')
   Plugin 'benekastah/neomake'
 endif
@@ -130,7 +138,7 @@ set rtp+=~/.fzf
 " $MYVIMRC (~/.vimrc) and $MYGVIMRC (~/.gvimrc) must exists or an error will appear
 augroup AutoreloadVimrc
     au!
-    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc nested so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc,init.vim nested so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
 " }}}
 
@@ -342,10 +350,11 @@ let g:syntastic_mode_map = {
 		\ "mode": "passive",
 		\ "active_filetypes": [],
 		\ "passive_filetypes": [] }
-" }}}
 
 " Force check with this shortcut
 nnoremap <leader>s :SyntasticCheck<CR>
+
+" }}}
 
 "---------- signify {{{
 highlight DiffAdd           cterm=bold ctermbg=none ctermfg=119
@@ -422,11 +431,6 @@ set nowritebackup
 " }}}
 
 "---------- Markdown {{{
-
-" FIXME
-" function! TodoDone()
-"  silent normal! d/DONEjp`` 
-" endfunction
 
 augroup WrapLineInMarkdownFile
 	autocmd!
@@ -596,13 +600,9 @@ function! ResizeCmdHeight()
 endfunction
 
 " neovim size is 80 when vimrc is sourced. So we need to resize on VimEnter
-augroup ResizeCmdOnVimEnter
+augroup ResizeCmdOnVimEnterOrResized
     autocmd!
     autocmd VimEnter * call ResizeCmdHeight()
-augroup END
-
-augroup ResizeCmdOnVimResized
-    autocmd!
     autocmd VimResized * call ResizeCmdHeight()
 augroup END
 " }}}
