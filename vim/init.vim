@@ -1,8 +1,8 @@
 " @filename: ~/.vimrc
 
-source ~/.dotfiles/vim/vimrc/gvim
-source ~/.dotfiles/vim/vimrc/colors
-source ~/.dotfiles/vim/vimrc/autoreload
+source ~/.dotfiles/vim/vimrc/gvim.vim
+source ~/.dotfiles/vim/vimrc/colors.vim
+source ~/.dotfiles/vim/vimrc/autoreload.vim
 
 "---------- plugins {{{
 
@@ -20,13 +20,13 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-source ~/.dotfiles/vim/vimrc/plugins-enabled
-source ~/.dotfiles/vim/vimrc/plugins-disabled
+source ~/.dotfiles/vim/vimrc/plugins-enabled.vim
+source ~/.dotfiles/vim/vimrc/plugins-disabled.vim
 
 " neovim plugins
 " these plugins need features not available in classic vim
 if has('nvim')
-  source ~/.dotfiles/vim/vimrc/plugins-neovim
+  source ~/.dotfiles/vim/vimrc/plugins-neovim.vim
 endif
 
 " Plugins cannot be loaded below this line
@@ -34,7 +34,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 " }}}
 
-source ~/.dotfiles/vim/vimrc/plugins-special
+source ~/.dotfiles/vim/vimrc/plugins-special.vim
 
 "---------- Always show the sign (also called gutter) {{{
 augroup AlwaysShowTheSign
