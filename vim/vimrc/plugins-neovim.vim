@@ -1,2 +1,1 @@
-Plugin 'benekastah/neomake'
-
+Plugin 'neomake/neomake'

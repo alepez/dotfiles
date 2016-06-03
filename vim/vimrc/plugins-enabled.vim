@@ -48,6 +48,7 @@ Plugin 'christoomey/vim-tmux-navigator' " Seamless navigation between tmux panes
 Plugin 'vim-scripts/SyntaxRange' " Define a different filetype syntax on regions of a buffer.
 Plugin 'vim-scripts/ingo-library' " Vimscript library of common functions.
 Plugin 'elixir-lang/vim-elixir' " Vim configuration files for Elixir http://elixir-lang.org/
+Plugin 'milkypostman/vim-togglelist' " Functions to toggle the [Location List] and the [Quickfix List] windows.
 
 " vim-devicons must be loaded after all other plugins
 " needs a good font with icons, like patched fonts you can find at

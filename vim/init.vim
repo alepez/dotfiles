@@ -38,7 +38,7 @@ source ~/.dotfiles/vim/vimrc/shortcuts.vim
 source ~/.dotfiles/vim/vimrc/nerdtree.vim
 source ~/.dotfiles/vim/vimrc/ignore.vim
 source ~/.dotfiles/vim/vimrc/ctrlp.vim
-source ~/.dotfiles/vim/vimrc/syntastic.vim
+"source ~/.dotfiles/vim/vimrc/syntastic.vim
 source ~/.dotfiles/vim/vimrc/signify.vim
 source ~/.dotfiles/vim/vimrc/settings.vim
 source ~/.dotfiles/vim/vimrc/backups.vim
@@ -51,6 +51,10 @@ source ~/.dotfiles/vim/vimrc/airline.vim
 source ~/.dotfiles/vim/vimrc/web.vim
 source ~/.dotfiles/vim/vimrc/python.vim
 source ~/.dotfiles/vim/vimrc/zsh.vim
+
+if has('nvim')
+  source ~/.dotfiles/vim/vimrc/neomake.vim
+endif
 
 " Include local vimrc is file exists
 if filereadable(glob("~/.vimrc.local"))

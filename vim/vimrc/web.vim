@@ -18,3 +18,10 @@ augroup Smarty
 	autocmd!
   autocmd FileType smarty setlocal commentstring={*\ %s\ *}
 augroup END
+
+
+augroup Javascript
+	autocmd!
+  " live linting
+  autocmd InsertChange,TextChanged *.js update | Neomake!
+augroup END

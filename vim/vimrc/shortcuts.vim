@@ -11,8 +11,9 @@ nnoremap <silent> z<space> :w<CR>
 " Save and make
 nnoremap <silent> <leader>e <Esc>:update<CR>:Make<CR>
 
-" Save and exit
-" nnoremap <silent> <leader>q <Esc>:update<CR>:q<CR>
+" Toggle quickfix and location list
+nmap <script> <silent> <leader>l :call ToggleLocationList()<CR>
+nmap <script> <silent> <leader>q :call ToggleQuickfixList()<CR>
 
 " I've mapped all ctrl to esc. Sometimes I hit <c-space>w instead of
 " <esc><space>w when saving in insert mode.
@@ -94,20 +95,20 @@ nmap <F2> <Esc>]`
 noremap <F3> :IH<CR>
 " Switch header/implementation (plugin a.vim)
 noremap <F4> :A<CR>
-" To next error
+" To next quickfix line
 noremap <F6> <Esc>:cn<CR>
+" To next location line
+noremap <F7> <Esc>:ln<CR>
 " Repeat last command
-noremap <F7> <Esc>q:k<CR>
-" Run last vimux command
-noremap <F8> <Esc>:update<CR>:VimuxRunLastCommand<CR>
-" Make in background
-noremap <F11> <Esc>:update<CR>:Make!<CR>
-" Make in foreground
-noremap <F12> <Esc>:update<CR>:Make<CR>
-
-" z repeat mapped to most used F#
-nmap zzz <F8>
-nmap zz <F12>
+noremap <F8> <Esc>q:k<CR>
+"
+" noremap <F9>
+"
+" noremap <F10>
+"
+" noremap <F11>
+"
+" noremap <F12>
 
 " make < > shifts keep selection
 vnoremap < <gv
