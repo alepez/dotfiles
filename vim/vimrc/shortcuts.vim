@@ -96,11 +96,11 @@ noremap <F3> :IH<CR>
 " Switch header/implementation (plugin a.vim)
 noremap <F4> :A<CR>
 " To next quickfix line
-noremap <F6> <Esc>:cn<CR>
-" To next location line
-noremap <F7> <Esc>:ln<CR>
+noremap <F6> :cn<CR>
+" To next location line (wrap to begin after last) http://stackoverflow.com/a/27199153/786186
+noremap <F7> :try<bar>lnext<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>lfirst<bar>endtry<cr>
 " Repeat last command
-noremap <F8> <Esc>q:k<CR>
+noremap <F8> q:k<CR>
 " TODO not assigned F9
 " noremap <F9>
 " TODO not assigned F10

@@ -12,6 +12,9 @@ let g:formatdef_tidy_xml = '"tidy -q -xml --show-errors 0 --show-warnings 0 --fo
 augroup Css
 	autocmd!
   autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+  " TODO (needs testing) save on changes (browser will automatically reload
+  " css)
+  "autocmd InsertChange,TextChanged *.css update
 augroup END
 
 augroup Smarty
@@ -22,6 +25,5 @@ augroup END
 
 augroup Javascript
 	autocmd!
-  " live linting
-  autocmd InsertChange,TextChanged *.js update | Neomake!
+  autocmd BufWritePost,BufEnter *.js Neomake
 augroup END
