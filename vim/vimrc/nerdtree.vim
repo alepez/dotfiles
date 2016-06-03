@@ -1,0 +1,2 @@
+let NERDTreeQuitOnOpen = 1
+
