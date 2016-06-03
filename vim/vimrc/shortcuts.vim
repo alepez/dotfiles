@@ -101,13 +101,13 @@ noremap <F6> <Esc>:cn<CR>
 noremap <F7> <Esc>:ln<CR>
 " Repeat last command
 noremap <F8> <Esc>q:k<CR>
-"
+" TODO not assigned F9
 " noremap <F9>
-"
+" TODO not assigned F10
 " noremap <F10>
-"
+" TODO not assigned F11
 " noremap <F11>
-"
+" TODO not assigned F11
 " noremap <F12>
 
 " make < > shifts keep selection
