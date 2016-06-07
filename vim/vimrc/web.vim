@@ -9,6 +9,9 @@ let g:formatters_javascript_jsx = [ 'esformatter_javascript_jsx' ]
 let g:formatdef_tidy_html = '"tidy -q --show-errors 0 --show-warnings 0 --force-output --indent auto --indent-spaces ".shiftwidth()." --vertical-space yes --tidy-mark no -wrap ".&textwidth'
 let g:formatdef_tidy_xml = '"tidy -q -xml --show-errors 0 --show-warnings 0 --force-output --indent auto --indent-spaces ".shiftwidth()." --vertical-space yes --tidy-mark no -wrap ".&textwidth'
 
+" autoupdate on save?
+let g:bl_no_autoupdate=0
+
 augroup Css
 	autocmd!
   autocmd FileType css set omnifunc=csscomplete#CompleteCSS
@@ -21,7 +24,6 @@ augroup Smarty
 	autocmd!
   autocmd FileType smarty setlocal commentstring={*\ %s\ *}
 augroup END
-
 
 augroup Javascript
 	autocmd!
