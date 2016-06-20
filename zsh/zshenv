@@ -1,6 +1,7 @@
 ## @filename: ~/.zshenv
 
 source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
+export NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 # speed up
 skip_global_compinit=1
