@@ -9,4 +9,12 @@ let g:ctrlp_open_multiple_files = 'i' " open selected files in hidden buffers
 
 " Use ag, the silver searcher, for ctrlp search.
 " Note: wildignore doesn't apply with this option, you need .agignore file
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  " fix for neovim: cd to current directory and launch ag to omit relative
+  " path from results.
+  let g:ctrlp_user_command = '( cd %s && ag -l --nocolor -g "" )'
+endif
