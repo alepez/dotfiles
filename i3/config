@@ -154,3 +154,6 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
 }
+
+exec setxkbmap -option 'caps:ctrl_modifier'
+exec xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
