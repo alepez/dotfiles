@@ -1,5 +1,7 @@
 ## @filename: ~/.zshenv
 
+source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
+
 # speed up
 skip_global_compinit=1
 
@@ -119,7 +121,9 @@ function slog { svn log $@ | less }
 
 ################################################################################
 ## nvim {{{
-export NVIM_TUI_ENABLE_TRUE_COLOR=1
+# vim airline themes not working with this variabile set
+# see https://www.reddit.com/r/neovim/comments/44cnud/gruvbox_colors_are_off_when_i_enable_truecolor/
+# export NVIM_TUI_ENABLE_TRUE_COLOR=1
 ## }}}
 ################################################################################
 

@@ -11,6 +11,7 @@ Plugin 'fisadev/vim-ctrlp-cmdpalette' " fuzzy command search
 Plugin 'scrooloose/nerdtree' " tree explorer
 Plugin 'bling/vim-bufferline' " super simple vim plugin to show the list of buffers in the command bar
 Plugin 'vim-airline/vim-airline' " lean & mean status/tabline for vim that's light as air
+Plugin 'vim-airline/vim-airline-themes' " lean & mean status/tabline for vim that's light as air
 Plugin 'godlygeek/tabular' " Vim script for text filtering and alignment. Note: must come before vim-markdown
 Plugin 'bronson/vim-trailing-whitespace' " Highlights trailing whitespace in red and provides :FixWhitespace to fix it.
 Plugin 'peterhoeg/vim-qml' " QML syntax highlighting for VIM
