@@ -108,3 +108,4 @@ bar {
 exec setxkbmap -option 'caps:ctrl_modifier'
 exec xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
 exec xset r rate 250 30
+exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/abstract_mathematics_Wallpaper_1920x1200_www.wallpaperswa.com.jpg
