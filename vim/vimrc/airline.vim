@@ -1,6 +1,6 @@
-" the theme
-let g:airline_theme='pez' " Sometime this does not work... why?
-au VimEnter * AirlineTheme pez " Fix for the above
+" themes are automatically selected based on the matching colorscheme. this
+" can be overridden by defining a value:
+"     let g:airline_theme='dark'
 
 " always show statusbar
 set laststatus=2

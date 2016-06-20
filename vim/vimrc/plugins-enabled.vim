@@ -11,7 +11,6 @@ Plugin 'fisadev/vim-ctrlp-cmdpalette' " fuzzy command search
 Plugin 'scrooloose/nerdtree' " tree explorer
 Plugin 'bling/vim-bufferline' " super simple vim plugin to show the list of buffers in the command bar
 Plugin 'vim-airline/vim-airline' " lean & mean status/tabline for vim that's light as air
-Plugin 'vim-airline/vim-airline-themes' " airline themes
 Plugin 'godlygeek/tabular' " Vim script for text filtering and alignment. Note: must come before vim-markdown
 Plugin 'bronson/vim-trailing-whitespace' " Highlights trailing whitespace in red and provides :FixWhitespace to fix it.
 Plugin 'peterhoeg/vim-qml' " QML syntax highlighting for VIM
@@ -49,6 +48,7 @@ Plugin 'vim-scripts/SyntaxRange' " Define a different filetype syntax on regions
 Plugin 'vim-scripts/ingo-library' " Vimscript library of common functions.
 Plugin 'elixir-lang/vim-elixir' " Vim configuration files for Elixir http://elixir-lang.org/
 Plugin 'milkypostman/vim-togglelist' " Functions to toggle the [Location List] and the [Quickfix List] windows.
+Plugin 'morhetz/gruvbox' " Retro groove color scheme for Vim
 
 " vim-devicons must be loaded after all other plugins
 " needs a good font with icons, like patched fonts you can find at
