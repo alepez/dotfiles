@@ -18,3 +18,4 @@ __pycache__
 /deps
 /build
 .ropeproject
+.eslintrc.json
