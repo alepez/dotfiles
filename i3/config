@@ -117,9 +117,10 @@ bar {
 exec setxkbmap -option 'caps:ctrl_modifier'
 exec xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
 exec xset r rate 250 30
-exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/abstract_mathematics_Wallpaper_1920x1200_www.wallpaperswa.com.jpg
+exec_always --no-startup-id feh --bg-fill ~/Pictures/abstract-black-low-poly-wallpaper-for-1920x1080-63-303.jpg
 
 bindsym Control+Mod1+l exec "i3lock --ignore-empty-password -c 000000"
+bindsym $mod+b exec "/usr/bin/google-chrome-stable"
 
 client.focused #689d6a #689d6a #282828 #282828
 client.focused_inactive #1d2021 #1d2021 #928374 #282828
