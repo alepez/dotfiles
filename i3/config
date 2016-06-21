@@ -114,6 +114,8 @@ bar {
   }
 }
 
+exec --no-startup-id ~/.dotfiles/i3/bin/startup
+exec setxkbmap -option 'caps:ctrl_modifier'
 exec setxkbmap -option 'caps:ctrl_modifier'
 exec xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
 exec xset r rate 250 30
@@ -128,5 +130,5 @@ client.focused_inactive #1d2021 #1d2021 #928374 #282828
 client.unfocused #32302f #32302f #928374 #282828
 client.urgent #cc241d #cc241d #ebdbb2 #282828
 
-bindcode 232 exec ~/.dotfiles/i3/bin/brightness +
-bindcode 233 exec ~/.dotfiles/i3/bin/brightness -
+bindcode 233 exec ~/.dotfiles/i3/bin/brightness +
+bindcode 232 exec ~/.dotfiles/i3/bin/brightness -

@@ -4,10 +4,10 @@
 # put in /etc/local.d/i3.start
 # chmod 666 /sys/class/backlight/intel_backlight/brightness
 filename=/sys/class/backlight/intel_backlight/brightness
-brg=-10
+brg=-100
 
 if [ "${1}" == "+" ]; then
-  brg=10
+  brg=100
 fi
 
 brg=$(($brg + $(cat ${filename})))

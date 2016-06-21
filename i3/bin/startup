@@ -1,0 +1,6 @@
+#!/bin/bash
+
+(
+/usr/local/bin/profilesync start google-chrome /home/$USER/.config/google-chrome
+) &>/dev/null </dev/null &
+
