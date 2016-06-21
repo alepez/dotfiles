@@ -117,6 +117,7 @@ bar {
 exec setxkbmap -option 'caps:ctrl_modifier'
 exec xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
 exec xset r rate 250 30
+exec --no-startup-id nm-applet
 exec_always --no-startup-id feh --bg-fill ~/Pictures/abstract-black-low-poly-wallpaper-for-1920x1080-63-303.jpg
 
 bindsym Control+Mod1+l exec "i3lock --ignore-empty-password -c 000000"
