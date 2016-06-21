@@ -1,0 +1,13 @@
+#!/bin/bash
+filename=/sys/class/backlight/intel_backlight/brightness
+brg=-10
+
+if [ "${1}" == "+" ]; then
+  brg=10
+fi
+
+brg=$(($brg + $(cat ${filename})))
+
+# FIXME handle max_brightness
+
+echo $brg > "${filename}"
