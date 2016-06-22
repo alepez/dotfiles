@@ -16,6 +16,7 @@ alias automocha="supervisor -q -n exit -x mocha -- -b --recursive"
 function D { mkdir -p $1 && cd $1 }
 alias W='cd ~/workspace'
 alias O='xdg-open'
+alias dot="cd ~/.dotfiles"
 
 # Useful for remote hosts with tmux, open a new terminal window with its own
 # tmux session. Understand which terminal emulator is currently in use.
