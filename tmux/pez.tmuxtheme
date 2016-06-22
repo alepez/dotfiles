@@ -22,7 +22,7 @@ set-window-option -g window-status-bg default
 set -g window-status-format "#I #W"
 
 # active window title colors
-set-window-option -g window-status-format '#[fg=colour16,bg=colour12] #I #[fg=colour16,bg=colour8] #W '
+set-window-option -g window-status-format '#[fg=colour15,bg=colour4] #I #[fg=colour16,bg=colour12] #W '
 set-window-option -g window-status-current-format '#[fg=colour15,bg=colour1] #I #[fg=colour16,bg=colour9] #W '
 
 # pane border
