@@ -79,12 +79,19 @@ nnoremap <leader>gg :GitCommitQuick<space>
 nnoremap <leader>gps :silent Dispatch! gps<CR>
 nnoremap <leader>gpl :silent Dispatch! gpl<CR>
 
+function! GitDiff()
+  tabnew
+  setlocal buftype=nofile bufhidden=wipe noswapfile nobuflisted nomodified ft=diff
+  read ! git --no-pager diff HEAD
+endfunction
+
+" Show git diff in a new tab
+nnoremap <leader>gd :call GitDiff()<CR>
+
 if has('nvim')
-  nnoremap <leader>gd :term gd<CR>
   nnoremap <leader>gl :term gl<CR>
   nnoremap <leader>gs :term gs<CR>
 else
-  nnoremap <leader>gd :!gd<CR><CR>
   nnoremap <leader>gl :!gl<CR><CR>
   nnoremap <leader>gs :!clear;gs<CR>
 endif
