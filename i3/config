@@ -100,10 +100,10 @@ bar {
 }
 
 exec --no-startup-id ~/.dotfiles/i3/bin/startup
-exec setxkbmap -option 'caps:ctrl_modifier'
-exec setxkbmap -option 'caps:ctrl_modifier'
-exec xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
-exec xset r rate 250 30
+exec --no-startup-id setxkbmap -option 'caps:ctrl_modifier'
+exec --no-startup-id setxkbmap -option 'caps:ctrl_modifier'
+exec --no-startup-id xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
+exec --no-startup-id xset r rate 250 30
 exec --no-startup-id nm-applet
 exec_always --no-startup-id feh --bg-fill ~/.wallpaper.png
 
