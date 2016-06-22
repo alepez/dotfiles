@@ -81,10 +81,6 @@ unsetopt extendedglob
 
 ## }}}
 
-## ssh agent {{{
-eval $( easy-ssh-agent start --env 2>/dev/null ) 2>/dev/null
-## }}}
-
 ## key bindings {{{
 bindkey "^[[5~" history-beginning-search-backward
 bindkey "^[[6~" history-beginning-search-forward
