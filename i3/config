@@ -102,9 +102,12 @@ exec setxkbmap -option 'caps:ctrl_modifier'
 exec xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
 exec xset r rate 250 30
 exec --no-startup-id nm-applet
-exec_always --no-startup-id feh --bg-fill ~/Pictures/abstract-black-low-poly-wallpaper-for-1920x1080-63-303.jpg
+exec_always --no-startup-id feh --bg-fill ~/.wallpaper.png
 
-bindsym Control+Mod1+l exec "i3lock --ignore-empty-password -c 000000"
+# lock screen with Ctrl+Alt+L
+# i3lock fork: github.com/alepez/i3lock.git
+bindsym Control+Mod1+l exec "i3lock --ignore-empty-password -c 000000 -i ~/.wallpaper.png"
+
 bindsym $mod+b exec "google-chrome-stable"
 bindsym $mod+Shift+b exec "i3-msg \"workspace 2; exec google-chrome-stable\""
 
