@@ -11,13 +11,16 @@ git clone https://github.com/alepez/dotfiles.git ~/.dotfiles
 Choose what you need:
 
 ```sh
-ln -ns ~/.dotfiles/zsh/zshrc        ~/.zshrc
-ln -ns ~/.dotfiles/tmux/tmux.conf   ~/.tmux.conf
-ln -ns ~/.dotfiles/zsh/zshenv       ~/.zshenv
-ln -ns ~/.dotfiles/git/gitignore    ~/.gitignore
-ln -ns ~/.dotfiles/git/gitconfig    ~/.gitconfig
-ln -ns ~/.dotfiles/ag/agignore      ~/.agignore
-ln -ns ~/.dotfiles/vim/init.vim     ~/.vim/init.vim
-ln -ns ~/.dotfiles/vim/after        ~/.vim/after
-ln -ns ~/.dotfiles/vim/UltiSnips    ~/.vim/UltiSnips
+ln -nfs ~/.dotfiles/zsh/zshrc ~/.zshrc
+ln -nfs ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
+ln -nfs ~/.dotfiles/zsh/zshenv ~/.zshenv
+ln -nfs ~/.dotfiles/git/gitignore ~/.gitignore
+ln -nfs ~/.dotfiles/git/gitconfig ~/.gitconfig
+ln -nfs ~/.dotfiles/ag/agignore ~/.agignore
+ln -nfs ~/.dotfiles/vim/init.vim ~/.vim/init.vim
+ln -nfs ~/.dotfiles/vim/after ~/.vim/after
+ln -nfs ~/.dotfiles/vim/UltiSnips ~/.vim/UltiSnips
+ln -nfs ~/.dotfiles/i3 ~/.config/i3
+ln -nfs ~/.dotfiles/i3/i3blocks.conf ~/.i3blocks.conf
+ln -nfs ~/.dotfiles/roxterm.sourceforge.net ~/.config/roxterm.sourceforge.net
 ```
