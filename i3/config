@@ -128,3 +128,9 @@ bindsym $mod+space exec rofi -show run -font "SauceCodePro Nerd Font 18" -fg "#5
 
 # hide borders near edges
 hide_edge_borders both
+
+# Colors and Look (from https://github.com/electro7/dotfiles/blob/master/.i3/config)
+gaps inner 12
+gaps outer 8
+new_window pixel 2
+new_float pixel 2
