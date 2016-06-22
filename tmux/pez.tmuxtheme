@@ -1,17 +1,9 @@
 ## @filename: ~/.tmux/tmux.theme.sh
 #### COLOUR
 
-tm_icon=""
-tm_color_active=colour213
-tm_color_inactive=colour241
-tm_color_feature=colour4
-tm_color_music=colour203
-
-# separators
-tm_separator_left_bold="◀"
-tm_separator_left_thin="❮"
-tm_separator_right_bold="▶"
-tm_separator_right_thin="❯"
+tm_color_active=colour9
+tm_color_inactive=colour12
+tm_color_feature=colour5
 
 set -g status-left-length 32
 set -g status-right-length 150
@@ -30,9 +22,8 @@ set-window-option -g window-status-bg default
 set -g window-status-format "#I #W"
 
 # active window title colors
-set-window-option -g window-status-current-fg $tm_color_active
-set-window-option -g window-status-current-bg default
-set-window-option -g  window-status-current-format "#[bold]#I #W"
+set-window-option -g window-status-format '#[fg=colour16,bg=colour12] #I #[fg=colour16,bg=colour8] #W '
+set-window-option -g window-status-current-format '#[fg=colour15,bg=colour1] #I #[fg=colour16,bg=colour9] #W '
 
 # pane border
 set-option -g pane-border-fg $tm_color_inactive
@@ -53,7 +44,7 @@ tm_battery="#(~/.dotfiles/bin/battery-status)"
 
 tm_date="#[fg=$tm_color_inactive] %R %d %b"
 tm_host="#[fg=$tm_color_feature,bold]#h"
-tm_session_name="#[fg=$tm_color_feature,bold]$tm_icon #S"
+tm_session_name="#[fg=$tm_color_feature,bold] #S"
 
 set -g status-left $tm_session_name' '
-set -g status-right $tm_battery' '$tm_spotify' '$tm_date' '$tm_host
+set -g status-right $tm_battery' '$tm_date' '$tm_host
