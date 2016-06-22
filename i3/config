@@ -5,6 +5,9 @@
 #  - feh
 #  - google-chrome-stable
 #  - nerd fonts
+#  - roxterm
+#  - i3-gaps
+#  - i3blocks
 
 # $mod is window key
 set $mod Mod4
@@ -22,7 +25,7 @@ bindsym $mod+Return exec $terminal
 bindsym $mod+c exec $terminal
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
 # change focus
 bindsym $mod+h focus left
@@ -72,7 +75,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+q exec "i3-msg exit"
+bindsym $mod+Shift+q exec "i3-msg exit"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
