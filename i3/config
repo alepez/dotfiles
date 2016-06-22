@@ -21,8 +21,8 @@ floating_modifier $mod
 
 # start a terminal
 set $terminal "roxterm"
-bindsym $mod+Return exec $terminal
-bindsym $mod+c exec $terminal
+bindsym $mod+Return exec --no-startup-id $terminal
+bindsym $mod+c exec --no-startup-id $terminal
 
 # kill focused window
 bindsym $mod+q kill
@@ -111,8 +111,8 @@ exec_always --no-startup-id feh --bg-fill ~/.wallpaper.png
 # i3lock fork: github.com/alepez/i3lock.git
 bindsym Control+Mod1+l exec "i3lock --ignore-empty-password -c 000000 -i ~/.wallpaper.png"
 
-bindsym $mod+b exec "google-chrome-stable"
-bindsym $mod+Shift+b exec "i3-msg \"workspace 2; exec google-chrome-stable\""
+bindsym $mod+b exec --no-startup-id "google-chrome-stable"
+bindsym $mod+Shift+b exec --no-startup-id "i3-msg \"workspace 2; exec google-chrome-stable\""
 
 client.focused #689d6a #689d6a #282828 #282828
 client.focused_inactive #1d2021 #1d2021 #928374 #282828
