@@ -108,6 +108,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
   status_command i3blocks
+  position top
 }
 
 exec --no-startup-id ~/.dotfiles/i3/bin/startup
