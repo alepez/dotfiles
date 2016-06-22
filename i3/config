@@ -140,4 +140,4 @@ bindcode 232 exec ~/.dotfiles/i3/bin/brightness -
 
 # run rofi (a program launcher, see https://davedavenport.github.io/rofi/)
 # rofi-list-directores is a custom script to list commands to open each directory in home
-bindsym $mod+space exec rofi -show run -font "ubuntu mono 18" -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -width 30 -lines 5 -padding 20 -separator-style none -hide-scrollbar -bw 4 -bc "#111111"
+bindsym $mod+space exec rofi -show run -font "SauceCodePro Nerd Font 18" -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -width 30 -lines 5 -padding 20 -separator-style none -hide-scrollbar -bw 4 -bc "#111111"
