@@ -95,7 +95,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+q exec "i3-msg exit"
+bindsym $mod+Shift+q exec --no-startup-id "i3-msg exit"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -146,12 +146,12 @@ client.focused_inactive #1d2021 #1d2021 #928374 #282828
 client.unfocused #32302f #32302f #928374 #282828
 client.urgent #cc241d #cc241d #ebdbb2 #282828
 
-bindcode 233 exec ~/.dotfiles/i3/bin/brightness +
-bindcode 232 exec ~/.dotfiles/i3/bin/brightness -
+bindcode 233 exec --no-startup-id ~/.dotfiles/i3/bin/brightness +
+bindcode 232 exec --no-startup-id ~/.dotfiles/i3/bin/brightness -
 
 # run rofi (a program launcher, see https://davedavenport.github.io/rofi/)
 # rofi-list-directores is a custom script to list commands to open each directory in home
-bindsym $mod+space exec rofi -show run -font "SauceCodePro Nerd Font 18" -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -width 30 -lines 5 -padding 20 -separator-style none -hide-scrollbar -bw 4 -bc "#111111"
+bindsym $mod+space exec --no-startup-id rofi -show run -font "SauceCodePro Nerd Font 18" -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -width 30 -lines 5 -padding 20 -separator-style none -hide-scrollbar -bw 4 -bc "#111111"
 
 # hide borders near edges
 hide_edge_borders both
