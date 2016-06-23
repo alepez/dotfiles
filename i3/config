@@ -120,11 +120,19 @@ bar {
 }
 
 exec --no-startup-id ~/.dotfiles/i3/bin/startup
-exec --no-startup-id setxkbmap -option 'caps:ctrl_modifier'
-exec --no-startup-id setxkbmap -option 'caps:ctrl_modifier'
+
+# Keyboard: US loayout with Italian letters
+# Caps Lock mapped to: Esc + Ctrl (long press)
+exec --no-startup-id setxkbmap -layout it -variant us -option 'caps:ctrl_modifier'
 exec --no-startup-id xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
+
+# Increase delay and rate of keyboard
 exec --no-startup-id xset r rate 250 30
+
+# Start NetworkManager applet
 exec --no-startup-id nm-applet
+
+# Set desktop background
 exec_always --no-startup-id feh --bg-fill ~/.wallpaper.png
 
 # lock screen with Ctrl+Alt+L
