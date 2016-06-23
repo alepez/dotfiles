@@ -109,8 +109,7 @@ exec_always --no-startup-id feh --bg-fill ~/.wallpaper.png
 
 # lock screen with Ctrl+Alt+L
 # i3lock fork: github.com/alepez/i3lock.git
-bindsym Control+Mod1+l exec --no-startup-id "i3lock --ignore-empty-password -c 000000"
-
+bindsym Control+Mod1+l exec --no-startup-id "i3lock -c '#282828' -o '#fb4934' -w '#83a598' --ignore-empty-password"
 bindsym $mod+b exec --no-startup-id "google-chrome-stable"
 bindsym $mod+Shift+b exec --no-startup-id "i3-msg \"workspace 2; exec google-chrome-stable\""
 
