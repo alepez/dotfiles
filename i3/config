@@ -157,4 +157,41 @@ new_float pixel 2
 # enable compton
 exec --no-startup-id compton --config ~/.dotfiles/i3/compton.conf -b
 
-# Other shortcuts
+# Mouse shortcuts
+#
+# Logitech Performance Mouse MX:
+# 
+# button1)  TBD
+# button2)  TBD
+# button3)  TBD
+# button4)  scroll front
+# button5)  scroll rear
+# button6)  TBD
+# button7)  TBD
+# button8)  thumb arrow front
+# button9)  thumb arrow rear
+# button10) thumb big button
+# button11) TBD
+# button12) TBD
+# button13) thumb mini button (zoom)
+
+# FIXME mouse binding not working?
+# bindsym button9 workspace prev
+# bindsym button8 workspace next
+# FIXME I don't know how to open parcelite from commandline. klipper has a dbus command, but parcellite?
+# bindsym button13 exec "parcellite"
+# bindsym $mod+button5 exec "pactl set-sink-volume 1 +5%"
+# bindsym $mod+button4 exec "pactl set-sink-volume 1 -5%"
+# bindsym $mod+button13 yakuake
+# TODO...
+# $mod+pagup next workspace
+# $mod+pagdown prev workspace
+# $mod+m copy email to clipboard
+# "echo alessandro.pezzato@gmail.com | xclip -i -selection clipboard"
+# $mod+comma prev song
+# "qdbus org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+# $mod+period next song
+# "qdbus org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+# $mod+slash open spotify and play
+#"/home/pez/bin/spotify-play"
+# $mod+e open filemanager to home
