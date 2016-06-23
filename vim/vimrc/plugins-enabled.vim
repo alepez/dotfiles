@@ -5,7 +5,7 @@ Plugin 'ervandew/supertab' " Supertab allows you to use <Tab> for all your inser
 Plugin 'benmills/vimux' " Run commands inside tmux window
 Plugin 'tpope/vim-fugitive' " git gui
 Plugin 'Chiel92/vim-autoformat' " Provide easy code formatting in Vim by integrating existing code formatters.
-Plugin 'scrooloose/syntastic.git' " check syntax
+" Plugin 'scrooloose/syntastic.git' " check syntax
 Plugin 'ctrlpvim/ctrlp.vim' " Fuzzy file, buffer, mru, tag, etc finder.
 Plugin 'fisadev/vim-ctrlp-cmdpalette' " fuzzy command search
 Plugin 'scrooloose/nerdtree' " tree explorer
