@@ -25,4 +25,5 @@ ln -nfs ~/.dotfiles/i3/i3blocks.conf ~/.i3blocks.conf
 ln -nfs ~/.dotfiles/roxterm.sourceforge.net ~/.config/roxterm.sourceforge.net
 ln -nfs ~/.dotfiles/i3/gtkrc-2.0 ~/.gtkrc-2.0
 ln -nfs ~/.dotfiles/i3/compton.conf ~/.config/compton.conf
+ln -nfs ~/.dotfiles/i3/dunstrc ~/.config/dunst/dunstrc
 ```

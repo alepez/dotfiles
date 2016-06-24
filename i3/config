@@ -10,6 +10,7 @@
 #  - i3blocks
 #  - i3lock https://github.com/alepez/i3lock.git
 #  - xcape https://github.com/alols/xcape
+#  - dunst
 
 ###############################################################################
 # i3 keyboard bindings
