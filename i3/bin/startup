@@ -1,6 +1,6 @@
 #!/bin/bash
 
-~/.dotfiles/i3/bin/browser-profile-sync &>/dev/null </dev/null &
+~/.dotfiles/i3/bin/browser-profile-sync start &>/dev/null </dev/null &
 
 # NetworkManager applet
 nm-applet &>/dev/null </dev/null &

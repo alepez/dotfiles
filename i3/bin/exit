@@ -1,0 +1,21 @@
+#!/bin/bash
+
+logout() {
+  i3-msg exit
+}
+
+reboot() {
+  ~/.dotfiles/i3/bin/shutdown
+  sudo /sbin/reboot
+}
+
+poweroff() {
+  ~/.dotfiles/i3/bin/shutdown
+  sudo /sbin/poweroff
+}
+
+case $1
+  logout) logout;;
+  reboot) reboot;;
+  poweroff) poweroff;;
+esac

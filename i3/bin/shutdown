@@ -1,0 +1,3 @@
+#!/bin/bash
+
+~/.dotfiles/i3/bin/browser-profile-sync stop &>/dev/null </dev/null &
