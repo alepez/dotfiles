@@ -58,8 +58,7 @@ bindsym $mod+f fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+t layout tabbed
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -160,18 +159,25 @@ bindcode 232 exec --no-startup-id ~/.dotfiles/i3/bin/brightness -
 
 # Audio volume up/down (PulseAudio)
 set $sink_index 1
-bindcode 123 exec --no-startup-id pactl set-sink-volume $sink_index +5%
-bindcode 122 exec --no-startup-id pactl set-sink-volume $sink_index -5%
-# FIXME mouse binding not working for mouse wheel?
-# https://github.com/i3/i3/issues/1701 and https://github.com/i3/i3/pull/1722
-bindcode --whole-window $mod+button4 exec --no-startup-id pactl set-sink-volume $sink_index +5%
-bindcode --whole-window $mod+button5 exec --no-startup-id pactl set-sink-volume $sink_index -5%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $sink_index +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $sink_index -5%
+bindsym XF86AudioLowerMute exec --no-startup-id pactl set-sink-volume $sink_index 0%
+bindsym --whole-window $mod+button4 exec --no-startup-id pactl set-sink-volume $sink_index +5%
+bindsym --whole-window $mod+button5 exec --no-startup-id pactl set-sink-volume $sink_index -5%
 
 # Spotify
 bindcode 173 exec --no-startup-id ~/.dotfiles/i3/bin/spotify-control prev
 bindcode 171 exec --no-startup-id ~/.dotfiles/i3/bin/spotify-control next
 bindcode 172 exec --no-startup-id ~/.dotfiles/i3/bin/spotify-control play
 bindcode 174 exec --no-startup-id ~/.dotfiles/i3/bin/spotify-control stop
+
+# Mouse button13 (zoom) opens clipboard
+# FIXME I don't know how to open parcelite from commandline. klipper has a dbus command, but parcellite?
+# bindsym button13 exec "parcellite"
+
+# Open filemanager
+set $filemanager "sunflower"
+bindsym $mod+e exec "$filemanager"
 
 ###############################################################################
 # Keyboard layout
@@ -261,7 +267,7 @@ exec --no-startup-id compton --config ~/.dotfiles/i3/compton.conf -b
 # Mouse shortcuts
 #
 # Logitech Performance Mouse MX:
-# 
+#
 # button1)  left
 # button2)  center
 # button3)  right
@@ -275,16 +281,3 @@ exec --no-startup-id compton --config ~/.dotfiles/i3/compton.conf -b
 # button11) n/a
 # button12) n/a
 # button13) thumb mini button (zoom)
-
-# FIXME mouse binding not working?
-# bindsym button9 workspace prev
-# bindsym button8 workspace next
-# FIXME I don't know how to open parcelite from commandline. klipper has a dbus command, but parcellite?
-# bindsym button13 exec "parcellite"
-# bindsym $mod+button13 yakuake
-# TODO...
-# $mod+pagup next workspace
-# $mod+pagdown prev workspace
-# $mod+m copy email to clipboard
-# "echo alessandro.pezzato@gmail.com | xclip -i -selection clipboard"
-# $mod+e open filemanager to home
