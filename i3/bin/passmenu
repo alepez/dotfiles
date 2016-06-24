@@ -13,4 +13,6 @@ password=$(printf '%s\n' "${password_files[@]}" | "${dmenu}" -dmenu -p "Password
 
 [[ -n $password ]] || exit
 
-pass show -c "$password" 2>/dev/null
+message=$( pass show -c "$password" 2>/dev/null )
+
+notify-send -u low "$message"
