@@ -1,10 +1,16 @@
 #!/bin/bash
 
+# tmp directory needed bt browser profile sync and cache
 mkdir -p /tmp/pez-tmp
+
+# Browser profile sync
 ~/.dotfiles/i3/bin/browser-profile-sync start &>/dev/null </dev/null &
 
 # NetworkManager applet
 nm-applet &>/dev/null </dev/null &
+
+# Clipboard manager
+parcellite &>/dev/null </dev/null &
 
 # Mount cache directories
 mkdir -p /tmp/pez-tmp/cache && ln -nfs /tmp/pez-tmp/cache /home/pez/.cache
