@@ -1,9 +1,6 @@
 #!/bin/bash
 
-# FIXME bring profilesync inside dotfiles project
-(
-/usr/local/bin/profilesync start google-chrome /home/$USER/.config/google-chrome
-) &>/dev/null </dev/null &
+~/.dotfiles/i3/bin/browser-profile-sync &>/dev/null </dev/null &
 
 # NetworkManager applet
 nm-applet &>/dev/null </dev/null &
