@@ -11,10 +11,6 @@
 #  - i3lock https://github.com/alepez/i3lock.git
 #  - xcape https://github.com/alols/xcape
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-font pango:SauceCodePro Nerd Font 10
-
 ###############################################################################
 # i3 keyboard bindings
 ###############################################################################
@@ -196,18 +192,59 @@ exec --no-startup-id xset r rate 250 30
 exec --no-startup-id ~/.dotfiles/i3/bin/startup
 
 ###############################################################################
-# Customization
+# Style
 ###############################################################################
+
+# grubox color theme
+set $dark0_hard       #1d2021
+set $dark0            #282828
+set $dark0_soft       #32302f
+set $dark1            #3c3836
+set $dark2            #504945
+set $dark3            #665c54
+set $dark4            #7c6f64
+set $gray_245         #928374
+set $gray_244         #928374
+set $light0_hard      #f9f5d7
+set $light0           #fbf1c7
+set $light0_soft      #f2e5bc
+set $light1           #ebdbb2
+set $light2           #d5c4a1
+set $light3           #bdae93
+set $light4           #a89984
+set $bright_red       #fb4934
+set $bright_green     #b8bb26
+set $bright_yellow    #fabd2f
+set $bright_blue      #83a598
+set $bright_purple    #d3869b
+set $bright_aqua      #8ec07c
+set $bright_orange    #fe8019
+set $neutral_red      #cc241d
+set $neutral_green    #98971a
+set $neutral_yellow   #d79921
+set $neutral_blue     #458588
+set $neutral_purple   #b16286
+set $neutral_aqua     #689d6a
+set $neutral_orange   #d65d0e
+set $faded_red        #9d0006
+set $faded_green      #79740e
+set $faded_yellow     #b57614
+set $faded_blue       #076678
+set $faded_purple     #8f3f71
+set $faded_aqua       #427b58
+set $faded_orange     #af3a03
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:SauceCodePro Nerd Font 10
 
 # Set desktop background
 exec_always --no-startup-id feh --bg-fill ~/.wallpaper.png
 
-# FIXME variables for gruvbox theme
-
-client.focused #689d6a #689d6a #282828 #282828
-client.focused_inactive #1d2021 #1d2021 #928374 #282828
-client.unfocused #32302f #32302f #928374 #282828
-client.urgent #cc241d #cc241d #ebdbb2 #282828
+client.focused            $neutral_aqua    $neutral_aqua    $dark0       $dark0
+client.focused_inactive   $dark0_hard      $dark0_hard      $gray_245    $dark0
+client.unfocused          $dark0_soft      $dark0_soft      $gray_245    $dark0
+client.urgent             $neutral_red     $neutral_red     $light1      $dark0
 
 # run rofi (a program launcher, see https://davedavenport.github.io/rofi/)
 bindsym $mod+space exec --no-startup-id rofi -show run -font "SauceCodePro Nerd Font 18" -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -width 30 -lines 5 -padding 20 -separator-style none -hide-scrollbar -bw 4 -bc "#111111"
