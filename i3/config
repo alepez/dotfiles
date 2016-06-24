@@ -206,6 +206,12 @@ bindsym XF86AudioNext exec --no-startup-id ~/.dotfiles/i3/bin/spotify-control ne
 bindsym XF86AudioPlay exec --no-startup-id ~/.dotfiles/i3/bin/spotify-control play
 bindsym XF86AudioStop exec --no-startup-id ~/.dotfiles/i3/bin/spotify-control stop
 
+# run rofi (a program launcher, see https://davedavenport.github.io/rofi/)
+bindsym $mod+space exec --no-startup-id ~/.dotfiles/i3/bin/rofi -show run
+
+# fuzzy search password
+bindsym $mod+Shift+p exec --no-startup-id ~/.dotfiles/i3/bin/passmenu
+
 # Mouse button13 (zoom) opens clipboard
 # FIXME I don't know how to open parcelite from commandline. klipper has a dbus command, but parcellite?
 # bindsym button13 exec "parcellite"
@@ -286,12 +292,6 @@ client.focused            $neutral_aqua    $neutral_aqua    $dark0       $dark0
 client.focused_inactive   $dark0_hard      $dark0_hard      $gray_245    $dark0
 client.unfocused          $dark0_soft      $dark0_soft      $gray_245    $dark0
 client.urgent             $neutral_red     $neutral_red     $light1      $dark0
-
-# run rofi (a program launcher, see https://davedavenport.github.io/rofi/)
-bindsym $mod+space exec --no-startup-id ~/.dotfiles/i3/bin/rofi -show run
-
-# fuzzy search password
-bindsym $mod+Shift+p exec --no-startup-id ~/.dotfiles/i3/bin/passmenu
 
 # gaps
 gaps inner 12
