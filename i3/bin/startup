@@ -1,6 +1,11 @@
 #!/bin/bash
 
+mkdir -p /tmp/pez-tmp
 ~/.dotfiles/i3/bin/browser-profile-sync start &>/dev/null </dev/null &
 
 # NetworkManager applet
 nm-applet &>/dev/null </dev/null &
+
+# Mount cache directories
+mkdir -p /tmp/pez-tmp/cache && ln -nfs /tmp/pez-tmp/cache /home/pez/.cache
+mkdir -p /tmp/pez-tmp/thumbnail && ln -nfs /tmp/pez-tmp/thumbnail /home/pez/.thumbnail

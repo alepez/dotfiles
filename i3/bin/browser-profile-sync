@@ -6,7 +6,7 @@
 ###############################################################################
 
 PRM_DIR=/home/$USER/.config/google-chrome
-TMP_DIR=/tmp/${USER}-$( basename "${PRM_DIR}" )
+TMP_DIR=/tmp/${USER}-tmp/$( basename "${PRM_DIR}" )
 BCK_DIR=${PRM_DIR}.backup
 
 notify() {
