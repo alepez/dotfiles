@@ -6,15 +6,11 @@
 # FIXME qdbus is for kde, use something else
 
 spotify_playpause() {
-  echo spotify_playpause
   qdbus org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause &>/dev/null
 }
 
 spotify_start() {
-  hidden /usr/bin/spotify &>/dev/null </dev/null &
-  while ! spotify_playpause; do
-    sleep 1;
-  done
+  /usr/bin/spotify &>/dev/null </dev/null &
 }
 
 spotify_play() {
