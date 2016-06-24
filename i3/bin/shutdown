@@ -1,3 +1,7 @@
 #!/bin/bash
 
+# Syncronize browser profile
 ~/.dotfiles/i3/bin/browser-profile-sync stop &>/dev/null </dev/null &
+
+# Unmount network (lazy)
+mount | grep cifs | awk '{ print $3 }' | while read dir; do sudo umount -l $dir; done

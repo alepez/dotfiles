@@ -70,8 +70,10 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-set $sysmenu "system:  [l]ogout [r]eboot [p]oweroff"
-bindsym $mod+Delete      mode $sysmenu
+# Ctrl+Alt+Del shows a menu with exit options
+set $sysmenu "[l]ogout [p]oweroff [r]eboot"
+bindsym $mod+Delete mode $sysmenu
+bindsym Control+Mod1+Delete mode $sysmenu
 
 mode $sysmenu {
     bindsym l         exec "~/.dotfiles/i3/bin/exit logout"

@@ -14,7 +14,7 @@ poweroff() {
   sudo /sbin/poweroff
 }
 
-case $1
+case $1 in
   logout) logout;;
   reboot) reboot;;
   poweroff) poweroff;;
