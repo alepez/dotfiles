@@ -137,7 +137,7 @@ for_window [class="Spotify"] move to workspace $workspace_9
 # finds out, if available)
 bar {
   font pango:SauceCodePro Nerd Font 10
-  status_command i3blocks
+  status_command i3blocks -c ~/.dotfiles/i3/i3blocks.conf
   position top
 }
 
