@@ -4,25 +4,26 @@
 #
 #  - feh
 #  - google-chrome-stable
-#  - nerd fonts
+#  - nerd fonts https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/SourceCodePro
 #  - roxterm
-#  - i3-gaps
+#  - i3-gaps https://github.com/Airblader/i3
 #  - i3blocks
-
-# $mod is window key
-set $mod Mod4
+#  - i3lock https://github.com/alepez/i3lock.git
+#  - xcape https://github.com/alols/xcape
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:SauceCodePro Nerd Font 10
 
+###############################################################################
+# i3 keyboard bindings
+###############################################################################
+
+# $mod is window key
+set $mod Mod4
+
 # Use Mouse+Alt mod to drag floating windows to their wanted position
 floating_modifier Mod1
-
-# start a terminal
-set $terminal "roxterm"
-bindsym $mod+Return exec --no-startup-id $terminal
-bindsym $mod+c exec --no-startup-id $terminal
 
 # kill focused window
 bindsym $mod+q kill
@@ -45,6 +46,11 @@ bindsym $mod+Shift+Down move workspace to output down
 bindsym $mod+Shift+Up move workspace to output up
 bindsym $mod+Shift+Right move workspace to output right
 
+# FIXME mouse binding not working?
+# See end of file for mouse buttons help
+bindsym button9 workspace prev
+bindsym button8 workspace next
+
 # vertical split with minus
 bindsym $mod+minus split v
 
@@ -61,6 +67,34 @@ bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+q exec --no-startup-id "i3-msg exit"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+  # These bindings trigger as soon as you enter the resize mode
+  bindsym h resize shrink width 10 px or 10 ppt
+  bindsym j resize grow width 10 px or 10 ppt
+  bindsym k resize shrink height 10 px or 10 ppt
+  bindsym l resize grow height 10 px or 10 ppt
+
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+###############################################################################
+# Workspaces
+###############################################################################
 
 set $workspace_1 "1 Main"
 set $workspace_2 "2 Browser"
@@ -94,29 +128,9 @@ bindsym $mod+Shift+7 move container to workspace $workspace_7
 bindsym $mod+Shift+8 move container to workspace $workspace_8
 bindsym $mod+Shift+9 move container to workspace $workspace_9
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
-
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+q exec --no-startup-id "i3-msg exit"
-
-# resize window (you can also use the mouse for that)
-mode "resize" {
-  # These bindings trigger as soon as you enter the resize mode
-  bindsym h resize shrink width 10 px or 10 ppt
-  bindsym j resize grow width 10 px or 10 ppt
-  bindsym k resize shrink height 10 px or 10 ppt
-  bindsym l resize grow height 10 px or 10 ppt
-
-  # back to normal: Enter or Escape
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-}
-
-bindsym $mod+r mode "resize"
+###############################################################################
+# Bar
+###############################################################################
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -125,7 +139,47 @@ bar {
   position top
 }
 
-exec --no-startup-id ~/.dotfiles/i3/bin/startup
+###############################################################################
+# App shortcuts
+###############################################################################
+
+# Terminals
+set $terminal "roxterm"
+bindsym $mod+Return exec --no-startup-id $terminal
+bindsym $mod+c exec --no-startup-id $terminal
+
+# lock screen with Ctrl+Alt+L
+bindsym Control+Mod1+l exec --no-startup-id "i3lock -c '#282828' -o '#fb4934' -w '#83a598' --ignore-empty-password"
+
+# Browser
+set $browser "google-chrome-stable"
+# Start anywhere
+bindsym $mod+b exec --no-startup-id $browser
+# Go to browser workspace and start a browser
+bindsym $mod+Shift+b exec --no-startup-id "i3-msg \"workspace $workspace_2; exec $browser\""
+
+# Laptop screen brightness
+bindcode 233 exec --no-startup-id ~/.dotfiles/i3/bin/brightness +
+bindcode 232 exec --no-startup-id ~/.dotfiles/i3/bin/brightness -
+
+# Audio volume up/down (PulseAudio)
+set $sink_index 1
+bindcode 123 exec --no-startup-id pactl set-sink-volume $sink_index +5%
+bindcode 122 exec --no-startup-id pactl set-sink-volume $sink_index -5%
+# FIXME mouse binding not working for mouse wheel?
+# https://github.com/i3/i3/issues/1701 and https://github.com/i3/i3/pull/1722
+bindcode --whole-window $mod+button4 exec --no-startup-id pactl set-sink-volume $sink_index +5%
+bindcode --whole-window $mod+button5 exec --no-startup-id pactl set-sink-volume $sink_index -5%
+
+# Spotify
+bindcode 173 exec --no-startup-id ~/.dotfiles/i3/bin/spotify-control prev
+bindcode 171 exec --no-startup-id ~/.dotfiles/i3/bin/spotify-control next
+bindcode 172 exec --no-startup-id ~/.dotfiles/i3/bin/spotify-control play
+bindcode 174 exec --no-startup-id ~/.dotfiles/i3/bin/spotify-control stop
+
+###############################################################################
+# Keyboard layout
+###############################################################################
 
 # Keyboard: US loayout with Italian letters
 # Caps Lock mapped to: Esc + Ctrl (long press)
@@ -135,34 +189,30 @@ exec --no-startup-id xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escap
 # Increase delay and rate of keyboard
 exec --no-startup-id xset r rate 250 30
 
-# Start NetworkManager applet
-exec --no-startup-id nm-applet
+###############################################################################
+# Startup
+###############################################################################
+
+exec --no-startup-id ~/.dotfiles/i3/bin/startup
+
+###############################################################################
+# Customization
+###############################################################################
 
 # Set desktop background
 exec_always --no-startup-id feh --bg-fill ~/.wallpaper.png
 
-# lock screen with Ctrl+Alt+L
-# i3lock fork: github.com/alepez/i3lock.git
-bindsym Control+Mod1+l exec --no-startup-id "i3lock -c '#282828' -o '#fb4934' -w '#83a598' --ignore-empty-password"
-bindsym $mod+b exec --no-startup-id "google-chrome-stable"
-bindsym $mod+Shift+b exec --no-startup-id "i3-msg \"workspace $workspace_2; exec google-chrome-stable\""
+# FIXME variables for gruvbox theme
 
 client.focused #689d6a #689d6a #282828 #282828
 client.focused_inactive #1d2021 #1d2021 #928374 #282828
 client.unfocused #32302f #32302f #928374 #282828
 client.urgent #cc241d #cc241d #ebdbb2 #282828
 
-bindcode 233 exec --no-startup-id ~/.dotfiles/i3/bin/brightness +
-bindcode 232 exec --no-startup-id ~/.dotfiles/i3/bin/brightness -
-
 # run rofi (a program launcher, see https://davedavenport.github.io/rofi/)
-# rofi-list-directores is a custom script to list commands to open each directory in home
 bindsym $mod+space exec --no-startup-id rofi -show run -font "SauceCodePro Nerd Font 18" -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -width 30 -lines 5 -padding 20 -separator-style none -hide-scrollbar -bw 4 -bc "#111111"
 
-# hide borders near edges
-hide_edge_borders both
-
-# Colors and Look (from https://github.com/electro7/dotfiles/blob/master/.i3/config)
+# gaps
 gaps inner 12
 gaps outer 8
 new_window pixel 2
@@ -175,18 +225,18 @@ exec --no-startup-id compton --config ~/.dotfiles/i3/compton.conf -b
 #
 # Logitech Performance Mouse MX:
 # 
-# button1)  TBD
-# button2)  TBD
-# button3)  TBD
+# button1)  left
+# button2)  center
+# button3)  right
 # button4)  scroll front
 # button5)  scroll rear
-# button6)  TBD
-# button7)  TBD
+# button6)  n/a
+# button7)  n/a
 # button8)  thumb arrow front
 # button9)  thumb arrow rear
 # button10) thumb big button
-# button11) TBD
-# button12) TBD
+# button11) n/a
+# button12) n/a
 # button13) thumb mini button (zoom)
 
 # FIXME mouse binding not working?
@@ -194,18 +244,10 @@ exec --no-startup-id compton --config ~/.dotfiles/i3/compton.conf -b
 # bindsym button8 workspace next
 # FIXME I don't know how to open parcelite from commandline. klipper has a dbus command, but parcellite?
 # bindsym button13 exec "parcellite"
-# bindsym $mod+button5 exec "pactl set-sink-volume 1 +5%"
-# bindsym $mod+button4 exec "pactl set-sink-volume 1 -5%"
 # bindsym $mod+button13 yakuake
 # TODO...
 # $mod+pagup next workspace
 # $mod+pagdown prev workspace
 # $mod+m copy email to clipboard
 # "echo alessandro.pezzato@gmail.com | xclip -i -selection clipboard"
-# $mod+comma prev song
-# "qdbus org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
-# $mod+period next song
-# "qdbus org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
-# $mod+slash open spotify and play
-#"/home/pez/bin/spotify-play"
 # $mod+e open filemanager to home
