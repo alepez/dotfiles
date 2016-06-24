@@ -1,0 +1,50 @@
+#!/bin/bash
+
+###############################################################################
+# Put browser profile directory to tmp,
+# so browser become faster and we do not destroy the ssd.
+###############################################################################
+
+PRM_DIR=/home/$USER/.config/google-chrome
+TMP_DIR=/tmp/${USER}-$( basename "${PRM_DIR}" )
+BCK_DIR=${PRM_DIR}.backup
+
+notify() {
+  notify-send "${1}" -u ${2}
+}
+
+resume() {
+  rm ${PRM_DIR}
+  mv ${BCK_DIR} ${PRM_DIR}
+}
+
+start() {
+  # If tmp directory already exist, profile sync has already been started.
+  if [ -e ${TMP_DIR} ]; then notify "Browser profile sync already started"; exit 1; fi
+  # If permanent directory is a symbolic link, then profile sync wasn't cleanly stopped.
+  if [ -L ${PRM_DIR} ]; then notify "Browser profile sync not cleanly stopped. Resuming..."; resume; fi
+  # Copy to tmp directory
+  cp -a ${PRM_DIR} ${TMP_DIR}
+  # Permanent directory is the backup directory.
+  mv ${PRM_DIR} ${BCK_DIR}
+  # Let google find the tmp directory
+  ln -s ${TMP_DIR} ${PRM_DIR}
+  notify "Browser sync started" low
+}
+
+stop() {
+  # If tmp directory does not exist, then profile sync has not started.
+  if [ ! -e ${TMP_DIR} ]; then notify "Browser profile sync not started"; exit 1; fi
+  # Remove the link.
+  rm ${PRM_DIR}
+  # Move tmp dir to permanent dir.
+  mv ${TMP_DIR} ${PRM_DIR}
+  # Backup is not needed, just delete it.
+  rm -r ${BCK_DIR}
+  notify "Browser sync stopped" low
+}
+
+case $1 in
+	start) start;;
+	stop) stop;;
+esac
