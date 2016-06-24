@@ -161,10 +161,12 @@ bindsym Control+Mod1+l exec --no-startup-id "i3lock -c '#282828' -o '#fb4934' -w
 
 # Browser
 set $browser "google-chrome-stable"
+set $private_browser "google-chrome-stable --incognito"
 # Start anywhere
 bindsym $mod+b exec --no-startup-id $browser
+bindsym $mod+Shift+b exec --no-startup-id $private_browser
 # Go to browser workspace and start a browser
-bindsym $mod+Shift+b exec --no-startup-id "i3-msg \"workspace $workspace_2; exec $browser\""
+bindsym $mod+Mod1+b exec --no-startup-id "i3-msg \"workspace $workspace_2; exec $browser\""
 
 # Laptop screen brightness
 bindcode 233 exec --no-startup-id ~/.dotfiles/i3/bin/brightness +
