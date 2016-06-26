@@ -70,30 +70,47 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
+###############################################################################
+# Exit mode
 # Ctrl+Alt+Del shows a menu with exit options
-set $sysmenu "[l]ogout [p]oweroff [r]eboot"
-bindsym Control+Mod1+Delete mode $sysmenu
+###############################################################################
+set $exit_mode "[l]ogout [p]oweroff [r]eboot"
+bindsym Control+Mod1+Delete mode $exit_mode
 
-mode $sysmenu {
-    bindsym l         exec "~/.dotfiles/i3/bin/exit logout"
-    bindsym p         exec "~/.dotfiles/i3/bin/exit poweroff"
-    bindsym r         exec "~/.dotfiles/i3/bin/exit reboot"
-    bindsym Return    mode "default"
-    bindsym Escape    mode "default"
+mode $exit_mode {
+  bindsym l         exec "~/.dotfiles/i3/bin/exit logout"
+  bindsym p         exec "~/.dotfiles/i3/bin/exit poweroff"
+  bindsym r         exec "~/.dotfiles/i3/bin/exit reboot"
+
+  # back to normal: Enter or Escape
+  bindsym Return    mode "default"
+  bindsym Escape    mode "default"
 }
+
+###############################################################################
+# Monitors layout mode
+# Wind+Shift+S shows a menu with layout options
+###############################################################################
 
 set $monitors_mode "select monitors layout [h]ome [m]irror"
 bindsym $mod+Shift+s mode $monitors_mode
 
 mode $monitors_mode  {
-  bindsym h exec "xrandr --output eDP1 --auto --right-of HDMI1"
-  bindsym m exec "xrandr --output eDP1 --auto --output HDMI1 --auto --same-as eDP1"
-  bindsym Return    mode "default"
-  bindsym Escape    mode "default"
+  bindsym h exec --no-startup-id "xrandr --output eDP1 --auto --right-of HDMI1"
+  bindsym m exec --no-startup-id "xrandr --output eDP1 --auto --output HDMI1 --auto --same-as eDP1"
+
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
 }
 
-# resize window (you can also use the mouse for that)
-mode "resize" {
+###############################################################################
+# Resize mode
+###############################################################################
+
+set $resize_mode "resize"
+bindsym $mod+r mode $resize_mode
+mode $resize_mode {
   # These bindings trigger as soon as you enter the resize mode
   bindsym h resize shrink width 10 px or 10 ppt
   bindsym j resize grow width 10 px or 10 ppt
@@ -104,8 +121,6 @@ mode "resize" {
   bindsym Return mode "default"
   bindsym Escape mode "default"
 }
-
-bindsym $mod+r mode "resize"
 
 ###############################################################################
 # Workspaces
