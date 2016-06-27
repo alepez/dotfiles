@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# tmp directory needed bt browser profile sync and cache
+# tmp directory needed by browser profile sync and cache
 mkdir -p /tmp/pez-tmp
 
 # Browser profile sync

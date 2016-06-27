@@ -1,6 +1,7 @@
 #!/bin/bash
 
 logout() {
+  ~/.dotfiles/i3/bin/shutdown
   i3-msg exit
 }
 

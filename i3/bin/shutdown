@@ -6,3 +6,8 @@ sleep 1
 
 # Unmount network (lazy)
 mount | grep cifs | awk '{ print $3 }' | while read dir; do sudo umount -l $dir; done
+
+# Kill gpg-agent
+kill $( echo $GPG_AGENT_INFO | cut -d: -f 2 )
+
+exit 0
