@@ -1,2 +1,2 @@
 #!/bin/bash
-eval "$(/usr/bin/gpg-agent --daemon)"
+eval "$( /usr/bin/gpg-agent --daemon --enable-ssh-support )"
