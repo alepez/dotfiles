@@ -1,0 +1,2 @@
+#!/bin/bash
+eval "$(/usr/bin/gpg-agent --daemon)"
