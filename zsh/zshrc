@@ -148,7 +148,6 @@ function screencast {
 		-nostats -loglevel quiet \
 		~/screencast-$( date +%Y%m%d-%H%M%S ).mp4
 }
-## }}}
 
 ## video to gif
 function video2gif {
@@ -193,6 +192,15 @@ function wr { xdg-open http://wordreference.com/$1/$2 &>/dev/null }
 ## Set ag, the silver searcher, as the default command, so it can skip files in
 ## ~/.agignore
 export FZF_DEFAULT_COMMAND='ag -g ""'
+
+## gpg agent {{{
+# Set SSH to use gpg-agent
+# Agent must be started. See ~/.xsession
+unset SSH_AGENT_PID
+if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+  export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+fi
+## }}}
 
 ###############################################################################
 ## Source local configurations
