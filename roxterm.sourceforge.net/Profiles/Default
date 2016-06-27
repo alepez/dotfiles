@@ -7,4 +7,4 @@ audible_bell=0
 visible_bell=1
 cursor_blink_mode=1
 scrollbar_pos=0
-sel_by_word=-A-Za-z0-9,./?%&#_@
+sel_by_word=-A-Za-z0-9,./?%&#_@~
