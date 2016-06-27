@@ -96,8 +96,8 @@ set $monitors_mode "select monitors layout [h]ome [m]irror"
 bindsym $mod+Shift+s mode $monitors_mode
 
 mode $monitors_mode  {
-  bindsym h exec --no-startup-id "xrandr --output eDP1 --auto --right-of HDMI1"
-  bindsym m exec --no-startup-id "xrandr --output eDP1 --auto --output HDMI1 --auto --same-as eDP1"
+  bindsym h exec --no-startup-id "xrandr --output eDP1 --auto --right-of HDMI1; i3-msg mode default"
+  bindsym m exec --no-startup-id "xrandr --output eDP1 --auto --output HDMI1 --auto --same-as eDP1; i3-msg mode default"
 
   # back to normal: Enter or Escape
   bindsym Return mode "default"
