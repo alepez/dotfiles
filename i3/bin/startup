@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # tmp directory needed by browser profile sync and cache
-mkdir -p /tmp/pez-tmp
+mkdir -p /tmp/${USER}-tmp
 
 # Browser profile sync
 ~/.dotfiles/i3/bin/browser-profile-sync start &>/dev/null </dev/null &
