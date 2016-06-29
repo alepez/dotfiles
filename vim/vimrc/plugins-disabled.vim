@@ -4,4 +4,4 @@
 "Plugin 'jszakmeister/vim-togglecursor' " Show different cursor for different modes (konsole support)
 "Plugin 'tpope/vim-abolish' " easily search for, substitute, and abbreviate multiple variants of a word
 "Plugin 'terryma/vim-multiple-cursors' " True Sublime Text style multiple selections for Vim
-
+"Plugin 'scrooloose/syntastic.git' " check syntax
