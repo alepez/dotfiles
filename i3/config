@@ -334,3 +334,9 @@ exec --no-startup-id compton --config ~/.dotfiles/i3/compton.conf -b
 # button11) n/a
 # button12) n/a
 # button13) thumb mini button (zoom)
+
+# FIXME this should go in a config.local file
+
+for_window [class="ESA Universal"] floating enable
+for_window [class="QtQmlViewer"] floating enable
+
