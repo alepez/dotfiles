@@ -56,20 +56,19 @@ nnoremap <leader>o :CtrlPBuffer<CR>
 
 " turn off search highlight and close quickfix
 fu! SmartRefresh()
-  " turn off search highlights
-  execute 'nohlsearch'
   " Close quickfix window
-  execute 'ccl'
+  ccl
   " Close location window
-  execute 'lcl'
+  lcl
   " Refresh signify
-  execute 'SignifyRefresh'
+  SignifyRefresh
   " Check for file changes
-  execute 'checktime'
+  checktime
   " Redraw
-  execute 'redraw!'
-endf!
-nnoremap <silent> <leader><leader> :call SmartRefresh()<CR>
+  redraw!
+endf
+
+nnoremap <silent> <leader><leader> :call SmartRefresh() \| nohlsearch<CR>
 
 " toggle gundo
 nnoremap <leader>u :GundoToggle<CR>
