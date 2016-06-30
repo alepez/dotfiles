@@ -8,3 +8,6 @@ visible_bell=1
 cursor_blink_mode=1
 scrollbar_pos=0
 sel_by_word=-A-Za-z0-9,./?%&#_@~
+disable_tab_menu_shortcuts=1
+disable_menu_shortcuts=1
+disable_menu_access=1
