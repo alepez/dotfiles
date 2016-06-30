@@ -48,5 +48,8 @@ set ttimeoutlen=1 " removes the delay when hitting esc in insert mode
 set ttyfast " sends more characters to the screen for fast terminal connections
 set wildmenu " visually autocomplete the command menu
 set wildmode=list:longest,list:full " Show a list of completions
+
+" Check for file changes, so autoread works as expected
+au CursorHold * checktime
 " }}}
 
