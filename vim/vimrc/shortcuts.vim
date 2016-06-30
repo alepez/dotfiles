@@ -55,7 +55,21 @@ nnoremap <leader>; :CtrlPCmdPalette<CR>
 nnoremap <leader>o :CtrlPBuffer<CR>
 
 " turn off search highlight and close quickfix
-nnoremap <silent> <leader><leader> :nohlsearch \| ccl \| lclose \| SignifyRefresh \| redraw!<CR>
+fu! SmartRefresh()
+  " turn off search highlights
+  execute 'nohlsearch'
+  " Close quickfix window
+  execute 'ccl'
+  " Close location window
+  execute 'lcl'
+  " Refresh signify
+  execute 'SignifyRefresh'
+  " Check for file changes
+  execute 'checktime'
+  " Redraw
+  execute 'redraw!'
+endf!
+nnoremap <silent> <leader><leader> :call SmartRefresh()<CR>
 
 " toggle gundo
 nnoremap <leader>u :GundoToggle<CR>
