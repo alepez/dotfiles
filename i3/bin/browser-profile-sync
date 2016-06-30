@@ -5,9 +5,15 @@
 # so browser become faster and we do not destroy the ssd.
 ###############################################################################
 
+DIS_FLG=/home/$USER/.config/google-chrome-profile-sync-disabled
 PRM_DIR=/home/$USER/.config/google-chrome
 TMP_DIR=/tmp/${USER}-tmp/$( basename "${PRM_DIR}" )
 BCK_DIR=${PRM_DIR}.backup
+
+if [ -e "${DIS_FLG}" ]; then
+  # Disable flag exists. Do not proceed!
+  exit 0
+fi
 
 notify() {
   notify-send "${1}" -u ${2}
