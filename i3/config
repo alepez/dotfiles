@@ -128,7 +128,7 @@ mode $resize_mode {
 
 set $workspace_1 "1 Main"
 set $workspace_2 "2 Browser"
-set $workspace_3 "3"
+set $workspace_3 "3 Test"
 set $workspace_4 "4"
 set $workspace_5 "5"
 set $workspace_6 "6"
@@ -339,4 +339,6 @@ exec --no-startup-id compton --config ~/.dotfiles/i3/compton.conf -b
 
 for_window [class="ESA Universal"] floating enable
 for_window [class="QtQmlViewer"] floating enable
+assign [class="ESA Universal"] $workspace_3
+assign [class="QtQmlViewer"] $workspace_3
 
