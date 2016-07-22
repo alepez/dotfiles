@@ -28,13 +28,13 @@ nnoremap K i<CR><Esc>
 vnoremap // y/<C-R>"<CR>
 
 " Search with ag, the silver searcher
-nnoremap <leader>f :Ag<space>
+nnoremap <leader>f :Ack!<space>
 
 " Search yanked text with the silver searcher
-nnoremap <leader>F :Ag '<C-r>0'<CR>
+nnoremap <leader>F :Ack! '<C-r>0'<CR>
 
 " Search visual selction with ag
-vnoremap <leader>f y:Ag '<C-r>0'<CR>
+vnoremap <leader>f y:Ack! '<C-r>0'<CR>
 
 " next/prev buffer - Map ctrl+shift-left and ctrl+shift-right
 " Note: konsole (and other terminal emulators) may need remapping
