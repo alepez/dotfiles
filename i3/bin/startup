@@ -1,5 +1,15 @@
 #!/bin/bash
 
+(
+
+# Keyboard: US layout with Italian letters, CapsLock like Ctrl
+setxkbmap -layout it -variant us -option 'caps:ctrl_modifier'
+# Caps Lock mapped to: Esc + Ctrl (long press)
+xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
+
+# Increase delay and rate of keyboard
+xset r rate 250 30
+
 # tmp directory needed by browser profile sync and cache
 mkdir -p /tmp/${USER}-tmp
 
@@ -13,5 +23,9 @@ nm-applet &>/dev/null </dev/null &
 parcellite &>/dev/null </dev/null &
 
 # Mount cache directories
-mkdir -p /tmp/pez-tmp/cache && ln -nfs /tmp/pez-tmp/cache /home/pez/.cache
-mkdir -p /tmp/pez-tmp/thumbnail && ln -nfs /tmp/pez-tmp/thumbnail /home/pez/.thumbnail
+mkdir -p /tmp/pez-tmp/cache ; ln -nfs /tmp/pez-tmp/cache /home/pez/.cache
+mkdir -p /tmp/pez-tmp/thumbnails ; ln -nfs /tmp/pez-tmp/thumbnails /home/pez/.thumbnails
+
+) &>/dev/null </dev/null &
+
+exit 0

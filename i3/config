@@ -236,18 +236,6 @@ set $filemanager "sunflower"
 bindsym $mod+e exec "$filemanager"
 
 ###############################################################################
-# Keyboard layout
-###############################################################################
-
-# Keyboard: US loayout with Italian letters
-# Caps Lock mapped to: Esc + Ctrl (long press)
-exec --no-startup-id setxkbmap -layout it -variant us -option 'caps:ctrl_modifier'
-exec --no-startup-id xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
-
-# Increase delay and rate of keyboard
-exec --no-startup-id xset r rate 250 30
-
-###############################################################################
 # Startup
 ###############################################################################
 
