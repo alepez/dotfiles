@@ -35,11 +35,11 @@ start() {
   # If permanent directory is a symbolic link, then profile sync wasn't cleanly stopped.
   if [ -L ${PRM_DIR} ]; then notify "Browser profile sync not cleanly stopped. Resuming..." normal; resume; fi
   # Copy to tmp directory
-  cp -a ${PRM_DIR} ${TMP_DIR} || die "Cannot start browser profile sync"
+  cp -a ${PRM_DIR} ${TMP_DIR} || die "Cannot start browser profile sync: cannot copy to temporary dir."
   # Permanent directory is the backup directory.
-  mv ${PRM_DIR} ${BCK_DIR} || die "Cannot start browser profile sync"
+  mv ${PRM_DIR} ${BCK_DIR} || die "Cannot start browser profile sync: cannot move to backup dir."
   # Let google find the tmp directory
-  ln -s ${TMP_DIR} ${PRM_DIR} || die "Cannot start browser profile sync"
+  ln -s ${TMP_DIR} ${PRM_DIR} || die "Cannot start browser profile sync: cannot link temporary dir."
   notify "Browser sync started" low
 }
 
