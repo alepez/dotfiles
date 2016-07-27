@@ -17,7 +17,7 @@ Plugin 'peterhoeg/vim-qml' " QML syntax highlighting for VIM
 Plugin 'rdnetto/YCM-Generator' " Automatically generates YouCompleteMe configuration based on Makefile
 Plugin 'mhinz/vim-signify' " show diff in gutter
 Plugin 'mattn/gist-vim' " vimscript for gist
-Plugin 'rking/ag.vim' " the silver searcher
+Plugin 'mileszs/ack.vim' " search with ag the silver searcher
 Plugin 'a.vim' " Alternate files quickly (header/implementation etc...)
 Plugin 'sjl/gundo.vim' " Gundo is a Vim plugin for visualizing your undo tree to make it usable
 Plugin 'kshenoy/vim-signature' " bookmark manager
