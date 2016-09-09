@@ -74,13 +74,14 @@ bindsym $mod+Shift+r restart
 # Exit mode
 # Ctrl+Alt+Del shows a menu with exit options
 ###############################################################################
-set $exit_mode "[l]ogout [p]oweroff [r]eboot"
+set $exit_mode "[l]ogout [p]oweroff [r]eboot [s]uspend"
 bindsym Control+Mod1+Delete mode $exit_mode
 
 mode $exit_mode {
   bindsym l exec --no-startup-id "i3-msg mode default; ~/.dotfiles/i3/bin/exit logout"
   bindsym p exec --no-startup-id "i3-msg mode default; ~/.dotfiles/i3/bin/exit poweroff"
   bindsym r exec --no-startup-id "i3-msg mode default; ~/.dotfiles/i3/bin/exit reboot"
+  bindsym s exec --no-startup-id "i3-msg mode default; i3lock --24 -c '#282828' -o '#fb4934' -w '#83a598' --ignore-empty-password; suspend"
 
   # back to normal: Enter or Escape
   bindsym Return    mode "default"
