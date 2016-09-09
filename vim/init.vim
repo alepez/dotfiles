@@ -13,6 +13,7 @@ endif
 filetype off " required
 
 " Initialize Vundle plugin manager
+" FIXME check if file exists. Use nvim directory otherwise
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
