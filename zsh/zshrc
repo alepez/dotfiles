@@ -42,7 +42,7 @@ fi
 
 ## plugins {{{
 ## Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(common-aliases dirhistory web-search tmux)
+plugins=(common-aliases dirhistory web-search tmux docker)
 
 source $ZSH/oh-my-zsh.sh
 
