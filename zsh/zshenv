@@ -22,6 +22,8 @@ alias dot="cd ~/.dotfiles && vim"
 # tmux session. Understand which terminal emulator is currently in use.
 if [ "${COLORTERM}" = "gnome-terminal" ]; then
   alias S="gnome-terminal -x ssh"
+elif [ -n "${ROXTERM_PID}" ]; then
+  alias S="roxterm -e ssh"
 else
   alias S="konsole -e ssh"
 fi
