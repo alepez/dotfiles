@@ -57,6 +57,9 @@ alias dc='cd'
 ## - https://github.com/junegunn/fzf
 function Pass { local passpath=$( cd ~/.password-store && git ls-files | grep -v "^\." | fzf-tmux | sed "s/\.gpg$//" ); pass -c "${passpath}"; pass "${passpath}"; }
 
+## I use docker so often I need this
+alias dk="docker"
+
 ## }}}
 
 ################################################################################
