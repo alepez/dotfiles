@@ -42,7 +42,7 @@ alias k9='kill -9'
 alias nvminit='[[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh'
 alias kiexinit='test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex" && kiex use 1.2.3'
 
-function svndiff {
+svndiff() {
   svn diff $@ | colordiff | less
 }
 
@@ -57,6 +57,18 @@ function Pass { local passpath=$( cd ~/.password-store && git ls-files | grep -v
 
 ## I use docker so often I need this
 alias dk="docker"
+
+## A better docker stat
+## Thanks to rbravo-avantrip
+## https://github.com/docker/docker/issues/20973#issuecomment-245036858
+dkstats() {
+  while true; do
+    TEXT=$(docker stats --no-stream $(docker ps --format={{.Names}}));
+    sleep 0.5;
+    clear;
+    echo "$TEXT";
+  done
+}
 
 ## }}}
 
@@ -101,16 +113,16 @@ alias ggo="gacmps" # Go! shortcut for gacmps
 ################################################################################
 ## rsync ssh tunnel with ControlPath {{{
 ## see: http://unix.stackexchange.com/a/50515/12662
-function ssh-rsync-fast-start {
+ssh-rsync-fast-start() {
   mkdir -p ~/.ssh/ctl
   ssh -nNf -o ControlMaster=yes -o ControlPath="$HOME/.ssh/ctl/%L-%r@%h:%p" $@
 }
 
-function ssh-rsync-fast {
+ssh-rsync-fast() {
   rsync -e "ssh -o 'ControlPath=$HOME/.ssh/ctl/%L-%r@%h:%p'" $@
 }
 
-function ssh-rsync-fast-stop {
+ssh-rsync-fast-stop() {
   ssh -O exit -o ControlPath="$HOME/.ssh/ctl/%L-%r@%h:%p" $@
 }
 ## }}}
