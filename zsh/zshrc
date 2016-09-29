@@ -3,7 +3,7 @@
 ## oh-my-zsh {{{
 
 ## Path to your oh-my-zsh installation.
-export ZSH=/opt/oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 ## Path to custom themes/plugins etc...
 export ZSH_CUSTOM=~/.dotfiles/zsh/oh-my-zsh
