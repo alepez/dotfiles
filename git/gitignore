@@ -20,3 +20,5 @@ __pycache__
 .ropeproject
 .eslintrc.json
 .ycm_extra_conf.py
+npm-debug.log
+.eslintrc.js
