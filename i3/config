@@ -329,7 +329,8 @@ exec --no-startup-id compton --config ~/.dotfiles/i3/compton.conf -b
 # FIXME this should go in a config.local file
 
 for_window [class="ESA Universal"] floating enable
+for_window [class="UGIS"] floating enable
 for_window [class="QtQmlViewer"] floating enable
 assign [class="ESA Universal"] $workspace_3
 assign [class="QtQmlViewer"] $workspace_3
-
+assign [class="UGIS"] $workspace_3
