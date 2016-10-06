@@ -22,3 +22,4 @@ __pycache__
 .ycm_extra_conf.py
 npm-debug.log
 .eslintrc.js
+.tern-project

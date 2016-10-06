@@ -22,4 +22,5 @@ augroup END
 augroup Javascript
 	autocmd!
   autocmd BufWritePost,BufEnter *.js Neomake
+  autocmd BufRead,BufNewFile *.{es6,es6.js} set filetype=javascript
 augroup END
