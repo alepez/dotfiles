@@ -1,3 +1,8 @@
+"
+"
+" Note: I'm using Neomake instead of Syntastic
+"
+"
 " Set Syntastic checkers
 " Note: checkers must be installed
 let g:syntastic_javascript_checkers = [ 'eslint' ]
