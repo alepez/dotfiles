@@ -10,5 +10,5 @@ let g:ycm_disable_startup_warning = 1
 
 " https://github.com/Valloric/YouCompleteMe/pull/2369
 if !((v:version == 704 && has('patch143') || v:version > 704) && (has('python') || has('python3')))
-  g:loaded_youcompleteme = 1
+  let g:loaded_youcompleteme = 1
 endif
