@@ -24,11 +24,11 @@ if [ "${COLORTERM}" = "gnome-terminal" ]; then
   alias S="gnome-terminal -x ssh"
 elif [ -n "${ROXTERM_PID}" ]; then
   alias S="roxterm -e ssh"
-else
+elif [ -n "${KONSOLE_PROFILE_NAME}"]; then
   alias S="konsole -e ssh"
 fi
 
-# Generate pronounce pronounceable password
+# Generate pronounceable password
 alias genpassword='pwgen --capitalize --numerals --ambiguous 12 6'
 
 alias stt='subl3 -n .'
