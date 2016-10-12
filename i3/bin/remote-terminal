@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+shopt -s nullglob globstar
+
+dmenu="$( realpath ~/.dotfiles/i3/bin/rofi )"
+host=$( tac ~/.config/remote-terminal | "${dmenu}" -dmenu -p "Host:" "$@" )
+
+sed -i "/^${host}$/d" ~/.config/remote-terminal
+echo "${host}" >> ~/.config/remote-terminal
+
+test -n $host || exit
+
+~/.dotfiles/bin/ssh-terminal $host

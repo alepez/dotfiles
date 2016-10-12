@@ -230,6 +230,9 @@ bindsym $mod+space exec --no-startup-id ~/.dotfiles/i3/bin/rofi -show run
 # fuzzy search password
 bindsym $mod+Shift+p exec --no-startup-id ~/.dotfiles/i3/bin/passmenu
 
+# open new terminal with ssh session
+bindsym $mod+Shift+Return exec --no-startup-id ~/.dotfiles/i3/bin/remote-terminal
+
 # Mouse button13 (zoom) opens clipboard
 # FIXME I don't know how to open parcelite from commandline. klipper has a dbus command, but parcellite?
 # bindsym button13 exec "parcellite"
