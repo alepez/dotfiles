@@ -228,7 +228,10 @@ bindsym XF86AudioStop exec --no-startup-id ~/.dotfiles/i3/bin/spotify-control st
 bindsym $mod+space exec --no-startup-id ~/.dotfiles/i3/bin/rofi -show run
 
 # fuzzy search password
-bindsym $mod+Shift+p exec --no-startup-id ~/.dotfiles/i3/bin/passmenu
+bindsym $mod+Shift+p exec --no-startup-id ~/.dotfiles/i3/bin/pass-dmenu
+
+# open new terminal with ssh session
+bindsym $mod+Shift+Return exec --no-startup-id ~/.dotfiles/i3/bin/ssh-dmenu
 
 # Mouse button13 (zoom) opens clipboard
 # FIXME I don't know how to open parcelite from commandline. klipper has a dbus command, but parcellite?
