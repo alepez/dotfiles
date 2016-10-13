@@ -1,13 +1,22 @@
 #!/usr/bin/env bash
 
-shopt -s nullglob globstar
+CONFIG_FILE="$( realpath ~/.config/remote-terminal )"
 
+# Use my `rofi` configuration as dmenu.
 dmenu="$( realpath ~/.dotfiles/i3/bin/rofi )"
-host=$( tac ~/.config/remote-terminal | "${dmenu}" -dmenu -p "Host:" "$@" )
 
-sed -i "/^${host}$/d" ~/.config/remote-terminal
-echo "${host}" >> ~/.config/remote-terminal
+# Use dmenu to select an host from the files with list.
+# Reverse lines with `tac` so last used hosts are first.
+host="$( tac "${CONFIG_FILE}" | "${dmenu}" -dmenu -p "Host:" "$@" )"
 
-test -n $host || exit
+# Move the selected line to the end of file.
+sed -i "/^${host}$/d" "${CONFIG_FILE}"
+echo "${host}" >> "${CONFIG_FILE}"
+
+# Clean empty lines
+sed -i '/^\s*$/d' "${CONFIG_FILE}"
+
+# Ignore empty lines
+test -n "${host}" || exit
 
 ~/.dotfiles/bin/ssh-terminal $host
