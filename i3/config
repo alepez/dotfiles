@@ -65,7 +65,7 @@ bindsym $mod+t layout tabbed
 bindsym $mod+Shift+space floating toggle
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+# bindsym $mod+Shift+c reload
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
@@ -232,6 +232,9 @@ bindsym $mod+Shift+p exec --no-startup-id ~/.dotfiles/i3/bin/pass-dmenu
 
 # open new terminal with ssh session
 bindsym $mod+Shift+Return exec --no-startup-id ~/.dotfiles/i3/bin/ssh-dmenu
+
+# common clipboard text
+bindsym $mod+Shift+c exec --no-startup-id ~/.dotfiles/i3/bin/common-clip-dmenu
 
 # Mouse button13 (zoom) opens clipboard
 # FIXME I don't know how to open parcelite from commandline. klipper has a dbus command, but parcellite?

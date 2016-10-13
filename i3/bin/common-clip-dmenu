@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+CONFIG_FILE="$( realpath ~/.config/common-clip-dmenu )"
+
+# Use my `rofi` configuration as dmenu.
+dmenu="$( realpath ~/.dotfiles/i3/bin/rofi )"
+
+# Use dmenu to select string from the files with list.
+# Reverse lines with `tac` so last used hosts are first.
+tac "${CONFIG_FILE}" | "${dmenu}" -dmenu -p "String:" "$@" | head -c -1 | xclip -i -selection clipboard
+
+# Move the selected line to the end of file.
+sed -i "/^${string}$/d" "${CONFIG_FILE}"
+echo "${string}" >> "${CONFIG_FILE}"
+
+# Clean empty lines
+sed -i '/^\s*$/d' "${CONFIG_FILE}"
+
+# Ignore empty lines
+test -n "${string}" || exit
+
+~/.dotfiles/bin/ssh-terminal $string
