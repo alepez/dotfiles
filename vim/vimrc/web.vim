@@ -21,6 +21,8 @@ augroup END
 
 augroup Javascript
 	autocmd!
-  autocmd BufWritePost,BufEnter *.{es6,js} Neomake
+  if has('nvim')
+    autocmd BufWritePost,BufEnter *.{es6,js} Neomake
+  endif
   autocmd BufRead,BufNewFile *.{es6,es6.js} set filetype=javascript
 augroup END
