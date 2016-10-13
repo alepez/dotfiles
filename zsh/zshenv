@@ -20,13 +20,7 @@ alias dot="cd ~/.dotfiles && vim"
 
 # Useful for remote hosts with tmux, open a new terminal window with its own
 # tmux session. Understand which terminal emulator is currently in use.
-if [ "${COLORTERM}" = "gnome-terminal" ]; then
-  alias S="gnome-terminal -x ssh"
-elif [ -n "${ROXTERM_PID}" ]; then
-  alias S="roxterm -e ssh"
-elif [ -n "${KONSOLE_PROFILE_NAME}"]; then
-  alias S="konsole -e ssh"
-fi
+alias S=$( realpath ~/.dotfiles/bin/ssh-terminal )
 
 # Generate pronounceable password
 alias genpassword='pwgen --capitalize --numerals --ambiguous 12 6'
