@@ -23,8 +23,8 @@ nm-applet &>/dev/null </dev/null &
 parcellite &>/dev/null </dev/null &
 
 # Mount cache directories
-mkdir -p /tmp/pez-tmp/cache ; ln -nfs /tmp/pez-tmp/cache /home/pez/.cache
-mkdir -p /tmp/pez-tmp/thumbnails ; ln -nfs /tmp/pez-tmp/thumbnails /home/pez/.thumbnails
+mkdir -p /tmp/${USER}-tmp/cache ; ln -nfs /tmp/${USER}-tmp/cache /home/${USER}/.cache
+mkdir -p /tmp/${USER}-tmp/thumbnails ; ln -nfs /tmp/${USER}-tmp/thumbnails /home/${USER}/.thumbnails
 
 ) &>/dev/null </dev/null &
 
