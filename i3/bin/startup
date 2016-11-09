@@ -14,7 +14,7 @@ xset r rate 250 30
 mkdir -p /tmp/${USER}-tmp
 
 # Browser profile sync
-~/.dotfiles/i3/bin/browser-profile-sync start &>/dev/null </dev/null &
+# ~/.dotfiles/i3/bin/browser-profile-sync start &>/dev/null </dev/null &
 
 # NetworkManager applet
 nm-applet &>/dev/null </dev/null &

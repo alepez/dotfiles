@@ -30,6 +30,7 @@ resume() {
 }
 
 start() {
+  notify "Starting browser-profile-sync..." low
   # If tmp directory already exist, profile sync has already been started.
   if [ -e ${TMP_DIR} ]; then notify "Browser profile sync already started" normal; exit 1; fi
   # If permanent directory is a symbolic link, then profile sync wasn't cleanly stopped.
@@ -40,10 +41,11 @@ start() {
   mv ${PRM_DIR} ${BCK_DIR} || die "Cannot start browser profile sync: cannot move to backup dir."
   # Let google find the tmp directory
   ln -s ${TMP_DIR} ${PRM_DIR} || die "Cannot start browser profile sync: cannot link temporary dir."
-  notify "Browser sync started" low
+  notify "browser-profile-sync started" low
 }
 
 stop() {
+  notify "Stopping browser-profile-sync..." low
   # If tmp directory does not exist, then profile sync has not started.
   if [ ! -e ${TMP_DIR} ]; then notify "Browser profile sync not started" normal; exit 1; fi
   # Remove the link.
