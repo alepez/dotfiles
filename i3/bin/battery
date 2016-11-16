@@ -19,4 +19,4 @@ fi
 
 echo "${level}%"
 
-if [ $level -lt 10 ] && [ $online == 0 ]; then kdialog --sorry "battery level is low"; fi
+if [ $level -lt 10 ] && [ $online == 0 ]; then notify-send -u critical "battery level is low"; fi
