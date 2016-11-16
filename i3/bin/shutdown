@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # Syncronize browser profile
-~/.dotfiles/i3/bin/browser-profile-sync stop
-sleep 1
+# Disabled, using fs cache instead
+# ~/.dotfiles/i3/bin/browser-profile-sync stop
+# sleep 1
 
 # Unmount network (lazy)
 mount | grep cifs | awk '{ print $3 }' | while read dir; do sudo umount -l $dir; done

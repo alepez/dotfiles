@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Mount cache directories
+mkdir -p /tmp/${USER}-tmp/cache ; rm -rf /home/${USER}/.cache ; ln -s /tmp/${USER}-tmp/cache /home/${USER}/.cache
+mkdir -p /tmp/${USER}-tmp/thumbnails ; rm -rf /home/${USER}/.thumbnails ; ln -s /tmp/${USER}-tmp/thumbnails /home/${USER}/.thumbnails
+
 (
 
 # Keyboard: US layout with Italian letters, CapsLock like Ctrl
@@ -21,10 +25,6 @@ nm-applet &>/dev/null </dev/null &
 
 # Clipboard manager
 parcellite &>/dev/null </dev/null &
-
-# Mount cache directories
-mkdir -p /tmp/${USER}-tmp/cache ; ln -nfs /tmp/${USER}-tmp/cache /home/${USER}/.cache
-mkdir -p /tmp/${USER}-tmp/thumbnails ; ln -nfs /tmp/${USER}-tmp/thumbnails /home/${USER}/.thumbnails
 
 ) &>/dev/null </dev/null &
 
