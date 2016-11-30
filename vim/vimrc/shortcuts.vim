@@ -153,6 +153,9 @@ vmap <Leader>P "+P
 nmap <Leader>p "+p
 nmap <Leader>P "+P
 
+" Uppercase last insertion
+nmap <leader>U v`[U
+
 " Expand/Shrink region with v/C-v
 " Thanks to: https://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
 
