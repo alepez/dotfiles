@@ -124,7 +124,8 @@ mode $resize_mode {
   bindsym Escape mode "default"
 }
 
-bindsym --release Print exec scrot -s -e 'mv $f ~/Pictures/'
+bindsym --release Print exec scrot -e 'mv $f ~/Pictures/'
+bindsym --release Shift+Print exec scrot -s -e 'mv $f ~/Pictures/'
 
 ###############################################################################
 # Workspaces
