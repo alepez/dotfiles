@@ -242,8 +242,8 @@ bindsym $mod+Shift+c exec --no-startup-id ~/.dotfiles/i3/bin/common-clip-dmenu
 # bindsym button13 exec "parcellite"
 
 # Open filemanager
-set $filemanager "sunflower"
-bindsym $mod+e exec "$filemanager"
+set $filemanager "thunar"
+bindsym $mod+e exec $filemanager
 
 ###############################################################################
 # Startup
