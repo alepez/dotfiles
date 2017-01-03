@@ -140,6 +140,18 @@ function slog { svn log $@ | less }
 ## }}}
 ################################################################################
 
+################################################################################
+## minecraft {{{
+minecraft-backup() {
+  local root_dir="${HOME}/.minecraft"
+  local src_dir="saves"
+  local dir="${HOME}/.minecraft-backup"
+  local archive_dir="${HOME}/.minecraft-backup"
+  local archive="${archive_dir}/$( date +%Y%m%d-%H%M%S ).tar"
+  echo "Saving to ${archive}"
+  cd ${root_dir} && tar cpvf ${archive} ${src_dir} && ls -lh ${archive}
+}
+## }}}
 
 ################################################################################
 ## tmux {{{
