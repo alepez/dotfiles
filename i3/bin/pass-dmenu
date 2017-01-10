@@ -13,6 +13,9 @@ password=$(printf '%s\n' "${password_files[@]}" | "${dmenu}" -dmenu -p "Password
 
 [[ -n $password ]] || exit
 
-message=$( pass show -c "$password" 2>/dev/null )
+tmpfile=$(mktemp)
+pass show -c "$password" > $tmpfile &
+sleep 2
 
-notify-send -u low "$message"
+notify-send -u low "$( cat $tmpfile )"
+rm $tmpfile
