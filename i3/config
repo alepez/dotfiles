@@ -17,6 +17,51 @@
 #  - GTK: https://github.com/horst3180/arc-theme
 
 ###############################################################################
+# Style
+###############################################################################
+
+# grubox color theme
+set $dark0_hard       #1d2021
+set $dark0            #282828
+set $dark0_soft       #32302f
+set $dark1            #3c3836
+set $dark2            #504945
+set $dark3            #665c54
+set $dark4            #7c6f64
+set $gray_245         #928374
+set $gray_244         #928374
+set $light0_hard      #f9f5d7
+set $light0           #fbf1c7
+set $light0_soft      #f2e5bc
+set $light1           #ebdbb2
+set $light2           #d5c4a1
+set $light3           #bdae93
+set $light4           #a89984
+set $bright_red       #fb4934
+set $bright_green     #b8bb26
+set $bright_yellow    #fabd2f
+set $bright_blue      #83a598
+set $bright_purple    #d3869b
+set $bright_aqua      #8ec07c
+set $bright_orange    #fe8019
+set $neutral_red      #cc241d
+set $neutral_green    #98971a
+set $neutral_yellow   #d79921
+set $neutral_blue     #458588
+set $neutral_purple   #b16286
+set $neutral_aqua     #689d6a
+set $neutral_orange   #d65d0e
+set $faded_red        #9d0006
+set $faded_green      #79740e
+set $faded_yellow     #b57614
+set $faded_blue       #076678
+set $faded_purple     #8f3f71
+set $faded_aqua       #427b58
+set $faded_orange     #af3a03
+set $transparent      #00000000
+set $dark0_transparent #282828ff
+
+###############################################################################
 # i3 keyboard bindings
 ###############################################################################
 
@@ -176,10 +221,31 @@ for_window [class="Spotify"] move to workspace $workspace_9
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+
 bar {
-  font pango:Droid Sans 11
   status_command i3blocks -c ~/.dotfiles/i3/i3blocks.conf
+  i3bar_command i3bar -t
   position top
+  font pango:Droid Sans 11
+  strip_workspace_numbers yes
+  separator_symbol "|"
+  bindsym button4 nop
+  bindsym button5 nop
+  tray_output eDP1
+  tray_output LVDS-0
+  tray_padding 0
+  colors {
+    statusline         $light0_hard
+    background         $transparent
+    separator          $light0_hard
+
+     #                   BORDER             BACKGROUND          TEXT
+     focused_workspace   $faded_blue        $dark0_transparent  $light0_hard
+     inactive_workspace  $transparent       $transparent        $light0_soft
+     active_workspace    $faded_orange      $faded_orange       $light0_soft
+     urgent_workspace    $faded_red         $faded_red          $light0_hard
+     binding_mode        $faded_red         $faded_red          $light0_hard
+  }
 }
 
 ###############################################################################
@@ -251,52 +317,9 @@ bindsym $mod+e exec $filemanager
 
 exec --no-startup-id ~/.dotfiles/i3/bin/startup
 
-###############################################################################
-# Style
-###############################################################################
-
-# grubox color theme
-set $dark0_hard       #1d2021
-set $dark0            #282828
-set $dark0_soft       #32302f
-set $dark1            #3c3836
-set $dark2            #504945
-set $dark3            #665c54
-set $dark4            #7c6f64
-set $gray_245         #928374
-set $gray_244         #928374
-set $light0_hard      #f9f5d7
-set $light0           #fbf1c7
-set $light0_soft      #f2e5bc
-set $light1           #ebdbb2
-set $light2           #d5c4a1
-set $light3           #bdae93
-set $light4           #a89984
-set $bright_red       #fb4934
-set $bright_green     #b8bb26
-set $bright_yellow    #fabd2f
-set $bright_blue      #83a598
-set $bright_purple    #d3869b
-set $bright_aqua      #8ec07c
-set $bright_orange    #fe8019
-set $neutral_red      #cc241d
-set $neutral_green    #98971a
-set $neutral_yellow   #d79921
-set $neutral_blue     #458588
-set $neutral_purple   #b16286
-set $neutral_aqua     #689d6a
-set $neutral_orange   #d65d0e
-set $faded_red        #9d0006
-set $faded_green      #79740e
-set $faded_yellow     #b57614
-set $faded_blue       #076678
-set $faded_purple     #8f3f71
-set $faded_aqua       #427b58
-set $faded_orange     #af3a03
-
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:SauceCodePro Nerd Font 10
+font pango:Droid Sans 11
 
 # Set desktop background
 exec_always --no-startup-id feh --bg-fill ~/.wallpaper.png
