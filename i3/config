@@ -47,10 +47,7 @@ bindsym $mod+Shift+Down move workspace to output down
 bindsym $mod+Shift+Up move workspace to output up
 bindsym $mod+Shift+Right move workspace to output right
 
-# FIXME mouse binding not working?
-# See end of file for mouse buttons help
-bindsym button9 workspace prev
-bindsym button8 workspace next
+# Note: prev/next workspace mouse trigger is handled by xbindkeys
 
 # vertical split with minus
 bindsym $mod+minus split v
@@ -220,8 +217,6 @@ bindcode 232 exec --no-startup-id ~/.dotfiles/i3/bin/brightness -
 set $sink_index 1
 bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume $sink_index +5%; mplayer /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"
 bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume $sink_index -5%; mplayer /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"
-bindsym --whole-window $mod+button4 exec --no-startup-id "pactl set-sink-volume $sink_index +5%; mplayer /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"
-bindsym --whole-window $mod+button5 exec --no-startup-id "pactl set-sink-volume $sink_index -5%; mplayer /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-volume $sink_index 0%
 
 # Spotify
@@ -242,9 +237,9 @@ bindsym $mod+Shift+Return exec --no-startup-id ~/.dotfiles/i3/bin/ssh-dmenu
 # common clipboard text
 bindsym $mod+Shift+c exec --no-startup-id ~/.dotfiles/i3/bin/common-clip-dmenu
 
-# Mouse button13 (zoom) opens clipboard
-# FIXME I don't know how to open parcelite from commandline. klipper has a dbus command, but parcellite?
-# bindsym button13 exec "parcellite"
+# Toggle clipboard manager
+# (Mouse trigger is handled by xbindkeys)
+bindsym $mod+Shift+v exec "copyq toggle"
 
 # Open filemanager
 set $filemanager "thunar"
@@ -320,25 +315,8 @@ new_float pixel 2
 # enable compton
 exec --no-startup-id compton --config ~/.dotfiles/i3/compton.conf -b
 
-# Mouse shortcuts
-#
-# Logitech Performance Mouse MX:
-#
-# button1)  left
-# button2)  center
-# button3)  right
-# button4)  scroll front
-# button5)  scroll rear
-# button6)  n/a
-# button7)  n/a
-# button8)  thumb arrow front
-# button9)  thumb arrow rear
-# button10) thumb big button
-# button11) n/a
-# button12) n/a
-# button13) thumb mini button (zoom)
-
 for_window [class="Pavucontrol"] floating enable, border normal
+for_window [class="copyq"] floating enable
 
 # FIXME this should go in a config.local file
 

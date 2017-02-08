@@ -23,8 +23,11 @@ mkdir -p /tmp/${USER}-tmp
 # NetworkManager applet
 nm-applet &>/dev/null </dev/null &
 
-# Clipboard manager
-parcellite &>/dev/null </dev/null &
+# Mouse bindings
+xbindkeys &>/dev/null </dev/null &
+
+# Clipboard manager. Sleep is needed. See: https://github.com/hluk/CopyQ/issues/225
+( sleep 5 && copyq ) &>/dev/null </dev/null &
 
 ) &>/dev/null </dev/null &
 
