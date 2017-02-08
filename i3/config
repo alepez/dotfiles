@@ -11,6 +11,10 @@
 #  - i3lock https://github.com/alepez/i3lock.git
 #  - xcape https://github.com/alols/xcape
 #  - dunst
+#
+# Theme:
+#  - Icons: https://github.com/daniruiz/Flat-Remix
+#  - GTK: https://github.com/horst3180/arc-theme
 
 ###############################################################################
 # i3 keyboard bindings
