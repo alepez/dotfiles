@@ -177,7 +177,7 @@ for_window [class="Spotify"] move to workspace $workspace_9
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-  font pango:Source Sans Pro, SauceCodePro Nerd Font 11
+  font pango:Droid Sans 11
   status_command i3blocks -c ~/.dotfiles/i3/i3blocks.conf
   position top
 }
@@ -214,7 +214,7 @@ bindcode 233 exec --no-startup-id ~/.dotfiles/i3/bin/brightness +
 bindcode 232 exec --no-startup-id ~/.dotfiles/i3/bin/brightness -
 
 # Audio volume up/down (PulseAudio)
-set $sink_index 1
+set $sink_index 0
 bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume $sink_index +5%; mplayer /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"
 bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume $sink_index -5%; mplayer /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-volume $sink_index 0%

@@ -43,6 +43,14 @@
 
 ## Mouse shortcuts
 
+# Volume Up
+"pactl set-sink-volume 0 +5%; mplayer /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"
+  Mod2+Mod4+b:4
+
+# Volume Down
+"pactl set-sink-volume 0 -5%; mplayer /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"
+  Mod2+Mod4+b:5
+
 # Next Workspace
 "i3-msg workspace prev"
   b:9
