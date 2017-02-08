@@ -121,7 +121,7 @@ bindsym $mod+Shift+r restart
 # Exit mode
 # Ctrl+Alt+Del shows a menu with exit options
 ###############################################################################
-set $exit_mode "[l]ogout [p]oweroff [r]eboot [s]uspend"
+set $exit_mode " [l]ogout [p]oweroff [r]eboot [s]uspend"
 bindsym Control+Mod1+Delete mode $exit_mode
 
 mode $exit_mode {
@@ -140,7 +140,7 @@ mode $exit_mode {
 # Wind+Shift+S shows a menu with layout options
 ###############################################################################
 
-set $monitors_mode "select monitors layout [h]ome [m]irror"
+set $monitors_mode "select monitors layout  [h]ome [m]irror"
 bindsym $mod+Shift+s mode $monitors_mode
 
 mode $monitors_mode  {
@@ -156,7 +156,7 @@ mode $monitors_mode  {
 # Resize mode
 ###############################################################################
 
-set $resize_mode "resize"
+set $resize_mode "resize  hjkl"
 bindsym $mod+r mode $resize_mode
 mode $resize_mode {
   # These bindings trigger as soon as you enter the resize mode
@@ -242,9 +242,9 @@ bar {
      #                   BORDER             BACKGROUND          TEXT
      focused_workspace   $faded_blue        $dark0_transparent  $light0_hard
      inactive_workspace  $transparent       $transparent        $light0_soft
-     active_workspace    $faded_orange      $faded_orange       $light0_soft
-     urgent_workspace    $faded_red         $faded_red          $light0_hard
-     binding_mode        $faded_red         $faded_red          $light0_hard
+     active_workspace    $transparent       $transparent        $light0_soft
+     urgent_workspace    $faded_orange      $faded_orange       $light0_hard
+     binding_mode        $faded_purple      $faded_purple       $light0_hard
   }
 }
 
