@@ -52,11 +52,11 @@
   Mod2+Mod4+b:5
 
 # Next Workspace
-"i3-msg workspace prev"
+"i3-msg workspace next"
   b:9
 
 # Previous Workspace
-"i3-msg workspace next"
+"i3-msg workspace prev"
   b:8
 
 # Clipboard Manager
