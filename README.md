@@ -29,4 +29,5 @@ ln -nfs ~/.dotfiles/i3/dunstrc ~/.config/dunst/dunstrc
 ln -nfs ~/.dotfiles/gnupg/gpg.conf ~/.gnupg/gpg.conf
 ln -nfs ~/.dotfiles/gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
 ln -nfs ~/.dotfiles/top/toprc ~/.toprc
+ln -nfs ~/.dotfiles/xbindkeysrc ~/.xbindkeysrc
 ```

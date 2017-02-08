@@ -1,0 +1,60 @@
+# For the benefit of emacs users: -*- shell-script -*-
+###########################
+# xbindkeys configuration #
+###########################
+#
+# To specify a key, you can use 'xbindkeys --key' or
+# 'xbindkeys --multikey' and put one of the two lines in this file.
+#
+# A list of keys is in /usr/include/X11/keysym.h and in
+# /usr/include/X11/keysymdef.h
+# The XK_ is not needed.
+#
+# List of modifier:
+#   Release, Control, Shift, Mod1 (Alt), Mod2 (NumLock),
+#   Mod3 (CapsLock), Mod4, Mod5 (Scroll), Mod2+Mod4 (Super)
+#
+
+# By defaults, xbindkeys does not pay attention with the modifiers
+# NumLock, CapsLock and ScrollLock.
+# Uncomment the lines above if you want to pay attention to them.
+
+#keystate_numlock = enable
+#keystate_capslock = enable
+#keystate_scrolllock= enable
+
+# Logitech Performance Mouse MX:
+#
+# b:1)  left
+# b:2)  center
+# b:3)  right
+# b:4)  scroll front
+# b:5)  scroll rear
+# b:6)  n/a
+# b:7)  n/a
+# b:8)  thumb arrow front
+# b:9)  thumb arrow rear
+# b:10) thumb big button
+# b:11) n/a
+# b:12) n/a
+# b:13) thumb mini button (zoom)
+
+################################################################################
+
+## Mouse shortcuts
+
+# Next Workspace
+"i3-msg workspace prev"
+  b:9
+
+# Previous Workspace
+"i3-msg workspace next"
+  b:8
+
+# Clipboard Manager
+"copyq toggle"
+  b:13
+
+##################################
+# End of xbindkeys configuration #
+##################################
