@@ -227,12 +227,7 @@ bar {
   i3bar_command i3bar -t
   position top
   font pango:Droid Sans 11
-  strip_workspace_numbers yes
   separator_symbol "|"
-  bindsym button4 nop
-  bindsym button5 nop
-  tray_output eDP1
-  tray_output LVDS-0
   tray_padding 0
   colors {
     statusline         $light0_hard
