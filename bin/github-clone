@@ -9,6 +9,7 @@
 REPO="${1}"
 
 REPO="$( echo "${REPO}" | sed 's+https://github.com/++' )"
+REPO="$( echo "${REPO}" | sed 's+/$++' )"
 
 USER=$( echo ${REPO} | sed 's/\/.*$//' )
 REPO=$( echo ${REPO} | sed 's/^.*\///' )
