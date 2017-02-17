@@ -259,7 +259,7 @@ bindsym $mod+Return exec --no-startup-id $terminal
 bindsym $mod+c exec --no-startup-id $terminal
 
 # lock screen with Ctrl+Alt+L
-bindsym Control+Mod1+l exec --no-startup-id "i3lock --24 -c '#282828' -o '#fb4934' -w '#83a598' --ignore-empty-password"
+bindsym Control+Mod1+l exec --no-startup-id "i3lock --24 -c '#282828' -o '#fb4934' -w '#83a598' --ignore-empty-password -i ~/.wallpaper-1920x1080.png"
 
 # Browser
 set $browser "google-chrome-stable"
@@ -339,8 +339,13 @@ for_window [class="copyq"] floating enable
 # FIXME this should go in a config.local file
 
 for_window [class="ESA Universal"] floating enable
-for_window [class="UGIS"] floating enable
-for_window [class="QtQmlViewer"] floating enable
 assign [class="ESA Universal"] $workspace_3
+
+for_window [class="QtQmlViewer"] floating enable
 assign [class="QtQmlViewer"] $workspace_3
+
+for_window [class="UGIS"] floating enable
 assign [class="UGIS"] $workspace_3
+
+for_window [class="MyHome"] floating enable
+assign [class="MyHome"] $workspace_3
