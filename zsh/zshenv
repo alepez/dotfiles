@@ -36,6 +36,7 @@ alias ka9='killall -9'
 alias k9='kill -9'
 
 alias nvminit='[[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh'
+alias nv='nvminit && nvm use v6.7.0'
 alias kiexinit='test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex" && kiex use 1.2.3'
 
 svndiff() {

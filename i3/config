@@ -347,5 +347,5 @@ assign [class="QtQmlViewer"] $workspace_3
 for_window [class="UGIS"] floating enable
 assign [class="UGIS"] $workspace_3
 
-for_window [class="MyHome"] floating enable
 assign [class="MyHome"] $workspace_3
+# for_window [class="MyHome"] floating enable
