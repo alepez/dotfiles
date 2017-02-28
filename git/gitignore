@@ -32,3 +32,4 @@ npm-debug.log
 *.qmlc.*
 *.jsc
 *.jsc.*
+callgrind.out.*
