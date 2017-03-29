@@ -33,3 +33,6 @@ npm-debug.log
 *.jsc
 *.jsc.*
 callgrind.out.*
+.gitversion.h
+*.log
+*.supp
