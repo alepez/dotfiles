@@ -16,12 +16,10 @@ Plug 'bronson/vim-trailing-whitespace' " Highlights trailing whitespace in red a
 Plug 'peterhoeg/vim-qml' " QML syntax highlighting for VIM
 Plug 'rdnetto/YCM-Generator' " Automatically generates YouCompleteMe configuration based on Makefile
 Plug 'mhinz/vim-signify' " show diff in gutter
-Plug 'mattn/gist-vim' " vimscript for gist
 Plug 'mileszs/ack.vim' " search with ag the silver searcher
 Plug 'a.vim' " Alternate files quickly (header/implementation etc...)
 Plug 'sjl/gundo.vim' " Gundo is a Vim plugin for visualizing your undo tree to make it usable
 Plug 'kshenoy/vim-signature' " bookmark manager
-Plug 'octol/vim-cpp-enhanced-highlight' " smarter c++ highlight
 Plug 'SirVer/ultisnips' " Snippets engine
 Plug 'honza/vim-snippets' " Snippets are separated from the engine
 Plug 'Valloric/YouCompleteMe' " A code-completion engine for Vim
@@ -29,7 +27,6 @@ Plug 'tpope/vim-dispatch' " build in bakcground
 Plug 'Raimondi/delimitMate' " automatically close quotes, parens, brackets, etc.
 Plug 'tpope/vim-surround' " surround.vim: quoting/parenthesizing made simple
 Plug 'tpope/vim-markdown' " for markdown editing, with concealing support
-Plug 'reedes/vim-pencil' " Prose editing improved (markdown etc...)
 Plug 'ap/vim-css-color' " Preview colours in source code while editing
 Plug 'jaxbot/browserlink.vim' " like livereload
 Plug 'suan/vim-instant-markdown' " preview markdown in browser (needs `npm -g install instant-markdown-d`)
@@ -39,10 +36,8 @@ Plug 'mxw/vim-jsx' " reactjs
 Plug 'smarty-syntax' " Syntax highlight for Smarty Template Engine
 Plug 'tpope/vim-unimpaired' " pairs of handy bracket mappings
 Plug 'tpope/vim-commentary' " Comment stuff out
-Plug 'jamessan/vim-gnupg' " transparent editing of gpg encrypted files
 Plug 'klen/python-mode' " Python
 Plug 'alfredodeza/pytest.vim' " unit test runner for python
-Plug 'terryma/vim-expand-region' " visually select increasingly larger regions of text using the same key combination
 Plug 'christoomey/vim-tmux-navigator' " Seamless navigation between tmux panes and vim splits
 Plug 'vim-scripts/SyntaxRange' " Define a different filetype syntax on regions of a buffer.
 Plug 'vim-scripts/ingo-library' " Vimscript library of common functions.
@@ -54,4 +49,3 @@ Plug 'morhetz/gruvbox' " Retro groove color scheme for Vim
 " needs a good font with icons, like patched fonts you can find at
 " https://github.com/ryanoasis/nerd-fonts
 Plug 'ryanoasis/vim-devicons' " Add fonts icons
-
