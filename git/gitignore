@@ -36,3 +36,4 @@ callgrind.out.*
 .gitversion.h
 *.log
 *.supp
+compile_commands.json
