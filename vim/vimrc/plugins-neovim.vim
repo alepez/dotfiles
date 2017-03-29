@@ -1,1 +1,1 @@
-Plugin 'neomake/neomake'
+Plug 'neomake/neomake'

@@ -2,7 +2,6 @@ if has("gui_running")
   source ~/.dotfiles/vim/vimrc/gvim.vim
 endif
 
-source ~/.dotfiles/vim/vimrc/colors.vim
 source ~/.dotfiles/vim/vimrc/autoreload.vim
 
 " vim needs nocompatible flag to run vundle
@@ -12,13 +11,7 @@ endif
 
 filetype off " required
 
-" Initialize Vundle plugin manager
-" FIXME check if file exists. Use nvim directory otherwise
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin()
 
 source ~/.dotfiles/vim/vimrc/plugins-enabled.vim
 source ~/.dotfiles/vim/vimrc/plugins-disabled.vim
@@ -30,7 +23,10 @@ if has('nvim')
 endif
 
 " Plugins cannot be loaded below this line
-call vundle#end()            " required
+call plug#end()
+
+source ~/.dotfiles/vim/vimrc/colors.vim
+
 filetype plugin indent on    " required
 
 source ~/.dotfiles/vim/vimrc/plugins-special.vim
