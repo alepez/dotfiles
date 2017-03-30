@@ -10,6 +10,10 @@ fu! CInclude()
   normal gg/#incOinc
 endf
 
+
+" Enable chromatica (clang syntax highlight)
+let g:chromatica#enable_at_startup=1
+
 " Map some shortcuts only for C and CPP files
 augroup Cpp
 	autocmd BufRead,BufNewFile *.h set filetype=cpp " Set extra filetypes
