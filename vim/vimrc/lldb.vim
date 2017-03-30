@@ -1,6 +1,6 @@
 nmap <F1> <Plug>LLBreakSwitch
-vmap <F2> <Plug>LLStdInSelected
-nnoremap <F4> :LLstdin<CR>
+" vmap <F2> <Plug>LLStdInSelected
+" nnoremap <F4> :LLstdin<CR>
 nnoremap <F5> :LLmode debug<CR>
 nnoremap <S-F5> :LLmode code<CR>
 nnoremap <F8> :LL continue<CR>
