@@ -14,7 +14,6 @@ Plug 'vim-airline/vim-airline-themes' " lean & mean status/tabline for vim that'
 Plug 'godlygeek/tabular' " Vim script for text filtering and alignment. Note: must come before vim-markdown
 Plug 'bronson/vim-trailing-whitespace' " Highlights trailing whitespace in red and provides :FixWhitespace to fix it.
 Plug 'peterhoeg/vim-qml' " QML syntax highlighting for VIM
-Plug 'rdnetto/YCM-Generator' " Automatically generates YouCompleteMe configuration based on Makefile
 Plug 'mhinz/vim-signify' " show diff in gutter
 Plug 'mileszs/ack.vim' " search with ag the silver searcher
 Plug 'a.vim' " Alternate files quickly (header/implementation etc...)
