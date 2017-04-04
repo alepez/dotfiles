@@ -37,3 +37,4 @@ callgrind.out.*
 *.log
 *.supp
 compile_commands.json
+.clang
