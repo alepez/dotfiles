@@ -24,7 +24,6 @@ set listchars=eol:¬,tab:▸\ ,trail:·,nbsp:⎵ " Use these symbols for invisib
 set modelines=1 " The number of lines that is checked for set commands
 set noautochdir " Prevent changing directory when opening files
 set noerrorbells " Disable error bells
-set noesckeys " (Hopefully) removes the delay when hitting esc in insert mode
 set nospell " Disable spell check
 set nostartofline " Don’t reset cursor to start of line when moving around.
 set nowrap " turn off soft wrap

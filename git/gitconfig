@@ -142,3 +142,6 @@
 	textconv = hexdump -v -C
 [credential]
 	helper = store
+[user]
+	email = alessandro.pezzato@gmail.com
+	name = Alessandro Pezzato
