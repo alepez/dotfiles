@@ -340,16 +340,16 @@ for_window [class="copyq"] floating enable
 # FIXME this should go in a config.local file
 
 for_window [class="ESA Universal"] floating enable
-assign [class="ESA Universal"] $workspace_3
-
 for_window [class="QtQmlViewer"] floating enable
-assign [class="QtQmlViewer"] $workspace_3
-
 for_window [class="UGIS"] floating enable
-assign [class="UGIS"] $workspace_3
-# for_window [class="UgisTest"] floating enable
-assign [class="UgisTest"] $workspace_3
+for_window [class="Bmet Manager"] floating enable
+for_window [class="VirtualBox"] fullscreen enable
 
+assign [class="ESA Universal"] $workspace_3
+assign [class="QtQmlViewer"] $workspace_3
+assign [class="UGIS"] $workspace_3
+assign [class="UgisTest"] $workspace_8
 assign [class="MyHome"] $workspace_3
 assign [class="MosQtitto"] $workspace_3
-# for_window [class="MyHome"] floating enable
+assign [class="Bmet Manager"] $workspace_3
+assign [class="VirtualBox"] $workspace_7
