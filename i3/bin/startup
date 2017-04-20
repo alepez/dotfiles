@@ -17,8 +17,8 @@ xset r rate 250 30
 # tmp directory needed by browser profile sync and cache
 mkdir -p /tmp/${USER}-tmp
 
-# Browser profile sync
-# ~/.dotfiles/i3/bin/browser-profile-sync start &>/dev/null </dev/null &
+# External storage manager
+udiskie --no-automount --tray --use-udisks2 &>/dev/null </dev/null &
 
 # NetworkManager applet
 nm-applet &>/dev/null </dev/null &
