@@ -6,8 +6,11 @@ mkdir -p /tmp/${USER}-tmp/thumbnails ; rm -rf /home/${USER}/.thumbnails ; ln -s 
 
 (
 
+cd /
+
 # Keyboard: US layout with Italian letters, CapsLock like Ctrl
 setxkbmap -layout it -variant us -option 'caps:ctrl_modifier'
+
 # Caps Lock mapped to: Esc + Ctrl (long press)
 xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
 
@@ -30,7 +33,7 @@ nm-applet &>/dev/null </dev/null &
 xbindkeys &>/dev/null </dev/null &
 
 # Clipboard manager. Sleep is needed. See: https://github.com/hluk/CopyQ/issues/225
-( sleep 5 && copyq ) &>/dev/null </dev/null &
+( sleep 5 && copyq  &>/dev/null </dev/null & ) &>/dev/null </dev/null &
 
 ) &>/dev/null </dev/null &
 
