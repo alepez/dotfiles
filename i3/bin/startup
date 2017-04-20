@@ -29,9 +29,6 @@ xbindkeys &>/dev/null </dev/null &
 # Clipboard manager. Sleep is needed. See: https://github.com/hluk/CopyQ/issues/225
 ( sleep 5 && copyq ) &>/dev/null </dev/null &
 
-# Internet connection is available after user login. Just wait some seconds and sync time
-( sleep 10; while ! ping -w1 -c1 pool.ntp.org; do sleep 1; done; ntpdate pool.ntp.org ; hwclock --systohc )
-
 ) &>/dev/null </dev/null &
 
 exit 0
