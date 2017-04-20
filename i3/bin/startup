@@ -20,6 +20,9 @@ mkdir -p /tmp/${USER}-tmp
 # External storage manager
 udiskie --no-automount --tray --use-udisks2 &>/dev/null </dev/null &
 
+# Bluetooth applet
+blueman-applet &>/dev/null </dev/null &
+
 # NetworkManager applet
 nm-applet &>/dev/null </dev/null &
 
