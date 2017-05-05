@@ -14,7 +14,6 @@ filetype off " required
 call plug#begin()
 
 source ~/.dotfiles/vim/vimrc/plugins-enabled.vim
-source ~/.dotfiles/vim/vimrc/plugins-disabled.vim
 
 " neovim plugins
 " these plugins need features not available in classic vim

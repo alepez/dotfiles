@@ -40,7 +40,6 @@ Plug 'alfredodeza/pytest.vim' " unit test runner for python
 Plug 'christoomey/vim-tmux-navigator' " Seamless navigation between tmux panes and vim splits
 Plug 'vim-scripts/SyntaxRange' " Define a different filetype syntax on regions of a buffer.
 Plug 'vim-scripts/ingo-library' " Vimscript library of common functions.
-Plug 'elixir-lang/vim-elixir' " Vim configuration files for Elixir http://elixir-lang.org/
 Plug 'milkypostman/vim-togglelist' " Functions to toggle the [Location List] and the [Quickfix List] windows.
 Plug 'morhetz/gruvbox' " Retro groove color scheme for Vim
 
