@@ -8,6 +8,5 @@ Plug 'scrooloose/syntastic.git' " check syntax
 Plug 'elixir-lang/vim-elixir' " Vim configuration files for Elixir http://elixir-lang.org/
 Plug 'ervandew/supertab' " Supertab allows you to use <Tab> for all your insert completion needs
 Plug 'benmills/vimux' " Run commands inside tmux window
-Plug 'tpope/vim-dispatch' " build in bakcground
 Plug 'scrooloose/nerdcommenter' " Vim plugin for intensely orgasmic commenting
 Plug 'christoomey/vim-tmux-navigator' " Seamless navigation between tmux panes and vim splits

@@ -21,6 +21,7 @@ Plug 'SirVer/ultisnips' " Snippets engine
 Plug 'honza/vim-snippets' " Snippets are separated from the engine
 Plug 'Valloric/YouCompleteMe' " A code-completion engine for Vim
 Plug 'Raimondi/delimitMate' " automatically close quotes, parens, brackets, etc.
+Plug 'tpope/vim-dispatch' " build in bakcground
 Plug 'tpope/vim-surround' " surround.vim: quoting/parenthesizing made simple
 Plug 'tpope/vim-markdown' " for markdown editing, with concealing support
 Plug 'ap/vim-css-color' " Preview colours in source code while editing
