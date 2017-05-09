@@ -14,7 +14,7 @@ if !((v:version == 704 && has('patch143') || v:version > 704) && (has('python') 
   let g:loaded_youcompleteme = 1
 endif
 
-nnoremap <leader>yj :YcmCompleter GoTo<CR>
+nnoremap <leader>yg :YcmCompleter GoTo<CR>
 nnoremap <leader>yt :YcmCompleter GetType<CR>
-nnoremap <leader>yt :YcmCompleter GetParent<CR>
+nnoremap <leader>yp :YcmCompleter GetParent<CR>
 nnoremap <leader>yf :YcmCompleter FixIt<CR>
