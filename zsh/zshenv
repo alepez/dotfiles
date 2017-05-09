@@ -113,6 +113,9 @@ function gac { git add -A && git commit }
 function gacmps { git add -A && git commit -m "$*" && git push }
 alias ggo="gacmps" # Go! shortcut for gacmps
 
+## Clean all untracked files
+function git-superclean { read -q "REPLY?Sure? "; if [ "${REPLY}" = 'y' ]; then echo && git reset --hard && git clean -ffdx; fi }
+
 ## }}}
 
 ################################################################################
