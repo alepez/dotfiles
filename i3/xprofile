@@ -1,2 +1,7 @@
 #!/bin/bash
+
+## gog agent with ssh support
 eval "$( /usr/bin/gpg-agent --daemon --enable-ssh-support )"
+
+## Source local configurations
+if [ -e ~/.xprofile.local ]; then source ~/.xprofile.local; fi
