@@ -6,6 +6,7 @@
 *.o
 *.cpp.o
 *.d
+!*.d/
 *.gcda
 *.gcno
 *.zip
