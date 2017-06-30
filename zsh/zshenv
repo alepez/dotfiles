@@ -81,14 +81,11 @@ dkup() {
 ################################################################################
 ## Git Aliases {{{
 ## See ~/.gitconfig
-alias gs='git status'         # show Status
 alias ga='git add'            # Add files to the index
 alias gA='git add -A'         # Add all files, remove from index deleted files
 alias grv='git remote -v'     # show all Remotes Verbosely
 alias glog='git l'            # log --graph --date=short
-alias gl='glog'               # shortcut to glog
 alias gdh='git diff HEAD'     # show all changes from Head
-alias gd='gdh'                # shortcut to `gdh`
 alias gdu='gd'                # show Unstaged changes
 alias gds='git diff --cached' # show Staged changes
 alias gpl='git pull'          # Pull
@@ -145,6 +142,29 @@ function scm { svn commit -m "$*" }
 function slog { svn log $@ | less }
 ## }}}
 
+################################################################################
+## Git/Subversion shortcuts {{{
+## These shortcuts works both with Git and Subversion repository
+
+function test_repo_git { git rev-parse &>/dev/null }
+function test_repo_svn { svn info &>/dev/null }
+
+function gd {
+  if test_repo_git; then gdh; return; fi
+  if test_repo_svn; then svndiff; return; fi
+}
+
+function gs {
+  if test_repo_git; then git status; return; fi
+  if test_repo_svn; then svn status; return; fi
+}
+
+function gl {
+  if test_repo_git; then glog; return; fi
+  if test_repo_svn; then slog; return; fi
+}
+
+## }}}
 ################################################################################
 ## nvim {{{
 # vim airline themes not working with this variabile set
