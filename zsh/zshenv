@@ -115,7 +115,11 @@ alias ggo="gacmps" # Go! shortcut for gacmps
 function git-superclean { read -q "REPLY?Sure? "; if [ "${REPLY}" = 'y' ]; then echo && git reset --hard && git clean -ffdx; fi }
 
 ## Difference with commond ancestor
-function git-diffanc { git diff $( git merge-base "${1}" "${2}" ) "${1}" }
+function git-diffanc {
+  local main_branch;
+  test -n "${2}" && main_branch="${2}" || main_branch="$( git rev-parse --abbrev-ref HEAD )"
+  git diff $( git merge-base "${1}" "${main_branch}" ) "${1}"
+}
 
 ## }}}
 
