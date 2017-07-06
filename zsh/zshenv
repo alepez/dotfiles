@@ -157,8 +157,8 @@ function test_repo_git { git rev-parse &>/dev/null }
 function test_repo_svn { svn info &>/dev/null }
 
 function gd {
-  if test_repo_git; then gdh; return; fi
-  if test_repo_svn; then svndiff; return; fi
+  if test_repo_git; then gdh $@; return; fi
+  if test_repo_svn; then svndiff $@; return; fi
 }
 
 function gs {
@@ -167,8 +167,8 @@ function gs {
 }
 
 function gl {
-  if test_repo_git; then glog; return; fi
-  if test_repo_svn; then slog; return; fi
+  if test_repo_git; then glog $@; return; fi
+  if test_repo_svn; then slog $@; return; fi
 }
 
 ## }}}
