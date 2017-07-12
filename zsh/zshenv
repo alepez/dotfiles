@@ -92,6 +92,7 @@ alias gpl='git pull'          # Pull
 alias gps='git push'          # Push
 alias gnb='git nb'            # New Branch aka checkout -b
 alias gco='git co'            # Checkout
+alias gamend='git commit --amend'
 
 # Quick merge from origin/master, no fast forward
 function gqm { if [ -z "${1}" ]; then git status -bs; echo -e "\nbranch?"; return; fi; git fetch ; git merge origin/${1} --no-ff }
