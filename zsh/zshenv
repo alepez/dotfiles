@@ -101,9 +101,9 @@ function gqm { if [ -z "${1}" ]; then git status -bs; echo -e "\nbranch?"; retur
 function gcm { git commit -m "$*" }
 
 ## Add all files, Commit, Message as argument
-function gacm { git add -A && git commit -m "$*" }
-alias gcam="gacm" # Correct mistyping
-alias gg="gacm" # I do this so many times a need a shortcut
+#function gacm { git add -A && git commit -m "$*" }
+#alias gcam="gacm" # Correct mistyping
+#alias gg="gacm" # I do this so many times a need a shortcut
 
 ## Add all files, Commit, use editor for message
 function gac { git add -A && git commit }
