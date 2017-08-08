@@ -36,7 +36,7 @@ endsnippet
 ## node {{{
 ################################################################################
 snippet req
-var ${1} = require('$1');
+const ${1} = require('$1');
 endsnippet
 ## }}}
 ## angular {{{
@@ -48,12 +48,17 @@ endsnippet
 ## mocha {{{
 ################################################################################
 snippet des
-describe('${1}', function() {
+describe('${1}', () => {
   ${2}
 });
 endsnippet
 snippet it
-it('${1}', function() {
+it('${1}', () => {
+  ${2}
+});
+endsnippet
+snippet ait
+it('${1}', async () => {
   ${2}
 });
 endsnippet
