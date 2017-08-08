@@ -39,3 +39,4 @@ callgrind.out.*
 *.supp
 compile_commands.json
 .clang
+.agignore
