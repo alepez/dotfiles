@@ -14,7 +14,7 @@ Plug 'bronson/vim-trailing-whitespace' " Highlights trailing whitespace in red a
 Plug 'peterhoeg/vim-qml' " QML syntax highlighting for VIM
 Plug 'mhinz/vim-signify' " show diff in gutter
 Plug 'mileszs/ack.vim' " search with ag the silver searcher
-Plug 'a.vim' " Alternate files quickly (header/implementation etc...)
+Plug 'vim-scripts/a.vim' " Alternate files quickly (header/implementation etc...)
 Plug 'sjl/gundo.vim' " Gundo is a Vim plugin for visualizing your undo tree to make it usable
 Plug 'kshenoy/vim-signature' " bookmark manager
 Plug 'SirVer/ultisnips' " Snippets engine
@@ -30,7 +30,7 @@ Plug 'suan/vim-instant-markdown' " preview markdown in browser (needs `npm -g in
 Plug 'mattn/emmet-vim' " emmet for vim: http://emmet.io/
 Plug 'pangloss/vim-javascript' " Vastly improved Javascript indentation and syntax support in Vim.
 Plug 'mxw/vim-jsx' " reactjs
-Plug 'smarty-syntax' " Syntax highlight for Smarty Template Engine
+Plug 'vim-scripts/smarty-syntax' " Syntax highlight for Smarty Template Engine
 Plug 'tpope/vim-unimpaired' " pairs of handy bracket mappings
 Plug 'tpope/vim-commentary' " Comment stuff out
 Plug 'klen/python-mode' " Python
