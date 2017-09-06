@@ -6,7 +6,7 @@ let g:formatdef_clangformat_cpp = "'clang-format -lines='.a:firstline.':'.a:last
 let g:formatters_cpp = ['clangformat_cpp']
 
 " Enable chromatica (clang syntax highlight)
-let g:chromatica#enable_at_startup=1
+let g:chromatica#enable_at_startup=0
 
 " Map some shortcuts only for C and CPP files
 augroup Cpp
