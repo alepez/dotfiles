@@ -7,6 +7,7 @@
 
 # Unmount network (lazy)
 mount | grep cifs | awk '{ print $3 }' | while read dir; do sudo umount -l $dir; done
+mount | grep nfs  | awk '{ print $3 }' | while read dir; do sudo umount -l $dir; done
 
 # Kill gpg-agent
 # FIXME: this is not working, gpg-agent does not export GPG_AGENT_INFO variable
