@@ -1,5 +1,10 @@
 ## functions {{{
 ################################################################################
+snippet ca=>
+const ${1} = async (${2}) => {
+	${3}
+};
+endsnippet
 snippet cfn
 const ${1} = function(${2}) {
 	${3}
@@ -37,6 +42,15 @@ endsnippet
 ################################################################################
 snippet req
 const ${1} = require('$1');
+endsnippet
+snippet req2
+const ${1} = require('${2}');
+endsnippet
+snippet req{
+const { ${1} } = require('${2}');
+endsnippet
+snippet req_
+const _ = require('lodash');
 endsnippet
 ## }}}
 ## angular {{{
