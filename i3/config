@@ -307,6 +307,9 @@ bindsym $mod+Shift+v exec "copyq toggle"
 set $filemanager "thunar"
 bindsym $mod+e exec $filemanager
 
+# Show ip address
+bindsym $mod+i exec --no-startup-id ~/.dotfiles/i3/bin/myip-notify
+
 ###############################################################################
 # Startup
 ###############################################################################
