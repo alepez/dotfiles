@@ -19,11 +19,18 @@ generate_image() {
   add_caption "${1}.jpg" "${1}"
 }
 
-key_to_image() {
+secret_key_to_image() {
   local key="${1}"
   gpg --export-secret-keys "${key}" | split -a1 -b1556 -d - secret.gpg.
+  for i in secret.gpg.{0,1,2}; do
+    generate_image "${i}" && rm "${i}"
+  done
+}
+
+public_key_to_image() {
+  local key="${1}"
   gpg --export "${key}"             | split -a1 -b1556 -d - public.gpg.
-  for i in secret.gpg.{0,1,2} public.gpg.{0,1}; do
+  for i in public.gpg.{0,1}; do
     generate_image "${i}" && rm "${i}"
   done
 }
@@ -36,10 +43,11 @@ image_to_key() {
 
 generate_pdf() {
   local output="${1}"
+  shift
   local resolution="2480x3508";
   convert -resize "${resolution}" -extent "${resolution}" \
     -background white -gravity Center -border 30 -bordercolor white \
-    public.gpg.{0,1}.jpg  revocation-certificate.gpg.jpg  secret.gpg.{0,1,2}.jpg \
+    $@ \
     "${output}"
 }
 
@@ -59,6 +67,14 @@ import_from_pdf() {
   # imported
 }
 
+export_to_pdf() {
+  local key="${1}"
+  secret_key_to_image "${key}"
+  public_key_to_image "${key}"
+  # FIXME generate revocation-certificate
+  generate_pdf all.pdf public.gpg.{0,1}.jpg  revocation-certificate.gpg.jpg  secret.gpg.{0,1,2}.jpg \
+}
+
 action="${1}"
 shift
 
@@ -70,4 +86,5 @@ case ${action} in
   generate_pdf) generate_pdf $@;;
   import) import $@;;
   import_from_pdf) import_from_pdf $@;;
+  export_to_pdf) export_to_pdf $@;;
 esac
