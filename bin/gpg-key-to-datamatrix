@@ -47,6 +47,18 @@ import() {
   gpg --import < "${1}"
 }
 
+import_from_pdf() {
+  local pdf="${1}"
+  convert "${pdf}" "all.png"
+  image_to_key public all-0.png all-1.png
+  image_to_key revocation-certificate all-2.png
+  image_to_key secret all-3.png all-4.png all-5.png
+  import public.gpg
+  import secret.gpg
+  # revocation certificate is not imported, because it revokes the key when
+  # imported
+}
+
 action="${1}"
 shift
 
@@ -57,4 +69,5 @@ case ${action} in
   generate_image) generate_image $@;;
   generate_pdf) generate_pdf $@;;
   import) import $@;;
+  import_from_pdf) import_from_pdf $@;;
 esac
