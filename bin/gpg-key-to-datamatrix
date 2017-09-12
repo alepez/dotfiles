@@ -3,12 +3,29 @@
 action="${1}"
 key="${2}"
 
+add_caption() {
+ convert "${1}" \
+    \( -background white -fill black -pointsize 24 \
+       label:"${2}" -trim +repage \
+       -bordercolor white -border 10 \
+    \) -gravity South -append \
+    "caption_${1}" \
+    && mv "caption_${1}" "${1}"
+}
+
+generate_image() {
+  dmtxwrite -o "${1}.png" "${1}" \;
+}
+
 key_to_image() {
   gpg --export-secret-keys "${key}" | split -a1 -b1556 -d - secret.gpg.
   gpg --export "${key}"             | split -a1 -b1556 -d - public.gpg.
-  find . -name "*.gpg.*" -exec dmtxwrite -o {}.png {} \;
+  for i in *.gpg.*; do
+    echo $i
+    generate_image "${i}"
+    add_caption "${i}.png" "${i}"
+  done
 }
-
 
 image_to_key() {
   find . -name "*.png" -exec bash -c "eval dmtxread {} > {}.gpg" \;
@@ -19,4 +36,5 @@ image_to_key() {
 case ${action} in
   save) key_to_image;;
   load) image_to_key;;
+  add_caption) add_caption "${2}" "${3}";;
 esac
