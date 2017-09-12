@@ -40,3 +40,4 @@ callgrind.out.*
 compile_commands.json
 .clang
 .agignore
+authorized_keys
