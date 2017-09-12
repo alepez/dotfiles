@@ -14,16 +14,15 @@ add_caption() {
 }
 
 generate_image() {
-  dmtxwrite -o "${1}.png" "${1}" \;
+  dmtxwrite -o "${1}.png" "${1}"
+  add_caption "${1}.png" "${1}"
 }
 
 key_to_image() {
   gpg --export-secret-keys "${key}" | split -a1 -b1556 -d - secret.gpg.
   gpg --export "${key}"             | split -a1 -b1556 -d - public.gpg.
   for i in *.gpg.*; do
-    echo $i
-    generate_image "${i}"
-    add_caption "${i}.png" "${i}"
+    generate_image "${i}" && rm "${i}"
   done
 }
 
@@ -37,4 +36,5 @@ case ${action} in
   save) key_to_image;;
   load) image_to_key;;
   add_caption) add_caption "${2}" "${3}";;
+  generate_image) generate_image "${2}";;
 esac
