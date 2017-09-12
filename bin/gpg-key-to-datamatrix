@@ -1,40 +1,60 @@
 #!/bin/bash
 
-action="${1}"
-key="${2}"
-
 add_caption() {
  convert "${1}" \
-    \( -background white -fill black -pointsize 24 \
+   -quality 100 \
+   -units PixelsPerInch \
+   -resize 200% \
+    \( -background white -fill black -size x48 \
        label:"${2}" -trim +repage \
        -bordercolor white -border 10 \
     \) -gravity South -append \
+    -density 300 \
     "caption_${1}" \
     && mv "caption_${1}" "${1}"
 }
 
 generate_image() {
-  dmtxwrite -o "${1}.png" "${1}"
-  add_caption "${1}.png" "${1}"
+  dmtxwrite --margin=80 --resolution=300 --output="${1}.jpg" -e8 "${1}"
+  add_caption "${1}.jpg" "${1}"
 }
 
 key_to_image() {
+  local key="${1}"
   gpg --export-secret-keys "${key}" | split -a1 -b1556 -d - secret.gpg.
   gpg --export "${key}"             | split -a1 -b1556 -d - public.gpg.
-  for i in *.gpg.*; do
+  for i in secret.gpg.{0,1,2} public.gpg.{0,1}; do
     generate_image "${i}" && rm "${i}"
   done
 }
 
 image_to_key() {
-  find . -name "*.png" -exec bash -c "eval dmtxread {} > {}.gpg" \;
-  cat secret.gpg.{0,1,2}.png.gpg | gpg --import
-  cat public.gpg.{0,1}.png.gpg   | gpg --import
+  local name="${1}"
+  shift
+  ( for i in $@; do dmtxread "${i}"; done ) > "${name}.gpg"
 }
 
+generate_pdf() {
+  local output="${1}"
+  local resolution="2480x3508";
+  convert -resize "${resolution}" -extent "${resolution}" \
+    -background white -gravity Center -border 30 -bordercolor white \
+    public.gpg.{0,1}.jpg  revocation-certificate.gpg.jpg  secret.gpg.{0,1,2}.jpg \
+    "${output}"
+}
+
+import() {
+  gpg --import < "${1}"
+}
+
+action="${1}"
+shift
+
 case ${action} in
-  save) key_to_image;;
-  load) image_to_key;;
-  add_caption) add_caption "${2}" "${3}";;
-  generate_image) generate_image "${2}";;
+  save) key_to_image $@;;
+  load) image_to_key $@;;
+  add_caption) add_caption $@;;
+  generate_image) generate_image $@;;
+  generate_pdf) generate_pdf $@;;
+  import) import $@;;
 esac
