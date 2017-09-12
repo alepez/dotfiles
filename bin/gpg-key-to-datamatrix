@@ -1,0 +1,22 @@
+#!/bin/bash
+
+action="${1}"
+key="${2}"
+
+key_to_image() {
+  gpg --export-secret-keys "${key}" | split -a1 -b1556 -d - secret.gpg.
+  gpg --export "${key}"             | split -a1 -b1556 -d - public.gpg.
+  find . -name "*.gpg.*" -exec dmtxwrite -o {}.png {} \;
+}
+
+
+image_to_key() {
+  find . -name "*.png" -exec bash -c "eval dmtxread {} > {}.gpg" \;
+  cat secret.gpg.{0,1,2}.png.gpg | gpg --import
+  cat public.gpg.{0,1}.png.gpg   | gpg --import
+}
+
+case ${action} in
+  save) key_to_image;;
+  load) image_to_key;;
+esac
