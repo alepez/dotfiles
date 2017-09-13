@@ -30,7 +30,7 @@ alias v='vim'
 alias df='df -h'
 alias du='du -sh'
 alias lsg='ll | grep'
-alias lslast="ls -t | head"
+lslast() { ls -t $@ | head }
 alias ka9='killall -9'
 alias k9='kill -9'
 
