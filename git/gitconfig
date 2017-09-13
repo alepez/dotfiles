@@ -40,6 +40,9 @@
   # branch
   b = branch -v                     # branch (verbose)
 
+  # show branhces, sort by date, colourful (https://stackoverflow.com/questions/5188320)
+  bb = for-each-ref --sort=-committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:short)%(color:reset))'
+
   # commit
   c = commit -m                     # commit with message
   ca = commit -am                   # commit all with message
