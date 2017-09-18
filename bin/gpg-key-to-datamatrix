@@ -22,7 +22,7 @@ generate_image() {
 secret_key_to_image() {
   local key="${1}"
   gpg --export-secret-keys "${key}" | split -a1 -b1556 -d - secret.gpg.
-  for i in secret.gpg.{0,1,2}; do
+  for i in secret.gpg.[0-9]; do
     generate_image "${i}" && rm "${i}"
   done
 }
@@ -30,7 +30,7 @@ secret_key_to_image() {
 public_key_to_image() {
   local key="${1}"
   gpg --export "${key}"             | split -a1 -b1556 -d - public.gpg.
-  for i in public.gpg.{0,1}; do
+  for i in public.gpg.[0-9]; do
     generate_image "${i}" && rm "${i}"
   done
 }
@@ -72,7 +72,9 @@ export_to_pdf() {
   secret_key_to_image "${key}"
   public_key_to_image "${key}"
   # FIXME generate revocation-certificate
-  generate_pdf all.pdf public.gpg.{0,1}.jpg  revocation-certificate.gpg.jpg  secret.gpg.{0,1,2}.jpg \
+  generate_pdf all.pdf \
+    public.gpg.[0-9].jpg \
+    secret.gpg.[0-9].jpg
 }
 
 action="${1}"
