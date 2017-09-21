@@ -102,6 +102,8 @@ bindsym $mod+bar split h
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
+
+# invert screen colors
 bindsym $mod+Shift+i exec --no-startup-id xcalib -i -a
 
 # change container layout (stacked, tabbed, toggle split)
