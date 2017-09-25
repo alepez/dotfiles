@@ -1,0 +1,16 @@
+#!/bin/bash
+
+threshold_days=7
+
+now=$( date +%s )
+sync=$( date --date="$( cat /usr/portage/metadata/timestamp.chk )" +%s )
+diff_sec=$(( ${now} - ${sync}  ))
+diff_days=$(( ${diff_sec}/(60*60*24) ))
+
+if [ "${1}" == "notify" ]; then
+  test ${diff_days} -ge ${threshold_days} && \
+    notify-send -u normal "Last portage sync: ${diff_days} days ago"
+  exit 0;
+fi
+
+echo ${diff_days}

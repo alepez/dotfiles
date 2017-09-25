@@ -32,8 +32,11 @@ nm-applet &>/dev/null </dev/null &
 # Mouse bindings
 xbindkeys &>/dev/null </dev/null &
 
+# Check if Gentoo is up to date
+( cd / && sleep 5 && ~/.dotfiles/bin/gentoo-last-sync  &>/dev/null </dev/null & ) &>/dev/null </dev/null &
+
 # Clipboard manager. Sleep is needed. See: https://github.com/hluk/CopyQ/issues/225
-( sleep 5 && copyq  &>/dev/null </dev/null & ) &>/dev/null </dev/null &
+( cd / && sleep 5 && copyq  &>/dev/null </dev/null & ) &>/dev/null </dev/null &
 
 # Setup second monitor if HDM1 is connected
 xrandr | grep 'HDMI1 connected' && xrandr --output HDMI1 --mode 1920x1080  --left-of eDP1
