@@ -10,5 +10,6 @@ rofi \
   -padding 300 \
   -opacity 90 \
   -font "SauceCodePro Nerd Font 20" \
-  -fuzzy \
+  -matching fuzzy \
+  -i \
   $@
