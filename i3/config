@@ -342,9 +342,6 @@ exec --no-startup-id ~/.dotfiles/i3/bin/startup
 # is used in the bar {} block below.
 font pango:Droid Sans 11
 
-# Set desktop background
-exec_always --no-startup-id feh --bg-fill ~/.wallpaper.png
-
 client.focused            $neutral_aqua    $neutral_aqua    $dark0       $dark0
 client.focused_inactive   $dark0_hard      $dark0_hard      $gray_245    $dark0
 client.unfocused          $dark0_soft      $dark0_soft      $gray_245    $dark0
