@@ -1,14 +1,14 @@
 #!/bin/bash
 rofi \
-  -color-window "#282828, #282828, #282828" \
-  -color-normal "#282828, #a89984, #282828, #282828, #fbf1c7" \
-  -color-active "#282828, #83a598, #32302f, #83a598, #282828" \
-  -color-urgent "#282828, #fb4934, #32302f, #fb4934, #282828" \
+  -color-window "#CC282828, #00282828, #00282828" \
+  -color-normal "#00282828, #FFA89984, #00282828, #00282828, #FFB8BB26" \
+  -color-active "#00282828, #FF83A598, #FF32302F, #FF83A598, #00282828" \
+  -color-urgent "#00282828, #FFFB4934, #FF32302F, #FFFB4934, #00282828" \
+  -fake-transparency -fake-background background \
   -fullscreen \
   -eh 2 \
   -separator none \
   -padding 300 \
-  -opacity 90 \
   -font "SauceCodePro Nerd Font 20" \
   -matching fuzzy \
   -i \
