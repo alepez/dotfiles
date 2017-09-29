@@ -1,0 +1,4 @@
+#!/bin/bash
+ln -nfs $( find "${HOME}/Pictures/wallpapers" | shuf | head -1 ) \
+  "${HOME}/.wallpaper" \
+  && feh --bg-fill "${HOME}/.wallpaper"
