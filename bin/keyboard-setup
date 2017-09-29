@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Keyboard: US layout with Italian letters, CapsLock like Ctrl
+setxkbmap -layout it -variant us -option 'caps:ctrl_modifier'
+
+# Caps Lock mapped to: Esc + Ctrl (long press)
+xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
+
+# Increase delay and rate of keyboard
+set r rate 250 30
