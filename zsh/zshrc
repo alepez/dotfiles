@@ -94,9 +94,18 @@ zstyle ':completion:*' use-cache yes
 zstyle ':completion:*' cache-path ~/.cache/zsh
 ## }}}
 
-## Environment {{{
+## Editor {{{
 
-export EDITOR=/usr/bin/vim
+if type nvim > /dev/null 2>&1; then
+  alias vim='nvim'
+  export EDITOR=nvim
+else
+  export EDITOR=vim
+fi
+
+## }}}
+
+## Environment {{{
 
 ## Add user's bin directory to path if it exists
 if [ -d $HOME/.local/bin ]; then export PATH="$HOME/.local/bin:${PATH}"; fi
