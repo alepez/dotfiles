@@ -5,9 +5,6 @@ let g:cpp_class_scope_highlight=1
 let g:formatdef_clangformat_cpp = "'clang-format -lines='.a:firstline.':'.a:lastline.' --assume-filename='.bufname('%').' -style=file'"
 let g:formatters_cpp = ['clangformat_cpp']
 
-" Enable chromatica (clang syntax highlight)
-let g:chromatica#enable_at_startup=0
-
 " Map some shortcuts only for C and CPP files
 augroup Cpp
   " .h always as cpp
