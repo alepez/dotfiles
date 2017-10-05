@@ -99,6 +99,9 @@ zstyle ':completion:*' cache-path ~/.cache/zsh
 export EDITOR=/usr/bin/vim
 
 ## Add user's bin directory to path if it exists
+if [ -d $HOME/.local/bin ]; then export PATH="$HOME/.local/bin:${PATH}"; fi
+
+## Add user's bin directory to path if it exists
 if [ -d $HOME/bin ]; then export PATH="$HOME/bin:${PATH}"; fi
 
 ## Add neovim bin directory to path if it exists
