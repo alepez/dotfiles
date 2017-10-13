@@ -16,10 +16,6 @@ alias W='cd ~/workspace'
 alias O='xdg-open'
 alias dot="cd ~/.dotfiles && vim"
 
-# Useful for remote hosts with tmux, open a new terminal window with its own
-# tmux session. Understand which terminal emulator is currently in use.
-alias S=$( realpath ~/.dotfiles/bin/ssh-terminal )
-
 # Generate pronounceable password
 alias genpassword='pwgen --capitalize --numerals --ambiguous 12 6'
 
