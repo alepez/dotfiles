@@ -36,3 +36,7 @@ augroup ResizeCmdOnVimEnterOrResized
     autocmd VimResized * call ResizeCmdHeight()
 augroup END
 " }}}
+
+" short messages, avoid annoying Hit ENTER to continue in some cases
+set shortmess=a
+
