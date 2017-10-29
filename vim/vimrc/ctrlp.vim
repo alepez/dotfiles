@@ -18,10 +18,4 @@ if executable('ag')
 
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
-"  let g:ctrlp_user_command = {
-"    \ 'types': {
-"      \ 1: ['.git', 'cd %s && git ls-files'],
-"      \ },
-"    \ 'fallback': 'ag %s -l --nocolor -g ""'
-"    \ }
 endif
