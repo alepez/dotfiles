@@ -10,6 +10,7 @@
 *.gcno
 node_modules/*
 *.png
+*.svg
 *.jpg
 *.zip
 Debug_*/*
