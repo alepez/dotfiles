@@ -1,4 +1,17 @@
 #!/bin/bash
-ln -nfs $( find "${HOME}/Pictures/wallpapers" | shuf | head -1 ) \
-  "${HOME}/.wallpaper" \
-  && feh --bg-fill "${HOME}/.wallpaper"
+
+wallpaper="${HOME}/.wallpaper"
+
+list_all() { find "${HOME}/Pictures/wallpapers"; }
+
+select_random() { shuf | head -1; }
+
+set() { ln -nfs "${1}" "${wallpaper}"; }
+
+set_random() { set $( list_all | select_random ); }
+
+load() { feh --bg-fill "${wallpaper}"; }
+
+case $1 in
+  *) set_random && load;;
+esac
