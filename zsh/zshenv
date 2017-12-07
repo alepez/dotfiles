@@ -146,6 +146,12 @@ ssh-rsync-fast-stop() {
 ## }}}
 
 ################################################################################
+## SSH {{{
+alias sshconf="${EDITOR} ${HOME}/.ssh/config"
+alias sshpubkey="ssh-add -L |  head -1 | xclip"
+## }}}
+
+################################################################################
 ## Svn Aliases {{{
 alias sst='svn status'
 alias sa='svn add'
