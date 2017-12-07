@@ -40,3 +40,5 @@ augroup END
 " short messages, avoid annoying Hit ENTER to continue in some cases
 set shortmess=a
 
+" Disable Ex mode
+:map Q <Nop>
