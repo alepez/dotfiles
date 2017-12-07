@@ -9,6 +9,8 @@ skip_global_compinit=1
 ################################################################################
 ## alias {{{
 
+export EDITOR='nvim'
+
 alias bowi="bower install --save"
 
 function D { mkdir -p $1 && cd $1 }
@@ -147,8 +149,13 @@ ssh-rsync-fast-stop() {
 
 ################################################################################
 ## SSH {{{
-alias sshconf="${EDITOR} ${HOME}/.ssh/config"
 alias sshpubkey="ssh-add -L |  head -1 | xclip"
+
+sshconf() {
+  local args='';
+  if [ -n "${1}" ]; then args="-c /Host ${1}"; fi
+  ${EDITOR} ${HOME}/.ssh/config ${args}
+}
 ## }}}
 
 ################################################################################
