@@ -365,6 +365,7 @@ for_window [class="ESA Universal"] floating enable
 for_window [class="QtQmlViewer"] floating enable
 for_window [class="UGIS"] floating enable
 for_window [class="Bmet Manager"] floating enable
+for_window [class="matchbox-keyboard"] floating enable
 for_window [class="VirtualBox"] fullscreen enable
 
 assign [class="ESA Universal"] $workspace_3
