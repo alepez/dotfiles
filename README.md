@@ -30,4 +30,5 @@ ln -nfs ~/.dotfiles/gnupg/gpg.conf ~/.gnupg/gpg.conf
 ln -nfs ~/.dotfiles/gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
 ln -nfs ~/.dotfiles/top/toprc ~/.toprc
 ln -nfs ~/.dotfiles/xbindkeysrc ~/.xbindkeysrc
+ln -nfs ~/.dotfiles/haskell/ghci.conf ~/.ghc/gchi.conf
 ```
