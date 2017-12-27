@@ -38,6 +38,9 @@ Plug 'alfredodeza/pytest.vim' " unit test runner for python
 Plug 'vim-scripts/SyntaxRange' " Define a different filetype syntax on regions of a buffer.
 Plug 'milkypostman/vim-togglelist' " Functions to toggle the [Location List] and the [Quickfix List] windows.
 Plug 'morhetz/gruvbox' " Retro groove color scheme for Vim
+Plug 'eagletmt/ghcmod-vim' " Happy Haskell programming on Vim, powered by ghc-mod
+Plug 'eagletmt/neco-ghc' " A completion plugin for Haskell, using ghc-mod
+Plug 'Shougo/vimproc.vim', {'do' : 'make'} " Interactive command execution in Vim
 
 " vim-devicons must be loaded after all other plugins
 " needs a good font with icons, like patched fonts you can find at
