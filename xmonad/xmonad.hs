@@ -7,7 +7,10 @@ main = xmonad $ def
     , modMask            = mod4Mask
     , terminal           = "roxterm"
     , normalBorderColor  = "#cccccc"
-    , focusedBorderColor = "#cd8b00" }
+    , focusedBorderColor = "#cd8b00"
+    , startupHook        = myStartupHook
+    }
     `additionalKeysP`
     [ ("M-b", spawn "google-chrome") ]
 
+myStartupHook = spawn "compton --config ~/.dotfiles/xmonad/compton.conf -b"
