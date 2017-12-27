@@ -42,7 +42,20 @@ fi
 
 ## plugins {{{
 ## Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(common-aliases dirhistory web-search tmux docker zsh-autosuggestions stack)
+plugins=(
+  adb
+  common-aliases
+  dirhistory
+  docker
+  history
+  httpie
+  jsontools
+  pass
+  stack
+  systemd
+  tmux
+  zsh-autosuggestions
+)
 
 source $ZSH/oh-my-zsh.sh
 
