@@ -18,15 +18,26 @@ myNormalBorderColor  = "#7c7c7c"
 myFocusedBorderColor = "#ffb6b0"
 
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $ [
+  -- Open the browser
   ((modMask, xK_b),
-     spawn $ "google-chrome")
-  ,
+     spawn $ "google-chrome"),
+
+  -- Open a new terminal
   ((modMask, xK_Return),
-     spawn $ XMonad.terminal conf)
-  ,
-  ((modMask, xK_q),
-     restart "xmonad" True)
-  ]
+     spawn $ XMonad.terminal conf),
+
+  -- Restart xmonad
+  ((modMask .|. shiftMask, xK_r),
+     restart "xmonad" True),
+
+  -- Show rofi
+  ((modMask, xK_space),
+     spawn "~/.dotfiles/i3/bin/rofi -show run")
+
+  -- Cycle through the available layout algorithms.
+  ((modMask .|. shiftMask, xK_l),
+     sendMessage NextLayout),
+]
 
 myConfig = defaultConfig {
   terminal           = myTerminal,
