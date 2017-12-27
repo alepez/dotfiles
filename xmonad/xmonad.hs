@@ -6,6 +6,7 @@ import XMonad.Util.EZConfig
 myStartupHook = spawn "compton --config ~/.dotfiles/xmonad/compton.conf -b"
 
 myTerminal = "roxterm"
+myBrowser = "google-chrome"
 
 myFocusFollowsMouse = True
 
@@ -20,23 +21,35 @@ myFocusedBorderColor = "#ffb6b0"
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $ [
   -- Open the browser
   ((modMask, xK_b),
-     spawn $ "google-chrome"),
+     spawn $ myBrowser),
 
   -- Open a new terminal
   ((modMask, xK_Return),
-     spawn $ XMonad.terminal conf),
+     spawn $ myTerminal),
 
   -- Restart xmonad
   ((modMask .|. shiftMask, xK_r),
      restart "xmonad" True),
 
-  -- Show rofi
+  -- rofi run
   ((modMask, xK_space),
-     spawn "~/.dotfiles/i3/bin/rofi -show run")
+     spawn "~/.dotfiles/i3/bin/rofi -show run"),
+
+  -- rofi password
+  ((modMask .|. shiftMask, xK_p),
+     spawn $ "~/.dotfiles/i3/bin/pass-dmenu"),
+
+  -- rofi ssh
+  ((modMask .|. shiftMask, xK_Return),
+     spawn $ "~/.dotfiles/i3/bin/ssh-dmenu"),
+
+  -- rofi clipboard
+  ((modMask .|. shiftMask, xK_c),
+     spawn $ "~/.dotfiles/i3/bin/common-clip-dmenu"),
 
   -- Cycle through the available layout algorithms.
   ((modMask .|. shiftMask, xK_l),
-     sendMessage NextLayout),
+     sendMessage NextLayout)
 ]
 
 myConfig = defaultConfig {
