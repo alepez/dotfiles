@@ -16,7 +16,12 @@ import XMonad.Layout.NoBorders
 import XMonad.Layout.ToggleLayouts
 
 myStartupHook = spawn "~/.dotfiles/wm/bin/startup" <+> spawn "taffybar"
-myManageHook = manageDocks
+
+myManageHook = composeAll (
+  [ stringProperty "WM_WINDOW_ROLE" =? "pop-up" --> doFloat
+  , className =? "Pavucontrol" --> doFloat
+  , className =? "Arandr" --> doFloat
+  ])
 
 myTaffyBarPP = taffybarDefaultPP {
     ppCurrent = taffybarColor "#f8f8f8" "DodgerBlue4"   . wrap " " " "
@@ -72,8 +77,12 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask .|. shiftMask, xK_c),
      spawn $ "~/.dotfiles/wm/bin/common-clip-dmenu")
 
+  -- Kill focused window
+  , ((modMask, xK_q),
+     kill)
+
   -- Cycle through the available layout algorithms.
-  , ((modMask .|. shiftMask, xK_l),
+  , ((controlMask .|. modMask, xK_space),
      sendMessage NextLayout)
   ]
 
@@ -97,7 +106,7 @@ myConfig = defaultConfig {
   keys               = myKeys,
 
   startupHook        = myStartupHook,
-  manageHook         = myManageHook,
+  manageHook         = fullscreenManageHook <+> myManageHook,
   layoutHook         = myLayout
 }
 
