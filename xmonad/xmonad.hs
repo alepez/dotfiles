@@ -4,7 +4,7 @@ import qualified Data.Map        as M
 import XMonad.Util.EZConfig
 import System.Exit
 
-myStartupHook = return ()
+myStartupHook = spawn "~/.dotfiles/wm/bin/startup"
 
 myTerminal = "roxterm"
 myBrowser = "google-chrome"
