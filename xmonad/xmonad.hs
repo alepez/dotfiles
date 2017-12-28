@@ -19,6 +19,7 @@ myStartupHook = spawn "~/.dotfiles/wm/bin/startup" <+> spawn "taffybar"
 
 myManageHook = composeAll (
   [ stringProperty "WM_WINDOW_ROLE" =? "pop-up" --> doFloat
+  , className =? "Pinentry-gtk-2" --> doFloat
   , className =? "Pavucontrol" --> doFloat
   , className =? "Arandr" --> doFloat
   ])
