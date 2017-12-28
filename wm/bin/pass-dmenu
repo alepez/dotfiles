@@ -2,7 +2,7 @@
 
 shopt -s nullglob globstar
 
-dmenu="$( realpath ~/.dotfiles/i3/bin/rofi )"
+dmenu="$( realpath ~/.dotfiles/wm/bin/rofi )"
 
 prefix=${PASSWORD_STORE_DIR-~/.password-store}
 password_files=( "$prefix"/**/*.gpg )

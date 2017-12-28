@@ -355,15 +355,16 @@ new_float pixel 2
 
 for_window [class="Pavucontrol"] floating enable, border normal
 for_window [class="copyq"] floating enable
+for_window [class="Arandr"] floating enable
+for_window [class="Pinentry-gtk-2"] floating enable
 
-# FIXME this should go in a config.local file
-
+# FIXME this should go in a config.local file >>>
 for_window [class="ESA Universal"] floating enable
 for_window [class="QtQmlViewer"] floating enable
 for_window [class="UGIS"] floating enable
 for_window [class="Bmet Manager"] floating enable
-for_window [class="matchbox-keyboard"] floating enable
 for_window [class="VirtualBox"] fullscreen enable
+# <<< FIXME
 
 assign [class="ESA Universal"] $workspace_3
 assign [class="QtQmlViewer"] $workspace_3
