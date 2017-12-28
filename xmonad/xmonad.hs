@@ -9,6 +9,11 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import System.Taffybar.Hooks.PagerHints (pagerHints)
 import XMonad.Hooks.EwmhDesktops (ewmh)
+import XMonad.Layout
+import XMonad.Layout.Fullscreen
+import XMonad.Layout.Named
+import XMonad.Layout.NoBorders
+import XMonad.Layout.ToggleLayouts
 
 myStartupHook = spawn "~/.dotfiles/wm/bin/startup" <+> spawn "taffybar"
 myManageHook = manageDocks
@@ -72,6 +77,14 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
      sendMessage NextLayout)
   ]
 
+myLayout = toggle $ tallLayout ||| wideLayout ||| fullLayout
+  where
+    basicLayout = smartBorders $ fullscreenFocus $ Tall 1 (3/100) (1/2)
+    tallLayout  = named "Tall" $ avoidStruts $ basicLayout
+    wideLayout  = named "Wide" $ avoidStruts $ Mirror $ basicLayout
+    fullLayout  = named "Full" $ noBorders Full
+    toggle = toggleLayouts fullLayout
+
 myConfig = defaultConfig {
   terminal           = myTerminal,
   focusFollowsMouse  = myFocusFollowsMouse,
@@ -84,11 +97,12 @@ myConfig = defaultConfig {
   keys               = myKeys,
 
   startupHook        = myStartupHook,
-  manageHook         = myManageHook
+  manageHook         = myManageHook,
+  layoutHook         = myLayout
 }
 
 main = do
   client <- connectSession
-  xmonad $ ewmh $ pagerHints $ myConfig {
+  xmonad $ ewmh $ pagerHints $ docks $ myConfig {
     logHook = dbusLogWithPP client myTaffyBarPP
   }
