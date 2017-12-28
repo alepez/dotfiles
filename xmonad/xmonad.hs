@@ -3,8 +3,23 @@ import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 import XMonad.Util.EZConfig
 import System.Exit
+import DBus.Client
+import System.Taffybar.XMonadLog ( dbusLogWithPP, taffybarDefaultPP, taffybarColor, taffybarEscape )
+import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ManageDocks
+import System.Taffybar.Hooks.PagerHints (pagerHints)
+import XMonad.Hooks.EwmhDesktops (ewmh)
 
-myStartupHook = spawn "~/.dotfiles/wm/bin/startup"
+myStartupHook = spawn "~/.dotfiles/wm/bin/startup" <+> spawn "taffybar"
+myManageHook = manageDocks
+
+myTaffyBarPP = taffybarDefaultPP {
+    ppCurrent = taffybarColor "#f8f8f8" "DodgerBlue4"   . wrap " " " "
+  , ppVisible = taffybarColor "#f8f8f8" "LightSkyBlue4" . wrap " " " "
+  , ppUrgent  = taffybarColor "#f8f8f8" "red4"          . wrap " " " "
+  , ppLayout  = taffybarColor "DarkOrange" "" . wrap " [" "] "
+  , ppTitle   = taffybarColor "#61ce3c" "" . shorten 50
+  }
 
 myTerminal = "roxterm"
 myBrowser = "google-chrome"
@@ -68,8 +83,12 @@ myConfig = defaultConfig {
 
   keys               = myKeys,
 
-  startupHook        = myStartupHook
+  startupHook        = myStartupHook,
+  manageHook         = myManageHook
 }
 
 main = do
-  xmonad $ myConfig
+  client <- connectSession
+  xmonad $ ewmh $ pagerHints $ myConfig {
+    logHook = dbusLogWithPP client myTaffyBarPP
+  }
