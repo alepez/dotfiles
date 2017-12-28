@@ -8,6 +8,9 @@ mkdir -p /tmp/${USER}-tmp/thumbnails ; rm -rf /home/${USER}/.thumbnails ; ln -s 
 
 cd /
 
+# X11 Compositor
+compton --config ~/.dotfiles/i3/compton.conf -b &>/dev/null </dev/null &
+
 # Setup keyboard (layout, caps-escape, ...)
 ~/.dotfiles/bin/keyboard-setup
 

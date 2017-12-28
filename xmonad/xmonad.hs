@@ -2,8 +2,9 @@ import XMonad
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 import XMonad.Util.EZConfig
+import System.Exit
 
-myStartupHook = spawn "compton --config ~/.dotfiles/xmonad/compton.conf -b"
+myStartupHook = return ()
 
 myTerminal = "roxterm"
 myBrowser = "google-chrome"
@@ -31,21 +32,25 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask .|. shiftMask, xK_r),
      restart "xmonad" True)
 
+  -- Quit xmonad.
+  , ((controlMask .|. mod1Mask, xK_Delete),
+     io (exitWith ExitSuccess))
+
   -- rofi run
   , ((modMask, xK_space),
-     spawn "~/.dotfiles/i3/bin/rofi -show run")
+     spawn "~/.dotfiles/wm/bin/rofi -show run")
 
   -- rofi password
   , ((modMask .|. shiftMask, xK_p),
-     spawn $ "~/.dotfiles/i3/bin/pass-dmenu")
+     spawn $ "~/.dotfiles/wm/bin/pass-dmenu")
 
   -- rofi ssh
   , ((modMask .|. shiftMask, xK_Return),
-     spawn $ "~/.dotfiles/i3/bin/ssh-dmenu")
+     spawn $ "~/.dotfiles/wm/bin/ssh-dmenu")
 
   -- rofi clipboard
   , ((modMask .|. shiftMask, xK_c),
-     spawn $ "~/.dotfiles/i3/bin/common-clip-dmenu")
+     spawn $ "~/.dotfiles/wm/bin/common-clip-dmenu")
 
   -- Cycle through the available layout algorithms.
   , ((modMask .|. shiftMask, xK_l),

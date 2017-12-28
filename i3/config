@@ -310,16 +310,16 @@ bindsym XF86AudioPlay exec --no-startup-id ~/.dotfiles/i3/bin/spotify-control pl
 bindsym XF86AudioStop exec --no-startup-id ~/.dotfiles/i3/bin/spotify-control stop
 
 # run rofi (a program launcher, see https://davedavenport.github.io/rofi/)
-bindsym $mod+space exec --no-startup-id ~/.dotfiles/i3/bin/rofi -show run
+bindsym $mod+space exec --no-startup-id ~/.dotfiles/wm/bin/rofi -show run
 
 # fuzzy search password
-bindsym $mod+Shift+p exec --no-startup-id ~/.dotfiles/i3/bin/pass-dmenu
+bindsym $mod+Shift+p exec --no-startup-id ~/.dotfiles/wm/bin/pass-dmenu
 
 # open new terminal with ssh session
-bindsym $mod+Shift+Return exec --no-startup-id ~/.dotfiles/i3/bin/ssh-dmenu
+bindsym $mod+Shift+Return exec --no-startup-id ~/.dotfiles/wm/bin/ssh-dmenu
 
 # common clipboard text
-bindsym $mod+Shift+c exec --no-startup-id ~/.dotfiles/i3/bin/common-clip-dmenu
+bindsym $mod+Shift+c exec --no-startup-id ~/.dotfiles/wm/bin/common-clip-dmenu
 
 # Toggle clipboard manager
 # (Mouse trigger is handled by xbindkeys)
@@ -336,7 +336,7 @@ bindsym $mod+i exec --no-startup-id ~/.dotfiles/i3/bin/myip-notify
 # Startup
 ###############################################################################
 
-exec --no-startup-id ~/.dotfiles/i3/bin/startup
+exec --no-startup-id ~/.dotfiles/wm/bin/startup
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -352,9 +352,6 @@ gaps inner 12
 gaps outer 8
 new_window pixel 2
 new_float pixel 2
-
-# enable compton
-exec --no-startup-id compton --config ~/.dotfiles/i3/compton.conf -b
 
 for_window [class="Pavucontrol"] floating enable, border normal
 for_window [class="copyq"] floating enable

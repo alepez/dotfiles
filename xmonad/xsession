@@ -1,0 +1,2 @@
+~/.dotfiles/wm/bin/startup
+exec xmonad
