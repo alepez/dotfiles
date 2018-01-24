@@ -42,3 +42,4 @@ compile_commands.json
 .agignore
 authorized_keys
 tmp
+.rootdir
