@@ -33,7 +33,7 @@ Plug 'mxw/vim-jsx' " reactjs
 Plug 'vim-scripts/smarty-syntax' " Syntax highlight for Smarty Template Engine
 Plug 'tpope/vim-unimpaired' " pairs of handy bracket mappings
 Plug 'tpope/vim-commentary' " Comment stuff out
-Plug 'klen/python-mode' " Python
+Plug 'klen/python-mode', {'branch': 'develop'} " Python
 Plug 'alfredodeza/pytest.vim' " unit test runner for python
 Plug 'vim-scripts/SyntaxRange' " Define a different filetype syntax on regions of a buffer.
 Plug 'milkypostman/vim-togglelist' " Functions to toggle the [Location List] and the [Quickfix List] windows.
