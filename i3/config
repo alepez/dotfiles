@@ -156,6 +156,23 @@ mode $monitors_mode  {
 }
 
 ###############################################################################
+# Desktop Background
+# Wind+Shift+D change background
+###############################################################################
+
+set $background_mode "change background  [j] previos [k] next"
+bindsym $mod+Shift+d mode $background_mode
+
+mode $background_mode  {
+  bindsym j exec --no-startup-id "~/.dotfiles/wm/bin/change-background prev"
+  bindsym k exec --no-startup-id "~/.dotfiles/wm/bin/change-background next"
+
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+###############################################################################
 # Office lighes
 # Wind+Shift+L shows a menu with office lights
 ###############################################################################

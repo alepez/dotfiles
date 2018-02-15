@@ -30,7 +30,7 @@ nm-applet &>/dev/null </dev/null &
 xbindkeys &>/dev/null </dev/null &
 
 # Random wallpaper
-~/.dotfiles/wm/bin/random-background  &>/dev/null </dev/null &
+~/.dotfiles/wm/bin/change-background  &>/dev/null </dev/null &
 
 # Check if Gentoo is up to date
 ( sleep 5 && ~/.dotfiles/bin/gentoo-last-sync  &>/dev/null </dev/null & ) &>/dev/null </dev/null &

@@ -4,14 +4,22 @@ wallpaper="${HOME}/.wallpaper"
 
 list_all() { find "${HOME}/Pictures/wallpapers"; }
 
+get_neighbours() { list_all | grep $( realpath ${wallpaper} ) -C1; }
+
 select_random() { shuf | head -1; }
 
 set() { ln -nfs "${1}" "${wallpaper}"; }
 
 set_random() { set $( list_all | select_random ); }
 
+set_prev() { set $( get_neighbours | head -1 ); }
+
+set_next() { set $( get_neighbours | tail -1 ); }
+
 load() { feh --bg-fill "${wallpaper}"; }
 
 case $1 in
+  prev) set_prev && load;;
+  next) set_next && load;;
   *) set_random && load;;
 esac
