@@ -53,11 +53,11 @@
 
 # Next Workspace
 "i3-msg workspace next"
-  b:9
+  b:8
 
 # Previous Workspace
 "i3-msg workspace prev"
-  b:8
+  b:9
 
 # Clipboard Manager
 "copyq toggle"
