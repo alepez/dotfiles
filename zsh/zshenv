@@ -189,6 +189,8 @@ function gl {
   if test_repo_svn; then slog $@; return; fi
 }
 
+alias gll='git ll'
+
 ## }}}
 ################################################################################
 ## nvim {{{
