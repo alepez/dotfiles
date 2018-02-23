@@ -1,8 +1,5 @@
 ## @filename: ~/.zshenv
 
-# source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
-# export NVIM_TUI_ENABLE_TRUE_COLOR=1
-
 # speed up
 skip_global_compinit=1
 
@@ -11,50 +8,50 @@ skip_global_compinit=1
 
 export EDITOR='nvim'
 
-alias bowi="bower install --save"
+# Create directory and cd into it
+D() { mkdir -p $1 && cd $1 }
 
-function D { mkdir -p $1 && cd $1 }
+# Go to workspace
 alias W='cd ~/workspace'
+
+# Open file with default application
 alias O='xdg-open'
+
+# Start editing dotfiles
 alias dot="cd ~/.dotfiles && vim"
 
 # Generate pronounceable password
 alias genpassword='pwgen --capitalize --numerals --ambiguous 12 6'
 
-alias stt='subl3 -n .'
-alias st='subl3'
-alias v='vim'
+# Shortcut for my favorite editor
+alias v="${EDITOR}"
 
+# Filesystem usage, human readable
 alias df='df -h'
 alias du='du -sh'
+
+# List and grep
 alias lsg='ll | grep'
+
+# List last files
 lslast() { ls -t $@ | head }
+
+# Brutally kill
 alias ka9='killall -9'
 alias k9='kill -9'
 
-alias nvminit='[[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh'
-alias kiexinit='test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex" && kiex use 1.2.3'
-
-# Automatically setup nodejs environment with nvm and start node repl
-node() {
-  if ! [[ -v NVM_BIN ]]; then
-    nvminit && nvm use default
-  fi
-  "${NVM_BIN}/node"
-}
-
-svndiff() {
-  svn diff $@ | colordiff | less
-}
-
-## I don't use dc, and somtime i mispell cd
+# I don't use dc, and sometime i mispell cd
 alias dc='cd'
 
 ## fuzzy find password with `pass` password manager
 ## See
 ## - http://www.passwordstore.org/
 ## - https://github.com/junegunn/fzf
-function Pass { local passpath=$( cd ~/.password-store && git ls-files | grep -v "^\." | fzf-tmux | sed "s/\.gpg$//" ); pass -c "${passpath}"; pass "${passpath}"; }
+Pass() {
+  local passpath=$( cd ~/.password-store && git ls-files | grep -v "^\." | fzf-tmux | sed "s/\.gpg$//" );
+  pass -c "${passpath}";
+  pass "${passpath}";
+}
 
 ## Docker {{{
 
@@ -75,7 +72,9 @@ dkstats() {
   done
 }
 
-## Rebuild and restart a single container with docker-compose
+# Rebuild and restart a single container with docker-compose
+# or just do not specify the container name and all containers in the docker-compose
+# file will be rebuilded and restarted.
 dkup() {
   docker-compose stop ${1}
   docker-compose build ${1}
@@ -85,6 +84,17 @@ dkup() {
 ## }}}
 
 ## NodeJS {{{
+
+# Pre-setup nvm
+alias nvminit='[[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh'
+
+# Automatically setup nodejs environment with nvm and start node repl
+node() {
+  if ! [[ -v NVM_BIN ]]; then
+    nvminit && nvm use default
+  fi
+  "${NVM_BIN}/node"
+}
 
 alias npmi="npm install --save"
 alias npmid="npm install --save-dev"
@@ -108,10 +118,10 @@ alias gco='git co'            # Checkout
 alias gamend='git commit --amend'
 
 # Quick merge from origin/master, no fast forward
-function gqm { if [ -z "${1}" ]; then git status -bs; echo -e "\nbranch?"; return; fi; git fetch ; git merge origin/${1} --no-ff }
+gqm() { if [ -z "${1}" ]; then git status -bs; echo -e "\nbranch?"; return; fi; git fetch ; git merge origin/${1} --no-ff }
 
 ## Commit, message as arguments, quotes not needed
-function gcm { git commit -m "$*" }
+gcm() { git commit -m "$*" }
 
 ## Add all files, Commit, Message as argument
 #function gacm { git add -A && git commit -m "$*" }
@@ -119,21 +129,23 @@ function gcm { git commit -m "$*" }
 #alias gg="gacm" # I do this so many times a need a shortcut
 
 ## Add all files, Commit, use editor for message
-function gac { git add -A && git commit }
+gac() { git add -A && git commit }
 
 ## Add all files, Commit, Message as argument, then Push
-function gacmps { git add -A && git commit -m "$*" && git push }
+gacmps() { git add -A && git commit -m "$*" && git push }
 alias ggo="gacmps" # Go! shortcut for gacmps
 
 ## Clean all untracked files
-function git-superclean { read -q "REPLY?Sure? "; if [ "${REPLY}" = 'y' ]; then echo && git reset --hard && git clean -ffdx; fi }
+git-superclean() { read -q "REPLY?Sure? "; if [ "${REPLY}" = 'y' ]; then echo && git reset --hard && git clean -ffdx; fi }
 
 ## Difference with commond ancestor
-function git-diffanc {
+git-diffanc() {
   local main_branch;
   test -n "${2}" && main_branch="${2}" || main_branch="$( git rev-parse --abbrev-ref HEAD )"
   git diff $( git merge-base "${1}" "${main_branch}" ) "${1}"
 }
+
+alias gll='git ll'
 
 ## }}}
 
@@ -167,36 +179,40 @@ sshconf() {
 
 ################################################################################
 ## Svn Aliases {{{
+
+# svn diff with colors
+svndiff() {
+  svn diff $@ | colordiff | less
+}
+
 alias sst='svn status'
 alias sa='svn add'
 alias sd='svndiff'
-function scm { svn commit -m "$*" }
-function slog { svn log $@ | less }
+scm() { svn commit -m "$*" }
+slog() { svn log $@ | less }
 ## }}}
 
 ################################################################################
 ## Git/Subversion shortcuts {{{
 ## These shortcuts works both with Git and Subversion repository
 
-function test_repo_git { git rev-parse &>/dev/null }
-function test_repo_svn { svn info &>/dev/null }
+test_repo_git() { git rev-parse &>/dev/null }
+test_repo_svn() { svn info &>/dev/null }
 
-function gd {
+gd() {
   if test_repo_git; then gdh $@; return; fi
   if test_repo_svn; then svndiff $@; return; fi
 }
 
-function gs {
+gs() {
   if test_repo_git; then git status; return; fi
   if test_repo_svn; then svn status; return; fi
 }
 
-function gl {
+gl() {
   if test_repo_git; then glog $@; return; fi
   if test_repo_svn; then slog $@; return; fi
 }
-
-alias gll='git ll'
 
 ## }}}
 ################################################################################
@@ -214,6 +230,7 @@ governor() {
       echo "${1}" | sudo tee $c/cpufreq/scaling_governor > /dev/null
     done
   else
+    echo "Available governors:"
     cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors
   fi
 }
