@@ -33,8 +33,15 @@ alias ka9='killall -9'
 alias k9='kill -9'
 
 alias nvminit='[[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh'
-alias nv='nvminit && nvm use v6.7.0'
 alias kiexinit='test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex" && kiex use 1.2.3'
+
+# Automatically setup nodejs environment with nvm and start node repl
+node() {
+  if ! [[ -v NVM_BIN ]]; then
+    nvminit && nvm use default
+  fi
+  "${NVM_BIN}/node"
+}
 
 svndiff() {
   svn diff $@ | colordiff | less
