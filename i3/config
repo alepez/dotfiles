@@ -381,7 +381,8 @@ for_window [class="QtQmlViewer"] floating enable
 for_window [class="UGIS"] floating enable
 for_window [class="Bmet Manager"] floating enable
 for_window [class="VirtualBox"] fullscreen enable
-# <<< FIXME
+
+for_window [class="ESA Universal"] resize set 1024 600
 
 assign [class="ESA Universal"] $workspace_3
 assign [class="QtQmlViewer"] $workspace_3
@@ -391,3 +392,4 @@ assign [class="MyHome"] $workspace_3
 assign [class="MosQtitto"] $workspace_3
 assign [class="Bmet Manager"] $workspace_3
 assign [class="VirtualBox"] $workspace_7
+# <<< FIXME
