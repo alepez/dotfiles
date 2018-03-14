@@ -93,7 +93,7 @@ node() {
   if ! [[ -v NVM_BIN ]]; then
     nvminit && nvm use default
   fi
-  "${NVM_BIN}/node"
+  "${NVM_BIN}/node" $@
 }
 
 alias npmi="npm install --save"
