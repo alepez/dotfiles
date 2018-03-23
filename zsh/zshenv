@@ -89,11 +89,21 @@ dkup() {
 alias nvminit='[[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh'
 
 # Automatically setup nodejs environment with nvm and start node repl
-node() {
+node_setup() {
   if ! [[ -v NVM_BIN ]]; then
     nvminit && nvm use default
   fi
+}
+
+node() {
+  node_setup
   "${NVM_BIN}/node" $@
+}
+
+# vim editor with nodejs environment
+vjs() {
+  node_setup
+  ${EDITOR}
 }
 
 alias npmi="npm install --save"
