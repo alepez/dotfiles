@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Keyboard: US layout with Italian letters, CapsLock like Ctrl
+# Keyboard: italian with us layout, CapsLock like Ctrl
 setxkbmap -layout it -variant us -option 'caps:ctrl_modifier'
 
 # Caps Lock mapped to: Esc + Ctrl (long press)
