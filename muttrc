@@ -92,6 +92,7 @@ alternative_order text/plain text/enriched text/html
 # Pager key bindings
 bind pager k  previous-line
 bind pager j  next-line
+bind pager g noop
 bind pager gg top
 bind pager G  bottom
 bind pager R  group-reply
