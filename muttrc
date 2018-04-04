@@ -1,0 +1,48 @@
+## Personal Info
+#
+# set realname = "Your Name Here"
+# set from = "<YOUR_ADDRESS_HERE>"
+# set smtp_url = "smtps://<YOUR_ADDRESS_HERE>@smtp.gmail.com:465/"
+# set smtp_pass = "<YOUR_PASSWORD_HERE>"
+# set imap_user = "<YOUR_ADDRESS_HERE>"
+# set imap_pass = "<YOUR_PASSWORD_HERE>"
+#
+## Create ~/.muttrc.local with data above and source it here
+source ~/.muttrc.local
+
+set use_from = yes
+set envelope_from = yes
+
+# Gmail
+set imap_keepalive=60
+set imap_passive=no
+set imap_check_subscribed=yes
+set imap_idle=yes
+set mail_check=60
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+
+# Shortcuts
+bind index G imap-fetch-mail
+
+# Editor
+set editor = "nvim"
+set charset = "utf-8"
+set record = ''
+
+# Cache (disk should be encrypted)
+set header_cache =~/.mutt/cache/headers
+set message_cachedir =~/.mutt/cache/bodies
+
+# SSL hardening
+set ssl_force_tls=yes
+set ssl_starttls=yes
+set ssl_use_sslv2=no
+set ssl_use_sslv3=no
+set ssl_use_tlsv1=no
+set ssl_use_tlsv1_1=no
+set ssl_use_tlsv1_2=yes
+set ssl_verify_dates=yes
+set ssl_verify_host=yes
+unset ssl_usesystemcerts
+set certificate_file=~/.mutt/gmailcerts

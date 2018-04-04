@@ -30,6 +30,10 @@ alias v="${EDITOR}"
 alias df='df -h'
 alias du='du -sh'
 
+# neomutt instead of mutt
+alias mutt="neomutt"
+alias E="neomutt"
+
 # List and grep
 alias lsg='ll | grep'
 
