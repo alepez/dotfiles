@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Mount cache directories
-mkdir -p /tmp/${USER}-tmp/cache ; rm -rf /home/${USER}/.cache ; ln -s /tmp/${USER}-tmp/cache /home/${USER}/.cache
-mkdir -p /tmp/${USER}-tmp/thumbnails ; rm -rf /home/${USER}/.thumbnails ; ln -s /tmp/${USER}-tmp/thumbnails /home/${USER}/.thumbnails
+#mkdir -p /tmp/${USER}-tmp/cache ; rm -rf /home/${USER}/.cache ; ln -s /tmp/${USER}-tmp/cache /home/${USER}/.cache
+#mkdir -p /tmp/${USER}-tmp/thumbnails ; rm -rf /home/${USER}/.thumbnails ; ln -s /tmp/${USER}-tmp/thumbnails /home/${USER}/.thumbnails
 
 (
 
