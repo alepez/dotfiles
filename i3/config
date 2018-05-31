@@ -147,8 +147,8 @@ bindsym $mod+Shift+s mode $monitors_mode
 
 mode $monitors_mode  {
   bindsym a exec --no-startup-id "arandr; i3-msg mode default"
-  bindsym h exec --no-startup-id "xrandr --output eDP1 --auto --right-of HDMI1; i3-msg mode default"
-  bindsym h exec --no-startup-id "xrandr --output DP1 --mode 1920x1080 --left-of eDP1; i3-msg mode default"
+  bindsym h exec --no-startup-id "xrandr --output HDMI1 --mode 1920x1080 --left-of eDP1; i3-msg mode default"
+  bindsym o exec --no-startup-id "xrandr --output DP1 --mode 1920x1080 --left-of eDP1; i3-msg mode default"
   bindsym m exec --no-startup-id "xrandr --output eDP1 --auto --output HDMI1 --auto --same-as eDP1; i3-msg mode default"
 
   # back to normal: Enter or Escape
