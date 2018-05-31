@@ -20,8 +20,15 @@ alias O='xdg-open'
 # Start editing dotfiles
 alias dot="cd ~/.dotfiles && vim"
 
-# Generate pronounceable password
-alias genpassword='pwgen --capitalize --numerals --ambiguous 12 6'
+# Generate strong password and copy to clipboard
+genpassword() {
+  file=$( mktemp );
+  pwgen --capitalize --numerals --ambiguous --symbols 16 1 -1 > "${file}";
+  xclip -i < "${file}";
+  cat "${file}";
+  rm "${file}";
+  notify-send "Password copied to clipboard";
+}
 
 # Shortcut for my favorite editor
 alias v="${EDITOR}"
