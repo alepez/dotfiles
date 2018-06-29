@@ -18,7 +18,11 @@ alias W='cd ~/workspace'
 alias O='xdg-open'
 
 # Start editing dotfiles
-alias dot="cd ~/.dotfiles && vim"
+alias dot='cd ~/.dotfiles && vim'
+
+# time and date
+alias today='date +%Y-%m-%d --utc | tr -d \\n'
+alias now='date +%Y-%m-%dT%H:%M:%S --utc | tr -d \\n'
 
 # Generate strong password and copy to clipboard
 genpassword() {
