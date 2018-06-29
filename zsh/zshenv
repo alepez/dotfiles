@@ -101,7 +101,10 @@ alias nvminit='[[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh'
 
 # Automatically setup nodejs environment with nvm and start node repl
 node_setup() {
-  if ! [[ -v NVM_BIN ]]; then
+  # Note: zsh >= 5.3 should use `-v` to check if NVM_BIN is available, but I'm
+  # still using older zsh in some host.
+  # if ! [[ -v NVM_BIN ]]; then
+  if [ -z "${NVM_BIN+1}" ]; then
     nvminit && nvm use default
   fi
 }
