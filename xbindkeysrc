@@ -38,6 +38,22 @@
 # b:11) n/a
 # b:12) n/a
 # b:13) thumb mini button (zoom)
+#
+# Logitech MX Master:
+#
+# b:1)  left
+# b:2)  center
+# b:3)  right
+# b:4)  scroll front (up)
+# b:5)  scroll back (down)
+# b:6)  scroll right (up)
+# b:7)  scroll left (down)
+# b:8)  thumb arrow front
+# b:9)  thumb arrow back
+# b:10) n/a
+# b:11) n/a
+# b:12) n/a
+# b:13) n/a
 
 ################################################################################
 
