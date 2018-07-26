@@ -303,8 +303,8 @@ bindsym $mod+c exec --no-startup-id $terminal
 bindsym Control+Mod1+l exec --no-startup-id "i3lock --24 -c '#282828' -o '#fb4934' -w '#83a598' --ignore-empty-password -i ~/.wallpaper"
 
 # Browser
-set $browser "google-chrome-stable"
-set $private_browser "google-chrome-stable --incognito"
+set $browser "chromium"
+set $private_browser "chromium --incognito"
 # Start anywhere
 bindsym $mod+b exec --no-startup-id $browser
 bindsym $mod+Shift+b exec --no-startup-id $private_browser
