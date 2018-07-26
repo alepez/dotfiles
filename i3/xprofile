@@ -1,7 +1,11 @@
 #!/bin/bash
 
-## gog agent with ssh support
-eval "$( /usr/bin/gpg-agent --daemon --enable-ssh-support )"
+## gpg agent with ssh support
+## Note: may be already started by systemd, so start it only if the
+## env var is not set.
+if [ -z "${SSH_AUTH_SOCK}" ]; then
+  eval "$( /usr/bin/gpg-agent --daemon --enable-ssh-support )"
+fi
 
 ## Source local configurations
 if [ -e ~/.xprofile.local ]; then source ~/.xprofile.local; fi
