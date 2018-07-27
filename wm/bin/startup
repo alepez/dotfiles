@@ -38,8 +38,11 @@ xbindkeys &>/dev/null </dev/null &
 # Clipboard manager. Sleep is needed. See: https://github.com/hluk/CopyQ/issues/225
 ( sleep 5 && copyq  &>/dev/null </dev/null & ) &>/dev/null </dev/null &
 
-# Setup second monitor if HDM1 is connected
+# Setup second monitor if HDM1 is connected (two variants, different xrandr versions
+# give different output identifier (HDM1 and HDMI-1)
 xrandr | grep 'HDMI1 connected' && xrandr --output HDMI1 --mode 1920x1080  --left-of eDP1
+xrandr | grep 'HDMI-1 connected' && xrandr --output HDMI-1 --mode 1920x1080  --left-of eDP1
+
 
 ) &>/dev/null </dev/null &
 
