@@ -33,16 +33,17 @@ xbindkeys &>/dev/null </dev/null &
 ~/.dotfiles/wm/bin/change-background  &>/dev/null </dev/null &
 
 # Check if Gentoo is up to date
-( sleep 5 && ~/.dotfiles/bin/gentoo-last-sync  &>/dev/null </dev/null & ) &>/dev/null </dev/null &
+# ( sleep 5 && ~/.dotfiles/bin/gentoo-last-sync  &>/dev/null </dev/null & ) &>/dev/null </dev/null &
 
 # Clipboard manager. Sleep is needed. See: https://github.com/hluk/CopyQ/issues/225
-( sleep 5 && copyq  &>/dev/null </dev/null & ) &>/dev/null </dev/null &
+# ( sleep 5 && copyq  &>/dev/null </dev/null & ) &>/dev/null </dev/null &
 
 # Setup second monitor if HDM1 is connected (two variants, different xrandr versions
 # give different output identifier (HDM1 and HDMI-1)
 xrandr | grep 'HDMI1 connected' && xrandr --output HDMI1 --mode 1920x1080  --left-of eDP1
 xrandr | grep 'HDMI-1 connected' && xrandr --output HDMI-1 --mode 1920x1080  --left-of eDP1
 
+xss-lock -- i3lock --24 -c '#282828' -o '#fb4934' -w '#83a598' --ignore-empty-password -i ~/.wallpaper &
 
 ) &>/dev/null </dev/null &
 
