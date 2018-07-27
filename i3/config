@@ -295,7 +295,7 @@ bar {
 # XF86Tools
 
 # Terminals
-set $terminal "roxterm"
+set $terminal "kitty"
 bindsym $mod+Return exec --no-startup-id $terminal
 bindsym $mod+c exec --no-startup-id $terminal
 
