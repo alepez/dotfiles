@@ -1,12 +1,6 @@
 #!/bin/sh
 
-# # Useful for remote hosts with tmux, open a new terminal window with its own
-# # tmux session. Understand which terminal emulator is currently in use.
-# if [ "${COLORTERM}" = "gnome-terminal" ]; then
-#   gnome-terminal -x ssh $@
-# elif [ -n "${ROXTERM_PID}" ]; then
-  roxterm -e ssh $@
-# else
-#   konsole -e ssh $@
-# fi
-
+# roxterm -e ssh $@
+# konsole -e ssh $@
+# gnome-terminal -x ssh $@
+kitty -e ssh $@
