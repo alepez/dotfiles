@@ -341,7 +341,7 @@ bindsym $mod+Shift+c exec --no-startup-id ~/.dotfiles/wm/bin/common-clip-dmenu
 
 # Toggle clipboard manager
 # (Mouse trigger is handled by xbindkeys)
-bindsym $mod+Shift+v exec "copyq toggle"
+bindsym $mod+Shift+v exec --no-startup-id gpaste-client ui
 
 # Open filemanager
 set $filemanager "thunar"
