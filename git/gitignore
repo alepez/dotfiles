@@ -43,3 +43,5 @@ compile_commands.json
 authorized_keys
 tmp
 .rootdir
+/cmake-build-debug
+/.idea
