@@ -75,10 +75,6 @@
 "i3-msg workspace prev"
   b:9
 
-# Clipboard Manager
-"copyq toggle"
-  b:13
-
 ##################################
 # End of xbindkeys configuration #
 ##################################
