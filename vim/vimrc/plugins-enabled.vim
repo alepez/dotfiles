@@ -35,6 +35,7 @@ Plug 'vim-scripts/smarty-syntax' " Syntax highlight for Smarty Template Engine
 Plug 'pangloss/vim-javascript' " Vastly improved Javascript indentation and syntax support in Vim.
 Plug 'mattn/emmet-vim' " emmet for vim: http://emmet.io/
 Plug 'jaxbot/browserlink.vim' " like livereload
+Plug 'ap/vim-css-color' " Preview colours in source code while editing
 
 " ==================== python  ====================
 Plug 'alfredodeza/pytest.vim' " unit test runner for python
