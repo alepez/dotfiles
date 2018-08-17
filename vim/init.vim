@@ -31,6 +31,7 @@ filetype plugin indent on    " required
 source ~/.dotfiles/vim/vimrc/plugins-special.vim
 source ~/.dotfiles/vim/vimrc/hacks.vim
 source ~/.dotfiles/vim/vimrc/shortcuts.vim
+source ~/.dotfiles/vim/vimrc/gtest.vim
 source ~/.dotfiles/vim/vimrc/nerdtree.vim
 source ~/.dotfiles/vim/vimrc/ignore.vim
 source ~/.dotfiles/vim/vimrc/ctrlp.vim
