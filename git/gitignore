@@ -28,20 +28,28 @@ npm-debug.log
 .tern-project
 .jsbeautifyrc
 .jshintrc
+
 # QML and JS compiled by Qt
 *.qmlc
 *.qmlc.*
 *.jsc
 *.jsc.*
+
+# Valgrind
 callgrind.out.*
-.gitversion.h
 *.log
 *.supp
+
+# Jetbrains
+/cmake-build-debug
+/.idea
+/venv
+
+# Misc
+.gitversion.h
 compile_commands.json
 .clang
 .agignore
 authorized_keys
 tmp
 .rootdir
-/cmake-build-debug
-/.idea
