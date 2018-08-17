@@ -1,0 +1,2 @@
+source ~/.dotfiles/vim/vimrc/settings.vim
+source ~/.dotfiles/vim/vimrc/shortcuts.vim
