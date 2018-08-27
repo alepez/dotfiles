@@ -23,11 +23,14 @@ __pycache__
 .ropeproject
 .eslintrc.json
 .ycm_extra_conf.py
-npm-debug.log
 .eslintrc.js
 .tern-project
 .jsbeautifyrc
 .jshintrc
+
+# Log
+*.log
+*.esalog
 
 # QML and JS compiled by Qt
 *.qmlc
@@ -37,11 +40,10 @@ npm-debug.log
 
 # Valgrind
 callgrind.out.*
-*.log
 *.supp
 
 # Jetbrains
-/cmake-build-debug
+/cmake-build-*
 /.idea
 /venv
 
