@@ -13,7 +13,7 @@ Plug 'sjl/gundo.vim' " Gundo is a Vim plugin for visualizing your undo tree to m
 Plug 'mileszs/ack.vim' " search with ag the silver searcher
 Plug 'mhinz/vim-signify' " show diff in gutter
 Plug 'bronson/vim-trailing-whitespace' " Highlights trailing whitespace in red and provides :FixWhitespace to fix it.
-Plug 'vim-airline/vim-airline-themes' " theme for the above
+Plug 'vim-airline/vim-airline-themes' " theme for the below
 Plug 'vim-airline/vim-airline' " lean & mean status/tabline for vim that's light as air
 Plug 'scrooloose/nerdtree' " tree explorer
 Plug 'fisadev/vim-ctrlp-cmdpalette' " fuzzy command search
