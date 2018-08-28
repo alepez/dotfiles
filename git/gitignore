@@ -1,5 +1,5 @@
 ## @filename: ~/.gitignore
-
+/.svn
 *~
 */tmp/*
 *.so
