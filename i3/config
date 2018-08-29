@@ -370,6 +370,7 @@ gaps outer 8
 new_window pixel 2
 new_float pixel 2
 smart_gaps on
+hide_edge_borders smart
 
 for_window [class="Pavucontrol"] floating enable, border normal
 for_window [class="copyq"] floating enable
