@@ -173,6 +173,11 @@ git-diffanc() {
   git diff $( git merge-base "${1}" "${main_branch}" ) "${1}"
 }
 
+## Update recursively all submodules
+git-subsync() {
+  git submodule sync --recursive && git submodule update --recursive --remote
+}
+
 alias gll='git ll'
 
 ## }}}
