@@ -28,6 +28,12 @@ npm-debug.log
 .tern-project
 .jsbeautifyrc
 .jshintrc
+.Rhistory
+
+# Log
+*.log
+*.esalog
+
 # QML and JS compiled by Qt
 *.qmlc
 *.qmlc.*
