@@ -27,6 +27,7 @@ __pycache__
 .tern-project
 .jsbeautifyrc
 .jshintrc
+.Rhistory
 
 # Log
 *.log
