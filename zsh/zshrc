@@ -48,6 +48,7 @@ plugins=(
   common-aliases
   dirhistory
   docker
+  fzf
   history
   httpie
   jsontools
