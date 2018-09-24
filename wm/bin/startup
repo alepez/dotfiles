@@ -9,7 +9,7 @@
 cd /
 
 # X11 Compositor
-( sleep 5 && compton --config ~/.dotfiles/wm/compton.conf -b &>/dev/null </dev/null & ) &>/dev/null </dev/null &
+# ( sleep 5 && compton --config ~/.dotfiles/wm/compton.conf -b &>/dev/null </dev/null & ) &>/dev/null </dev/null &
 
 # Setup keyboard (layout, caps-escape, ...)
 ~/.dotfiles/bin/keyboard-setup

@@ -396,3 +396,5 @@ assign [class="MosQtitto"] $workspace_3
 assign [class="Bmet Manager"] $workspace_3
 assign [class="VirtualBox"] $workspace_7
 # <<< FIXME
+
+exec --no-startup-id compton --config ~/.dotfiles/wm/compton.conf -b
