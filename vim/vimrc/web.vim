@@ -26,3 +26,6 @@ augroup Javascript
   endif
   autocmd BufRead,BufNewFile *.{es6,es6.js} set filetype=javascript
 augroup END
+
+" Disable tsuquyomi (typescript) default mapping (like C-^)
+let g:tsuquyomi_disable_default_mappings = 1

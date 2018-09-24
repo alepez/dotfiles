@@ -37,6 +37,9 @@ Plug 'mattn/emmet-vim' " emmet for vim: http://emmet.io/
 Plug 'jaxbot/browserlink.vim' " like livereload
 Plug 'ap/vim-css-color' " Preview colours in source code while editing
 Plug 'cespare/vim-toml' " Vim syntax for TOML
+Plug 'leafgarland/typescript-vim' " Typescript syntax files for Vim
+Plug 'Shougo/vimproc' " Make your Vim a TypeScript IDE.
+Plug 'Quramy/tsuquyomi' " A Vim plugin for TypeScript
 
 " ==================== python  ====================
 Plug 'alfredodeza/pytest.vim' " unit test runner for python
