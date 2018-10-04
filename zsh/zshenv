@@ -49,11 +49,13 @@ alias E="neomutt"
 alias lsg='ll | grep'
 
 # List last files
-lslast() { ls -t $@ | head }
+lslast() { ls -t $@ | head; }
 
 # Brutally kill
 alias ka9='killall -9'
 alias k9='kill -9'
+
+highlight() { grep --color -E "$1|\$"; }
 
 # I don't use dc, and sometime i mispell cd
 alias dc='cd'
