@@ -24,6 +24,9 @@ alias dot='cd ~/.dotfiles && vim'
 alias today='date +%Y-%m-%d --utc | tr -d \\n'
 alias now='date +%Y-%m-%dT%H:%M:%S --utc | tr -d \\n'
 
+# Create new tmp directory and cd into it
+alias DD='D ~/tmp/$(now)'
+
 # Generate strong password and copy to clipboard
 genpassword() {
   file=$( mktemp );
