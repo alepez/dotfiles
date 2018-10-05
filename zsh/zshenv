@@ -143,6 +143,7 @@ alias grv='git remote -v'     # show all Remotes Verbosely
 alias glog='git l'            # log --graph --date=short
 alias gdh='git diff HEAD'     # show all changes from Head
 alias gdu='gd'                # show Unstaged changes
+alias gdc='git dc'            # show Unstaged changes
 alias gds='git diff --cached' # show Staged changes
 alias gpl='git pull'          # Pull
 alias gps='git push'          # Push
