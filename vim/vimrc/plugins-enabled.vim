@@ -53,6 +53,7 @@ Plug 'tpope/vim-markdown' " for markdown editing, with concealing support
 " ==================== haskell ====================
 Plug 'eagletmt/ghcmod-vim' " Happy Haskell programming on Vim, powered by ghc-mod
 Plug 'eagletmt/neco-ghc' " A completion plugin for Haskell, using ghc-mod
+Plug 'https://github.com/bitc/vim-hdevtools.git' " Vim plugin for Haskell development powered by the lightning fast hdevtools background server.
 
 " vim-devicons must be loaded after all other plugins
 " needs a good font with icons, like patched fonts you can find at
