@@ -11,6 +11,7 @@ augroup Cpp
   autocmd BufRead,BufNewFile *.h set filetype=cpp
   " Comment with //
   autocmd FileType cpp setlocal commentstring=//\ %s
+  autocmd FileType c   setlocal commentstring=//\ %s
 augroup END
 
 " This script cd up until a Makefile is found, then call make.

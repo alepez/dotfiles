@@ -1,0 +1,55 @@
+## Headers {{{
+################################################################################
+snippet once "Include header once only guard"
+#ifndef ${1:`!p
+if not snip.c:
+	import random, string
+	name = re.sub(r'[^A-Za-z0-9]+','_', snip.fn).upper()
+	rand = ''.join(random.sample(string.ascii_letters+string.digits, 8))
+	snip.rv = ('%s_%s' % (name,rand)).upper()
+else:
+	snip.rv = snip.c`}
+#define $1
+
+${VISUAL}${0}
+
+#endif /* end of include guard: $1 */
+endsnippet
+
+################################################################################
+snippet inc "Include header"
+#include <${1}>
+endsnippet
+
+################################################################################
+snippet inc" "Include header"
+#include "${1}"
+endsnippet
+## }}}
+## Loops {{{
+################################################################################
+snippet fori "for loop with int i"
+for (int i = 0; i < ${1}; ++i) {
+	${2}
+}
+endsnippet
+
+## }}}
+## Annotations {{{
+################################################################################
+snippet depr "Deprecated"
+// FIXME DEPRECATED
+endsnippet
+## }}}
+## Comments {{{
+################################################################################
+snippet /* "regular comment"
+/* ${1} */
+endsnippet
+snippet /** "doxygen comment"
+/**
+ * ${1}
+ */
+endsnippet
+## }}}
+# vim:foldmethod=marker:foldlevel=0
