@@ -19,8 +19,5 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 " populate the g:airline_symbols dictionary with the powerline symbols
 let g:airline_powerline_fonts = 1
 
-" Enable syntastic
-let g:airline#extensions#syntastic#enabled = 1
-
 " Disable echo of current buffer in commandline
 let g:bufferline_echo = 0
