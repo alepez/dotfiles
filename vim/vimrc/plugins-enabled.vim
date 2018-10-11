@@ -38,7 +38,6 @@ Plug 'jaxbot/browserlink.vim' " like livereload
 Plug 'ap/vim-css-color' " Preview colours in source code while editing
 Plug 'cespare/vim-toml' " Vim syntax for TOML
 Plug 'leafgarland/typescript-vim' " Typescript syntax files for Vim
-Plug 'Shougo/vimproc' " Make your Vim a TypeScript IDE.
 Plug 'Quramy/tsuquyomi' " A Vim plugin for TypeScript
 
 " ==================== python  ====================
@@ -53,7 +52,7 @@ Plug 'tpope/vim-markdown' " for markdown editing, with concealing support
 " ==================== haskell ====================
 Plug 'eagletmt/ghcmod-vim' " Happy Haskell programming on Vim, powered by ghc-mod
 Plug 'eagletmt/neco-ghc' " A completion plugin for Haskell, using ghc-mod
-Plug 'https://github.com/bitc/vim-hdevtools.git' " Vim plugin for Haskell development powered by the lightning fast hdevtools background server.
+Plug 'bitc/vim-hdevtools' " Vim plugin for Haskell development powered by the lightning fast hdevtools background server.
 
 " vim-devicons must be loaded after all other plugins
 " needs a good font with icons, like patched fonts you can find at
