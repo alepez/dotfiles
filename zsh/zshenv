@@ -25,7 +25,9 @@ alias today='date +%Y-%m-%d --utc | tr -d \\n'
 alias now='date +%Y-%m-%dT%H:%M:%S --utc | tr -d \\n'
 
 # Create new tmp directory and cd into it
-alias DD='D ~/tmp/$(now)'
+# Dir name is current UTC time, without special characters as : to be
+# compatible with PATH env var (so you can add this tmp directory to PATH)
+alias DD='D ~/tmp/$(date +%Y%m%dT%H%M%S --utc | tr -d \\n)'
 
 # Generate strong password and copy to clipboard
 genpassword() {
