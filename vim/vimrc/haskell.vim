@@ -1,10 +1,8 @@
-" Disable haskell-vim omnifunc
-" https://github.com/eagletmt/neco-ghc
-let g:haskellmode_completion_ghc = 0
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-
 " necoghc should work with YouCompleteMe. To enable auto-completions:
 let g:ycm_semantic_triggers = {'haskell' : ['.']}
+
+" Use stack
+let g:necoghc_use_stack = 1
 
 " To hook into GHC’s code competion capabilities we map several keyboard
 " commands to ghc-mod functions. See http://www.stephendiehl.com/posts/vim_2016.html
