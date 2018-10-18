@@ -1,4 +1,6 @@
 #!/bin/bash
+
+PATH=/home/${USER}/bin:/home/${USER}/.local/bin:/usr/local/bin:/usr/bin:/bin \
 rofi \
   -color-window "#CC282828, #00282828, #00282828" \
   -color-normal "#00282828, #FFA89984, #00282828, #00282828, #FFB8BB26" \
