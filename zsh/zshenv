@@ -31,6 +31,9 @@ alias add_timestamp='while read line; do echo "$(date +%Y-%m-%dT%H:%M:%S.$( date
 # compatible with PATH env var (so you can add this tmp directory to PATH)
 alias DD='D ~/tmp/$(date +%Y%m%dT%H%M%S --utc | tr -d \\n)'
 
+# Change directory to last created directory in tmp
+alias last_tmp='cd ~/tmp/$( ls -t ~/tmp | head -1 )'
+
 # Generate strong password and copy to clipboard
 genpassword() {
   file=$( mktemp );
