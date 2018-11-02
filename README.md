@@ -35,3 +35,10 @@ ln -nfs ~/.dotfiles/xmonad ~/.xmonad
 ln -nfs ~/.dotfiles/xmonad/taffybar.hs ~/.config/taffybar/taffybar.hs
 ln -nfs ~/.dotfiles/muttrc ~/.muttrc
 ```
+
+## Dependencies
+
+ - [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)
+ - i3wm
+ - dunst
+ - oh-my-zsh
