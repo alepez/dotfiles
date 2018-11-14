@@ -70,6 +70,9 @@ highlight() { grep --color -E "$1|\$"; }
 # I don't use dc, and sometime i mispell cd
 alias dc='cd'
 
+# Disable screensaver and screen energy saving (e.g.: during a speech)
+alias noscreensaver='xset -dpms s off'
+
 ## fuzzy find password with `pass` password manager
 ## See
 ## - http://www.passwordstore.org/
