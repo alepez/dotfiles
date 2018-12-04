@@ -40,8 +40,9 @@
   # branch
   b = branch -v                     # branch (verbose)
 
-  # show branhces, sort by date, colourful (https://stackoverflow.com/questions/5188320)
+  # show branches, sort by date, colourful (https://stackoverflow.com/questions/5188320)
   bb = for-each-ref --sort=-committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:short)%(color:reset))'
+  bba = for-each-ref --sort=-committerdate refs/heads/ refs/remotes/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:short)%(color:reset))'
 
   # commit
   c = commit -m                     # commit with message
