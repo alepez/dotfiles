@@ -55,11 +55,8 @@ alias du='du -sh'
 alias mutt="neomutt"
 alias E="neomutt"
 
-# List and grep
-alias lsg='ll | grep'
-
-# List last files
-lslast() { ls -t $@ | head; }
+# exa instead of classi ls
+lslast() { exa --sort created --reverse --color always $@ | head ; }
 
 # Brutally kill
 alias ka9='killall -9'

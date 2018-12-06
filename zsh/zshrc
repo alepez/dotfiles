@@ -61,6 +61,11 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# Override `l`
+alias l='exa --color always --oneline'
+alias ll='exa --color always --long --header'
+alias la='exa --color always --long --header --all'
+
 ## }}}
 
 ## History {{{
