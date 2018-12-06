@@ -178,7 +178,7 @@ mode $background_mode  {
 # Wind+Shift+L shows a menu with office lights
 ###############################################################################
 
-set $lights_mode "select monitors layout  [w] window [d] desktop [r] relax [a] all on [o] all off"
+set $lights_mode "select lights layout  [w] window [d] desktop [r] relax [a] all on [o] all off"
 bindsym $mod+Shift+o mode $lights_mode
 
 mode $lights_mode  {
@@ -211,8 +211,7 @@ mode $resize_mode {
   bindsym Escape mode "default"
 }
 
-bindsym --release Print exec scrot -e 'mv $f ~/Pictures/'
-bindsym --release Shift+Print exec scrot -s -e 'mv $f ~/Pictures/'
+bindsym --release Print exec flameshot gui -p ~/Pictures
 
 ###############################################################################
 # Workspaces
@@ -313,10 +312,9 @@ bindcode 233 exec --no-startup-id ~/.dotfiles/i3/bin/brightness +
 bindcode 232 exec --no-startup-id ~/.dotfiles/i3/bin/brightness -
 
 # Audio volume up/down (PulseAudio)
-set $sink_index 0
-bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume $sink_index +5%; mplayer /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"
-bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume $sink_index -5%; mplayer /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-volume $sink_index 0%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute        exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ 0%
 
 # Spotify
 bindsym XF86AudioPrev exec --no-startup-id ~/.dotfiles/i3/bin/spotify-control prev
@@ -381,7 +379,7 @@ for_window [class="ESA Universal"] floating enable
 for_window [class="QtQmlViewer"] floating enable
 for_window [class="UGIS"] floating enable
 for_window [class="Bmet Manager"] floating enable
-for_window [class="VirtualBox"] fullscreen enable
+for_window [class="VirtualBox"] floating enable
 
 for_window [class="ESA Universal"] resize set 1024 600
 
@@ -392,7 +390,7 @@ assign [class="UgisTest"] $workspace_8
 assign [class="MyHome"] $workspace_3
 assign [class="MosQtitto"] $workspace_3
 assign [class="Bmet Manager"] $workspace_3
-assign [class="VirtualBox"] $workspace_7
+#assign [class="VirtualBox"] $workspace_7
 assign [class="rdesktop"] $workspace_7
 # <<< FIXME
 
