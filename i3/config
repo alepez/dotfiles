@@ -211,20 +211,23 @@ mode $resize_mode {
   bindsym Escape mode "default"
 }
 
+###############################################################################
+# Screenshots
+###############################################################################
 bindsym --release Print exec flameshot gui -p ~/Pictures
 
 ###############################################################################
 # Workspaces
 ###############################################################################
 
-set $workspace_1 "1 Main"
-set $workspace_2 "2 Browser"
-set $workspace_3 "3 Test"
+set $workspace_1 "1 "
+set $workspace_2 "2 "
+set $workspace_3 "3"
 set $workspace_4 "4"
 set $workspace_5 "5"
 set $workspace_6 "6"
 set $workspace_7 "7"
-set $workspace_8 "8"
+set $workspace_8 "8 "
 set $workspace_9 "9 "
 
 # switch to workspace
@@ -378,6 +381,8 @@ for_window [class="rdesktop"] floating disable
 for_window [class="VirtualBox"] floating enable
 
 assign [class="rdesktop"] $workspace_7
+assign [class="Thunderbird"] $workspace_8
+assign [class="Chromium"] $workspace_2
 
 # FIXME Personal projects, these lines should go in a config.local file >>>
 for_window [class="ESA Universal"] floating enable
