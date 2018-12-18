@@ -26,7 +26,6 @@ function! HaskellFormat(which) abort
   endif
 endfunction
 
-" Key bindings
 augroup haskellStylish
   au!
   " Just hindent
@@ -37,9 +36,9 @@ augroup haskellStylish
   au FileType haskell nnoremap <leader>agg :call HaskellFormat('both')<CR>
 augroup END
 
-" Key bindings
-augroup ghcMod
+augroup hdevtools
   au!
-  au FileType haskell nnoremap <leader>yt :GhcModInfo!<CR>
-  au FileType haskell nnoremap <leader>q :GhcModCheck!<CR>
+  au FileType haskell nnoremap <leader>yt :HdevtoolsType<CR>
+  au FileType haskell nnoremap <leader>yi :HdevtoolsInfo<CR>
+  au FileType haskell nnoremap <leader>yc :HdevtoolsClear<CR>
 augroup END
