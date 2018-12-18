@@ -42,3 +42,11 @@ augroup hdevtools
   au FileType haskell nnoremap <leader>yi :HdevtoolsInfo<CR>
   au FileType haskell nnoremap <leader>yc :HdevtoolsClear<CR>
 augroup END
+
+let g:ycm_semantic_triggers = {'haskell' : ['.']}
+let g:necoghc_use_stack = 1
+
+augroup necoghc
+  au!
+  autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+augroup END
