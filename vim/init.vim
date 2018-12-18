@@ -48,6 +48,7 @@ source ~/.dotfiles/vim/vimrc/web.vim
 source ~/.dotfiles/vim/vimrc/python.vim
 source ~/.dotfiles/vim/vimrc/zsh.vim
 source ~/.dotfiles/vim/vimrc/lldb.vim
+source ~/.dotfiles/vim/vimrc/haskell.vim
 
 if has('nvim')
   source ~/.dotfiles/vim/vimrc/neomake.vim

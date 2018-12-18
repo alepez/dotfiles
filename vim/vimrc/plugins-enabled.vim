@@ -50,9 +50,10 @@ Plug 'godlygeek/tabular' " Vim script for text filtering and alignment. Note: mu
 Plug 'tpope/vim-markdown' " for markdown editing, with concealing support
 
 " ==================== haskell ====================
-Plug 'eagletmt/ghcmod-vim' " Happy Haskell programming on Vim, powered by ghc-mod
 Plug 'eagletmt/neco-ghc' " A completion plugin for Haskell, using ghc-mod
-Plug 'bitc/vim-hdevtools' " Vim plugin for Haskell development powered by the lightning fast hdevtools background server.
+Plug 'parsonsmatt/intero-neovim'
+Plug 'neovimhaskell/haskell-vim'
+Plug 'alx741/vim-hindent'
 
 " vim-devicons must be loaded after all other plugins
 " needs a good font with icons, like patched fonts you can find at
