@@ -39,6 +39,7 @@ genpassword() {
   file=$( mktemp );
   pwgen --capitalize --numerals --ambiguous --symbols 16 1 -1 > "${file}";
   xclip -i < "${file}";
+  xclip -i -selection clipboard "${file}";
   cat "${file}";
   rm "${file}";
   notify-send "Password copied to clipboard";
