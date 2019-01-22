@@ -47,7 +47,7 @@ Plug 'klen/python-mode', {'branch': 'develop'} " Python
 " ==================== text    ====================
 Plug 'suan/vim-instant-markdown' " preview markdown in browser (needs `npm -g install instant-markdown-d`)
 Plug 'godlygeek/tabular' " Vim script for text filtering and alignment. Note: must come before vim-markdown
-Plug 'tpope/vim-markdown' " for markdown editing, with concealing support
+Plug 'plasticboy/vim-markdown' " Markdown Vim Mode (must come after tabular)
 
 " ==================== haskell ====================
 Plug 'eagletmt/neco-ghc' " A completion plugin for Haskell, using ghc-mod
