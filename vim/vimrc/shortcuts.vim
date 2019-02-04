@@ -19,8 +19,10 @@ vnoremap <leader>f y:Ack! '<C-r>0'<CR>
 nnoremap <leader>ne :NERDTreeToggle<cr>
 
 " cltrp command palette
-nnoremap <leader>; :CtrlPCmdPalette<CR>
-nnoremap <leader>o :CtrlPBuffer<CR>
+nnoremap <leader>; :Commands<CR>
+nnoremap <leader>o :Buffers<CR>
+nnoremap <C-p> <Esc>:FZF<CR>
+
 
 " turn off search highlight and close quickfix
 fu! SmartRefresh()
