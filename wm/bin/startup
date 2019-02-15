@@ -40,7 +40,7 @@ xbindkeys &>/dev/null </dev/null &
 xrandr | grep 'HDMI1 connected' && xrandr --output HDMI1 --mode 1920x1080  --left-of eDP1
 xrandr | grep 'HDMI-1 connected' && xrandr --output HDMI-1 --mode 1920x1080  --left-of eDP1
 
-xss-lock -- i3lock --24 -c '#282828' -o '#fb4934' -w '#83a598' --ignore-empty-password -i ~/.wallpaper &
+xss-lock -- i3lock -c '#282828' --ignore-empty-password -i ~/.wallpaper &
 
 ) &>/dev/null </dev/null &
 
