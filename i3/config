@@ -256,34 +256,6 @@ bindsym $mod+Shift+9 move container to workspace $workspace_9
 workspace_auto_back_and_forth yes
 
 ###############################################################################
-# Bar
-###############################################################################
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-
-bar {
-  status_command i3blocks -c ~/.dotfiles/i3/i3blocks.conf
-  i3bar_command i3bar -t
-  position top
-  font pango:Droid Sans 11
-  separator_symbol "|"
-  tray_padding 0
-  colors {
-    statusline         $light0_hard
-    background         $transparent
-    separator          $light0_hard
-
-     #                   BORDER             BACKGROUND          TEXT
-     focused_workspace   $faded_blue        $dark0_transparent  $light0_hard
-     inactive_workspace  $transparent       $transparent        $light0_soft
-     active_workspace    $transparent       $transparent        $light0_soft
-     urgent_workspace    $faded_orange      $faded_orange       $light0_hard
-     binding_mode        $faded_purple      $faded_purple       $light0_hard
-  }
-}
-
-###############################################################################
 # App shortcuts
 ###############################################################################
 
@@ -401,3 +373,4 @@ assign [class="MyHome"] $workspace_3
 ###############################################################################
 exec --no-startup-id ~/.dotfiles/wm/bin/startup
 exec --no-startup-id compton --config ~/.dotfiles/wm/compton.conf -b
+exec_always --no-startup-id ~/.dotfiles/wm/bin/polybar-launcher &
