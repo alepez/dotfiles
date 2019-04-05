@@ -63,6 +63,9 @@ lslast() { exa --sort created --reverse --color always $@ | head ; }
 alias ka9='killall -9'
 alias k9='kill -9'
 
+# sudo last command
+alias fuck='sudo $(fc -ln -1)'
+
 highlight() { grep --color -E "$1|\$"; }
 
 # I don't use dc, and sometime i mispell cd
