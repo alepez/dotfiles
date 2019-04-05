@@ -141,15 +141,14 @@ mode $exit_mode {
 # Wind+Shift+S shows a menu with layout options
 ###############################################################################
 
-set $monitors_mode "select monitors layout  [a] arandr [h] hdmi+laptop [v] vga+laptop [m] mirror"
+set $monitors_mode "select monitors layout  [a] arandr [h] home [l] laptop"
 bindsym $mod+Shift+s mode $monitors_mode
 
 # Note: both HDMI-1 and HDMI1 because different versions xrandr gives different names
 mode $monitors_mode  {
   bindsym a exec --no-startup-id "arandr; i3-msg mode default"
-  bindsym h exec --no-startup-id "xrandr --output HDMI-1 --auto --left-of eDP-1; i3-msg mode default"
-  bindsym v exec --no-startup-id "xrandr --output DP-1 --auto --left-of eDP-1; i3-msg mode default"
-  bindsym m exec --no-startup-id "xrandr --output HDMI-1 --auto --same-as eDP-1; i3-msg mode default"
+  bindsym h exec --no-startup-id "xrandr --dpi 96 --fb 3200x1080 --output HDMI2 --mode 1920x1080 --scale 1x1 --output eDP1 --mode 1280x720 --pos 1920x0 --scale 1x1"
+  bindsym l exec --no-startup-id "xrandr --output HDMI1 --off --output HDMI2 --off --output eDP1 --mode 1920x1080 -- scale 1x1"
 
   # back to normal: Enter or Escape
   bindsym Return mode "default"
