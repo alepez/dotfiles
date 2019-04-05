@@ -26,6 +26,9 @@ blueman-applet &>/dev/null </dev/null &
 # NetworkManager applet
 nm-applet &>/dev/null </dev/null &
 
+# PulseAudio applet
+pasystray &>/dev/null </dev/null &
+
 # Mouse bindings
 xbindkeys &>/dev/null </dev/null &
 
