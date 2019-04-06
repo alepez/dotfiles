@@ -17,18 +17,6 @@ cd /
 # tmp directory needed by browser profile sync and cache
 mkdir -p /tmp/${USER}-tmp
 
-# External storage manager
-udiskie --no-automount --tray --use-udisks2 &>/dev/null </dev/null &
-
-# Bluetooth applet
-blueman-applet &>/dev/null </dev/null &
-
-# NetworkManager applet
-nm-applet &>/dev/null </dev/null &
-
-# PulseAudio applet
-pasystray &>/dev/null </dev/null &
-
 # Mouse bindings
 xbindkeys &>/dev/null </dev/null &
 
@@ -39,12 +27,31 @@ nitrogen --set-zoom-fill --random ~/Pictures/wallpapers &>/dev/null </dev/null &
 # Clipboard manager (gpaste)
 ( sleep 5 && gpaste-client start &>/dev/null </dev/null & ) &>/dev/null </dev/null &
 
-# Setup second monitor if HDM1 is connected (two variants, different xrandr versions
-# give different output identifier (HDM1 and HDMI-1)
-xrandr | grep 'HDMI1 connected' && xrandr --output HDMI1 --mode 1920x1080  --left-of eDP1
-xrandr | grep 'HDMI-1 connected' && xrandr --output HDMI-1 --mode 1920x1080  --left-of eDP1
+# Setup second monitor if HDM1 is connected
+xrandr | grep 'HDMI2 connected' && ~/.dotfiles/bin/monitor-setup home
 
-xss-lock -- i3lock -c '#282828' --ignore-empty-password -i ~/.wallpaper &
+xss-lock -- betterlockscreen -l dim &>/dev/null </dev/null &
+
+compton --config ~/.dotfiles/wm/compton.conf -b
+
+~/.dotfiles/wm/bin/polybar-launcher &>/dev/null </dev/null &
+
+(
+sleep 5
+
+# PulseAudio applet
+pasystray &>/dev/null </dev/null &
+
+# External storage manager
+udiskie --no-automount --tray --use-udisks2 &>/dev/null </dev/null &
+
+# Bluetooth applet
+blueman-applet &>/dev/null </dev/null &
+
+# NetworkManager applet
+nm-applet &>/dev/null </dev/null &
+
+) &>/dev/null </dev/null &
 
 ) &>/dev/null </dev/null &
 

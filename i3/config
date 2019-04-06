@@ -7,7 +7,7 @@
 #  - nerd fonts https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/SourceCodePro
 #  - kitty
 #  - i3blocks
-#  - i3lock https://github.com/alepez/i3lock.git
+#  - betterlockscreen
 #  - xcape https://github.com/alols/xcape
 #  - dunst
 #
@@ -102,18 +102,8 @@ bindsym $mod+bar split h
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
 
-# invert screen colors
-bindsym $mod+Shift+i exec --no-startup-id xcalib -i -a
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+t layout tabbed
-
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
-
-# reload the configuration file
-# bindsym $mod+Shift+c reload
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
@@ -129,7 +119,7 @@ mode $exit_mode {
   bindsym l exec --no-startup-id "i3-msg mode default; ~/.dotfiles/i3/bin/exit logout"
   bindsym p exec --no-startup-id "i3-msg mode default; ~/.dotfiles/i3/bin/exit poweroff"
   bindsym r exec --no-startup-id "i3-msg mode default; ~/.dotfiles/i3/bin/exit reboot"
-  bindsym s exec --no-startup-id "i3-msg mode default; i3lock -c '#282828' --ignore-empty-password; systemctl suspend"
+  bindsym s exec --no-startup-id "i3-msg mode default; betterlockscreen -l dim; systemctl suspend"
 
   # back to normal: Enter or Escape
   bindsym Return    mode "default"
@@ -146,9 +136,9 @@ bindsym $mod+Shift+s mode $monitors_mode
 
 # Note: both HDMI-1 and HDMI1 because different versions xrandr gives different names
 mode $monitors_mode  {
-  bindsym a exec --no-startup-id "arandr; i3-msg mode default"
-  bindsym h exec --no-startup-id "xrandr --dpi 96 --fb 3200x1080 --output HDMI2 --mode 1920x1080 --scale 1x1 --output eDP1 --mode 1280x720 --pos 1920x0 --scale 1x1"
-  bindsym l exec --no-startup-id "xrandr --output HDMI1 --off --output HDMI2 --off --output eDP1 --mode 1920x1080 -- scale 1x1"
+  bindsym a exec --no-startup-id "~/.dotfiles/bin/monitor-setup manual; i3-msg mode default"
+  bindsym h exec --no-startup-id "~/.dotfiles/bin/monitor-setup home; i3-msg mode default"
+  bindsym l exec --no-startup-id "~/.dotfiles/bin/monitor-setup laptop; i3-msg mode default"
 
   # back to normal: Enter or Escape
   bindsym Return mode "default"
@@ -270,7 +260,7 @@ bindsym $mod+Return exec --no-startup-id $terminal
 bindsym $mod+c exec --no-startup-id $terminal
 
 # lock screen with Ctrl+Alt+L
-bindsym Control+Mod1+l exec --no-startup-id "i3lock -c '#282828' --ignore-empty-password -i ~/.wallpaper"
+bindsym Control+Mod1+l exec --no-startup-id "betterlockscreen -l dim"
 
 # Browser
 set $browser "chromium --proxy-server=localhost:8118"
@@ -352,9 +342,10 @@ for_window [class="rdesktop"] floating disable
 for_window [class="VirtualBox"] floating enable
 for_window [class="VirtualBox Machine"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
+for_window [class="blueman-manager"] floating enable
+for_window [class="Blueman-manager"] floating enable
 
 assign [class="rdesktop"] $workspace_7
-assign [class="Thunderbird"] $workspace_8
 assign [class="Mailspring"] $workspace_8
 assign [class="Chromium"] $workspace_2
 
@@ -371,5 +362,3 @@ assign [class="MyHome"] $workspace_3
 # Startup
 ###############################################################################
 exec --no-startup-id ~/.dotfiles/wm/bin/startup
-exec --no-startup-id compton --config ~/.dotfiles/wm/compton.conf -b
-exec_always --no-startup-id ~/.dotfiles/wm/bin/polybar-launcher &
