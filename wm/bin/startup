@@ -27,8 +27,7 @@ nitrogen --set-zoom-fill --random ~/Pictures/wallpapers &>/dev/null </dev/null &
 # Clipboard manager (gpaste)
 ( sleep 5 && gpaste-client start &>/dev/null </dev/null & ) &>/dev/null </dev/null &
 
-# Setup second monitor if HDM1 is connected
-xrandr | grep 'HDMI-2 connected' && ~/.dotfiles/bin/monitor-setup home
+~/.dotfiles/bin/monitor-setup auto
 
 xss-lock -- betterlockscreen -l dim &>/dev/null </dev/null &
 
