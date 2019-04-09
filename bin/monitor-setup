@@ -1,6 +1,17 @@
 #!/bin/bash
 
-autorandr --load $1
+layout="${1}"
+
+if [ "${layout}" == "auto" ]; then
+  monitors=$( xrandr )
+  layout=laptop
+
+  if ( echo $monitors | grep 'HDMI-2 connected' &>/dev/null ); then
+    layout=home
+  fi
+fi
+
+autorandr --load "${layout}"
 
 # After monitor setup, polybar must be reloaded
 ~/.dotfiles/wm/bin/polybar-launcher
