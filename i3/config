@@ -339,12 +339,12 @@ for_window [class="copyq"] floating enable
 for_window [class="Arandr"] floating enable
 for_window [class="Pinentry-gtk-2"] floating enable
 for_window [class="rdesktop"] floating disable
-for_window [class="VirtualBox"] floating enable
-for_window [class="VirtualBox Machine"] floating enable
+for_window [class="VirtualBox Manager"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
 for_window [class="blueman-manager"] floating enable
 for_window [class="Blueman-manager"] floating enable
 
+assign [class="VirtualBox Machine"] $workspace_7
 assign [class="rdesktop"] $workspace_7
 assign [class="Mailspring"] $workspace_8
 assign [class="Chromium"] $workspace_2
