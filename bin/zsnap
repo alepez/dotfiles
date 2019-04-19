@@ -1,0 +1,5 @@
+#!/bin/bash
+
+t=$(date +%Y-%m-%d-%H-%M-%S --utc | tr -d \\n)
+sudo zfs snapshot zroot/ROOT/default@${t}
+sudo zfs list -d 1 -t snapshot zroot/ROOT/default
