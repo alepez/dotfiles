@@ -3,7 +3,7 @@
 ## oh-my-zsh {{{
 
 ## Path to your oh-my-zsh installation.
-export ZSH=~/.oh-my-zsh
+export ZSH=/usr/share/oh-my-zsh
 
 ## Path to custom themes/plugins etc...
 export ZSH_CUSTOM=~/.dotfiles/zsh/oh-my-zsh
@@ -56,10 +56,10 @@ plugins=(
   stack
   systemd
   tmux
-  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Override `l`
 alias l='exa --color always --oneline'
