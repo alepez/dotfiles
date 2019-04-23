@@ -248,12 +248,6 @@ workspace_auto_back_and_forth yes
 # App shortcuts
 ###############################################################################
 
-# Available keyboard sym:
-# XF86Explorer
-# XF86HomePage
-# XF86Calculator
-# XF86Tools
-
 # Terminals
 set $terminal "kitty"
 bindsym $mod+Return exec --no-startup-id $terminal
@@ -272,8 +266,8 @@ bindsym $mod+Shift+b exec --no-startup-id $private_browser
 bindsym $mod+Mod1+b exec --no-startup-id "i3-msg \"workspace $workspace_2; exec $browser\""
 
 # Laptop screen brightness
-bindcode 233 exec --no-startup-id ~/.dotfiles/i3/bin/brightness +
-bindcode 232 exec --no-startup-id ~/.dotfiles/i3/bin/brightness -
+bindcode 233 exec --no-startup-id xbacklight -inc 1
+bindcode 232 exec --no-startup-id xbacklight -dec 1
 
 # Audio volume up/down (PulseAudio)
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ +5%
