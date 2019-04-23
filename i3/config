@@ -119,7 +119,7 @@ mode $exit_mode {
   bindsym l exec --no-startup-id "i3-msg mode default; ~/.dotfiles/i3/bin/exit logout"
   bindsym p exec --no-startup-id "i3-msg mode default; ~/.dotfiles/i3/bin/exit poweroff"
   bindsym r exec --no-startup-id "i3-msg mode default; ~/.dotfiles/i3/bin/exit reboot"
-  bindsym s exec --no-startup-id "i3-msg mode default; betterlockscreen -l dim; systemctl suspend"
+  bindsym s exec --no-startup-id "i3-msg mode default; systemctl suspend"
 
   # back to normal: Enter or Escape
   bindsym Return    mode "default"
