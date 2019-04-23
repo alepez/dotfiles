@@ -23,6 +23,7 @@ xbindkeys &>/dev/null </dev/null &
 # Random wallpaper
 # ~/.dotfiles/wm/bin/change-background  &>/dev/null </dev/null &
 #nitrogen --set-zoom-fill --random ~/Pictures/wallpapers &>/dev/null </dev/null &
+feh --bg-fill "${HOME}/.wallpaper"
 
 # Clipboard manager (gpaste)
 ( sleep 5 && gpaste-client start &>/dev/null </dev/null & ) &>/dev/null </dev/null &
