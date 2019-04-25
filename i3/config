@@ -210,15 +210,15 @@ bindsym --release Print exec flameshot gui -p ~/Pictures/screenshots
 # Workspaces
 ###############################################################################
 
-set $workspace_1 "1 "
-set $workspace_2 "2 "
+set $workspace_1 "1"
+set $workspace_2 "2"
 set $workspace_3 "3"
 set $workspace_4 "4"
 set $workspace_5 "5"
 set $workspace_6 "6"
 set $workspace_7 "7"
-set $workspace_8 "8 "
-set $workspace_9 "9 "
+set $workspace_8 "8"
+set $workspace_9 "9"
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace_1
@@ -267,13 +267,13 @@ bindsym $mod+Shift+b exec --no-startup-id $private_browser
 bindsym $mod+Mod1+b exec --no-startup-id "i3-msg \"workspace $workspace_2; exec $browser\""
 
 # Laptop screen brightness
-bindcode 233 exec --no-startup-id xbacklight -inc 1
-bindcode 232 exec --no-startup-id xbacklight -dec 1
+bindcode 233 exec --no-startup-id xbacklight -inc 2
+bindcode 232 exec --no-startup-id xbacklight -dec 2
 
 # Audio volume up/down (PulseAudio)
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute        exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ 0%
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.dotfiles/i3/bin/audio-control out_volume_up
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.dotfiles/i3/bin/audio-control out_volume_down
+bindsym XF86AudioMute        exec --no-startup-id ~/.dotfiles/i3/bin/audio-control out_mute_toggle
 
 # Spotify
 bindsym XF86AudioPrev exec --no-startup-id ~/.dotfiles/i3/bin/spotify-control prev
