@@ -24,8 +24,13 @@ poweroff() {
   systemctl poweroff
 }
 
+suspend() {
+  systemctl suspend
+}
+
 case $1 in
   logout) logout;;
   reboot) reboot;;
   poweroff) poweroff;;
+  suspend) suspend;;
 esac
