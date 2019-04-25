@@ -1,43 +1,31 @@
 #!/bin/bash
 
-# Mount cache directories
-#mkdir -p /tmp/${USER}-tmp/cache ; rm -rf /home/${USER}/.cache ; ln -s /tmp/${USER}-tmp/cache /home/${USER}/.cache
-#mkdir -p /tmp/${USER}-tmp/thumbnails ; rm -rf /home/${USER}/.thumbnails ; ln -s /tmp/${USER}-tmp/thumbnails /home/${USER}/.thumbnails
-
-(
-
 cd /
 
-# X11 Compositor
-# ( sleep 5 && compton --config ~/.dotfiles/wm/compton.conf -b &>/dev/null </dev/null & ) &>/dev/null </dev/null &
+# Automatic monitor setup (blocking)
+~/.dotfiles/bin/monitor-setup auto
+
+# Random wallpaper
+
+# Compositor
+compton --config ~/.dotfiles/wm/compton.conf -b
 
 # Setup keyboard (layout, caps-escape, ...)
-~/.dotfiles/bin/keyboard-setup
-
-# tmp directory needed by browser profile sync and cache
-mkdir -p /tmp/${USER}-tmp
+~/.dotfiles/bin/keyboard-setup &>/dev/null </dev/null &
 
 # Mouse bindings
 xbindkeys &>/dev/null </dev/null &
 
-# Random wallpaper
-# ~/.dotfiles/wm/bin/change-background  &>/dev/null </dev/null &
-#nitrogen --set-zoom-fill --random ~/Pictures/wallpapers &>/dev/null </dev/null &
-feh --bg-fill "${HOME}/.wallpaper"
+# Automatic screensaver
+# (lock on suspend is handled by betterlockscreen systemd service)
+xset s 120 &>/dev/null </dev/null &
 
-# Clipboard manager (gpaste)
-( sleep 5 && gpaste-client start &>/dev/null </dev/null & ) &>/dev/null </dev/null &
-
-~/.dotfiles/bin/monitor-setup auto
-
-xss-lock -- betterlockscreen -l dim &>/dev/null </dev/null &
-
-compton --config ~/.dotfiles/wm/compton.conf -b
-
-~/.dotfiles/wm/bin/polybar-launcher &>/dev/null </dev/null &
-
+# Wait some seconds (in background) before launching systray applets
 (
 sleep 5
+
+# Clipboard manager (gpaste)
+gpaste-client start &>/dev/null </dev/null &
 
 # PulseAudio applet
 pasystray &>/dev/null </dev/null &
@@ -50,8 +38,6 @@ blueman-applet &>/dev/null </dev/null &
 
 # NetworkManager applet
 nm-applet &>/dev/null </dev/null &
-
-) &>/dev/null </dev/null &
 
 ) &>/dev/null </dev/null &
 

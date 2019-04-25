@@ -4,7 +4,7 @@ wallpaper="${HOME}/.wallpaper"
 
 list_all() { find "${HOME}/Pictures/wallpapers"; }
 
-get_neighbours() { list_all | grep $( realpath ${wallpaper} ) -C1; }
+get_neighbours() { ( list_all | grep $( realpath ${wallpaper} ) -C1; list_all | head -1 ) | head -3; }
 
 select_random() { shuf | head -1; }
 
@@ -16,10 +16,11 @@ set_prev() { set $( get_neighbours | head -1 ); }
 
 set_next() { set $( get_neighbours | tail -1 ); }
 
-load() { feh --bg-fill "${wallpaper}"; }
+load() { feh --no-xinerama --bg-fill "${wallpaper}"; }
 
 case $1 in
   prev) set_prev && load;;
   next) set_next && load;;
+  load) load;;
   *) set_random && load;;
 esac

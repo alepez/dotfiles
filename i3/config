@@ -131,7 +131,7 @@ mode $exit_mode {
 # Wind+Shift+S shows a menu with layout options
 ###############################################################################
 
-set $monitors_mode "select monitors layout  [a] arandr [h] home [l] laptop"
+set $monitors_mode "select monitors layout  [a] arandr [h] home [l] laptop [u] auto"
 bindsym $mod+Shift+s mode $monitors_mode
 
 # Note: both HDMI-1 and HDMI1 because different versions xrandr gives different names
@@ -139,6 +139,7 @@ mode $monitors_mode  {
   bindsym a exec --no-startup-id "~/.dotfiles/bin/monitor-setup manual; i3-msg mode default"
   bindsym h exec --no-startup-id "~/.dotfiles/bin/monitor-setup home; i3-msg mode default"
   bindsym l exec --no-startup-id "~/.dotfiles/bin/monitor-setup laptop; i3-msg mode default"
+  bindsym u exec --no-startup-id "~/.dotfiles/bin/monitor-setup auto; i3-msg mode default"
 
   # back to normal: Enter or Escape
   bindsym Return mode "default"
@@ -150,12 +151,12 @@ mode $monitors_mode  {
 # Wind+Shift+D change background
 ###############################################################################
 
-set $background_mode "change background  [j] previos [k] next"
+set $background_mode "change background  [j] next [k] prev"
 bindsym $mod+Shift+d mode $background_mode
 
 mode $background_mode  {
-  bindsym j exec --no-startup-id "~/.dotfiles/wm/bin/change-background prev"
-  bindsym k exec --no-startup-id "~/.dotfiles/wm/bin/change-background next"
+  bindsym k exec --no-startup-id "~/.dotfiles/wm/bin/change-background prev"
+  bindsym j exec --no-startup-id "~/.dotfiles/wm/bin/change-background next"
 
   # back to normal: Enter or Escape
   bindsym Return mode "default"
