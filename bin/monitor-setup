@@ -11,7 +11,7 @@ if [ "${layout}" == "auto" ]; then
   monitors=$( xrandr )
   layout=laptop
 
-  if ( echo $monitors | grep "DP-1-1 connected" &>/dev/null ); then
+  if ( echo $monitors | grep "DP1-1 connected" &>/dev/null ); then
     layout=home
   fi
 fi
