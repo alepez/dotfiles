@@ -204,7 +204,7 @@ mode $resize_mode {
 ###############################################################################
 # Screenshots
 ###############################################################################
-bindsym --release Print exec flameshot gui -p ~/Pictures
+bindsym --release Print exec flameshot gui -p ~/Pictures/screenshots
 
 ###############################################################################
 # Workspaces
