@@ -12,13 +12,13 @@ if [ "${layout}" == "auto" ]; then
   layout=laptop
 
   if ( echo $monitors | grep "DP-1-1 connected" &>/dev/null ); then
-    echo $monitors
     layout=home
   fi
 fi
 
-autorandr --load "${layout}"
+autorandr --load "${layout}" 2>/dev/null
 
+# Launch in background
 (
 # After monitor setup, polybar must be reloaded
 ~/.dotfiles/wm/bin/polybar-launcher
