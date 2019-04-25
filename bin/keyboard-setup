@@ -21,8 +21,6 @@ export DISPLAY=:0
 # Increase delay and rate of keyboard
 /usr/bin/xset r rate 250 30
 
-/usr/bin/notify-send $0
-
 ) </dev/null >/dev/null 2>/dev/null &
 
 exit 0
