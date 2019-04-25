@@ -136,10 +136,10 @@ bindsym $mod+Shift+s mode $monitors_mode
 
 # Note: both HDMI-1 and HDMI1 because different versions xrandr gives different names
 mode $monitors_mode  {
-  bindsym a exec --no-startup-id "~/.dotfiles/bin/monitor-setup manual; i3-msg mode default"
-  bindsym h exec --no-startup-id "~/.dotfiles/bin/monitor-setup home; i3-msg mode default"
-  bindsym l exec --no-startup-id "~/.dotfiles/bin/monitor-setup laptop; i3-msg mode default"
-  bindsym u exec --no-startup-id "~/.dotfiles/bin/monitor-setup auto; i3-msg mode default"
+  bindsym a exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/monitor-setup manual"
+  bindsym h exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/monitor-setup home"
+  bindsym l exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/monitor-setup laptop"
+  bindsym u exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/monitor-setup auto"
 
   # back to normal: Enter or Escape
   bindsym Return mode "default"
@@ -172,11 +172,11 @@ set $lights_mode "select lights layout  [w] window [d] desktop [r] relax [a] 
 bindsym $mod+Shift+o mode $lights_mode
 
 mode $lights_mode  {
-  bindsym w exec --no-startup-id "~/.local/bin/office-lights 1; i3-msg mode default"
-  bindsym d exec --no-startup-id "~/.local/bin/office-lights 2; i3-msg mode default"
-  bindsym r exec --no-startup-id "~/.local/bin/office-lights 0; i3-msg mode default"
-  bindsym a exec --no-startup-id "~/.local/bin/office-lights all_on; i3-msg mode default"
-  bindsym o exec --no-startup-id "~/.local/bin/office-lights all_off; i3-msg mode default"
+  bindsym w exec --no-startup-id "i3-msg mode default; ~/.local/bin/office-lights 1"
+  bindsym d exec --no-startup-id "i3-msg mode default; ~/.local/bin/office-lights 2"
+  bindsym r exec --no-startup-id "i3-msg mode default; ~/.local/bin/office-lights 0"
+  bindsym a exec --no-startup-id "i3-msg mode default; ~/.local/bin/office-lights all_on"
+  bindsym o exec --no-startup-id "i3-msg mode default; ~/.local/bin/office-lights all_off"
 
   # back to normal: Enter or Escape
   bindsym Return mode "default"
