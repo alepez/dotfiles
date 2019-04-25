@@ -54,7 +54,7 @@ font-3 = "Font Awesome 5 Free Solid:pixelsize=11;0"
 font-4 = "Font Awesome 5 Brands:pixelsize=10;0"
 font-5 = "SauceCodePro Nerd Font Mono:style=Regular"
 
-modules-left = i3
+modules-left = i3 spotify-status
 modules-center =
 modules-right = xbacklight memory cpu system-cpu-frequency pulseaudio vpn-nordvpn-status wlp61s0 ens1u1 enp0s31f6 battery temperature date
 
@@ -307,6 +307,13 @@ ramp-0 = 
 ramp-1 = 
 ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
+
+[module/spotify-status]
+type = custom/script
+interval = 1
+format = <label>
+exec = ~/.dotfiles/polybar/scripts/spotify-status/spotify_status.py
+format-underline = #1db954
 
 [module/vpn-nordvpn-status]
 type = custom/script
