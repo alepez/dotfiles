@@ -17,8 +17,8 @@ compton --config ~/.dotfiles/wm/compton.conf -b
 xbindkeys &>/dev/null </dev/null &
 
 # Automatic screensaver
-# (lock on suspend is handled by betterlockscreen systemd service)
 xset s 120 &>/dev/null </dev/null &
+xss-lock -- betterlockscreen -l dim &>/dev/null </dev/null &
 
 # Wait some seconds (in background) before launching systray applets
 (
