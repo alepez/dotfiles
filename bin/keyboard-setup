@@ -1,10 +1,28 @@
 #!/bin/bash
 
+# Add this udev rule to autoconfigure keyboard when attached
+# ACTION=="add", SUBSYSTEM=="input", ATTRS{idVendor}=="04b4", ATTRS{idProduct}=="0101", SYMLINK+="usb-keyboard", RUN+="/home/pez/.dotfiles/bin/keyboard-setup" 
+
+(
+
+# The sleep is needed to work with udev
+sleep 1
+
+# These variables are needed to work with udev
+export XAUTHORITY=/home/pez/.Xauthority
+export DISPLAY=:0
+
 # Keyboard: italian with us layout, CapsLock like Ctrl
-setxkbmap -layout it -variant us -option 'caps:ctrl_modifier'
+/usr/bin/setxkbmap -layout it -variant us -option 'caps:ctrl_modifier'
 
 # Caps Lock mapped to: Esc + Ctrl (long press)
-xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
+/usr/bin/xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
 
 # Increase delay and rate of keyboard
-xset r rate 250 30
+/usr/bin/xset r rate 250 30
+
+/usr/bin/notify-send $0
+
+) </dev/null >/dev/null 2>/dev/null &
+
+exit 0
