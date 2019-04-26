@@ -305,20 +305,20 @@ bindsym $mod+e exec $filemanager
 bindsym $mod+i exec --no-startup-id ~/.dotfiles/i3/bin/myip-notify
 
 ###############################################################################
-# Fonts
+# Colors
 ###############################################################################
-client.focused            $neutral_aqua    $neutral_aqua    $dark0       $dark0
+client.focused            $neutral_purple  $neutral_purple  $dark0       $dark0
 client.focused_inactive   $dark0_hard      $dark0_hard      $gray_245    $dark0
 client.unfocused          $dark0_soft      $dark0_soft      $gray_245    $dark0
-client.urgent             $neutral_red     $neutral_red     $light1      $dark0
+client.urgent             $neutral_orange  $neutral_orange  $light1      $dark0
 
 ###############################################################################
 # Gaps
 ###############################################################################
 gaps inner 12
-gaps outer 8
-new_window pixel 2
-new_float pixel 2
+gaps outer 0
+default_border pixel 4
+default_floating_border pixel 12
 smart_gaps on
 hide_edge_borders smart
 
@@ -326,7 +326,6 @@ hide_edge_borders smart
 # Special windows
 ###############################################################################
 for_window [class="Pavucontrol"] floating enable, border normal
-for_window [class="copyq"] floating enable
 for_window [class="Arandr"] floating enable
 for_window [class="Pinentry-gtk-2"] floating enable
 for_window [class="rdesktop"] floating disable
