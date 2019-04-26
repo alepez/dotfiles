@@ -50,7 +50,7 @@ Plug 'godlygeek/tabular' " Vim script for text filtering and alignment. Note: mu
 Plug 'plasticboy/vim-markdown' " Markdown Vim Mode (must come after tabular)
 
 " ==================== haskell ====================
-Plug 'eagletmt/neco-ghc' " A completion plugin for Haskell, using ghc-mod
+"Plug 'eagletmt/neco-ghc' " A completion plugin for Haskell, using ghc-mod
 Plug 'neovimhaskell/haskell-vim'
 Plug 'alx741/vim-hindent'
 Plug 'bitc/vim-hdevtools'
