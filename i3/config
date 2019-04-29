@@ -307,7 +307,7 @@ bindsym $mod+i exec --no-startup-id ~/.dotfiles/i3/bin/myip-notify
 ###############################################################################
 # Colors
 ###############################################################################
-client.focused            $neutral_purple  $neutral_purple  $dark0       $dark0
+client.focused            $neutral_blue    $neutral_blue    $dark0       $dark0
 client.focused_inactive   $dark0_hard      $dark0_hard      $gray_245    $dark0
 client.unfocused          $dark0_soft      $dark0_soft      $gray_245    $dark0
 client.urgent             $neutral_orange  $neutral_orange  $light1      $dark0
