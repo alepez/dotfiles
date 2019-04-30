@@ -143,6 +143,11 @@ node() {
   "${NVM_BIN}/node" $@
 }
 
+npm() {
+  node_setup
+  "${NVM_BIN}/npm" $@
+}
+
 # vim editor with nodejs environment
 vjs() {
   node_setup
