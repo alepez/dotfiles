@@ -16,8 +16,8 @@ compton --config ~/.dotfiles/wm/compton.conf -b
 # Mouse bindings
 xbindkeys &>/dev/null </dev/null &
 
-# Automatic screensaver
-xset s 120 &>/dev/null </dev/null &
+# Automatic screen lock
+xset s 300 &>/dev/null </dev/null &
 xss-lock -- betterlockscreen -l dim &>/dev/null </dev/null &
 
 # Wait some seconds (in background) before launching systray applets
