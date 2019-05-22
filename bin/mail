@@ -1,0 +1,4 @@
+#!/bin/sh
+
+i3-msg 'workspace --no-auto-back-and-forth 8'
+mailspring
