@@ -58,3 +58,5 @@ tmp
 .rootdir
 vgcore.*
 *@neomake*
+.idea
+cmake-build-*
