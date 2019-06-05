@@ -29,4 +29,7 @@ autorandr --load "${layout}" 2>/dev/null
 
 # And wallpaper should be reloaded to fit
 ~/.dotfiles/wm/bin/change-background load
+
+# If we need to setup the monitor, maybe we have a keyboard to set up too
+~/.dotfiles/bin/keyboard-setup
 ) &>/dev/null </dev/null &
