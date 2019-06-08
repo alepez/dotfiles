@@ -252,7 +252,7 @@ workspace_auto_back_and_forth yes
 ###############################################################################
 
 # Terminals
-set $terminal "kitty"
+set $terminal kitty
 bindsym $mod+Return exec --no-startup-id $terminal
 bindsym $mod+c exec --no-startup-id $terminal
 
@@ -323,6 +323,15 @@ default_border pixel 4
 default_floating_border pixel 12
 smart_gaps on
 hide_edge_borders smart
+
+###############################################################################
+# Scratchpad
+###############################################################################
+
+exec --no-startup-id $terminal --name=dropdown -e tmux
+for_window [instance="dropdown"] floating enable;
+for_window [instance="dropdown"] move scratchpad
+bindsym $mod+0 [instance="dropdown"] scratchpad show; move position center; resize set 1500 500
 
 ###############################################################################
 # Special windows
