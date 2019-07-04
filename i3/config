@@ -112,7 +112,7 @@ bindsym $mod+Shift+r restart
 # Exit mode
 # Ctrl+Alt+Del shows a menu with exit options
 ###############################################################################
-set $exit_mode " [L] Lock [X] Logout [P] poweroff [R] reboot [S] suspend"
+set $exit_mode " [X] Lock [L] Logout [P] poweroff [R] reboot [S] suspend"
 bindsym Control+Mod1+Delete mode $exit_mode
 bindsym $mod+Shift+x mode $exit_mode
 
