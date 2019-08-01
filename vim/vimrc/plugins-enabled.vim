@@ -30,6 +30,9 @@ Plug 'alepez/vim-llvmcov' " Show test coverage
 Plug 'alepez/vim-gtest' " Run google tests inside vim
 Plug 'vim-scripts/a.vim' " Alternate files quickly (header/implementation etc...)
 
+" ==================== rust    ====================
+Plug 'racer-rust/vim-racer'
+
 " ==================== web     ====================
 Plug 'vim-scripts/smarty-syntax' " Syntax highlight for Smarty Template Engine
 Plug 'pangloss/vim-javascript' " Vastly improved Javascript indentation and syntax support in Vim.
