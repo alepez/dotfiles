@@ -60,3 +60,4 @@ vgcore.*
 *@neomake*
 .idea
 cmake-build-*
+*.pro.user
