@@ -79,7 +79,11 @@ alias k9='kill -9'
 # sudo last command
 alias fuck='sudo $(fc -ln -1)'
 
+# Highlight
 highlight() { grep --color -E "$1|\$"; }
+
+# Grep without buffer
+alias nbgrep='stdbuf -o0 -oL grep'
 
 # I don't use dc, and sometime i mispell cd
 alias dc='cd'
