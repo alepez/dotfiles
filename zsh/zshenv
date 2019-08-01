@@ -29,7 +29,16 @@ alias add_timestamp='while read line; do echo "$(date +%Y-%m-%dT%H:%M:%S.$( date
 # Create new tmp directory and cd into it
 # Dir name is current UTC time, without special characters as : to be
 # compatible with PATH env var (so you can add this tmp directory to PATH)
-alias DD='D ~/tmp/$(date +%Y%m%dT%H%M%S --utc | tr -d \\n)'
+# If first argument is defined, it is used as a suffix
+DD() {
+  date="$( date +%Y%m%dT%H%M%S --utc | tr -d \\n )"
+  p="${HOME}/tmp/${date}"
+  if [ -n "${1}" ]; then
+    p="${p}-${1}"
+  fi
+  mkdir "${p}"
+  cd "${p}"
+}
 
 # Change directory to last created directory in tmp
 alias last_tmp='cd ~/tmp/$( ls -t ~/tmp | head -1 )'
