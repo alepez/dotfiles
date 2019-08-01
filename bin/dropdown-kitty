@@ -1,0 +1,2 @@
+#!/bin/sh
+while true; do cd && kitty --name=dropdown -e tmux; done
