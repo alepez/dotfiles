@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Add this udev rule to autoconfigure keyboard when attached
-ACTION=="add", SUBSYSTEM=="input", ATTRS{idVendor}=="04b4", ATTRS{idProduct}=="0101", SYMLINK+="usb-keyboard", RUN+="/bin/su pez -c '/home/pez/.dotfiles/bin/keyboard-setup standard'"
-ACTION=="add", SUBSYSTEM=="input", ATTRS{name}=="Keychron K2", SYMLINK+="keyboard-keychron-k2", RUN+="/bin/su pez -c '/home/pez/.dotfiles/bin/keyboard-setup k2'"
+# ACTION=="add", SUBSYSTEM=="input", ATTRS{idVendor}=="04b4", ATTRS{idProduct}=="0101", SYMLINK+="usb-keyboard", RUN+="/bin/su pez -c '/home/pez/.dotfiles/bin/keyboard-setup standard'"
+# ACTION=="add", SUBSYSTEM=="input", ATTRS{name}=="Keychron K2", SYMLINK+="keyboard-keychron-k2", RUN+="/bin/su pez -c '/home/pez/.dotfiles/bin/keyboard-setup k2'"
 
 is_k2_connected() {
   test -e /dev/keyboard-keychron-k2
