@@ -49,14 +49,28 @@ def get_name(device):
 def get_battery_percentage(device):
     percentage = get_field_or_fallback(device, ['percentage'])
     if percentage is None:
-        return None
+        return 0
     return int(percentage[:-1])
 
 
-def to_string(device):
+def to_string(labels, device):
+    labels = dict(labels)
     name = get_name(device)
     percentage = get_battery_percentage(device)
+
+    if name in labels:
+        name = labels[name]
+
     return "{} {}%".format(name, percentage)
+
+
+def get_label(name):
+    arr = name.split(':')
+    if len(arr) == 2:
+        return (arr[1], arr[0])
+    else:
+        return (arr[0], arr[0])
+
 
 
 proc = subprocess.Popen(['upower', '-d'],
@@ -64,8 +78,10 @@ proc = subprocess.Popen(['upower', '-d'],
                         )
 selected_devices = sys.argv[1:]
 devices = parse_devices(proc.stdout)
-devices = filter(lambda device: get_name(device) in selected_devices, devices)
 
-for device in devices:
-    print(to_string(device))
+if selected_devices:
+    labels = list(map(get_label, selected_devices))
+    selected_devices = list(map(lambda x: x[0], labels))
+    devices = filter(lambda device: get_name(device) in selected_devices, devices)
 
+print(" | ".join(map(lambda device: to_string(labels, device), devices)))

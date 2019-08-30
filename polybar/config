@@ -56,7 +56,7 @@ font-5 = "SauceCodePro Nerd Font Mono:style=Regular"
 
 modules-left = i3 spotify-status
 modules-center =
-modules-right = xbacklight memory cpu system-cpu-frequency pulseaudio vpn-nordvpn-status wlp61s0 ens1u1 enp0s31f6 battery temperature date
+modules-right = xbacklight memory cpu system-cpu-frequency pulseaudio vpn-nordvpn-status wlp61s0 ens1u1 enp0s31f6 battery mouse-battery keyboard-battery temperature date
 
 tray-position = right
 tray-padding = 2
@@ -324,6 +324,16 @@ interval = 5
 type = custom/script
 exec = ~/.dotfiles/polybar/scripts/system-cpu-frequency/system-cpu-frequency.sh
 interval = 5
+
+[module/keyboard-battery]
+type = custom/script
+exec = ~/.dotfiles/polybar/scripts/devices-power/devices-power.py ':Keychron K2'
+interval = 60
+
+[module/mouse-battery]
+type = custom/script
+exec = ~/.dotfiles/polybar/scripts/devices-power/devices-power.py ':MX Master'
+interval = 60
 
 [settings]
 screenchange-reload = true
