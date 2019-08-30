@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Add this udev rule to autoconfigure keyboard when attached
-# ACTION=="add", SUBSYSTEM=="input", ATTRS{idVendor}=="04b4", ATTRS{idProduct}=="0101", SYMLINK+="usb-keyboard", RUN+="/home/pez/.dotfiles/bin/keyboard-setup standard"
-# ACTION=="add", SUBSYSTEM=="input", ATTRS{name}=="Keychron K2", SYMLINK+="keychron-k2", RUN+="/home/pez/.dotfiles/bin/keyboard-setup k2"
+ACTION=="add", SUBSYSTEM=="input", ATTRS{idVendor}=="04b4", ATTRS{idProduct}=="0101", SYMLINK+="usb-keyboard", RUN+="/bin/su pez -c '/home/pez/.dotfiles/bin/keyboard-setup standard'"
+ACTION=="add", SUBSYSTEM=="input", ATTRS{name}=="Keychron K2", SYMLINK+="keyboard-keychron-k2", RUN+="/bin/su pez -c '/home/pez/.dotfiles/bin/keyboard-setup k2'"
 
 is_k2_connected() {
-  test -e /dev/keychron-k2
+  test -e /dev/keyboard-keychron-k2
 }
 
 hack_k2_mapping() {
@@ -13,10 +13,6 @@ hack_k2_mapping() {
   xmodmap -e "keycode 117 = Prior"
   xmodmap -e "keycode 110 = Next"
   xmodmap -e "keycode 115 = End"
-
-  if [ "${USER}" == "root" ]; then
-    echo 0 > /sys/module/hid_apple/parameters/fnmode
-  fi
 }
 
 reset_mapping() {
@@ -38,6 +34,7 @@ layout_us_italian_caps_ctrl() {
 ctrl_escape() {
   # Caps Lock mapped to: Esc + Ctrl (long press)
   kill $( pgrep xcape ) 2>/dev/null
+  sleep 0.1
   if [ "${1}" != "no" ]; then
     /usr/bin/xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
   fi
@@ -49,9 +46,13 @@ fix_repeat_speed() {
 }
 
 detect_mode() {
-  if is_k2_connected; then echo 'k2'; return; fi;
-    echo 'standard'; return
-  }
+  if is_k2_connected; then
+    echo 'k2';
+    return;
+  fi;
+
+  echo 'standard'; return
+}
 
 reset_mode() {
   layout_us
@@ -68,6 +69,11 @@ standard_mode() {
 }
 
 k2_mode() {
+  # This sleep is needed because, when keyboard is attached, caps lock is ON
+  # for for a while. If caps lock is disabled (by the selected layout) while
+  # it is ON, it will never go off.
+  # while ( xset q | grep 'Caps Lock:   on' ); do sleep 1; done
+  sleep 2
   layout_us_italian_caps_ctrl
   ctrl_escape
   hack_k2_mapping
@@ -83,6 +89,8 @@ set_mode() {
     standard) standard_mode;;
     k2) k2_mode;;
   esac
+
+  notify-send -u low "Keyboard ${mode}"
 }
 
 # start_background is useful when launching from udev rule
@@ -94,9 +102,10 @@ start_background() {
   # These variables are needed to work with udev
   export XAUTHORITY=/home/pez/.Xauthority
   export DISPLAY=:0
+  export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 
   set_mode $@
-  ) </dev/null >/dev/null 2>/dev/null &
+  ) </dev/null &>/dev/null &
 }
 
 # start_background is useful when launching from command line
