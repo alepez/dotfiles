@@ -102,11 +102,6 @@ Pass() {
   pass "${passpath}";
 }
 
-# Watch a file for changes and run something after is is changed
-# Example
-#     watch_do myprogram.hs 'ghc myprogram.hs -o myprogram && ./myprogram'
-watch_do() { while true; do eval "${2}"; inotifywait --exclude '@neomake' --recursive --event modify "${1}" -q; clear; done; }
-
 ## Docker {{{
 
 ## I use docker so often I need this

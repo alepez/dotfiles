@@ -1,12 +1,26 @@
 #!/bin/bash
 #
-# Watch a file for changes and run something after is is changed
+# Run something on file (or directory) change.
+#
 # Example
 #     watch_do myprogram.hs 'ghc myprogram.hs -o myprogram && ./myprogram'
 #
 
 while true; do
-  ( bash -c "${2}" ) 2>&1
-  echo ================================================================================ 
-  inotifywait --exclude '@neomake' --recursive --event modify "${1}" -q; clear;
-done;
+  echo ================================================================================
+  echo
+  ( bash -c "${2}" ) 2>&1 &
+  PID=$!
+  echo PID: ${PID}
+  echo
+  echo ================================================================================
+  echo Waiting...
+  inotifywait \
+    --exclude '@neomake' \
+    --exclude 'target' \
+    --recursive --event modify "${1}"
+  echo Change detected
+  sleep 0.250
+  kill ${PID}
+  clear
+done
