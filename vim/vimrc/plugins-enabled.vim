@@ -32,6 +32,7 @@ Plug 'vim-scripts/a.vim' " Alternate files quickly (header/implementation etc...
 
 " ==================== rust    ====================
 Plug 'racer-rust/vim-racer'
+Plug 'racer-lang/rust.vim'
 
 " ==================== web     ====================
 Plug 'vim-scripts/smarty-syntax' " Syntax highlight for Smarty Template Engine
