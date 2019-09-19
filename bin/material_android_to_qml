@@ -1,8 +1,0 @@
-#!/bin/bash
-
-icon="${1}"
-
-cp ${icon}/android/drawable-mdpi/${icon}.png ${icon}.png
-cp ${icon}/android/drawable-xhdpi/${icon}.png ${icon}@2x.png
-cp ${icon}/android/drawable-xxhdpi/${icon}.png ${icon}@3x.png
-cp ${icon}/android/drawable-xxxhdpi/${icon}.png ${icon}@4x.png

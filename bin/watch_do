@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# Watch a file for changes and run something after is is changed
+# Example
+#     watch_do myprogram.hs 'ghc myprogram.hs -o myprogram && ./myprogram'
+#
+
+while true; do
+  ( bash -c "${2}" ) 2>&1
+  echo ================================================================================ 
+  inotifywait --exclude '@neomake' --recursive --event modify "${1}" -q; clear;
+done;

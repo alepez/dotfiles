@@ -4,5 +4,9 @@
 ################################################################################
 LAST_MAKE_EXIT_CODE_FILENAME=/tmp/last-make-exit-code
 while [ ! -e Makefile ] && [ "$PWD" != "/" ]; do cd ..; done
-make $@
+if ( which compiledb &>/dev/null ); then
+	compiledb make $@
+else
+	make $@
+fi
 echo $? > ${LAST_MAKE_EXIT_CODE_FILENAME}
