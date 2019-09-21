@@ -33,6 +33,14 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 ## }}}
 
+## Notify
+
+x_notify() {
+  notify-send --icon=gtk-info $1
+}
+
+## }}}
+
 ## tmux {{{
 if [ "${ZSH_NO_TMUX}" != "true" ]; then
   ZSH_TMUX_AUTOSTART=true
@@ -221,6 +229,50 @@ bindkey '^Z' fancy_ctrl_z
 
 ## Wordreference
 function wr { xdg-open http://wordreference.com/$1/$2 &>/dev/null }
+
+## }}}
+
+
+
+## find {{{
+
+# Remember to use fd (https://github.com/sharkdp/fd) instead of find
+_find() {
+  x_notify "Why not fd?"
+  /usr/bin/find $@
+}
+
+if [ -e /usr/bin/fd ]; then
+  unalias fd # zsh already defined fd as an alias to find
+  alias fd=/usr/bin/fd
+  alias find=_find
+fi
+
+## }}}
+
+## find {{{
+
+# Remember to use bat (https://github.com/sharkdp/bat) instead of cat
+_cat() {
+  x_notify "Why not bat?"
+  /usr/bin/cat $@
+}
+
+if [ -e /usr/bin/bat ]; then
+  alias cat=_cat
+fi
+
+## }}}
+
+# Remember to use hex (https://github.com/sitkevij/hex) instead of hexdump
+_hexdump() {
+  x_notify "Why not hex?"
+  /usr/bin/hexdump $@
+}
+
+if [ -e /usr/bin/hex ]; then
+  alias hexdump=_hex
+fi
 
 ## }}}
 
