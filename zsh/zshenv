@@ -134,8 +134,13 @@ dkup() {
 
 ## NodeJS {{{
 
-# Pre-setup nvm
-alias nvminit='[[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh'
+# # Pre-setup nvm
+
+nvminit() {
+  if [ -e /usr/share/nvm/init-nvm.sh ]; then
+    source /usr/share/nvm/init-nvm.sh
+  fi
+}
 
 # Automatically setup nodejs environment with nvm and start node repl
 node_setup() {
