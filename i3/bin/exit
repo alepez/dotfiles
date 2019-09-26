@@ -1,26 +1,33 @@
 #!/bin/bash
 
+grep_umount() {
+  mount | grep "${1}" | awk '{ print $3 }' | while read dir; do sudo umount -l $dir; done
+}
+
 before_exit() {
   # Unmount network (lazy)
-  mount | grep cifs | awk '{ print $3 }' | while read dir; do sudo umount -l $dir; done
-  mount | grep nfs  | awk '{ print $3 }' | while read dir; do sudo umount -l $dir; done
+  grep_umount cifs
+  grep_umount nfs
 
   # Kill gpg-agent
   killall gpg-agent
+
+  # Kill kitty dropdown terminal
+  kill $( pgrep dropdown-kitty )
 }
 
 logout() {
-  ~/.dotfiles/i3/bin/shutdown
+  before_exit
   i3-msg exit
 }
 
 reboot() {
-  ~/.dotfiles/i3/bin/shutdown
+  before_exit
   systemctl reboot
 }
 
 poweroff() {
-  ~/.dotfiles/i3/bin/shutdown
+  before_exit
   systemctl poweroff
 }
 
