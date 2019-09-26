@@ -49,7 +49,7 @@ Plug 'alfredodeza/pytest.vim' " unit test runner for python
 Plug 'klen/python-mode', {'branch': 'develop'} " Python
 
 " ==================== text    ====================
-Plug 'suan/vim-instant-markdown' " preview markdown in browser (needs `npm -g install instant-markdown-d`)
+Plug 'suan/vim-instant-markdown', {'for': 'markdown'} " preview markdown in browser (needs `npm -g install instant-markdown-d`)
 Plug 'godlygeek/tabular' " Vim script for text filtering and alignment. Note: must come before vim-markdown
 Plug 'plasticboy/vim-markdown' " Markdown Vim Mode (must come after tabular)
 
