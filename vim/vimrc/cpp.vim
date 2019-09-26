@@ -66,3 +66,9 @@ function! ExpandCMacro()
   "highlight origin line
   let @/ = getline('.')
 endfunction
+
+autocmd FileType *.[ch]{,pp} call FoldPreprocessor()
+function! FoldPreprocessor()
+  set foldmarker=#ifdef,#endif
+  set foldmethod=marker
+endfunction
