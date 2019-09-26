@@ -17,7 +17,6 @@ while true; do
   echo Waiting...
   inotifywait \
     --exclude '@neomake' \
-    --exclude 'target' \
     --recursive --event modify "${1}"
   echo Change detected
   sleep 0.250
