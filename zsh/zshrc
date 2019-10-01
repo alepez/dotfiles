@@ -36,7 +36,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 ## Notify
 
 x_notify() {
-  notify-send --icon=gtk-info $1
+  notify-send $1
 }
 
 ## }}}
@@ -260,18 +260,6 @@ _cat() {
 
 if [ -e /usr/bin/bat ]; then
   alias cat=_cat
-fi
-
-## }}}
-
-# Remember to use hex (https://github.com/sitkevij/hex) instead of hexdump
-_hexdump() {
-  x_notify "Why not hex?"
-  /usr/bin/hexdump $@
-}
-
-if [ -e /usr/bin/hex ]; then
-  alias hexdump=_hex
 fi
 
 ## }}}
