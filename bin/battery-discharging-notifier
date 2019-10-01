@@ -11,12 +11,12 @@ is_below_threshold() {
 state=ok
 
 while true; do
-  if is_discharging && is_below_threshold 95; then
+  if is_discharging && is_below_threshold 10; then
     if [ "${state}" != "critical" ]; then
       state=critical
       notify-send -u critical "Battery level is critically low"
     fi
-  elif ! is_discharging && ! is_below_threshold 95; then
+  elif ! is_discharging && ! is_below_threshold 25; then
     if [ "${state}" != "ok" ]; then
       state=ok
       notify-send -u info "Battery level is safe"
