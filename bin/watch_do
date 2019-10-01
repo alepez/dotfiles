@@ -11,6 +11,7 @@ while true; do
   echo
   ( bash -c "${2}" ) 2>&1 &
   PID=$!
+  sleep 0.500
   echo PID: ${PID}
   echo
   echo ================================================================================
@@ -19,7 +20,7 @@ while true; do
     --exclude '@neomake' \
     --recursive --event modify "${1}"
   echo Change detected
-  sleep 0.250
-  kill ${PID}
+  sleep 0.500
+  kill -9 ${PID}
   clear
 done
