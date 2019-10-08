@@ -24,7 +24,6 @@ Plug 'vim-scripts/ingo-library' " Vimscript library of common functions.
 Plug 'Shougo/vimproc.vim', {'do' : 'make'} " Interactive command execution in Vim
 
 " ==================== c++     ====================
-Plug 'Valloric/YouCompleteMe' " A code-completion engine for Vim
 Plug 'peterhoeg/vim-qml' " QML syntax highlighting for VIM
 Plug 'alepez/vim-llvmcov' " Show test coverage
 Plug 'alepez/vim-gtest' " Run google tests inside vim

@@ -42,7 +42,7 @@ source ~/.dotfiles/vim/vimrc/backups.vim
 source ~/.dotfiles/vim/vimrc/markdown.vim
 source ~/.dotfiles/vim/vimrc/cpp.vim
 source ~/.dotfiles/vim/vimrc/ag.vim
-source ~/.dotfiles/vim/vimrc/ycm.vim
+" source ~/.dotfiles/vim/vimrc/ycm.vim
 source ~/.dotfiles/vim/vimrc/snippets.vim
 source ~/.dotfiles/vim/vimrc/airline.vim
 source ~/.dotfiles/vim/vimrc/web.vim
