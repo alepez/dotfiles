@@ -1,14 +1,18 @@
 #!/bin/bash
 
 grep_umount() {
-  mount | grep "${1}" | awk '{ print $3 }' | while read dir; do sudo umount -l $dir; done
+  mount | grep "${1}" | awk '{ print $3 }' | while read dir; do umount -l $dir; done
 }
 
-before_exit() {
+before_shutdown() {
+  notify-send -u critical "Shutdown"
+
   # Unmount network (lazy)
   grep_umount cifs
   grep_umount nfs
+}
 
+before_exit() {
   # Kill gpg-agent
   killall gpg-agent
 
@@ -22,11 +26,13 @@ logout() {
 }
 
 reboot() {
+  before_shutdown
   before_exit
   systemctl reboot
 }
 
 poweroff() {
+  before_shutdown
   before_exit
   systemctl poweroff
 }
