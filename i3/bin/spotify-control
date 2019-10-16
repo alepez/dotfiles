@@ -3,7 +3,7 @@
 send() {
   dbus-send \
     --print-reply \
-    --dest=org.mpris.MediaPlayer2.spotify \
+    --dest=org.mpris.MediaPlayer2.spotifyd \
     /org/mpris/MediaPlayer2 \
     $1 &>/dev/null
 }
@@ -27,8 +27,25 @@ spotify_start() {
   i3-msg 'workspace 9'
 }
 
+spotifyd_start() {
+  spotifyd
+
+  # Try to play song until success
+  while ! spotify_playpause; do sleep 1; done
+}
+
+client_start() {
+  if $( which spotifyd ); then
+    spotifyd_start
+  elif $( which spotify ); then
+    spotify_start
+  else
+    echo "No spotify client availale"
+  fi
+}
+
 spotify_play() {
-  spotify_playpause || spotify_start;
+  spotify_playpause || client_start;
 }
 
 spotify_$1
