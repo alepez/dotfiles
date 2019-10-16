@@ -57,16 +57,6 @@ noremap <F4> :A<CR>
 noremap <F6> :cn<CR>
 " To next location line (wrap to begin after last) http://stackoverflow.com/a/27199153/786186
 noremap <F7> :try<bar>lnext<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>lfirst<bar>endtry<cr>
-" Repeat last command
-noremap <F8> q:k<CR>
-" TODO not assigned F9
-" noremap <F9>
-" TODO not assigned F10
-" noremap <F10>
-" TODO not assigned F11
-" noremap <F11>
-" TODO not assigned F11
-" noremap <F12>
 
 " }}}
 
@@ -157,6 +147,9 @@ command! -nargs=1 Ss let @/ = <q-args>|set hlsearch
 nnoremap <leader>/ :Ss<space>
 
 nnoremap gC I/* A */
+
+" tagbar
+nmap <F8> :TagbarToggle<CR>
 
 " FIXME DEPRECATED
 " Copy/Paste system clipboard in visual mode

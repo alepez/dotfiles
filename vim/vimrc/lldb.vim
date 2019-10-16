@@ -1,3 +1,4 @@
+" FIXME deprecated
 nmap <F1> <Plug>LLBreakSwitch
 " vmap <F2> <Plug>LLStdInSelected
 " nnoremap <F4> :LLstdin<CR>

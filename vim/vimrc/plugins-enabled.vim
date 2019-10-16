@@ -22,6 +22,7 @@ Plug 'Chiel92/vim-autoformat' " Provide easy code formatting in Vim by integrati
 Plug 'tpope/vim-fugitive' " git gui
 Plug 'vim-scripts/ingo-library' " Vimscript library of common functions.
 Plug 'Shougo/vimproc.vim', {'do' : 'make'} " Interactive command execution in Vim
+Plug 'majutsushi/tagbar'
 
 " ==================== c++     ====================
 Plug 'peterhoeg/vim-qml' " QML syntax highlighting for VIM
@@ -31,7 +32,7 @@ Plug 'vim-scripts/a.vim' " Alternate files quickly (header/implementation etc...
 
 " ==================== rust    ====================
 Plug 'racer-rust/vim-racer'
-Plug 'racer-lang/rust.vim'
+Plug 'rust-lang/rust.vim'
 
 " ==================== web     ====================
 Plug 'vim-scripts/smarty-syntax' " Syntax highlight for Smarty Template Engine
