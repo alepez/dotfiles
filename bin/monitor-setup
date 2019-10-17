@@ -16,7 +16,7 @@ if [ "${layout}" == "auto" ]; then
   fi
 
   if ( echo $monitors | grep "HDMI2 connected" &>/dev/null ); then
-    layout=astra
+    layout=ext-right
   fi
 fi
 

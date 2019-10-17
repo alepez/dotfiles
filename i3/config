@@ -133,15 +133,17 @@ mode $exit_mode {
 # Wind+Shift+S shows a menu with layout options
 ###############################################################################
 
-set $monitors_mode "select monitors layout  [a] arandr [h] home [l] laptop [u] auto"
+set $monitors_mode "select monitors layout  [a] arandr [h] home [t] laptop [u] auto [l] external left [r] external right"
 bindsym $mod+Shift+s mode $monitors_mode
 
 # Note: both HDMI-1 and HDMI1 because different versions xrandr gives different names
 mode $monitors_mode  {
   bindsym a exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/monitor-setup manual"
   bindsym h exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/monitor-setup home"
-  bindsym l exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/monitor-setup laptop"
+  bindsym t exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/monitor-setup laptop"
   bindsym u exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/monitor-setup auto"
+  bindsym l exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/monitor-setup ext-left"
+  bindsym r exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/monitor-setup ext-right"
 
   # back to normal: Enter or Escape
   bindsym Return mode "default"
