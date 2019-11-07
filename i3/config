@@ -331,8 +331,7 @@ hide_edge_borders smart
 ###############################################################################
 
 exec --no-startup-id ~/.dotfiles/bin/dropdown-kitty --name=dropdown -e tmux
-for_window [instance="dropdown"] floating enable;
-for_window [instance="dropdown"] move scratchpad
+for_window [instance="dropdown"] floating enable, move scratchpad
 bindsym $mod+0 [instance="dropdown"] scratchpad show; move position center; resize set 1500 500
 
 ###############################################################################
@@ -340,7 +339,7 @@ bindsym $mod+0 [instance="dropdown"] scratchpad show; move position center; resi
 ###############################################################################
 for_window [class="Pavucontrol"] floating enable, border normal
 for_window [class="Arandr"] floating enable
-for_window [class="Pinentry-gtk-2"] floating enable
+for_window [instance="pinentry-gtk-2"] floating enable, sticky enable, border pixel 4000, focus
 for_window [class="rdesktop"] floating disable
 for_window [class="VirtualBox Manager"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
