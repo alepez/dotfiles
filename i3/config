@@ -341,6 +341,7 @@ for_window [class="Pavucontrol"] floating enable, border normal
 for_window [class="Arandr"] floating enable
 for_window [instance="pinentry-gtk-2"] floating enable, sticky enable, border pixel 4000, focus
 for_window [title="Wi-Fi Network Authentication Required"] floating enable, sticky enable, border pixel 4000, focus
+for_window [title="Unlock Login Keyring"] floating enable, sticky enable, border pixel 4000, focus
 for_window [class="rdesktop"] floating disable
 for_window [class="VirtualBox Manager"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
