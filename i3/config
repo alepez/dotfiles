@@ -349,6 +349,7 @@ for_window [class="blueman-manager"] floating enable
 for_window [class="Blueman-manager"] floating enable
 for_window [class="qemu-system-x86_64"] floating enable
 for_window [class="java-lang-Thread"] floating enable # CLion Splash
+for_window [class="zoom"] floating enable
 
 assign [class="VirtualBox Machine"] $workspace_7
 assign [class="rdesktop"] $workspace_7
