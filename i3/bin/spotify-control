@@ -1,13 +1,34 @@
 #!/bin/bash
 
-send() {
+is_spotifyd_running() {
+  ps xa | grep 'spotify[d]'
+}
+
+send_to_spotifyd() {
   dbus-send \
     --print-reply \
     --dest=org.mpris.MediaPlayer2.spotifyd \
     /org/mpris/MediaPlayer2 \
+    $1
+}
+
+send_to_spotify() {
+  dbus-send \
+    --print-reply \
+    --dest=org.mpris.MediaPlayer2.spotify \
+    /org/mpris/MediaPlayer2 \
     $1 &>/dev/null
 }
 
+send() {
+  if is_spotifyd_running; then
+    send_to_spotifyd $@
+  else
+    send_to_spotify $@
+  fi
+}
+
+spotify_playonly() { send org.mpris.MediaPlayer2.Player.Play; }
 spotify_playpause() { send org.mpris.MediaPlayer2.Player.PlayPause; }
 spotify_prev()      { send org.mpris.MediaPlayer2.Player.Previous;  }
 spotify_next()      { send org.mpris.MediaPlayer2.Player.Next;      }
@@ -21,7 +42,7 @@ spotify_start() {
   /usr/bin/spotify &>/dev/null </dev/null &
 
   # Try to play song until success
-  while ! spotify_playpause; do sleep 1; done
+  while ! spotify_playonly; do sleep 1; done
 
   # Go back to previous workspace
   i3-msg 'workspace 9'
@@ -31,7 +52,9 @@ spotifyd_start() {
   spotifyd
 
   # Try to play song until success
-  while ! spotify_playpause; do sleep 1; done
+  while ! spotify_playonly; do sleep 1; done
+
+  notify-send -u low "spotifyd started"
 }
 
 client_start() {
