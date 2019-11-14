@@ -63,3 +63,4 @@ cmake-build-*
 *.pro.user
 compile_commands.json
 /.tags
+/target
