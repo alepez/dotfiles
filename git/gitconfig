@@ -80,6 +80,7 @@
 
   # pull
   pl = pull                         # pull
+  rembra = !"rembra() { git branch --set-upstream-to=origin/$1 $1; }; rembra"
 
   # push
   ps = push                         # push
