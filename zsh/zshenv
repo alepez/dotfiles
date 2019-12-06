@@ -3,9 +3,6 @@
 # TODO Why is this needed now? I'm sure this wasn't needed before 479ee15. May be a bug in systemd, lightdm or dbus
 export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 
-# speed up
-skip_global_compinit=1
-
 ################################################################################
 ## alias {{{
 

@@ -70,6 +70,8 @@ plugins=(
   tmux
 )
 
+fpath+=~/.zfunc
+
 source $ZSH/oh-my-zsh.sh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
@@ -269,6 +271,9 @@ fi
 ## Set ag, the silver searcher, as the default command, so it can skip files in
 ## ~/.agignore
 export FZF_DEFAULT_COMMAND='ag -g ""'
+
+# Autocompletion
+compinit
 
 ###############################################################################
 ## Source local configurations
