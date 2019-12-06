@@ -29,6 +29,7 @@ Plug 'peterhoeg/vim-qml' " QML syntax highlighting for VIM
 Plug 'alepez/vim-llvmcov' " Show test coverage
 Plug 'alepez/vim-gtest' " Run google tests inside vim
 Plug 'vim-scripts/a.vim' " Alternate files quickly (header/implementation etc...)
+Plug 'vim-scripts/DoxygenToolkit.vim' " Simplify Doxygen documentation in C, C++, Python.
 
 " ==================== rust    ====================
 Plug 'racer-rust/vim-racer'
