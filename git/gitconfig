@@ -137,7 +137,7 @@
 [merge]
   summary = true
   verbosity = 1
-  tool = vimdiff
+	tool = meld
 	## no one likes merge commits. Force fast-forward. When not possible, you'll get a gentle reminder to a rebase.
 	## To force merge: `git merge --no-ff`
   ff = only
