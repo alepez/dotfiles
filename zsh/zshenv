@@ -71,7 +71,7 @@ alias mutt="neomutt"
 alias E="neomutt"
 
 # exa instead of classi ls
-lslast() { exa --sort created --reverse --color always $@ | head ; }
+lslast() { exa --sort=newest --reverse --color always $@ | head ; }
 
 # Brutally kill
 alias ka9='killall -9'
