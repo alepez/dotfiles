@@ -5,7 +5,7 @@
 #  - feh
 #  - chromium
 #  - nerd fonts https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/SourceCodePro
-#  - alacritty
+#  - kitty
 #  - i3blocks
 #  - betterlockscreen
 #  - xcape https://github.com/alols/xcape
@@ -254,7 +254,7 @@ workspace_auto_back_and_forth yes
 ###############################################################################
 
 # Terminals
-set $terminal alacritty
+set $terminal kitty
 bindsym $mod+Return exec --no-startup-id $terminal
 bindsym $mod+c exec --no-startup-id $terminal
 
