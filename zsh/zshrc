@@ -260,20 +260,6 @@ fi
 
 ## }}}
 
-## find {{{
-
-# Remember to use bat (https://github.com/sharkdp/bat) instead of cat
-_cat() {
-  x_notify "Why not bat?"
-  /usr/bin/cat $@
-}
-
-if [ -e /usr/bin/bat ]; then
-  alias cat=_cat
-fi
-
-## }}}
-
 ## fzf https://github.com/junegunn/fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 ## Set ag, the silver searcher, as the default command, so it can skip files in
