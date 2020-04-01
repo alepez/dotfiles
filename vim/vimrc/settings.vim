@@ -28,7 +28,8 @@ set history=8192 " With a powerful PC, we can have a huge history.
 set hlsearch " Highlight search results
 set incsearch " as I start to search, the file jumps to the match as I type.
 set list " Show invisible characters
-set listchars=eol:¬,tab:▸\ ,trail:·,nbsp:⎵ " Use these symbols for invisible
+"set listchars=eol:¬,tab:▸\ ,trail:·,nbsp:⎵ " Use these symbols for invisible
+set listchars=tab:▸\ ,trail:·,nbsp:⎵ " Use these symbols for invisible
 set modelines=1 " The number of lines that is checked for set commands
 set noerrorbells " Disable error bells
 set nostartofline " Don’t reset cursor to start of line when moving around.
