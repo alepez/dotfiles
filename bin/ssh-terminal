@@ -3,4 +3,5 @@
 # roxterm -e ssh $@
 # konsole -e ssh $@
 # gnome-terminal -x ssh $@
-kitty -e ssh $@
+# kitty -e ssh $@
+alacritty -e ssh $@
