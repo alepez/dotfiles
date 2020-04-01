@@ -1,6 +1,26 @@
 #!/bin/bash
 
 layout="${1}"
+default_layout=laptop
+
+auto_detect_layout() {
+  local result=${default_layout}
+  local monitors=$( xrandr )
+
+  local dp1_1=$( xrandr | grep "DP1-1 connected" &>/dev/null && echo 1 )
+  local dp1_2=$( xrandr | grep "DP1-2 connected" &>/dev/null && echo 1 )
+  local hdmi2=$( xrandr | grep "HDMI2 connected" &>/dev/null && echo 1 )
+
+  echo "dp1_1=${dp1_1} dp1_2=${dp1_2} hdmi2=${hdmi2}"
+
+  if [ $dp1_1 ] && [ $dp1_2 ]; then
+    result=home
+  elif [ $hdmi2 ]; then
+    result=ext-right
+  fi
+
+  echo ${result}
+}
 
 if [ "${layout}" == "manual" ]; then
   arandr
@@ -8,16 +28,7 @@ if [ "${layout}" == "manual" ]; then
 fi
 
 if [ "${layout}" == "auto" ]; then
-  monitors=$( xrandr )
-  layout=laptop
-
-  if ( echo $monitors | grep "DP1-1 connected" &>/dev/null ); then
-    layout=home
-  fi
-
-  if ( echo $monitors | grep "HDMI2 connected" &>/dev/null ); then
-    layout=ext-right
-  fi
+  layout=$( auto_detect_layout )
 fi
 
 autorandr --load "${layout}" 2>/dev/null
