@@ -11,8 +11,6 @@ auto_detect_layout() {
   local dp1_2=$( xrandr | grep "DP1-2 connected" &>/dev/null && echo 1 )
   local hdmi2=$( xrandr | grep "HDMI2 connected" &>/dev/null && echo 1 )
 
-  echo "dp1_1=${dp1_1} dp1_2=${dp1_2} hdmi2=${hdmi2}"
-
   if [ $dp1_1 ] && [ $dp1_2 ]; then
     result=home
   elif [ $hdmi2 ]; then
@@ -30,6 +28,8 @@ fi
 if [ "${layout}" == "auto" ]; then
   layout=$( auto_detect_layout )
 fi
+
+notify-send -u low "Layout: ${layout}"
 
 autorandr --load "${layout}" 2>/dev/null
 
