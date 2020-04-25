@@ -20,7 +20,6 @@ source ~/.dotfiles/vim/vimrc/shortcuts.vim
 source ~/.dotfiles/vim/vimrc/gtest.vim
 source ~/.dotfiles/vim/vimrc/nerdtree.vim
 source ~/.dotfiles/vim/vimrc/ignore.vim
-source ~/.dotfiles/vim/vimrc/ctrlp.vim
 source ~/.dotfiles/vim/vimrc/fzf.vim
 source ~/.dotfiles/vim/vimrc/signify.vim
 source ~/.dotfiles/vim/vimrc/settings.vim

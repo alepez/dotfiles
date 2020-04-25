@@ -88,17 +88,3 @@ let g:airline#themes#pez#palette.inactive_modified = {
 let g:airline#themes#pez#palette.accents = {
       \ 'red': [ '#ff0000' , '' , 160 , ''  ]
       \ }
-
-
-" Here we define the color map for ctrlp.  We check for the g:loaded_ctrlp
-" variable so that related functionality is loaded iff the user is using
-" ctrlp. Note that this is optional, and if you do not define ctrlp colors
-" they will be chosen automatically from the existing palette.
-if !get(g:, 'loaded_ctrlp', 0)
-  finish
-endif
-let g:airline#themes#pez#palette.ctrlp = airline#extensions#ctrlp#generate_color_map(
-      \ [ '#d7d7ff' , '#5f00af' , 189 , 55  , ''     ],
-      \ [ '#ffffff' , '#875fd7' , 231 , 98  , ''     ],
-      \ [ '#5f00af' , '#ffffff' , 55  , 231 , 'bold' ])
-

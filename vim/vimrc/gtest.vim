@@ -7,7 +7,6 @@ augroup GTest
 	autocmd FileType cpp nnoremap <leader>te :GTestToggleEnabled<CR>
 	autocmd FileType cpp nnoremap ]T :GTestNext<CR>
 	autocmd FileType cpp nnoremap [T :GTestPrev<CR>
-	autocmd FileType cpp nnoremap <leader>tf :CtrlPGTest<CR>
 	autocmd FileType cpp nnoremap <leader>tj :GTestJump<CR>
 	autocmd FileType cpp nnoremap <leader>ti :GTestNewTest<CR>i
 augroup END
