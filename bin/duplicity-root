@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Run this as root
+
+# Fix pinentry
+export GPG_TTY=$(tty)
+
+key="${1}"
+destination="${2}"
+
+duplicity \
+  --use-agent \
+  --encrypt-key ${key} \
+  --sign-key ${key} \
+  --exclude-filelist /.duplicityignore \
+  --exclude-filelist /home/pez/.duplicityignore \
+  / \
+  ${destination}
