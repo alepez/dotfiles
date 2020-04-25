@@ -1,25 +1,9 @@
-if has("gui_running")
-  source ~/.dotfiles/vim/vimrc/gvim.vim
-endif
-
-source ~/.dotfiles/vim/vimrc/autoreload.vim
-
-" vim needs nocompatible flag to run vundle
-if !has('nvim')
-  set nocompatible
-endif
-
 filetype off " required
 
 call plug#begin()
 
-source ~/.dotfiles/vim/vimrc/plugins-enabled.vim
-
-" neovim plugins
-" these plugins need features not available in classic vim
-if has('nvim')
-  source ~/.dotfiles/vim/vimrc/plugins-neovim.vim
-endif
+" Plugins handled by plugin manager
+source ~/.dotfiles/vim/vimrc/plugins.vim
 
 " Plugins cannot be loaded below this line
 call plug#end()
@@ -28,7 +12,9 @@ source ~/.dotfiles/vim/vimrc/colors.vim
 
 filetype plugin indent on    " required
 
+" Plugins not handled by plugin manager
 source ~/.dotfiles/vim/vimrc/plugins-special.vim
+
 source ~/.dotfiles/vim/vimrc/hacks.vim
 source ~/.dotfiles/vim/vimrc/shortcuts.vim
 source ~/.dotfiles/vim/vimrc/gtest.vim
