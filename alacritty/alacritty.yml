@@ -1,6 +1,9 @@
 # env:
 #   WINIT_HIDPI_FACTOR: "1"
 
+env:
+  WINIT_X11_SCALE_FACTOR: "1"
+
 scrolling:
   history: 0 # Disable scrolling, we have tmux for it
 
