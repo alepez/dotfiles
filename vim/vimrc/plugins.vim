@@ -20,8 +20,10 @@ Plug 'junegunn/fzf.vim' " fzf (more commands)
 Plug 'Chiel92/vim-autoformat' " Provide easy code formatting in Vim by integrating existing code formatters.
 Plug 'tpope/vim-fugitive' " git gui
 Plug 'vim-scripts/ingo-library' " Vimscript library of common functions.
-Plug 'Shougo/vimproc.vim', {'do' : 'make'} " Interactive command execution in Vim
 Plug 'majutsushi/tagbar'
+Plug 'neomake/neomake'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-clang'
 
 " ==================== c++     ====================
 Plug 'peterhoeg/vim-qml' " QML syntax highlighting for VIM
@@ -35,7 +37,6 @@ Plug 'racer-rust/vim-racer'
 Plug 'rust-lang/rust.vim'
 
 " ==================== web     ====================
-Plug 'vim-scripts/smarty-syntax' " Syntax highlight for Smarty Template Engine
 Plug 'pangloss/vim-javascript' " Vastly improved Javascript indentation and syntax support in Vim.
 Plug 'mattn/emmet-vim' " emmet for vim: http://emmet.io/
 Plug 'jaxbot/browserlink.vim' " like livereload
@@ -45,7 +46,6 @@ Plug 'leafgarland/typescript-vim' " Typescript syntax files for Vim
 Plug 'Quramy/tsuquyomi' " A Vim plugin for TypeScript
 
 " ==================== python  ====================
-Plug 'alfredodeza/pytest.vim' " unit test runner for python
 Plug 'klen/python-mode', {'branch': 'develop'} " Python
 
 " ==================== text    ====================
@@ -54,7 +54,6 @@ Plug 'godlygeek/tabular' " Vim script for text filtering and alignment. Note: mu
 Plug 'plasticboy/vim-markdown' " Markdown Vim Mode (must come after tabular)
 
 " ==================== haskell ====================
-"Plug 'eagletmt/neco-ghc' " A completion plugin for Haskell, using ghc-mod
 Plug 'neovimhaskell/haskell-vim'
 Plug 'alx741/vim-hindent'
 Plug 'bitc/vim-hdevtools'
@@ -63,6 +62,3 @@ Plug 'bitc/vim-hdevtools'
 " needs a good font with icons, like patched fonts you can find at
 " https://github.com/ryanoasis/nerd-fonts
 Plug 'ryanoasis/vim-devicons' " Add fonts icons
-Plug 'neomake/neomake'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-clang'
