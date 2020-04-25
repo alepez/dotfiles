@@ -1,6 +1,3 @@
-let g:cpp_experimental_template_highlight=1
-let g:cpp_class_scope_highlight=1
-
 " Special configuratation for cpp AutoFormat (see Chiel92/vim-autoformat plugin)
 let g:formatdef_clangformat_cpp = "'clang-format -lines='.a:firstline.':'.a:lastline.' --assume-filename='.bufname('%').' -style=file'"
 let g:formatters_cpp = ['clangformat_cpp']
