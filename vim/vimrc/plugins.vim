@@ -4,7 +4,6 @@ Plug 'milkypostman/vim-togglelist' " Functions to toggle the [Location List] and
 Plug 'tpope/vim-commentary' " Comment stuff out
 Plug 'tpope/vim-unimpaired' " pairs of handy bracket mappings
 Plug 'tpope/vim-surround' " surround.vim: quoting/parenthesizing made simple
-Plug 'tpope/vim-dispatch' " build in bakcground
 Plug 'Raimondi/delimitMate' " automatically close quotes, parens, brackets, etc.
 Plug 'honza/vim-snippets' " Snippets are separated from the engine
 Plug 'SirVer/ultisnips' " Snippets engine

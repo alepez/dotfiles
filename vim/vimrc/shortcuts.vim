@@ -113,9 +113,6 @@ endf
 command! -nargs=1 GitCommitQuick call GitCommitQuick(<f-args>)
 nnoremap <leader>gg :GitCommitQuick<space>
 
-nnoremap <leader>gps :silent Dispatch! gps<CR>
-nnoremap <leader>gpl :silent Dispatch! gpl<CR>
-
 function! GitStatus()
   tabnew
   setlocal buftype=nofile bufhidden=wipe noswapfile nobuflisted nomodified
