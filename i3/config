@@ -338,7 +338,6 @@ bindsym $mod+0 [instance="dropdown"] scratchpad show; move position center; resi
 ###############################################################################
 # Special windows
 ###############################################################################
-for_window [class="Pavucontrol"] floating enable, border normal
 for_window [class="Arandr"] floating enable
 for_window [instance="pinentry-gtk-2"] floating enable, sticky enable, border pixel 4000, focus
 for_window [title="Wi-Fi Network Authentication Required"] floating enable, sticky enable, border pixel 4000, focus
@@ -349,15 +348,12 @@ for_window [class="Nm-connection-editor"] floating enable
 for_window [class="blueman-manager"] floating enable
 for_window [class="Blueman-manager"] floating enable
 for_window [class="qemu-system-x86_64"] floating enable
-for_window [class="java-lang-Thread"] floating enable # CLion Splash
 for_window [class="zoom"] floating enable
 
 assign [class="VirtualBox Machine"] $workspace_7
 assign [class="rdesktop"] $workspace_7
 assign [class="Mailspring"] $workspace_8
 assign [class="Chromium"] $workspace_2
-assign [class="jetbrains-clion"] $workspace_1
-assign [class="java-lang-Thread"] $workspace_1 # CLion Splash
 
 # FIXME Personal projects, these lines should go in a config.local file >>>
 for_window [class="ESA Universal"] floating enable
