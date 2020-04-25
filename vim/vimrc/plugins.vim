@@ -15,8 +15,8 @@ Plug 'bronson/vim-trailing-whitespace' " Highlights trailing whitespace in red a
 Plug 'vim-airline/vim-airline-themes' " theme for the below
 Plug 'vim-airline/vim-airline' " lean & mean status/tabline for vim that's light as air
 Plug 'scrooloose/nerdtree' " tree explorer
-Plug '/usr/share/vim/vimfiles/plugin/fzf.vim'
-Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " fzf (core)
+Plug 'junegunn/fzf.vim' " fzf (more commands)
 Plug 'Chiel92/vim-autoformat' " Provide easy code formatting in Vim by integrating existing code formatters.
 Plug 'tpope/vim-fugitive' " git gui
 Plug 'vim-scripts/ingo-library' " Vimscript library of common functions.
