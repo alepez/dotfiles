@@ -63,7 +63,7 @@ cmake-build-*
 *.pro.user
 compile_commands.json
 /.tags
-/target
+target
 .vscode
 project.yml
 build

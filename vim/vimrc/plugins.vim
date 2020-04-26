@@ -18,14 +18,19 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " fzf (core)
 Plug 'junegunn/fzf.vim' " fzf (more commands)
 Plug 'Chiel92/vim-autoformat' " Provide easy code formatting in Vim by integrating existing code formatters.
 Plug 'vim-scripts/ingo-library' " Vimscript library of common functions.
-Plug 'majutsushi/tagbar'
-Plug 'neomake/neomake'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-clang'
 
 "=== Git
 Plug 'mhinz/vim-signify' " show diff in gutter
 Plug 'tpope/vim-fugitive' " git gui
+
+"=== Language tools
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+Plug 'majutsushi/tagbar'
+" Plug 'neomake/neomake'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'zchee/deoplete-clang'
+Plug 'vim-syntastic/syntastic'
+Plug 'w0rp/ale'
 
 "=== C/C++/Qml
 Plug 'peterhoeg/vim-qml' " QML syntax highlighting for VIM
@@ -35,7 +40,6 @@ Plug 'vim-scripts/a.vim' " Alternate files quickly (header/implementation etc...
 Plug 'vim-scripts/DoxygenToolkit.vim' " Simplify Doxygen documentation in C, C++, Python.
 
 "=== Rust
-Plug 'racer-rust/vim-racer'
 Plug 'rust-lang/rust.vim'
 
 "=== Python

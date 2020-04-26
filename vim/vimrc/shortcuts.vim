@@ -46,16 +46,22 @@ nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>af :Autoformat<CR>
 vnoremap <leader>af :'<,'>Autoformat<CR>
 
-" Navigate marks with F2, like in ST
-nmap <F2> <Esc>]`
+" Rename
+nnoremap <F1> :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 " Switch to file under cursor (plugin a.vim)
 noremap <F3> :IH<CR>
 " Switch header/implementation (plugin a.vim)
 noremap <F4> :A<CR>
+" LanguageClient
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 " To next quickfix line
 noremap <F6> :cn<CR>
 " To next location line (wrap to begin after last) http://stackoverflow.com/a/27199153/786186
 noremap <F7> :try<bar>lnext<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>lfirst<bar>endtry<cr>
+
+" Go to definition
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 
 " }}}
 
