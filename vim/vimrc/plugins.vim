@@ -24,13 +24,11 @@ Plug 'mhinz/vim-signify' " show diff in gutter
 Plug 'tpope/vim-fugitive' " git gui
 
 "=== Language tools
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
-Plug 'majutsushi/tagbar'
-" Plug 'neomake/neomake'
+" Installed as a remote plugin: languageclient-neovim-bin
+" 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'zchee/deoplete-clang'
-Plug 'vim-syntastic/syntastic'
-Plug 'w0rp/ale'
+" Plug 'vim-syntastic/syntastic'
+Plug 'Shougo/echodoc.vim' " Displays function signatures from completions in the command line
 
 "=== C/C++/Qml
 Plug 'peterhoeg/vim-qml' " QML syntax highlighting for VIM
