@@ -34,7 +34,6 @@ Plug 'Shougo/echodoc.vim' " Displays function signatures from completions in the
 Plug 'peterhoeg/vim-qml' " QML syntax highlighting for VIM
 Plug 'alepez/vim-llvmcov' " Show test coverage
 Plug 'alepez/vim-gtest' " Run google tests inside vim
-Plug 'vim-scripts/a.vim' " Alternate files quickly (header/implementation etc...)
 Plug 'vim-scripts/DoxygenToolkit.vim' " Simplify Doxygen documentation in C, C++, Python.
 
 "=== Rust
@@ -44,9 +43,9 @@ Plug 'rust-lang/rust.vim'
 Plug 'klen/python-mode', {'branch': 'develop'} " Python
 
 "=== Haskell
-Plug 'neovimhaskell/haskell-vim'
-Plug 'alx741/vim-hindent'
-Plug 'bitc/vim-hdevtools'
+" Plug 'neovimhaskell/haskell-vim'
+" Plug 'alx741/vim-hindent'
+" Plug 'bitc/vim-hdevtools'
 
 "=== Javascript/Typescript
 Plug 'pangloss/vim-javascript' " Vastly improved Javascript indentation and syntax support in Vim.

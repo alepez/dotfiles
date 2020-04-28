@@ -68,3 +68,4 @@ target
 project.yml
 build
 *.dump
+.clangd

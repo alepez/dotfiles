@@ -46,10 +46,6 @@ nnoremap <leader>u :GundoToggle<CR>
 " nnoremap <leader>af :Autoformat<CR>
 " vnoremap <leader>af :'<,'>Autoformat<CR>
 
-" Switch to file under cursor (plugin a.vim)
-noremap <F3> :IH<CR>
-" Switch header/implementation (plugin a.vim)
-noremap <F4> :A<CR>
 " To next quickfix line
 noremap <F6> :cn<CR>
 " To next location line (wrap to begin after last) http://stackoverflow.com/a/27199153/786186
