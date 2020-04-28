@@ -12,3 +12,23 @@ let g:LanguageClient_autoStart = 1
 set cmdheight=2 " Required by echodot
 let g:echodoc#enable_at_startup = 1
 let g:echodoc#type = 'signature'
+
+function SetLSPShortcuts()
+  nnoremap <F1> :call LanguageClient#textDocument_hover()<CR>
+  nnoremap <F2> :call LanguageClient#textDocument_rename()<CR>
+
+  nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+
+  nnoremap <leader>af :call LanguageClient#textDocument_formatting()<CR>
+  nnoremap <leader>yt :call LanguageClient#textDocument_typeDefinition()<CR>
+  nnoremap <leader>yr :call LanguageClient#textDocument_references()<CR>
+  nnoremap <leader>ya :call LanguageClient_workspace_applyEdit()<CR>
+  nnoremap <leader>yc :call LanguageClient#textDocument_completion()<CR>
+  nnoremap <leader>ys :call LanguageClient_textDocument_documentSymbol()<CR>
+  nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+endfunction()
+
+augroup LSP
+  autocmd!
+  autocmd FileType cpp,c,rust call SetLSPShortcuts()
+augroup END

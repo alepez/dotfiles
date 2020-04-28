@@ -43,18 +43,13 @@ nnoremap <silent> <leader><leader> :call SmartRefresh() \| nohlsearch<CR>
 nnoremap <leader>u :GundoToggle<CR>
 
 " Reindent all and return the same line where you were
-nnoremap <leader>af :Autoformat<CR>
-vnoremap <leader>af :'<,'>Autoformat<CR>
+" nnoremap <leader>af :Autoformat<CR>
+" vnoremap <leader>af :'<,'>Autoformat<CR>
 
-" Rename
-nnoremap <F1> :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 " Switch to file under cursor (plugin a.vim)
 noremap <F3> :IH<CR>
 " Switch header/implementation (plugin a.vim)
 noremap <F4> :A<CR>
-" LanguageClient
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 " To next quickfix line
 noremap <F6> :cn<CR>
 " To next location line (wrap to begin after last) http://stackoverflow.com/a/27199153/786186
