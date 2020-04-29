@@ -1,6 +1,7 @@
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'stable', 'rls'],
     \ 'cpp': ['clangd'],
+    \ 'c': ['clangd'],
     \ 'haskell': ['hie-wrapper', '--lsp'],
     \ }
 let g:LanguageClient_loggingLevel = 'INFO'
@@ -36,12 +37,12 @@ augroup LSP
   autocmd FileType cpp,c,rust,haskell call SetLSPShortcuts()
 augroup END
 
-highlight LSCError ctermbg=none cterm=underline
-highlight LSCWarning ctermbg=none cterm=underline
-highlight LSCInfo ctermbg=none cterm=underline
-highlight link LSCErrorSign GruvboxRedSign
-highlight link LSCWarningSign GruvboxYellowSign
-highlight link LSCInfoSign GruvboxBlueSign
+highlight link LSCError ALEError
+highlight link LSCWarning ALEWarning
+highlight link LSCInfo ALEInfo
+highlight link LSCErrorSign ALEErrorSign
+highlight link LSCWarningSign ALEWarningSign
+highlight link LSCInfoSign ALEInfoSign
 
 let diagnosticsDisplaySettings={
   \       '1': {
@@ -71,3 +72,16 @@ let diagnosticsDisplaySettings={
   \  }
 
 let g:LanguageClient_diagnosticsDisplay=diagnosticsDisplaySettings
+
+let g:LanguageClient_semanticHighlightMaps = {}
+
+let g:LanguageClient_semanticHighlightMaps['cpp'] = {
+            \ 'entity.name.namespace.cpp': 'CppNameSpace',
+            \ 'variable.other.field.cpp': 'CppMemberVariable',
+            \ 'variable.other.enummember.cpp': 'EnumConstant',
+            \ 'entity.name.function..*.cpp': 'Function',
+            \ 'entity.name.type..*.cpp': 'Type',
+            \ }
+
+hi! CppNamespace ctermfg=Yellow guifg=#BBBB00 cterm=none gui=none
+hi! CppMemberVariable ctermfg=White guifg=White
