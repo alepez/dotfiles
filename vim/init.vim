@@ -34,9 +34,8 @@ source ~/.dotfiles/vim/vimrc/python.vim
 source ~/.dotfiles/vim/vimrc/zsh.vim
 source ~/.dotfiles/vim/vimrc/haskell.vim
 source ~/.dotfiles/vim/vimrc/rust.vim
-" source ~/.dotfiles/vim/vimrc/neomake.vim
 source ~/.dotfiles/vim/vimrc/deoplete.vim
-source ~/.dotfiles/vim/vimrc/language-client.vim
+source ~/.dotfiles/vim/vimrc/coc.vim
 
 " Include local vimrc is file exists
 if filereadable(glob("~/.vimrc.local"))

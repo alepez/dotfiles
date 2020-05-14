@@ -51,9 +51,6 @@ noremap <F6> :cn<CR>
 " To next location line (wrap to begin after last) http://stackoverflow.com/a/27199153/786186
 noremap <F7> :try<bar>lnext<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>lfirst<bar>endtry<cr>
 
-" Go to definition
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-
 " }}}
 
 " ONLY ideavim {{{

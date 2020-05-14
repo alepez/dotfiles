@@ -29,7 +29,7 @@ command! -nargs=1 Silent
 " }}}
 
 " short messages, avoid annoying Hit ENTER to continue in some cases
-set shortmess=a
+" set shortmess=a
 
 " Disable Ex mode
 :map Q <Nop>
