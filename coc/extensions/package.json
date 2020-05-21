@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "coc-clangd": ">=0.4.4",
+    "coc-cmake": ">=0.0.1",
+    "coc-rls": ">=1.1.6",
+    "coc-ultisnips": ">=1.2.3"
+  }
+}

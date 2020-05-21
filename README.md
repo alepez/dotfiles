@@ -32,6 +32,7 @@ ln -nfs ~/.dotfiles/top/toprc ~/.toprc
 ln -nfs ~/.dotfiles/xbindkeysrc ~/.xbindkeysrc
 ln -nfs ~/.dotfiles/haskell/ghci.conf ~/.ghc/gchi.conf
 ln -nfs ~/.dotfiles/muttrc ~/.muttrc
+ln -nfs ~/.dotfiles/coc ~/.config/coc
 ```
 
 ## Dependencies
