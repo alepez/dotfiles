@@ -29,7 +29,6 @@ source ~/.dotfiles/vim/vimrc/cpp.vim
 source ~/.dotfiles/vim/vimrc/ag.vim
 source ~/.dotfiles/vim/vimrc/snippets.vim
 source ~/.dotfiles/vim/vimrc/airline.vim
-source ~/.dotfiles/vim/vimrc/web.vim
 source ~/.dotfiles/vim/vimrc/python.vim
 source ~/.dotfiles/vim/vimrc/zsh.vim
 source ~/.dotfiles/vim/vimrc/haskell.vim
