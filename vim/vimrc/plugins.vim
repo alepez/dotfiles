@@ -24,9 +24,6 @@ Plug 'tpope/vim-fugitive' " git gui
 
 "=== Language tools
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'vim-syntastic/syntastic'
-" Plug 'Shougo/echodoc.vim' " Displays function signatures from completions in the command line
 
 "=== C/C++/Qml
 Plug 'peterhoeg/vim-qml' " QML syntax highlighting for VIM
