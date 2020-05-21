@@ -7,7 +7,6 @@ Plug 'tpope/vim-surround' " surround.vim: quoting/parenthesizing made simple
 Plug 'Raimondi/delimitMate' " automatically close quotes, parens, brackets, etc.
 Plug 'honza/vim-snippets' " Snippets are separated from the engine
 Plug 'SirVer/ultisnips' " Snippets engine
-Plug 'kshenoy/vim-signature' " bookmark manager
 Plug 'sjl/gundo.vim' " Gundo is a Vim plugin for visualizing your undo tree to make it usable
 Plug 'mileszs/ack.vim' " search with ag the silver searcher
 Plug 'bronson/vim-trailing-whitespace' " Highlights trailing whitespace in red and provides :FixWhitespace to fix it.
