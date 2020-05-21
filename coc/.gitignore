@@ -4,3 +4,5 @@ mru
 /extensions/node_modules
 /extensions/coc-bookmark-data/bookmark.json
 commands
+/lists
+/extensions/db.json
