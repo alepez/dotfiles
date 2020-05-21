@@ -68,3 +68,4 @@ project.yml
 build
 *.dump
 .clangd
+coc-settings.json

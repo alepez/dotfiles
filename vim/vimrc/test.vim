@@ -11,3 +11,17 @@ augroup GTest
 	autocmd FileType cpp nnoremap <leader>ti :GTestNewTest<CR>i
 augroup END
 " }}}
+
+"---------- rust {{{
+augroup TestRust
+	autocmd FileType rust nnoremap <leader>tt :TestSuite<CR>
+	autocmd FileType rust nnoremap <leader>tu :TestNearest<CR>
+	autocmd FileType rust nnoremap <leader>tj :TestVisit<CR>
+augroup END
+" }}}
+
+" We use asyncrun to run tests
+let test#strategy = "asyncrun_background"
+
+" Automatically open quickfix window when async run starts
+autocmd User AsyncRunStart call asyncrun#quickfix_toggle(20, 1)

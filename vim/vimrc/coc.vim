@@ -79,10 +79,8 @@ augroup end
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
 xmap <F5> <Plug>(coc-codeaction-selected)
-nmap <F5> <Plug>(coc-codeaction-selected)
+nmap <F5> <Plug>(coc-codeaction)
 
-" Remap keys for applying codeAction to the current line.
-nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
@@ -134,7 +132,12 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " Resume latest coc list.
 " nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 "
+
+" coc-bookmarks
 nmap <F11> <Plug>(coc-bookmark-toggle)
 nmap <Leader>bj <Plug>(coc-bookmark-next)
 nmap <Leader>bk <Plug>(coc-bookmark-prev)
 
+" coc-highlight
+" Highlight symbol on hold
+autocmd CursorHold * silent call CocActionAsync('highlight')
