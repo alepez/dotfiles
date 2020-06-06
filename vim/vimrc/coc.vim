@@ -1,5 +1,8 @@
 let g:coc_node_path = '~/.nvm/versions/node/v10.16.3/bin/node'
 
+" Give more space for displaying messages.
+set cmdheight=2
+
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300
@@ -85,6 +88,7 @@ nmap <F5> <Plug>(coc-codeaction)
 nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Map function and class text objects
+" Example `vif` select all function body
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
 xmap if <Plug>(coc-funcobj-i)
 omap if <Plug>(coc-funcobj-i)
@@ -95,10 +99,10 @@ omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 
-" Use CTRL-S for selections ranges.
+" Use CTRL-W for selections ranges.
 " Requires 'textDocument/selectionRange' support of LS, ex: coc-tsserver
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
+nmap <silent> <C-w> <Plug>(coc-range-select)
+xmap <silent> <C-w> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
@@ -109,29 +113,21 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
 " Mappings using CoCList:
 " Show all diagnostics.
-" nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions.
-" nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent> <space>g  :<C-u>CocList diagnostics<cr>
 " Show commands.
-" nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
-" nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent> <space>d  :<C-u>CocList outline<cr>
 " Search workspace symbols.
-" nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-" nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
-" nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-" nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-"
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " coc-bookmarks
 nmap <F11> <Plug>(coc-bookmark-toggle)
