@@ -6,7 +6,7 @@ Plug 'tpope/vim-unimpaired' " pairs of handy bracket mappings
 Plug 'tpope/vim-surround' " surround.vim: quoting/parenthesizing made simple
 Plug 'Raimondi/delimitMate' " automatically close quotes, parens, brackets, etc.
 Plug 'honza/vim-snippets' " Snippets are separated from the engine
-Plug 'SirVer/ultisnips' " Snippets engine
+" Plug 'SirVer/ultisnips' " Snippets engine
 Plug 'sjl/gundo.vim' " Gundo is a Vim plugin for visualizing your undo tree to make it usable
 Plug 'mileszs/ack.vim' " search with ag the silver searcher
 Plug 'bronson/vim-trailing-whitespace' " Highlights trailing whitespace in red and provides :FixWhitespace to fix it.
@@ -17,8 +17,9 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " fzf (core)
 Plug 'junegunn/fzf.vim' " fzf (more commands)
 Plug 'Chiel92/vim-autoformat' " Provide easy code formatting in Vim by integrating existing code formatters.
 Plug 'vim-scripts/ingo-library' " Vimscript library of common functions.
-Plug 'vim-test/vim-test' " Run your tests at the speed of thought
-Plug 'skywind3000/asyncrun.vim' " Run Async Shell Commands in Vim 8.0 / NeoVim and Output to the Quickfix Window
+" Plug 'vim-test/vim-test' " Run your tests at the speed of thought
+" Plug 'skywind3000/asyncrun.vim' " Run Async Shell Commands in Vim 8.0 / NeoVim and Output to the Quickfix Window
+" Plug 'Shougo/echodoc.vim' " Print documents in echo area.
 
 "=== Git
 Plug 'mhinz/vim-signify' " show diff in gutter
@@ -34,10 +35,10 @@ Plug 'alepez/vim-gtest' " Run google tests inside vim
 Plug 'vim-scripts/DoxygenToolkit.vim' " Simplify Doxygen documentation in C, C++, Python.
 
 "=== Rust
-Plug 'rust-lang/rust.vim'
+" Plug 'rust-lang/rust.vim'
 
 "=== Python
-Plug 'klen/python-mode', {'branch': 'develop'} " Python
+" Plug 'klen/python-mode', {'branch': 'develop'} " Python
 
 "=== Haskell
 " Plug 'neovimhaskell/haskell-vim'
@@ -45,14 +46,14 @@ Plug 'klen/python-mode', {'branch': 'develop'} " Python
 " Plug 'bitc/vim-hdevtools'
 
 "=== Javascript/Typescript
-Plug 'pangloss/vim-javascript' " Vastly improved Javascript indentation and syntax support in Vim.
-Plug 'leafgarland/typescript-vim' " Typescript syntax files for Vim
-Plug 'Quramy/tsuquyomi' " A Vim plugin for TypeScript
+" Plug 'pangloss/vim-javascript' " Vastly improved Javascript indentation and syntax support in Vim.
+" Plug 'leafgarland/typescript-vim' " Typescript syntax files for Vim
+" Plug 'Quramy/tsuquyomi' " A Vim plugin for TypeScript
 
 "=== HTML/CSS
 Plug 'mattn/emmet-vim' " emmet for vim: http://emmet.io/
 Plug 'jaxbot/browserlink.vim' " like livereload
-Plug 'ap/vim-css-color' " Preview colours in source code while editing
+" Plug 'ap/vim-css-color' " Preview colours in source code while editing
 
 "=== Configuration files
 Plug 'cespare/vim-toml' " Vim syntax for TOML
