@@ -64,10 +64,6 @@ nnoremap <silent> <leader>x :bd<CR>
 nnoremap <silent> <leader>w :w<CR>
 nnoremap <silent> z<space> :w<CR>
 
-" Toggle quickfix and location list
-nmap <script> <silent> <leader>l :call ToggleLocationList()<CR>
-nmap <script> <silent> <leader>q :call ToggleQuickfixList()<CR>
-
 " I've mapped all ctrl to esc. Sometimes I hit <c-space>w instead of
 " <esc><space>w when saving in insert mode.
 " In terminals, <c-space> is mapped to <Nul>

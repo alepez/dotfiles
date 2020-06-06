@@ -18,8 +18,6 @@ Plug 'junegunn/fzf.vim' " fzf (more commands)
 Plug 'Chiel92/vim-autoformat' " Provide easy code formatting in Vim by integrating existing code formatters.
 Plug 'vim-scripts/ingo-library' " Vimscript library of common functions.
 " Plug 'vim-test/vim-test' " Run your tests at the speed of thought
-" Plug 'skywind3000/asyncrun.vim' " Run Async Shell Commands in Vim 8.0 / NeoVim and Output to the Quickfix Window
-" Plug 'Shougo/echodoc.vim' " Print documents in echo area.
 
 "=== Git
 Plug 'mhinz/vim-signify' " show diff in gutter
