@@ -20,7 +20,6 @@ Plug 'vim-scripts/ingo-library' " Vimscript library of common functions.
 " Plug 'vim-test/vim-test' " Run your tests at the speed of thought
 
 "=== Git
-Plug 'mhinz/vim-signify' " show diff in gutter
 Plug 'tpope/vim-fugitive' " git gui
 
 "=== Language tools

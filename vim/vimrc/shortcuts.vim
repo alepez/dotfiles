@@ -29,8 +29,6 @@ fu! SmartRefresh()
   ccl
   " Close location window
   lcl
-  " Refresh signify
-  SignifyRefresh
   " Check for file changes
   checktime
   " Redraw

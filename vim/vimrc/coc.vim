@@ -132,3 +132,6 @@ nmap <Leader>bk <Plug>(coc-bookmark-prev)
 " coc-highlight
 " Highlight symbol on hold
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" coc-yank
+nmap <silent> <leader>y :<C-u>CocList yank<CR>
