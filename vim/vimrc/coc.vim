@@ -81,8 +81,8 @@ augroup end
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
-xmap <F5> <Plug>(coc-codeaction-selected)
-nmap <F5> <Plug>(coc-codeaction)
+xmap <silent><F5> <Plug>(coc-codeaction-selected)
+nmap <silent><F5> <Plug>(coc-codeaction-line)
 
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
@@ -98,11 +98,6 @@ xmap ic <Plug>(coc-classobj-i)
 omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
-
-" Use CTRL-W for selections ranges.
-" Requires 'textDocument/selectionRange' support of LS, ex: coc-tsserver
-nmap <silent> <C-w> <Plug>(coc-range-select)
-xmap <silent> <C-w> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
