@@ -1,7 +1,8 @@
 "---------- Standard Vim settings {{{
 
 " NO ideavim {{{
-set mouse="" " Disable mouse (neovim enables it by default)
+" set mouse= " Disable mouse (neovim enables it by default)
+set mouse=a mousemodel=popup " Enable
 set lazyredraw " only redraw when needed
 set noautochdir " Prevent changing directory when opening files
 set nospell " Disable spell check

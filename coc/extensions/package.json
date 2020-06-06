@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "coc-bookmark": ">=1.0.4",
+    "coc-clangd": ">=0.4.7",
+    "coc-cmake": ">=0.0.1",
+    "coc-css": ">=1.2.3",
+    "coc-highlight": ">=1.2.5",
+    "coc-html": ">=1.2.4",
+    "coc-json": ">=1.2.6",
+    "coc-markdownlint": ">=1.4.0",
+    "coc-rust-analyzer": ">=0.7.2",
+    "coc-snippets": ">=2.1.26",
+    "coc-spell-checker": ">=1.2.0",
+    "coc-tsserver": ">=1.5.1",
+    "coc-ultisnips": ">=1.2.3",
+    "coc-yaml": ">=1.0.4"
+  }
+}

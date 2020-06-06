@@ -32,7 +32,7 @@ colors:
     white:   '0xebdbb2'
 
 font:
-  size: 14.0
+  size: 16.0
   normal:
     family: SauceCodePro Nerd Font
     style: Regular

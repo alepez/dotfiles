@@ -1,7 +1,3 @@
-" themes are automatically selected based on the matching colorscheme. this
-" can be overridden by defining a value:
-"     let g:airline_theme='dark'
-
 " always show statusbar
 set laststatus=2
 

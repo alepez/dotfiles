@@ -63,8 +63,9 @@ cmake-build-*
 *.pro.user
 compile_commands.json
 /.tags
-/target
 .vscode
 project.yml
 build
 *.dump
+.clangd
+coc-settings.json
