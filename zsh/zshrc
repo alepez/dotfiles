@@ -10,7 +10,7 @@ export ZSH_CUSTOM=~/.dotfiles/zsh/oh-my-zsh
 
 ## Set name of the theme to load.
 ## Look in $ZSH/themes/
-ZSH_THEME="pez"
+# ZSH_THEME="pez"
 
 ## Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
@@ -256,3 +256,7 @@ compinit
 if [ -e ~/.zshrc.local ]; then source ~/.zshrc.local; fi
 
 # vim:foldmethod=marker:foldlevel=0
+
+################################################################################
+## startship
+eval "$(starship init zsh)"
