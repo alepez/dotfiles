@@ -11,7 +11,7 @@ rofi \
   -eh 2 \
   -separator none \
   -padding 300 \
-  -font "SauceCodePro Nerd Font 20" \
+  -font "FiraCode Nerd Font 20" \
   -matching fuzzy \
   -i \
   $@

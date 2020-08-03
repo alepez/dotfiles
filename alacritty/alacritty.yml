@@ -34,13 +34,13 @@ colors:
 font:
   size: 16.0
   normal:
-    family: SauceCodePro Nerd Font
+    family: FiraCode Nerd Font
     style: Regular
   bold:
-    family: SauceCodePro Nerd Font
+    family: FiraCode Nerd Font
     style: Bold
   italic:
-    family: SauceCodePro Nerd Font
+    family: FiraCode Nerd Font
     style: Italic
 
 draw_bold_text_with_bright_colors: true

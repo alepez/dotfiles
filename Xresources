@@ -37,8 +37,8 @@ URxvt*mapAlert: true
 URxvt*mouseWheelScrollPage: false
 URxvt*colorUL: yellow
 URxvt*underlineColor: yellow
-URxvt*font: xft:SauceCodePro Nerd Font:pixelsize:12
-URxvt*boldFont: xft:SauceCodePro Nerd Font:SauceCodePro Nerd Font:bold:pixelsize:12
+URxvt*font: xft:FiraCode Nerd Font:pixelsize:12
+URxvt*boldFont: xft:FiraCode Nerd Font:FiraCode Nerd Font:bold:pixelsize:12
 URxvt*italicFont: xft:italic:autohint=true:pixelsize=12
 URxvt*boldItalicFont: xft:SauceCodePro Nerd Font:bold:italic:autohint=true:pixelsize=12
 URxvt*saveLines: 0

@@ -52,7 +52,7 @@ font-1 = "Font Awesome 5 Free:style=Regular"
 font-2 = "Font Awesome 5 Free:pixelsize=10;0"
 font-3 = "Font Awesome 5 Free Solid:pixelsize=11;0"
 font-4 = "Font Awesome 5 Brands:pixelsize=10;0"
-font-5 = "SauceCodePro Nerd Font Mono:style=Regular"
+font-5 = "FiraCode Nerd Font Mono:style=Regular"
 
 modules-left = i3
 ; modules-left = i3 spotify-status
