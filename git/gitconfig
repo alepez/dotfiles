@@ -155,3 +155,5 @@
 	helper = store
 [cola]
 	spellcheck = false
+[pull]
+	ff = only
