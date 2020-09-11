@@ -30,6 +30,7 @@ Plug 'peterhoeg/vim-qml' " QML syntax highlighting for VIM
 Plug 'alepez/vim-llvmcov' " Show test coverage
 Plug 'alepez/vim-gtest' " Run google tests inside vim
 Plug 'vim-scripts/DoxygenToolkit.vim' " Simplify Doxygen documentation in C, C++, Python.
+Plug 'jackguo380/vim-lsp-cxx-highlight' " Vim plugin for C/C++/ObjC semantic highlighting using cquery, ccls, or clangd
 
 "=== Rust
 " Plug 'rust-lang/rust.vim'
