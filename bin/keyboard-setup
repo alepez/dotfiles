@@ -72,6 +72,14 @@ standard_mode() {
   fix_repeat_speed
 }
 
+# See https://unix.stackexchange.com/a/570304/12662
+# This little program just turn off caps lock.
+# Needed because it may be accidentally on when remampping
+# the keyboard.
+turn_off_caps_lock() {
+  ~/.local/bin/xkb_unlock
+}
+
 k2_mode() {
   # This sleep is needed because, when keyboard is attached, caps lock is ON
   # for for a while. If caps lock is disabled (by the selected layout) while
@@ -81,6 +89,7 @@ k2_mode() {
   ctrl_escape
   # hack_k2_mapping
   fix_repeat_speed
+  turn_off_caps_lock
 }
 
 set_mode() {
