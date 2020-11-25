@@ -3,6 +3,20 @@
 layout="${1}"
 default_layout=laptop
 
+post_setup() {
+  # Launch in background
+  (
+  # After monitor setup, polybar must be reloaded
+  ~/.dotfiles/wm/bin/polybar-launcher
+
+  # And wallpaper should be reloaded to fit
+  ~/.dotfiles/wm/bin/change-background load
+
+  # If we need to setup the monitor, maybe we have a keyboard to set up too
+  ~/.dotfiles/bin/keyboard-setup
+  ) &>/dev/null </dev/null &
+}
+
 auto_detect_layout() {
   local result=${default_layout}
   local monitors=$( xrandr )
@@ -20,27 +34,15 @@ auto_detect_layout() {
   echo ${result}
 }
 
-if [ "${layout}" == "manual" ]; then
-  arandr
-  exit 0
-fi
-
 if [ "${layout}" == "auto" ]; then
   layout=$( auto_detect_layout )
 fi
 
-notify-send -u low "Layout: ${layout}"
+if [ "${layout}" == "manual" ]; then
+  arandr
+else
+  notify-send -u low "Layout: ${layout}"
+  autorandr --load "${layout}" 2>/dev/null
+fi
 
-autorandr --load "${layout}" 2>/dev/null
-
-# Launch in background
-(
-# After monitor setup, polybar must be reloaded
-~/.dotfiles/wm/bin/polybar-launcher
-
-# And wallpaper should be reloaded to fit
-~/.dotfiles/wm/bin/change-background load
-
-# If we need to setup the monitor, maybe we have a keyboard to set up too
-~/.dotfiles/bin/keyboard-setup
-) &>/dev/null </dev/null &
+post_setup
