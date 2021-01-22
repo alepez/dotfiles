@@ -11,7 +11,7 @@ cd /
 # Random wallpaper
 
 # Compositor
-compton --config ~/.dotfiles/wm/compton.conf -b
+xcompmgr -c &>/dev/null </dev/null &
 
 # Setup keyboard (layout, caps-escape, ...)
 ~/.dotfiles/bin/keyboard-setup &>/dev/null </dev/null &
