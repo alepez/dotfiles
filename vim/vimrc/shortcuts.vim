@@ -21,7 +21,7 @@ nnoremap <leader>ne :NERDTreeToggle<cr>
 " fzf command palette
 nnoremap <leader>; :Commands<CR>
 nnoremap <leader>o :Buffers<CR>
-nnoremap <C-p> <Esc>:FZF<CR>
+nnoremap <expr> <C-p> (len(system('git rev-parse')) ? ':Files' : ':GFiles --exclude-standard --others --cached')."\<cr>"
 
 " turn off search highlight and close quickfix
 fu! SmartRefresh()
