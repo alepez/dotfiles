@@ -170,8 +170,8 @@ mode $background_mode  {
 }
 
 ###############################################################################
-# Office lighes
-# Wind+Shift+L shows a menu with office lights
+# Office lights
+# Wind+Shift+o shows a menu with office lights
 ###############################################################################
 
 set $lights_mode "select lights layout  [w] window [d] desktop [r] relax [a] all on [o] all off"
