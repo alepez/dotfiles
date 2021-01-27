@@ -187,7 +187,7 @@ alias npmid="npm install --save-dev"
 alias ga='git add'            # Add files to the index
 alias gA='git add -A'         # Add all files, remove from index deleted files
 alias grv='git remote -v'     # show all Remotes Verbosely
-alias glog='git l'            # log --graph --date=short
+alias gl='git l'            # log --graph --date=short
 alias gdh='git diff HEAD'     # show all changes from Head
 alias gdu='gd'                # show Unstaged changes
 alias gdc='git dc'            # show Unstaged changes
@@ -197,24 +197,16 @@ alias gps='git push'          # Push
 alias gnb='git nb'            # New Branch aka checkout -b
 alias gco='git co'            # Checkout
 alias gamend='git commit --amend'
+alias gh='git show'
+alias gd='git diff'
+alias gs='git status'
+alias gll='git ll'
 
 # Quick merge from origin/master, no fast forward
 gqm() { if [ -z "${1}" ]; then git status -bs; echo -e "\nbranch?"; return; fi; git fetch ; git merge origin/${1} --no-ff }
 
 ## Commit, message as arguments, quotes not needed
 gcm() { git commit -m "$*" }
-
-## Add all files, Commit, Message as argument
-#function gacm { git add -A && git commit -m "$*" }
-#alias gcam="gacm" # Correct mistyping
-#alias gg="gacm" # I do this so many times a need a shortcut
-
-## Add all files, Commit, use editor for message
-gac() { git add -A && git commit }
-
-## Add all files, Commit, Message as argument, then Push
-gacmps() { git add -A && git commit -m "$*" && git push }
-alias ggo="gacmps" # Go! shortcut for gacmps
 
 ## Clean all untracked files
 git-superclean() { read -q "REPLY?Sure? "; if [ "${REPLY}" = 'y' ]; then echo && git reset --hard && git clean -ffdx; fi }
@@ -239,8 +231,6 @@ git-huge-finder() {
     | cut -c 1-12,41- \
     | numfmt --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest
 }
-
-alias gll='git ll'
 
 ## }}}
 
@@ -272,44 +262,6 @@ sshconf() {
 }
 ## }}}
 
-################################################################################
-## Svn Aliases {{{
-
-# svn diff with colors
-svndiff() {
-  svn diff $@ | colordiff | less
-}
-
-alias sst='svn status'
-alias sa='svn add'
-alias sd='svndiff'
-scm() { svn commit -m "$*" }
-slog() { svn log $@ | less }
-## }}}
-
-################################################################################
-## Git/Subversion shortcuts {{{
-## These shortcuts works both with Git and Subversion repository
-
-test_repo_git() { git rev-parse &>/dev/null }
-test_repo_svn() { svn info &>/dev/null }
-
-gd() {
-  if test_repo_git; then gdh $@; return; fi
-  if test_repo_svn; then svndiff $@; return; fi
-}
-
-gs() {
-  if test_repo_git; then git status; return; fi
-  if test_repo_svn; then svn status; return; fi
-}
-
-gl() {
-  if test_repo_git; then glog $@; return; fi
-  if test_repo_svn; then slog $@; return; fi
-}
-
-## }}}
 ################################################################################
 ## nvim {{{
 # vim airline themes not working with this variabile set
