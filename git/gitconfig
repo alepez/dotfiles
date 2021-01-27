@@ -118,7 +118,7 @@
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
-  pager = diff-so-fancy | less --tabs=4 -RFX
+  pager = delta
 
 [fetch]
   prune = true
