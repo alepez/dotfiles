@@ -185,6 +185,7 @@ alias npmid="npm install --save-dev"
 ## Git Aliases {{{
 ## See ~/.gitconfig
 alias ga='git add'            # Add files to the index
+alias gap='git add --patch'   # Chunk by chunk
 alias gA='git add -A'         # Add all files, remove from index deleted files
 alias grv='git remote -v'     # show all Remotes Verbosely
 alias gl='git l'            # log --graph --date=short
