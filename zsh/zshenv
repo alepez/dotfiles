@@ -224,6 +224,13 @@ git-subsync() {
   git submodule sync --recursive && git submodule update --recursive --remote
 }
 
+## Git pull, also submodules
+gPL() {
+  git pull "$@" &&
+    git submodule sync --recursive &&
+    git submodule update --init --recursive
+}
+
 git-huge-finder() {
   git rev-list --objects --all \
     | git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' \
