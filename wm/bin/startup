@@ -11,7 +11,8 @@ cd /
 # Random wallpaper
 
 # Compositor
-xcompmgr -a &>/dev/null </dev/null &
+# xcompmgr -a &>/dev/null </dev/null &
+picom --config ~/.dotfiles/wm/picom.conf -b
 
 # Setup keyboard (layout, caps-escape, ...)
 ~/.dotfiles/bin/keyboard-setup &>/dev/null </dev/null &
