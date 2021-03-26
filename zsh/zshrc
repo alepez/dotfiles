@@ -251,6 +251,20 @@ export FZF_DEFAULT_COMMAND='ag -g ""'
 # Autocompletion
 compinit
 
+# Remember last working directory
+cd() {
+  builtin cd "$@";
+  tmux refresh-client -S
+  echo "${PWD}" > ~/.cache/cwd
+}
+
+export cd
+
+alias cwd='cd $( cat ~/.cache/cwd )'
+
+# cd to last working directory
+cwd
+
 ###############################################################################
 ## Source local configurations
 if [ -e ~/.zshrc.local ]; then source ~/.zshrc.local; fi
