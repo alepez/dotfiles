@@ -1,0 +1,85 @@
+#!/bin/bash
+
+CARD_BUILTIN='alsa_card.pci-0000_00_1f.3'
+CARD_DOCK='alsa_card.usb-Lenovo_ThinkPad_Thunderbolt_3_Dock_USB_Audio_000000000000-00'
+CARD_SCARLETT='alsa_card.usb-Focusrite_Scarlett_2i2_USB-00'
+CARD_WEBCAM='alsa_card.usb-046d_Logitech_Webcam_C925e_929BDB5F-02'
+CARD_USB='alsa_card.usb-C-Media_Electronics_Inc._USB_Audio_Device-00'
+CARD_VI='bluez_card.00_0D_FD_6F_4F_46'
+
+SINK_BUILTIN='alsa_output.pci-0000_00_1f.3.analog-stereo'
+SINK_DOCK='alsa_output.usb-Lenovo_ThinkPad_Thunderbolt_3_Dock_USB_Audio_000000000000-00.analog-stereo'
+SINK_USB_EARPHONES='alsa_output.usb-C-Media_Electronics_Inc._USB_Audio_Device-00.analog-stereo'
+SINK_VI_EARPHONES='bluez_sink.00_0D_FD_6F_4F_46.a2dp_sink'
+SINK_VI_HEADSET='bluez_sink.00_0D_FD_6F_4F_46.headset_head_unit'
+
+SOURCE_SCARLETT='alsa_input.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo'
+SOURCE_VI_HEADSET='bluez_source.00_0D_FD_6F_4F_46.headset_head_unit'
+
+pa_profile_set_builtin() {
+  pacmd set-card-profile "${CARD_DOCK}" off
+  pacmd set-card-profile "${CARD_SCARLETT}" off
+  pacmd set-card-profile "${CARD_USB}" off
+  pacmd set-card-profile "${CARD_BUILTIN}" output:analog-stereo+input:analog-stereo
+  pacmd set-default-sink "${SINK_BUILTIN}"
+}
+
+pa_profile_set_dock() {
+  pacmd set-card-profile "${CARD_BUILTIN}" off
+  pacmd set-card-profile "${CARD_SCARLETT}" off
+  pacmd set-card-profile "${CARD_USB}" off
+  pacmd set-card-profile "${CARD_DOCK}" output:analog-stereo+input:mono-fallback
+  pacmd set-default-sink "${SINK_DOCK}"
+}
+
+pa_profile_set_usb_earphones() {
+  pacmd set-card-profile "${CARD_BUILTIN}" off
+  pacmd set-card-profile "${CARD_DOCK}" off
+  pacmd set-card-profile "${CARD_SCARLETT}" off
+  pacmd set-card-profile "${CARD_USB}" output:analog-stereo+input:mono-fallback
+  pacmd set-default-sink "${SINK_USB_EARPHONES}"
+  pacmd set-sink-volume "${SINK_USB_EARPHONES}" 50000
+}
+
+pa_profile_set_vi_earphones() {
+  pacmd set-card-profile "${CARD_BUILTIN}" off
+  pacmd set-card-profile "${CARD_DOCK}" off
+  pacmd set-card-profile "${CARD_SCARLETT}" off
+  pacmd set-card-profile "${CARD_USB}" off
+  pacmd set-card-profile "${CARD_VI}" a2dp_sink
+  pacmd set-default-sink "${SINK_VI_EARPHONES}"
+  pacmd set-sink-volume "${SINK_VI_EARPHONES}" 50000
+}
+
+pa_profile_set_vi_headset() {
+  pacmd set-card-profile "${CARD_BUILTIN}" off
+  pacmd set-card-profile "${CARD_DOCK}" off
+  pacmd set-card-profile "${CARD_SCARLETT}" off
+  pacmd set-card-profile "${CARD_USB}" off
+  pacmd set-card-profile "${CARD_VI}" headset_head_unit
+  pacmd set-default-sink "${SINK_VI_HEADSET}"
+  pacmd set-default-source "${SOURCE_VI_HEADSET}"
+  pacmd set-sink-volume "${SINK_VI_HEADSET}" 50000
+  pacmd set-source-volume "${SOURCE_VI_HEADSET}" 65535
+}
+
+pa_profile_set_vi_scarlett() {
+  pacmd set-card-profile "${CARD_BUILTIN}" off
+  pacmd set-card-profile "${CARD_DOCK}" off
+  pacmd set-card-profile "${CARD_SCARLETT}" input:analog-stereo
+  pacmd set-card-profile "${CARD_USB}" off
+  pacmd set-card-profile "${CARD_VI}" a2dp_sink
+  pacmd set-default-sink "${SINK_VI_EARPHONES}"
+  pacmd set-default-source "${SOURCE_SCARLETT}"
+  pacmd set-sink-volume "${SINK_VI_EARPHONES}" 50000
+  pacmd set-source-volume "${SOURCE_SCARLETT}" 65535
+}
+
+case $1 in
+  builtin) pa_profile_set_builtin;;
+  dock) pa_profile_set_dock;;
+  usb_earphones) pa_profile_set_usb_earphones;;
+  vi_earphones) pa_profile_set_vi_earphones;;
+  vi_headset) pa_profile_set_vi_headset;;
+  vi_scarlett) pa_profile_set_vi_scarlett;;
+esac
