@@ -7,6 +7,24 @@ killall -q polybar
 # Ignore zombie processes
 while pgrep -x polybar -r D,R,S >/dev/null; do sleep 1; done
 
-for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-  MONITOR=$m polybar --reload top >/dev/null 2>/dev/null < /dev/null &
+# list_connected_screens() {
+#   xrandr --query | grep " connected" | cut -d" " -f1
+# }
+
+list_connected_screens() {
+  polybar --list-monitors | sed 's/:.*//'
+}
+
+launch_polybar() {
+  polybar --reload top --quiet >/dev/null 2>/dev/null < /dev/null &
+}
+
+launch_polybar_debug() {
+  local stdout_file="/tmp/${USER}-polybar-stdout.log"
+  local stderr_file="/tmp/${USER}-polybar-stderr.log"
+  polybar --reload top >${stdout_file} 2>${stderr_file} < /dev/null &
+}
+
+for m in $( list_connected_screens ); do
+  MONITOR=$m launch_polybar_debug
 done
