@@ -262,9 +262,6 @@ export cd
 
 alias cwd='cd $( cat ~/.cache/cwd )'
 
-# cd to last working directory
-cwd
-
 ###############################################################################
 ## Source local configurations
 if [ -e ~/.zshrc.local ]; then source ~/.zshrc.local; fi
