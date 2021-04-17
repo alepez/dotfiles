@@ -65,7 +65,6 @@ plugins=(
   fzf
   history
   pass
-  stack
   systemd
   tmux
 )
