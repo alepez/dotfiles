@@ -291,6 +291,9 @@ bindsym XF86AudioStop exec --no-startup-id ~/.dotfiles/i3/bin/spotify-control st
 # run rofi (a program launcher, see https://davedavenport.github.io/rofi/)
 bindsym $mod+space exec --no-startup-id ~/.dotfiles/wm/bin/rofi -show run
 
+# PulseAudio profile menu
+bindsym $mod+Shift+a exec --no-startup-id ~/.dotfiles/wm/bin/pulseaudio-profile-dmenu
+
 # fuzzy search password
 bindsym $mod+Shift+p exec --no-startup-id ~/.dotfiles/wm/bin/pass-dmenu
 
