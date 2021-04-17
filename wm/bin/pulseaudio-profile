@@ -12,6 +12,7 @@ SINK_DOCK='alsa_output.usb-Lenovo_ThinkPad_Thunderbolt_3_Dock_USB_Audio_00000000
 SINK_USB_EARPHONES='alsa_output.usb-C-Media_Electronics_Inc._USB_Audio_Device-00.analog-stereo'
 SINK_VI_EARPHONES='bluez_sink.00_0D_FD_6F_4F_46.a2dp_sink'
 SINK_VI_HEADSET='bluez_sink.00_0D_FD_6F_4F_46.headset_head_unit'
+SINK_SCARLETT='alsa_output.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo'
 
 SOURCE_SCARLETT='alsa_input.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo'
 SOURCE_VI_HEADSET='bluez_source.00_0D_FD_6F_4F_46.headset_head_unit'
@@ -23,7 +24,7 @@ pa_profile_set_builtin() {
   pacmd set-card-profile "${CARD_USB}" off
   pacmd set-card-profile "${CARD_BUILTIN}" output:analog-stereo+input:analog-stereo
   pacmd set-default-sink "${SINK_BUILTIN}"
-  pacmd set-sink-volume "${SINK_BUILTIN}" 65535
+  pacmd set-sink-volume "${SINK_BUILTIN}" 0
   pacmd set-source-volume "${SOURCE_BUILTIN}" 19000
 }
 
@@ -54,7 +55,7 @@ pa_profile_set_vi_earphones() {
   pacmd set-card-profile "${CARD_USB}" off
   pacmd set-card-profile "${CARD_VI}" a2dp_sink
   pacmd set-default-sink "${SINK_VI_EARPHONES}"
-  pacmd set-sink-volume "${SINK_VI_EARPHONES}" 50000
+  pacmd set-sink-volume "${SINK_VI_EARPHONES}" 20000
 }
 
 pa_profile_set_vi_headset() {
@@ -81,6 +82,18 @@ pa_profile_set_vi_scarlett() {
   pacmd set-source-volume "${SOURCE_SCARLETT}" 65535
 }
 
+pa_profile_set_scarlett() {
+  pacmd set-card-profile "${CARD_BUILTIN}" off
+  pacmd set-card-profile "${CARD_DOCK}" off
+  pacmd set-card-profile "${CARD_SCARLETT}" output:analog-stereo+input:analog-stereo
+  pacmd set-card-profile "${CARD_USB}" off
+  pacmd set-card-profile "${CARD_VI}" off
+  pacmd set-default-sink "${SINK_SCARLETT}"
+  pacmd set-default-source "${SOURCE_SCARLETT}"
+  pacmd set-sink-volume "${SINK_SCARLETT}" 30000
+  pacmd set-source-volume "${SOURCE_SCARLETT}" 65535
+}
+
 pa_profile_list() {
   echo builtin;
   echo dock;
@@ -88,6 +101,7 @@ pa_profile_list() {
   echo vi_earphones;
   echo vi_headset;
   echo vi_scarlett;
+  echo scarlett;
 }
 
 case $1 in
@@ -97,5 +111,6 @@ case $1 in
   vi_earphones) pa_profile_set_vi_earphones;;
   vi_headset) pa_profile_set_vi_headset;;
   vi_scarlett) pa_profile_set_vi_scarlett;;
+  scarlett) pa_profile_set_scarlett;;
   list) pa_profile_list;
 esac
