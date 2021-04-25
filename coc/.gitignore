@@ -8,3 +8,5 @@ commands
 /extensions/db.json
 /extensions/coc-yank-data
 /memos.json
+list-diagnostics-history.json
+extensions/package.json
