@@ -158,4 +158,4 @@
 [pull]
 	ff = only
 [init]
-	defaultBranch = master
+	defaultBranch = main
