@@ -42,7 +42,7 @@ if [ "${layout}" == "manual" ]; then
   arandr
 else
   notify-send -u low "Layout: ${layout}"
-  autorandr --load "${layout}" 2>/dev/null
+  autorandr --load "${layout}" --force 2>/dev/null
 fi
 
 post_setup
