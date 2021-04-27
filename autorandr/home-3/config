@@ -19,11 +19,11 @@ rotate right
 output DP1-2
 crtc 0
 mode 2560x1440
-pos 1280x312
+pos 1280x240
 primary
 rate 59.95
 output eDP1
 crtc 2
 mode 1280x720
-pos 0x914
+pos 0x866
 rate 59.86
