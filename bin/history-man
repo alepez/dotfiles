@@ -1,0 +1,28 @@
+#!/bin/bash
+
+HIST=/home/pez/.history
+HIST_DIR=/home/pez/.config/zsh-history
+NOW=$( date +%Y-%m-%dT%H-%M-%S --utc | tr -d \\n )
+ACTION=${1}
+
+disable_history() {
+  echo "disable history"
+  cp ${HIST} ${HIST_DIR}/backup-${NOW}
+  mv ${HIST} ${HIST_DIR}/backup-last
+}
+
+enable_history() {
+  echo "enable history"
+  cp ${HIST_DIR}/backup-last ${HIST}
+}
+
+main() {
+  mkdir -p ${HIST_DIR}
+
+  case ${ACTION} in
+    disable) disable_history;;
+    enable) enable_history;;
+  esac
+}
+
+main
