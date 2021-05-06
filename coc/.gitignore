@@ -6,6 +6,7 @@ commands
 db.json
 extensions/package.json
 history.json
+list-commands-history.json
 list-diagnostics-history.json
 list-location-history.json
 list-symbols-history.json
