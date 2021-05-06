@@ -1,8 +1,5 @@
 #!/bin/bash
 
-layout="${1}"
-default_layout=laptop
-
 post_setup() {
   # Launch in background
   (
@@ -18,6 +15,7 @@ post_setup() {
 }
 
 auto_detect_layout() {
+  local default_layout=laptop
   local result=${default_layout}
   local monitors=$( xrandr )
 
@@ -34,15 +32,34 @@ auto_detect_layout() {
   echo ${result}
 }
 
-if [ "${layout}" == "auto" ]; then
-  layout=$( auto_detect_layout )
-fi
+list_layouts() {
+  ls ~/.config/autorandr
+}
 
-if [ "${layout}" == "manual" ]; then
-  arandr
-else
-  notify-send -u low "Layout: ${layout}"
-  autorandr --load "${layout}" --force 2>/dev/null
-fi
+main() {
+  local layout="${1:-list}"
 
-post_setup
+  if [ "${layout}" == "list" ]; then
+    list_layouts
+    exit 0
+  fi
+
+  if [ "${layout}" == "auto" ]; then
+    layout=$( auto_detect_layout )
+  fi
+
+  if [ "${layout}" == "auto" ]; then
+    layout=$( auto_detect_layout )
+  fi
+
+  if [ "${layout}" == "manual" ]; then
+    arandr
+  else
+    notify-send -u low "Layout: ${layout}"
+    autorandr --load "${layout}" --force 2>/dev/null
+  fi
+
+  post_setup
+}
+
+main $@
