@@ -86,6 +86,8 @@ highlight() { grep --color -E "$1|\$"; }
 # Grep without buffer
 alias nbgrep='stdbuf -o0 -oL grep'
 
+alias nb='stdbuf -i0 -o0 -e0'
+
 # I don't use dc, and sometime i mispell cd
 alias dc='cd'
 
