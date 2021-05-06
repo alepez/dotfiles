@@ -1,5 +1,7 @@
 filetype off " required
 
+packadd termdebug
+
 call plug#begin()
 
 " Plugins handled by plugin manager
