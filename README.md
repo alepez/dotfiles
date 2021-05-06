@@ -17,8 +17,6 @@ ln -nfs ~/.dotfiles/zsh/zshenv ~/.zshenv
 ln -nfs ~/.dotfiles/git/gitignore ~/.gitignore
 ln -nfs ~/.dotfiles/git/gitconfig ~/.gitconfig
 ln -nfs ~/.dotfiles/ag/agignore ~/.agignore
-ln -nfs ~/.dotfiles/vim/init.vim ~/.vim/init.vim
-ln -nfs ~/.dotfiles/vim/after ~/.vim/after
 ln -nfs ~/.dotfiles/i3 ~/.config/i3
 ln -nfs ~/.dotfiles/i3/i3blocks.conf ~/.i3blocks.conf
 ln -nfs ~/.dotfiles/roxterm.sourceforge.net ~/.config/roxterm.sourceforge.net

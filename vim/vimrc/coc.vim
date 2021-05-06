@@ -1,4 +1,4 @@
-let g:coc_node_path = '~/.nvm/versions/node/v10.16.3/bin/node'
+let g:coc_node_path = '~/.nvm/versions/node/v14.16.1/bin/node'
 
 " Give more space for displaying messages.
 set cmdheight=2
