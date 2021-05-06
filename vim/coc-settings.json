@@ -1,0 +1,39 @@
+{
+  "cSpell.userWords": [
+    "Alessandro",
+    "Nucleo",
+    "Pezzato",
+    "alepez",
+    "btreemap",
+    "chrono",
+    "devand",
+    "dotenv",
+    "fieldset",
+    "gdbserver",
+    "mqtt",
+    "myhome",
+    "onchange",
+    "onclick",
+    "oninput",
+    "openocd",
+    "pluggit",
+    "readonly"
+  ],
+  "cSpell.enabled": false,
+  "clangd.checkUpdates": true,
+  "clangd.enabled": true,
+  "clangd.semanticHighlighting": true,
+  "codeLens.enable": true,
+  "diagnostic.virtualText": true,
+  "git.addGBlameToBufferVar": true,
+  "rust-analyzer.cargo.allFeatures": true,
+  "rust-analyzer.cargo.features": [
+    "client"
+  ],
+  "rust-analyzer.checkOnSave.enable": true,
+  "rust-analyzer.lens.enable": true,
+  "rust-analyzer.lens.run": true,
+  "rust-analyzer.serverPath": "/usr/bin/rust-analyzer",
+  "rust-analyzer.updates.channel": "nightly",
+  "suggest.echodocSupport": true
+}
