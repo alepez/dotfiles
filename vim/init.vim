@@ -21,19 +21,13 @@ source ~/.dotfiles/vim/vimrc/test.vim
 source ~/.dotfiles/vim/vimrc/nerdtree.vim
 source ~/.dotfiles/vim/vimrc/ignore.vim
 source ~/.dotfiles/vim/vimrc/fzf.vim
-source ~/.dotfiles/vim/vimrc/signify.vim
 source ~/.dotfiles/vim/vimrc/settings.vim
 source ~/.dotfiles/vim/vimrc/backups.vim
 source ~/.dotfiles/vim/vimrc/markdown.vim
 source ~/.dotfiles/vim/vimrc/cpp.vim
 source ~/.dotfiles/vim/vimrc/ag.vim
-source ~/.dotfiles/vim/vimrc/snippets.vim
 source ~/.dotfiles/vim/vimrc/airline.vim
-source ~/.dotfiles/vim/vimrc/python.vim
 source ~/.dotfiles/vim/vimrc/zsh.vim
-source ~/.dotfiles/vim/vimrc/haskell.vim
-source ~/.dotfiles/vim/vimrc/rust.vim
-source ~/.dotfiles/vim/vimrc/deoplete.vim
 source ~/.dotfiles/vim/vimrc/coc.vim
 
 " Include local vimrc is file exists

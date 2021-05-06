@@ -58,10 +58,6 @@ genpassword() {
 alias v="${EDITOR}"
 alias sv="sudo ${EDITOR}"
 
-
-# Shortcut for my favorite calculator (was R, now is haskell)
-alias R="stack ghci"
-
 # Filesystem usage, human readable
 alias df='df -h'
 alias du='du -sh'

@@ -5,8 +5,6 @@ set t_Co=256
 set background=dark
 
 " gruvbox
-" let g:gruvbox_italicize_comments=1
-" let g:gruvbox_italic=1
 colorscheme gruvbox
 
 " Default matching parent highlight is too visible.

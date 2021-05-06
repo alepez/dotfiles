@@ -79,10 +79,8 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-xmap <silent><F5> <Plug>(coc-codeaction-selected)
-nmap <silent><F5> <Plug>(coc-codeaction-line)
+" nmap <silent> <F2> <Plug>(coc-codeaction-selected)
+nmap <leader>cl  <Plug>(coc-codeaction-selected)
 
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
