@@ -14,9 +14,6 @@ Plug 'junegunn/fzf.vim' " fzf (more commands)
 Plug 'Chiel92/vim-autoformat' " Provide easy code formatting in Vim by integrating existing code formatters.
 Plug 'vim-scripts/ingo-library' " Vimscript library of common functions.
 
-"=== Git
-Plug 'tpope/vim-fugitive' " git gui
-
 "=== Language tools
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
