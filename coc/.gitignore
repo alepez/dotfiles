@@ -13,3 +13,6 @@ list-symbols-history.json
 mru
 node_modules
 snippets-mru
+/extensions
+list-lists-history.json
+*.json
