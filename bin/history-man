@@ -3,26 +3,84 @@
 HIST=/home/pez/.history
 HIST_DIR=/home/pez/.config/zsh-history
 NOW=$( date +%Y-%m-%dT%H-%M-%S --utc | tr -d \\n )
-ACTION=${1}
+
+log_debug() {
+  echo "${1}"
+}
+
+get_current_profile() {
+  cat ${HIST_DIR}/current_profile
+}
+
+set_profile() {
+  local profile=$1
+  log_debug "Set profile to: ${profile}"
+  echo -n $profile > ${HIST_DIR}/current_profile
+}
+
+switch_profile() {
+  local new_profile=$1
+  local current_profile=$( get_current_profile )
+
+  if [ "${new_profile}" == "${current_profile}" ]; then
+    log_debug "Already using profile ${current_profile}"
+    return
+  fi
+
+  log_debug "Switch profile from ${current_profile} to ${new_profile}"
+
+  backup
+  save_profile $current_profile
+
+  rm ${HIST}
+
+  if [ -e ${HIST_DIR}/${new_profile}.profile ]; then
+    cp ${HIST_DIR}/${new_profile}.profile ${HIST}
+  else
+    touch ${HIST}
+  fi
+
+  set_profile $new_profile
+}
+
+save_profile() {
+  local profile=$1
+
+  log_debug "Save profile ${profile}"
+
+  cp ${HIST} ${HIST_DIR}/${profile}.profile
+}
+
+backup() {
+  log_debug "Backup"
+
+  cp ${HIST} ${HIST_DIR}/backup-${NOW}
+  cp ${HIST} ${HIST_DIR}/backup-last
+}
 
 disable_history() {
-  echo "disable history"
+  log_debug "disable history"
   cp ${HIST} ${HIST_DIR}/backup-${NOW}
   mv ${HIST} ${HIST_DIR}/backup-last
 }
 
 enable_history() {
-  echo "enable history"
+  log_debug "enable history"
   cp ${HIST_DIR}/backup-last ${HIST}
 }
 
 main() {
+  local action=${1}
+
+  log_debug "action: ${action}"
+
   mkdir -p ${HIST_DIR}
 
-  case ${ACTION} in
+  case ${action} in
     disable) disable_history;;
     enable) enable_history;;
+    p|profile) switch_profile $2;;
   esac
 }
 
-main
+main $@
