@@ -1,30 +1,60 @@
 #!/bin/bash
 
 # Terminate already running bar instances
-killall -q polybar
+kill_old_polybars() {
+  killall -q polybar
+}
 
 # Wait until the processes have been shut down
 # Ignore zombie processes
-while pgrep -x polybar -r D,R,S >/dev/null; do sleep 1; done
-
-# list_connected_screens() {
-#   xrandr --query | grep " connected" | cut -d" " -f1
-# }
+wait_old_polybars() {
+  while pgrep -x polybar -r D,R,S >/dev/null; do sleep 1; done
+}
 
 list_connected_screens() {
   polybar --list-monitors | sed 's/:.*//'
 }
 
-launch_polybar() {
-  polybar --reload top --quiet >/dev/null 2>/dev/null < /dev/null &
+launch_polybar_quiet() {
+  local bar=${1}
+  polybar --reload ${bar} --quiet \
+    >/dev/null 2>/dev/null < /dev/null &
 }
 
 launch_polybar_debug() {
+  local bar=${1}
   local stdout_file="/tmp/${USER}-polybar-stdout.log"
   local stderr_file="/tmp/${USER}-polybar-stderr.log"
-  polybar --reload top >${stdout_file} 2>${stderr_file} < /dev/null &
+  polybar --reload ${bar} \
+    >${stdout_file} 2>${stderr_file} < /dev/null &
 }
 
-for m in $( list_connected_screens ); do
-  MONITOR=$m launch_polybar_debug
-done
+launch_polybar() {
+  launch_polybar_quiet $@
+}
+
+bar_from_profile() {
+  local profile_monitor=${1}
+  case "${profile_monitor}" in
+    home-youtube-coding_DP1-2) echo top_workspaces_only;;
+    *) echo top_default;;
+  esac
+}
+
+launch_all_polybars() {
+  local profile=${1}
+  local m
+  for m in $( list_connected_screens ); do
+    local bar=$( bar_from_profile ${profile}_${m} )
+    MONITOR=$m launch_polybar ${bar}
+  done
+}
+
+main() {
+  local profile=${1}
+  kill_old_polybars
+  wait_old_polybars
+  launch_all_polybars ${profile}
+}
+
+main ${1}

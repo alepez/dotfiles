@@ -1,10 +1,11 @@
 #!/bin/bash
 
 post_setup() {
+  local layout=${1}
   # Launch in background
   (
   # After monitor setup, polybar must be reloaded
-  ~/.dotfiles/wm/bin/polybar-launcher
+  ~/.dotfiles/wm/bin/polybar-launcher ${layout}
 
   # And wallpaper should be reloaded to fit
   ~/.dotfiles/wm/bin/change-background load
@@ -59,7 +60,7 @@ main() {
     autorandr --load "${layout}" --force 2>/dev/null
   fi
 
-  post_setup
+  post_setup ${layout}
 }
 
 main $@
