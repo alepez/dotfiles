@@ -18,7 +18,7 @@ ln -nfs ~/.dotfiles/git/gitignore ~/.gitignore
 ln -nfs ~/.dotfiles/git/gitconfig ~/.gitconfig
 ln -nfs ~/.dotfiles/ag/agignore ~/.agignore
 ln -nfs ~/.dotfiles/i3 ~/.config/i3
-ln -nfs ~/.dotfiles/i3/gtkrc-2.0 ~/.gtkrc-2.0
+ln -nfs ~/.dotfiles/gtkrc-2.0 ~/.gtkrc-2.0
 ln -nfs ~/.dotfiles/i3/dunstrc ~/.config/dunst/dunstrc
 ln -nfs ~/.dotfiles/gnupg/gpg.conf ~/.gnupg/gpg.conf
 ln -nfs ~/.dotfiles/gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
