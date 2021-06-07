@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Add this udev rule to autoconfigure keyboard when attached
 # ACTION=="add", SUBSYSTEM=="input", ATTRS{idVendor}=="04b4", ATTRS{idProduct}=="0101", SYMLINK+="usb-keyboard", RUN+="/bin/su pez -c '/home/pez/.dotfiles/bin/keyboard-setup standard'"

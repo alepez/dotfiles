@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 is_discharging() {
   test "$( cat /sys/class/power_supply/BAT0/status )" == "Discharging"

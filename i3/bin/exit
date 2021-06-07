@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 grep_umount() {
   mount | grep "${1}" | awk '{ print $3 }' | while read dir; do umount -l $dir; done

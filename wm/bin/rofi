@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 PATH=/home/${USER}/bin:/home/${USER}/.local/bin:/usr/local/bin:/usr/bin:/bin \
 rofi \

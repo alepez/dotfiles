@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 get_default_sink() {
     pacmd list-sinks | awk '/index:/{i++} /* index:/{print i; exit}';

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 HIST=/home/pez/.history
 HIST_DIR=/home/pez/.config/zsh-history
