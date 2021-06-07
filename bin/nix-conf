@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+args=''
+
+if [ -n "${1}" ]; then
+    args="-c /${1}"
+fi
+
+$EDITOR /etc/nixos/configuration.nix ${args}
