@@ -1,1 +1,1 @@
-set shell=/bin/zsh
+set shell=zsh
