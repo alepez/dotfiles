@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+CONFIG_FILE="~/.dotfiles/polybar/config"
+
 # Terminate already running bar instances
 kill_old_polybars() {
   killall -q polybar
@@ -17,7 +19,7 @@ list_connected_screens() {
 
 launch_polybar_quiet() {
   local bar=${1}
-  polybar --reload ${bar} --quiet \
+  polybar --config=${CONFIG_FILE} --reload ${bar} --quiet \
     >/dev/null 2>/dev/null < /dev/null &
 }
 
@@ -25,7 +27,7 @@ launch_polybar_debug() {
   local bar=${1}
   local stdout_file="/tmp/${USER}-polybar-stdout.log"
   local stderr_file="/tmp/${USER}-polybar-stderr.log"
-  polybar --reload ${bar} \
+  polybar --config=${CONFIG_FILE} --reload ${bar} \
     >${stdout_file} 2>${stderr_file} < /dev/null &
 }
 
