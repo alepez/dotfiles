@@ -5,32 +5,32 @@ packadd termdebug
 call plug#begin()
 
 " Plugins handled by plugin manager
-source ~/.dotfiles/vim/vimrc/plugins.vim
+source ~/.dotfiles/nvim/plugins.vim
 
 " Plugins cannot be loaded below this line
 call plug#end()
 
-source ~/.dotfiles/vim/vimrc/colors.vim
+source ~/.dotfiles/nvim/colors.vim
 
 filetype plugin indent on    " required
 
 " Plugins not handled by plugin manager
-source ~/.dotfiles/vim/vimrc/plugins-special.vim
+source ~/.dotfiles/nvim/plugins-special.vim
 
-source ~/.dotfiles/vim/vimrc/hacks.vim
-source ~/.dotfiles/vim/vimrc/shortcuts.vim
-source ~/.dotfiles/vim/vimrc/test.vim
-source ~/.dotfiles/vim/vimrc/nerdtree.vim
-source ~/.dotfiles/vim/vimrc/ignore.vim
-source ~/.dotfiles/vim/vimrc/fzf.vim
-source ~/.dotfiles/vim/vimrc/settings.vim
-source ~/.dotfiles/vim/vimrc/backups.vim
-source ~/.dotfiles/vim/vimrc/markdown.vim
-source ~/.dotfiles/vim/vimrc/cpp.vim
-source ~/.dotfiles/vim/vimrc/ag.vim
-source ~/.dotfiles/vim/vimrc/airline.vim
-source ~/.dotfiles/vim/vimrc/zsh.vim
-source ~/.dotfiles/vim/vimrc/coc.vim
+source ~/.dotfiles/nvim/hacks.vim
+source ~/.dotfiles/nvim/shortcuts.vim
+source ~/.dotfiles/nvim/test.vim
+source ~/.dotfiles/nvim/nerdtree.vim
+source ~/.dotfiles/nvim/ignore.vim
+source ~/.dotfiles/nvim/fzf.vim
+source ~/.dotfiles/nvim/settings.vim
+source ~/.dotfiles/nvim/backups.vim
+source ~/.dotfiles/nvim/markdown.vim
+source ~/.dotfiles/nvim/cpp.vim
+source ~/.dotfiles/nvim/ag.vim
+source ~/.dotfiles/nvim/airline.vim
+source ~/.dotfiles/nvim/zsh.vim
+source ~/.dotfiles/nvim/coc.vim
 
 " Include local vimrc is file exists
 if filereadable(glob("~/.vimrc.local"))

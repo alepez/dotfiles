@@ -21,6 +21,6 @@ tm_host="#[fg=$tm_color_feature,bold]#h"
 tm_current_path="#{=-40:pane_current_path}"
 
 set -g status-left "$tm_session_name"
-set -g status-right "$tm_current_path $tm_host"
+set -g status-right "$tm_current_path $tm_host (next)"
 set -g status-right-length 40
 set -g status-right-style 'align=right'
