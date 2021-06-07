@@ -12,19 +12,30 @@ Choose what you need:
 
 ```sh
 ln -nfs ~/.dotfiles/zsh/zshrc ~/.zshrc
-ln -nfs ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
 ln -nfs ~/.dotfiles/zsh/zshenv ~/.zshenv
+
+ln -nfs ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
+
 ln -nfs ~/.dotfiles/git/gitignore ~/.gitignore
 ln -nfs ~/.dotfiles/git/gitconfig ~/.gitconfig
+
 ln -nfs ~/.dotfiles/ag/agignore ~/.agignore
-ln -nfs ~/.dotfiles/i3 ~/.config/i3
+
 ln -nfs ~/.dotfiles/gtkrc-2.0 ~/.gtkrc-2.0
+ln -nfs ~/.dotfiles/i3 ~/.config/i3
 ln -nfs ~/.dotfiles/i3/dunstrc ~/.config/dunst/dunstrc
+ln -nfs ~/.dotfiles/xbindkeysrc ~/.xbindkeysrc
+ln -nfs ~/.dotfiles/i3/xprofile ~/.xprofile
+
 ln -nfs ~/.dotfiles/gnupg/gpg.conf ~/.gnupg/gpg.conf
 ln -nfs ~/.dotfiles/gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
+
 ln -nfs ~/.dotfiles/top/toprc ~/.toprc
-ln -nfs ~/.dotfiles/xbindkeysrc ~/.xbindkeysrc
+
 ln -nfs ~/.dotfiles/coc ~/.config/coc
+
+mkdir -p ~/.config/nvim
+ln -nfs ~/.dotfiles/nvim/init.vim ~/.config/nvim/init.vim
 ```
 
 ## Dependencies
