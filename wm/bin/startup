@@ -8,8 +8,6 @@ cd /
 # Automatic monitor setup (blocking)
 ~/.dotfiles/bin/monitor-setup auto
 
-# Random wallpaper
-
 # Compositor
 # xcompmgr -a &>/dev/null </dev/null &
 picom --config ~/.dotfiles/wm/picom.conf -b
