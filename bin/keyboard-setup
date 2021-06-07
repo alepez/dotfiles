@@ -27,12 +27,12 @@ reset_mapping() {
 
 # Classic US layout
 layout_us() {
-  /usr/bin/setxkbmap -variant us -option ''
+  setxkbmap -variant us -option ''
 }
 
 layout_us_italian_caps_ctrl() {
   # Keyboard: italian with us layout, CapsLock like Ctrl
-  /usr/bin/setxkbmap -layout it -variant us -option 'caps:ctrl_modifier'
+  setxkbmap -layout it -variant us -option 'caps:ctrl_modifier'
 }
 
 ctrl_escape() {
@@ -40,13 +40,13 @@ ctrl_escape() {
   kill $( pgrep xcape ) 2>/dev/null
   sleep 0.1
   if [ "${1}" != "no" ]; then
-    /usr/bin/xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
+    xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
   fi
 }
 
 fix_repeat_speed() {
   # rate <delay> <speed>
-  /usr/bin/xset r rate 250 30
+  xset r rate 250 30
 }
 
 detect_mode() {
@@ -76,6 +76,7 @@ standard_mode() {
 # This little program just turn off caps lock.
 # Needed because it may be accidentally on when remampping
 # the keyboard.
+# FIXME
 turn_off_caps_lock() {
   ~/.local/bin/xkb_unlock
 }
