@@ -115,6 +115,7 @@
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
     source-sans-pro
+    roboto
   ];
 
   programs.mtr.enable = true;
