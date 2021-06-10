@@ -27,6 +27,7 @@ Plug 'jaxbot/browserlink.vim' " like livereload
 
 "=== Configuration files
 Plug 'cespare/vim-toml' " Vim syntax for TOML
+Plug 'LnL7/vim-nix'
 
 "=== Text/Markdown
 Plug 'davidgranstrom/nvim-markdown-preview'
