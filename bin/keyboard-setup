@@ -125,10 +125,15 @@ start_foreground() {
   set_mode $@
 }
 
-if [ -z "${DISPLAY}" ]; then
-  start_background $@
-else
-  start_foreground $@
-fi
+
+main() {
+  if [ -z "${DISPLAY}" ]; then
+    start_background $@
+  else
+    start_foreground $@
+  fi
+}
+
+main
 
 exit 0
