@@ -80,11 +80,16 @@ turn_off_caps_lock() {
   ~/.local/bin/xkb_unlock
 }
 
+# This sleep is needed because, when keyboard is attached, caps lock is ON
+# for for a while. If caps lock is disabled (by the selected layout) while
+# it is ON, it will never go off.
+hack_caps_lock_on() {
+  if [ -z "${DISPLAY}" ]; then
+    sleep 2
+  fi
+}
+
 k2_mode() {
-  # This sleep is needed because, when keyboard is attached, caps lock is ON
-  # for for a while. If caps lock is disabled (by the selected layout) while
-  # it is ON, it will never go off.
-  sleep 2
   layout_us_italian_caps_ctrl
   ctrl_escape
   # hack_k2_mapping
@@ -128,6 +133,7 @@ start_foreground() {
 
 main() {
   if [ -z "${DISPLAY}" ]; then
+    hack_caps_lock_on
     start_background $@
   else
     start_foreground $@
