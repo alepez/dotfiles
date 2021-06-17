@@ -26,6 +26,7 @@
   "codeLens.enable": true,
   "diagnostic.virtualText": true,
   "git.addGBlameToBufferVar": true,
+  "git.addGBlameToVirtualText": true,
   "rust-analyzer.server.path": "/usr/bin/rust-analyzer",
   "rust-analyzer.procMacro.enable": true,
   "rust-analyzer.cargo.runBuildScripts": true
