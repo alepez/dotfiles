@@ -359,6 +359,7 @@ for_window [class="sun-awt-X11-XWindowPeer"] floating enable
 for_window [class="zoom"] floating enable
 for_window [class="VirtualBox Machine"] floating enable
 for_window [class="VirtualBox Machine"] resize set 1920 1080
+for_window [class="jetbrains-.*" title="win0"] floating enable border none
 
 assign [class="VirtualBox Machine"] $workspace_7
 assign [class="rdesktop"] $workspace_7
