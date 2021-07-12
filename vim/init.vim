@@ -30,6 +30,7 @@ source ~/.dotfiles/vim/vimrc/ag.vim
 source ~/.dotfiles/vim/vimrc/airline.vim
 source ~/.dotfiles/vim/vimrc/zsh.vim
 source ~/.dotfiles/vim/vimrc/coc.vim
+source ~/.dotfiles/vim/vimrc/telescope.lua
 
 " Include local vimrc is file exists
 if filereadable(glob("~/.vimrc.local"))
