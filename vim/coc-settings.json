@@ -20,7 +20,7 @@
     "readonly"
   ],
   "cSpell.enabled": false,
-  "clangd.checkUpdates": true,
+  "clangd.checkUpdates": false,
   "clangd.enabled": true,
   "clangd.semanticHighlighting": true,
   "codeLens.enable": true,
