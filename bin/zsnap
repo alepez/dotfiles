@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Manage zfs snapshots
+
 list_snapshots() {
   zfs list -d 1 -t snapshot zroot/${1}
 }

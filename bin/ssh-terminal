@@ -1,5 +1,12 @@
 #!/bin/sh
 
+# Launch ssh directly inside the preferred terminal.
+#
+# Particularly useful when:
+#
+# - you have tmux in the remote host and you don't like nested tmux
+# - you want to launch a remote terminal with rofi or dmenu
+
 # roxterm -e ssh $@
 # konsole -e ssh $@
 # gnome-terminal -x ssh $@

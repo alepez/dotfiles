@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# Helps setup keyboard layout and fixes (like caps_lock mapped to ctrl/esc)
+# Can be triggered by udev or manually launched when keyboard layout is
+# messed up (e.g. by vmware)
+
 # Add this udev rule to autoconfigure keyboard when attached
 # ACTION=="add", SUBSYSTEM=="input", ATTRS{idVendor}=="04b4", ATTRS{idProduct}=="0101", SYMLINK+="usb-keyboard", RUN+="/bin/su pez -c '/home/pez/.dotfiles/bin/keyboard-setup standard'"
 # ACTION=="add", SUBSYSTEM=="input", ATTRS{name}=="Keychron K2", SYMLINK+="keyboard-keychron-k2", RUN+="/bin/su pez -c '/home/pez/.dotfiles/bin/keyboard-setup k2'"

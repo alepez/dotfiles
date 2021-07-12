@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# Do a full root backup with duplicity
 # Run this as root
 
 # Fix pinentry

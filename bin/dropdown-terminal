@@ -1,2 +1,5 @@
 #!/bin/sh
+
+# Used by i3 to relaunch a dropdown terminal
+
 while true; do cd && $@; done

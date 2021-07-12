@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Check if battery level is critical and display a message is below a threshold
+
 is_discharging() {
   test "$( cat /sys/class/power_supply/BAT0/status )" == "Discharging"
 }

@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
+# Get current internet connection information using nordvpn
+
 curl -s 'https://nordvpn.com/wp-admin/admin-ajax.php?action=get_user_info_data' | jq
