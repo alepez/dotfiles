@@ -23,6 +23,7 @@
   "clangd.checkUpdates": false,
   "clangd.enabled": true,
   "clangd.semanticHighlighting": true,
+  "clangd.compilationDatabasePath": "cmake-build-debug",
   "codeLens.enable": true,
   "diagnostic.virtualText": true,
   "git.addGBlameToBufferVar": true,
