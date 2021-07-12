@@ -1,11 +1,9 @@
 " I ♥ colors
 syntax on
 set t_Co=256
-" set termguicolors
 set background=dark
 
-" gruvbox
-colorscheme gruvbox
+autocmd vimenter * ++nested colorscheme gruvbox
 
 " Default matching parent highlight is too visible.
 " This is a more discrete highlight.
