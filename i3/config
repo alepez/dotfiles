@@ -339,8 +339,8 @@ hide_edge_borders smart
 
 exec --no-startup-id ~/.dotfiles/bin/dropdown-terminal alacritty --class=dropdown -e tmux
 #exec --no-startup-id ~/.dotfiles/bin/dropdown-terminal kitty --name=dropdown -e tmux
-for_window [instance="dropdown"] floating enable, move scratchpad
-bindsym $mod+0 [instance="dropdown"] scratchpad show; move position center; resize set 1500 500
+for_window [instance="dropdown"] floating enable, move scratchpad, scratchpad show, resize set 1500 500, move position center, move scratchpad
+bindsym $mod+0 [instance="dropdown"] scratchpad show
 
 ###############################################################################
 # Special windows
