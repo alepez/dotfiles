@@ -326,10 +326,10 @@ client.urgent             $neutral_orange  $neutral_orange  $light1      $dark0
 ###############################################################################
 # Gaps
 ###############################################################################
-gaps inner 12
+gaps inner 6
 gaps outer 0
 default_border pixel 4
-default_floating_border pixel 12
+default_floating_border pixel 6
 smart_gaps on
 hide_edge_borders smart
 
