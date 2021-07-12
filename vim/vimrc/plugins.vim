@@ -14,6 +14,7 @@ Plug 'vim-scripts/ingo-library' " Vimscript library of common functions.
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'mhinz/vim-signify'
 
 "=== Language tools
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -23,7 +24,7 @@ Plug 'jackguo380/vim-lsp-cxx-highlight' " Vim plugin for C/C++/ObjC semantic hig
 
 "=== HTML/CSS
 Plug 'mattn/emmet-vim' " emmet for vim: http://emmet.io/
-Plug 'jaxbot/browserlink.vim' " like livereload
+"Plug 'jaxbot/browserlink.vim' " like livereload
 " Plug 'ap/vim-css-color' " Preview colours in source code while editing
 
 "=== Configuration files
