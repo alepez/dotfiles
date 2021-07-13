@@ -3,7 +3,7 @@
 CONFIG_FILE="$( realpath ~/.config/common-clip-dmenu )"
 
 # Use my `rofi` configuration as dmenu.
-dmenu="$( realpath ~/.dotfiles/wm/bin/rofi )"
+dmenu="$( realpath ~/.dotfiles/bin/dmenu )"
 
 # Use dmenu to select string from the files with list.
 # Reverse lines with `tac` so last used hosts are first.

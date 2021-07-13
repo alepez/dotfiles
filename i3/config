@@ -162,8 +162,8 @@ set $background_mode "change background  [j] next [k] prev"
 bindsym $mod+Shift+d mode $background_mode
 
 mode $background_mode  {
-  bindsym k exec --no-startup-id "~/.dotfiles/wm/bin/change-background prev"
-  bindsym j exec --no-startup-id "~/.dotfiles/wm/bin/change-background next"
+  bindsym k exec --no-startup-id "~/.dotfiles/bin/change-background prev"
+  bindsym j exec --no-startup-id "~/.dotfiles/bin/change-background next"
 
   # back to normal: Enter or Escape
   bindsym Return mode "default"
@@ -288,19 +288,19 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 
 # run rofi (a program launcher, see https://davedavenport.github.io/rofi/)
-bindsym $mod+space exec --no-startup-id ~/.dotfiles/wm/bin/rofi -show run
+bindsym $mod+space exec --no-startup-id ~/.dotfiles/bin/rofi -show run
 
 # PulseAudio profile menu
-bindsym $mod+Shift+a exec --no-startup-id ~/.dotfiles/wm/bin/pulseaudio-profile-dmenu
+bindsym $mod+Shift+a exec --no-startup-id ~/.dotfiles/bin/dmenu-pulseaudio-profile
 
 # fuzzy search password
-bindsym $mod+Shift+p exec --no-startup-id ~/.dotfiles/wm/bin/pass-dmenu
+bindsym $mod+Shift+p exec --no-startup-id ~/.dotfiles/bin/dmenu-pass
 
 # open new terminal with ssh session
-bindsym $mod+Shift+Return exec --no-startup-id ~/.dotfiles/wm/bin/ssh-dmenu
+bindsym $mod+Shift+Return exec --no-startup-id ~/.dotfiles/bin/dmenu-ssh
 
 # common clipboard text
-bindsym $mod+Shift+c exec --no-startup-id ~/.dotfiles/wm/bin/common-clip-dmenu
+bindsym $mod+Shift+c exec --no-startup-id ~/.dotfiles/bin/dmenu-common-clip
 
 # Toggle clipboard manager
 # (Mouse trigger is handled by xbindkeys)
@@ -375,4 +375,4 @@ assign [class="VirtualBox Machine"] $workspace_7
 ###############################################################################
 # Startup
 ###############################################################################
-exec --no-startup-id ~/.dotfiles/wm/bin/startup
+exec --no-startup-id ~/.dotfiles/bin/i3-startup

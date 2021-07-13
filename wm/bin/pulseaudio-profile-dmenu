@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-dmenu="$( realpath ~/.dotfiles/wm/bin/rofi )"
-
-profile=$( ~/.dotfiles/wm/bin/pulseaudio-profile list | "${dmenu}" -dmenu -p "Profile:" "$@")
-
-~/.dotfiles/wm/bin/pulseaudio-profile ${profile}

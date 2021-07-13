@@ -8,10 +8,10 @@ post_setup() {
   # Launch in background
   (
   # After monitor setup, polybar must be reloaded
-  ~/.dotfiles/wm/bin/polybar-launcher ${layout}
+  ~/.dotfiles/bin/polybar-launcher ${layout}
 
   # And wallpaper should be reloaded to fit
-  ~/.dotfiles/wm/bin/change-background load
+  ~/.dotfiles/bin/change-background load
 
   # If we need to setup the monitor, maybe we have a keyboard to set up too
   ~/.dotfiles/bin/keyboard-setup
