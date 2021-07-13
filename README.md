@@ -2,7 +2,7 @@
 
 ## Setup
 
-Clone this repository in `~/.dotfiles` (your home directory).
+Clone this repository in `~/.dotfiles` (in your home directory).
 
 ```sh
 git clone https://github.com/alepez/dotfiles.git ~/.dotfiles
@@ -20,6 +20,7 @@ ln -nfs ~/.dotfiles/git/gitconfig ~/.gitconfig
 ln -nfs ~/.dotfiles/ag/agignore ~/.agignore
 ln -nfs ~/.dotfiles/gnupg/gpg.conf ~/.gnupg/gpg.conf
 ln -nfs ~/.dotfiles/gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
+ln -nfs ~/.dotfiles/starship/starship.toml ~/.config/starship.toml
 
 # desktop and graphical tools
 ln -nfs ~/.dotfiles/xbindkeysrc ~/.xbindkeysrc
@@ -31,10 +32,3 @@ ln -nfs ~/.dotfiles/i3/gtkrc-2.0 ~/.gtkrc-2.0
 ln -nfs ~/.dotfiles/i3/compton.conf ~/.config/compton.conf
 ln -nfs ~/.dotfiles/i3/dunstrc ~/.config/dunst/dunstrc
 ```
-
-## Dependencies
-
- - [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)
- - i3wm
- - dunst
- - oh-my-zsh
