@@ -41,8 +41,6 @@ blueman-applet &>/dev/null </dev/null &
 # NetworkManager applet
 nm-applet &>/dev/null </dev/null &
 
-~/.dotfiles/bin/battery-discharging-notifier &>/dev/null </dev/null &
-
 ) &>/dev/null </dev/null &
 
 exit 0
