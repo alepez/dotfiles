@@ -24,7 +24,6 @@ source ~/.dotfiles/vim/vimrc/ignore.vim
 source ~/.dotfiles/vim/vimrc/settings.vim
 source ~/.dotfiles/vim/vimrc/markdown.vim
 source ~/.dotfiles/vim/vimrc/cpp.vim
-source ~/.dotfiles/vim/vimrc/airline.vim
 source ~/.dotfiles/vim/vimrc/coc.vim
 source ~/.dotfiles/vim/vimrc/telescope.lua
 

@@ -6,8 +6,6 @@ Plug 'Raimondi/delimitMate' " automatically close quotes, parens, brackets, etc.
 Plug 'sjl/gundo.vim' " Gundo is a Vim plugin for visualizing your undo tree to make it usable
 Plug 'mileszs/ack.vim' " search with ag the silver searcher
 Plug 'bronson/vim-trailing-whitespace' " Highlights trailing whitespace in red and provides :FixWhitespace to fix it.
-Plug 'vim-airline/vim-airline-themes' " theme for the below
-Plug 'vim-airline/vim-airline' " lean & mean status/tabline for vim that's light as air
 Plug 'scrooloose/nerdtree' " tree explorer
 Plug 'Chiel92/vim-autoformat' " Provide easy code formatting in Vim by integrating existing code formatters.
 Plug 'vim-scripts/ingo-library' " Vimscript library of common functions.
