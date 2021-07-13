@@ -2,7 +2,6 @@
 
 CONFIG_FILE="$( realpath ~/.config/remote-terminal )"
 
-# Use my `rofi` configuration as dmenu.
 dmenu="$( realpath ~/.dotfiles/bin/dmenu )"
 
 # Use dmenu to select an host from the files with list.
