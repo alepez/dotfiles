@@ -64,7 +64,7 @@ au CursorHold * checktime
 
 let NERDTreeQuitOnOpen = 1
 
-# Use the silver searcher if found
+" Use the silver searcher if found
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
