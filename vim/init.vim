@@ -26,6 +26,7 @@ source ~/.dotfiles/vim/vimrc/markdown.vim
 source ~/.dotfiles/vim/vimrc/cpp.vim
 source ~/.dotfiles/vim/vimrc/coc.vim
 source ~/.dotfiles/vim/vimrc/telescope.lua
+source ~/.dotfiles/vim/vimrc/lualine.lua
 
 " Include local vimrc is file exists
 if filereadable(glob("~/.vimrc.local"))
