@@ -1,4 +1,16 @@
 {
+  "languageserver": {
+    "rust": {
+      "command": "rust-analyzer",
+      "filetypes": ["rust"],
+      "rootPatterns": ["Cargo.toml"]
+    },
+    "clangd": {
+      "command": "clangd",
+      "rootPatterns": ["compile_flags.txt", "compile_commands.json", "cmake-build-debug/compile_commands.json"],
+      "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"]
+    }
+  },
   "cSpell.userWords": [
     "Alessandro",
     "Nucleo",
@@ -20,15 +32,8 @@
     "readonly"
   ],
   "cSpell.enabled": false,
-  "clangd.checkUpdates": false,
-  "clangd.enabled": true,
-  "clangd.semanticHighlighting": true,
-  "clangd.compilationDatabasePath": "cmake-build-debug",
   "codeLens.enable": true,
   "diagnostic.virtualText": true,
   "git.addGBlameToBufferVar": true,
-  "git.addGBlameToVirtualText": true,
-  "rust-analyzer.server.path": "/usr/bin/rust-analyzer",
-  "rust-analyzer.procMacro.enable": true,
-  "rust-analyzer.cargo.runBuildScripts": true
+  "git.addGBlameToVirtualText": true
 }
