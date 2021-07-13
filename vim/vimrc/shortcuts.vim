@@ -17,7 +17,7 @@ vnoremap <leader>f y:Ack! '<C-r>0'<CR>
 nnoremap <leader>ne :NvimTreeToggle<cr>
 
 " Telescope
-nnoremap <leader>; <cmd>Telescope find_files<cr>
+nnoremap <leader>; <cmd>Telescope commands<cr>
 nnoremap <leader>o <cmd>Telescope buffers<cr>
 nnoremap <C-p> <cmd>Telescope find_files<cr>
 
