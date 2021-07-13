@@ -15,6 +15,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'mhinz/vim-signify'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'romgrk/barbar.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 "=== Language tools
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
