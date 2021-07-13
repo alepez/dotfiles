@@ -14,6 +14,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'mhinz/vim-signify'
 Plug 'hoob3rt/lualine.nvim'
+Plug 'romgrk/barbar.nvim'
 
 "=== Language tools
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
