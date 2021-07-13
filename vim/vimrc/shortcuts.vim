@@ -14,7 +14,7 @@ nnoremap <leader>F :Ack! '<C-r>0'<CR>
 vnoremap <leader>f y:Ack! '<C-r>0'<CR>
 
 " Nerd Tree shortcut
-nnoremap <leader>ne :NERDTreeToggle<cr>
+nnoremap <leader>ne :NvimTreeToggle<cr>
 
 " Telescope
 nnoremap <leader>; <cmd>Telescope find_files<cr>
