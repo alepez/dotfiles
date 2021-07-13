@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
+# plot values from csv
+
 ( while read line; do echo "$line" | xsv select $1; done ) | ttyplot

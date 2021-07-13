@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+get_default_sink() {
+    pacmd list-sinks | awk '/index:/{i++} /* index:/{print i; exit}';
+}
+
+out_get_volume() {
+    pacmd list-sinks | awk '/^\svolume:/{i++} i=='$(get_default_sink)'{print $5; exit}' | tr -d '%';
+}
+
+out_volume_up()   {
+  if [ $(out_get_volume) -lt 100 ]; then
+    pactl -- set-sink-volume @DEFAULT_SINK@ +5%;
+  fi
+}
+
+out_volume_down() { pactl -- set-sink-volume @DEFAULT_SINK@ -5%;    }
+out_mute_toggle() { pactl -- set-sink-mute   @DEFAULT_SINK@ toggle; }
+out_mute()        { pactl -- set-sink-mute   @DEFAULT_SINK@ 1;      }
+out_unmute()      { pactl -- set-sink-mute   @DEFAULT_SINK@ 0;      }
+
+case $1 in
+  out_volume_up) out_unmute; out_volume_up;;
+  out_volume_down) out_unmute; out_volume_down;;
+  out_mute_toggle) out_mute_toggle;;
+  out_mute) out_mute;;
+  out_unmute) out_unmute;;
+  out_get_volume) out_get_volume;;
+esac
