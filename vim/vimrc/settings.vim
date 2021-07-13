@@ -54,7 +54,6 @@ set wildmode=list:longest,list:full " Show a list of completions
 
 " Check for file changes, so autoread works as expected
 au CursorHold * checktime
-" }}}
 
 let NERDTreeQuitOnOpen = 1
 

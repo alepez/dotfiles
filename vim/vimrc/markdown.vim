@@ -1,5 +1,3 @@
-" Markdown
-
 augroup WrapLineInMarkdownFile
 	autocmd!
 	" assign markdown filetype to files with .md extension

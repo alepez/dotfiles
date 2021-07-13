@@ -1,8 +1,6 @@
 " Change leader to a more efficient button
 let mapleader = "\<Space>"
 
-" NO ideavim {{{
-
 " Save and make
 nnoremap <silent> <leader>e <Esc>:update<CR>:Make<CR>
 
@@ -40,20 +38,11 @@ nnoremap <silent> <leader><leader> :call SmartRefresh() \| nohlsearch<CR>
 " toggle gundo
 nnoremap <leader>u :GundoToggle<CR>
 
-" Reindent all and return the same line where you were
-" nnoremap <leader>af :Autoformat<CR>
-" vnoremap <leader>af :'<,'>Autoformat<CR>
-
 " To next quickfix line
 noremap <F6> :cn<CR>
+
 " To next location line (wrap to begin after last) http://stackoverflow.com/a/27199153/786186
 noremap <F7> :try<bar>lnext<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>lfirst<bar>endtry<cr>
-
-" }}}
-
-" ONLY ideavim {{{
-
-" }}}
 
 " Close buffers without pain
 nnoremap <silent> <leader>x :bd<CR>
@@ -68,7 +57,7 @@ nnoremap <silent> z<space> :w<CR>
 inoremap <silent> <Nul>w <Esc>:w<CR>
 nnoremap <silent> <Nul>w <Esc>:w<CR>
 
-" Krack line under cursor (insert a line break)
+" Split line under cursor (insert a line break)
 nnoremap K i<CR><Esc>
 
 " Search current visual selection
