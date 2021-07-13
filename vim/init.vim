@@ -20,15 +20,11 @@ source ~/.dotfiles/vim/vimrc/plugins-special.vim
 source ~/.dotfiles/vim/vimrc/hacks.vim
 source ~/.dotfiles/vim/vimrc/shortcuts.vim
 source ~/.dotfiles/vim/vimrc/test.vim
-source ~/.dotfiles/vim/vimrc/nerdtree.vim
 source ~/.dotfiles/vim/vimrc/ignore.vim
 source ~/.dotfiles/vim/vimrc/settings.vim
-source ~/.dotfiles/vim/vimrc/backups.vim
 source ~/.dotfiles/vim/vimrc/markdown.vim
 source ~/.dotfiles/vim/vimrc/cpp.vim
-source ~/.dotfiles/vim/vimrc/ag.vim
 source ~/.dotfiles/vim/vimrc/airline.vim
-source ~/.dotfiles/vim/vimrc/zsh.vim
 source ~/.dotfiles/vim/vimrc/coc.vim
 source ~/.dotfiles/vim/vimrc/telescope.lua
 
