@@ -1,5 +1,4 @@
 "=== General
-Plug 'morhetz/gruvbox' " Retro groove color scheme for Vim
 Plug 'tpope/vim-commentary' " Comment stuff out
 Plug 'tpope/vim-surround' " surround.vim: quoting/parenthesizing made simple
 Plug 'Raimondi/delimitMate' " automatically close quotes, parens, brackets, etc.
