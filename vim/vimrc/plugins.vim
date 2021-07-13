@@ -1,4 +1,5 @@
 "=== General
+Plug 'marko-cerovac/material.nvim' " Color scheme
 Plug 'tpope/vim-commentary' " Comment stuff out
 Plug 'tpope/vim-surround' " surround.vim: quoting/parenthesizing made simple
 Plug 'Raimondi/delimitMate' " automatically close quotes, parens, brackets, etc.
