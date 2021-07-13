@@ -1,6 +1,4 @@
-" I ♥ colors
 syntax on
-set t_Co=256
 set background=dark
 
 autocmd vimenter * ++nested colorscheme gruvbox
