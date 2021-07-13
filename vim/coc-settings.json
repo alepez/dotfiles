@@ -7,29 +7,14 @@
     },
     "clangd": {
       "command": "clangd",
-      "rootPatterns": ["compile_flags.txt", "compile_commands.json", "cmake-build-debug/compile_commands.json"],
+      "rootPatterns": [ "compile_commands.json" ],
       "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"]
     }
   },
   "cSpell.userWords": [
     "Alessandro",
-    "Nucleo",
     "Pezzato",
-    "alepez",
-    "btreemap",
-    "chrono",
-    "devand",
-    "dotenv",
-    "fieldset",
-    "gdbserver",
-    "mqtt",
-    "myhome",
-    "onchange",
-    "onclick",
-    "oninput",
-    "openocd",
-    "pluggit",
-    "readonly"
+    "alepez"
   ],
   "cSpell.enabled": false,
   "codeLens.enable": true,
