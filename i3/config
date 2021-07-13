@@ -117,10 +117,10 @@ bindsym $mod+Shift+x mode $exit_mode
 
 mode $exit_mode {
   bindsym x exec --no-startup-id "i3-msg mode default; betterlockscreen -l dim"
-  bindsym l exec --no-startup-id "i3-msg mode default; ~/.dotfiles/i3/bin/exit logout"
-  bindsym p exec --no-startup-id "i3-msg mode default; ~/.dotfiles/i3/bin/exit poweroff"
-  bindsym r exec --no-startup-id "i3-msg mode default; ~/.dotfiles/i3/bin/exit reboot"
-  bindsym s exec --no-startup-id "i3-msg mode default; ~/.dotfiles/i3/bin/exit suspend"
+  bindsym l exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/i3-exit logout"
+  bindsym p exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/i3-exit poweroff"
+  bindsym r exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/i3-exit reboot"
+  bindsym s exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/i3-exit suspend"
 
   # back to normal: Enter or Escape
   bindsym Return    mode "default"
@@ -278,15 +278,14 @@ bindcode 233 exec --no-startup-id xbacklight -inc 2
 bindcode 232 exec --no-startup-id xbacklight -dec 2
 
 # Audio volume up/down (PulseAudio)
-bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.dotfiles/i3/bin/audio-control out_volume_up
-bindsym XF86AudioLowerVolume exec --no-startup-id ~/.dotfiles/i3/bin/audio-control out_volume_down
-bindsym XF86AudioMute        exec --no-startup-id ~/.dotfiles/i3/bin/audio-control out_mute_toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.dotfiles/bin/audio-control out_volume_up
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.dotfiles/bin/audio-control out_volume_down
+bindsym XF86AudioMute        exec --no-startup-id ~/.dotfiles/bin/audio-control out_mute_toggle
 
-# Spotify
-bindsym XF86AudioPrev exec --no-startup-id ~/.dotfiles/i3/bin/spotify-control prev
-bindsym XF86AudioNext exec --no-startup-id ~/.dotfiles/i3/bin/spotify-control next
-bindsym XF86AudioPlay exec --no-startup-id ~/.dotfiles/i3/bin/spotify-control play
-bindsym XF86AudioStop exec --no-startup-id ~/.dotfiles/i3/bin/spotify-control stop
+# Control audio players (like Spotify) using playerctl
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 
 # run rofi (a program launcher, see https://davedavenport.github.io/rofi/)
 bindsym $mod+space exec --no-startup-id ~/.dotfiles/wm/bin/rofi -show run
@@ -310,9 +309,6 @@ bindsym $mod+Shift+v exec --no-startup-id gpaste-client ui
 # Open filemanager
 set $filemanager "thunar"
 bindsym $mod+e exec $filemanager
-
-# Show ip address
-bindsym $mod+i exec --no-startup-id ~/.dotfiles/i3/bin/myip-notify
 
 ###############################################################################
 # Colors
