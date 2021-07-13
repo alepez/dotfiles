@@ -1,16 +1,3 @@
-"---------- Standard Vim settings {{{
-
-" NO ideavim {{{
-" set mouse= " Disable mouse (neovim enables it by default)
-set mouse=a mousemodel=popup " Enable
-set lazyredraw " only redraw when needed
-set noautochdir " Prevent changing directory when opening files
-set nospell " Disable spell check
-set title " Vim sets terminal title
-set ttyfast " sends more characters to the screen for fast terminal connections
-" }}}
-
-"set listchars=eol:¬,tab:▸\ ,trail:·,nbsp:⎵ " Use these symbols for invisible
 set autoindent " always set autoindenting on
 set autoread " Make Vim automatically open changed files
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
@@ -29,11 +16,16 @@ set hidden " Set hidden to allow buffers to be browsed
 set history=8192 " With a powerful PC, we can have a huge history.
 set hlsearch " Highlight search results
 set incsearch " as I start to search, the file jumps to the match as I type.
+set lazyredraw " only redraw when needed
 set list " Show invisible characters
+set listchars=eol:¬,tab:▸\ ,trail:·,nbsp:⎵ " Use these symbols for invisible
 set listchars=tab:▸\ ,trail:·,nbsp:⎵ " Use these symbols for invisible
 set modelines=1 " The number of lines that is checked for set commands
+set mouse=a mousemodel=popup " Enable
+set noautochdir " Prevent changing directory when opening files
 set nobackup " disable backups
 set noerrorbells " Disable error bells
+set nospell " Disable spell check
 set nostartofline " Don’t reset cursor to start of line when moving around.
 set noswapfile " disable swap files
 set nowrap " turn off soft wrap
@@ -53,8 +45,10 @@ set splitright " ensures new splits are to the right of current
 set tabstop=2 " The default is 8 which is MASSIVE!!
 set tags=./.tags;,.tags; " tags files are hidden
 set textwidth=0 wrapmargin=0 " turn off hard line wrapping
+set title " Vim sets terminal title
 set ttimeout " removes the delay when hitting esc in insert mode
 set ttimeoutlen=1 " removes the delay when hitting esc in insert mode
+set ttyfast " sends more characters to the screen for fast terminal connections
 set wildmenu " visually autocomplete the command menu
 set wildmode=list:longest,list:full " Show a list of completions
 
