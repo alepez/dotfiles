@@ -19,8 +19,9 @@ nnoremap <leader>ne :NvimTreeToggle<cr>
 " Telescope
 nnoremap <leader>; <cmd>Telescope commands<cr>
 nnoremap <leader>o <cmd>Telescope buffers<cr>
-nnoremap <C-p> <cmd>Telescope find_files<cr>
+nnoremap <C-p>     <cmd>Telescope find_files<cr>
 nnoremap <leader>q <cmd>Telescope quickfix<cr>
+nnoremap <leader>s <cmd>Telescope lsp_workspace_symbols<cr>
 
 " turn off search highlight and close quickfix
 fu! SmartRefresh()
