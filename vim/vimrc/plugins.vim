@@ -22,14 +22,6 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 Plug 'hrsh7th/vim-vsnip'
 
-"=== C/C++/Qml
-Plug 'jackguo380/vim-lsp-cxx-highlight' " Vim plugin for C/C++/ObjC semantic highlighting using cquery, ccls, or clangd
-
-"=== HTML/CSS
-Plug 'mattn/emmet-vim' " emmet for vim: http://emmet.io/
-"Plug 'jaxbot/browserlink.vim' " like livereload
-" Plug 'ap/vim-css-color' " Preview colours in source code while editing
-
 "=== Configuration files
 Plug 'cespare/vim-toml' " Vim syntax for TOML
 
