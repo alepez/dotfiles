@@ -3,6 +3,7 @@
 
 env:
   WINIT_X11_SCALE_FACTOR: "1"
+  TERM: xterm-256color
 
 scrolling:
   history: 0 # Disable scrolling, we have tmux for it
@@ -40,7 +41,7 @@ font:
     family: FiraCode Nerd Font
     style: Bold
   italic:
-    family: FiraCode Nerd Font
+    family: Liberation Mono
     style: Italic
 
 draw_bold_text_with_bright_colors: true
