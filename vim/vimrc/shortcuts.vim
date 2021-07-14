@@ -86,6 +86,3 @@ vmap <Leader>P "+P
 " Autocompletion
 inoremap <silent><expr> <C-Space> compe#complete()
 inoremap <silent><expr> <CR>      compe#confirm('<CR>')
-
-" Autoformat selected code.
-noremap <leader>af  :Autoformat<CR>
