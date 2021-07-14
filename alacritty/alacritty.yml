@@ -35,13 +35,13 @@ colors:
 font:
   size: 13
   normal:
-    family: FiraCode Nerd Font
     style: Regular
+    family: mononoki Nerd Font Mono
   bold:
-    family: FiraCode Nerd Font
     style: Bold
+    family: mononoki Nerd Font Mono
   italic:
-    family: Liberation Mono
+    family: mononoki Nerd Font Mono
     style: Italic
 
 draw_bold_text_with_bright_colors: true
