@@ -2,8 +2,9 @@ set autoindent " always set autoindenting on
 set autoread " Make Vim automatically open changed files
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
 set clipboard=unnamed " yank to clipboard
+set cmdheight=2 " Give more space for displaying messages.
 set colorcolumn=80,120 " show columns at 80 and 120
-set completeopt=menu,menuone " complete menu visibility
+set completeopt=menuone,noselect " complete menu visibility
 set cursorline " Highlight current line
 set diffopt+=vertical
 set expandtab " expand tabs to spaces
@@ -40,6 +41,7 @@ set shortmess=I " I: no intro message.
 set showcmd " Show command line
 set showmatch " highlight matching [{()}]
 set showmode " Show mode
+set signcolumn=yes " Always show the signcolumn
 set smartcase "don't ignore Capitals when present
 set splitright " ensures new splits are to the right of current
 set tabstop=2 " The default is 8 which is MASSIVE!!
@@ -49,6 +51,7 @@ set title " Vim sets terminal title
 set ttimeout " removes the delay when hitting esc in insert mode
 set ttimeoutlen=1 " removes the delay when hitting esc in insert mode
 set ttyfast " sends more characters to the screen for fast terminal connections
+set updatetime=300 " Longer values (default is 4000 ms) lead to poor user experience.
 set wildmenu " visually autocomplete the command menu
 set wildmode=list:longest,list:full " Show a list of completions
 

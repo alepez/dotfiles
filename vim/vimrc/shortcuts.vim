@@ -20,6 +20,7 @@ nnoremap <leader>ne :NvimTreeToggle<cr>
 nnoremap <leader>; <cmd>Telescope commands<cr>
 nnoremap <leader>o <cmd>Telescope buffers<cr>
 nnoremap <C-p> <cmd>Telescope find_files<cr>
+nnoremap <leader>q <cmd>Telescope quickfix<cr>
 
 " turn off search highlight and close quickfix
 fu! SmartRefresh()
@@ -80,3 +81,10 @@ nmap <F8> :TagbarToggle<CR>
 vmap <Leader>y "+y
 vmap <Leader>p "+p
 vmap <Leader>P "+P
+
+" Autocompletion
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+
+" Autoformat selected code.
+noremap <leader>af  :Autoformat<CR>

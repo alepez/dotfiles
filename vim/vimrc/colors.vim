@@ -1,5 +1,6 @@
 syntax on
 set background=dark
+set termguicolors
 
 let g:gruvbox_material_background = 'medium'
 let g:gruvbox_material_enable_italic = 1

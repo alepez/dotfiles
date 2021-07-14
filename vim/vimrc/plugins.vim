@@ -7,7 +7,7 @@ Plug 'sjl/gundo.vim' " Gundo is a Vim plugin for visualizing your undo tree to m
 Plug 'mileszs/ack.vim' " search with ag the silver searcher
 Plug 'bronson/vim-trailing-whitespace' " Highlights trailing whitespace in red and provides :FixWhitespace to fix it.
 Plug 'kyazdani42/nvim-tree.lua' " tree explorer
-Plug 'Chiel92/vim-autoformat' " Provide easy code formatting in Vim by integrating existing code formatters.
+Plug 'vim-autoformat/vim-autoformat' " Provide easy code formatting in Vim by integrating existing code formatters.
 Plug 'vim-scripts/ingo-library' " Vimscript library of common functions.
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
