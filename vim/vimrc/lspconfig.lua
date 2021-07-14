@@ -37,36 +37,52 @@ local default_opts = {
   }
 }
 
-lspconfig.rust_analyzer.setup(default_opts)
+local lua_runtime_path = vim.split(package.path, ';')
+table.insert(lua_runtime_path, "lua/?.lua")
+table.insert(lua_runtime_path, "lua/?/init.lua")
 
-lspconfig.clangd.setup(default_opts)
-
-local sumneko_binary = "/usr/bin/lua-language-server"
-
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, "lua/?.lua")
-table.insert(runtime_path, "lua/?/init.lua")
-
-lspconfig.sumneko_lua.setup {
-  cmd = { sumneko_binary };
-  settings = {
-    Lua = {
-      runtime = {
-        version = 'LuaJIT',
-        path = runtime_path,
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
+local custom_opts = {
+  sumneko_lua = {
+    cmd = {  "/usr/bin/lua-language-server" };
+    settings = {
+      Lua = {
+        runtime = {
+          version = 'LuaJIT',
+          path = lua_runtime_path,
+        },
+        diagnostics = {
+          -- Get the language server to recognize the `vim` global
+          globals = {'vim'},
+        },
+        workspace = {
+          -- Make the server aware of Neovim runtime files
+          library = vim.api.nvim_get_runtime_file("", true),
+        },
+        -- Do not send telemetry data containing a randomized but unique identifier
+        telemetry = {
+          enable = false,
+        },
       },
     },
-  },
+  }
 }
+
+-- Use a loop to conveniently call 'setup' on multiple servers and
+-- map buffer local keybindings when the language server attaches
+local servers = {
+  "clangd",
+  "rust_analyzer",
+  "sumneko_lua",
+}
+
+for _, server in ipairs(servers) do
+  local opts = custom_opts[server]
+
+  if opts == nil then
+    opts = default_opts
+  else
+    opts = vim.tbl_extend("keep", opts, default_opts)
+  end
+
+  lspconfig[server].setup(opts)
+end
