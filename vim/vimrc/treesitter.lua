@@ -14,5 +14,7 @@ require'nvim-treesitter.configs'.setup {
   },
   highlight = {
     enable = true,
+    -- No cpp because C++17 nested namespaces (which I use) are not supported
+    disable = { "cpp" },
   },
 }
