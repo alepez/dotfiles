@@ -14,12 +14,12 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'mhinz/vim-signify'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'romgrk/barbar.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 "=== Language tools
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 Plug 'hrsh7th/vim-vsnip'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 "=== Configuration files
 Plug 'cespare/vim-toml' " Vim syntax for TOML
