@@ -42,7 +42,20 @@ table.insert(lua_runtime_path, "lua/?.lua")
 table.insert(lua_runtime_path, "lua/?/init.lua")
 
 local custom_opts = {
-  sumneko_lua = {
+  ["rust-analyzer"] = {
+    procMacro = {
+      enable = true
+    },
+    cargo = {
+      loadOutDirsFromCheck = true,
+    },
+    diagnostics = {
+      disabled = {
+        "unresolved-proc-macro"
+      }
+    }
+  },
+  ["sumneko_lua"] = {
     cmd = {  "/usr/bin/lua-language-server" };
     settings = {
       Lua = {
@@ -64,7 +77,7 @@ local custom_opts = {
         },
       },
     },
-  }
+  },
 }
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
