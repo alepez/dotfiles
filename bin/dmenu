@@ -2,17 +2,19 @@
 
 PATH=/home/${USER}/bin:/home/${USER}/.local/bin:/usr/local/bin:/usr/bin:/bin \
 
-rofi \
-  -color-window "#CC282828, #00282828, #00282828" \
-  -color-normal "#00282828, #FFA89984, #00282828, #00282828, #FFB8BB26" \
-  -color-active "#00282828, #FF83A598, #FF32302F, #FF83A598, #00282828" \
-  -color-urgent "#00282828, #FFFB4934, #FF32302F, #FFFB4934, #00282828" \
-  -fake-transparency -fake-background background \
-  -fullscreen \
-  -eh 2 \
-  -separator none \
-  -padding 300 \
-  -font "FiraCode Nerd Font 20" \
-  -matching fuzzy \
-  -i \
-  $@
+rofi $@
+
+# rofi \
+#   -color-window "#CC282828, #00282828, #00282828" \
+#   -color-normal "#00282828, #FFA89984, #00282828, #00282828, #FFB8BB26" \
+#   -color-active "#00282828, #FF83A598, #FF32302F, #FF83A598, #00282828" \
+#   -color-urgent "#00282828, #FFFB4934, #FF32302F, #FFFB4934, #00282828" \
+#   -fake-transparency -fake-background background \
+#   -fullscreen \
+#   -eh 2 \
+#   -separator none \
+#   -padding 300 \
+#   -font "FiraCode Nerd Font 20" \
+#   -matching fuzzy \
+#   -i \
+#   $@
