@@ -84,6 +84,7 @@ local custom_opts = {
 -- map buffer local keybindings when the language server attaches
 local servers = {
   "clangd",
+  "jedi_language_server",
   "rust_analyzer",
   "sumneko_lua",
 }

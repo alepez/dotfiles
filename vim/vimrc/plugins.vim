@@ -20,6 +20,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvie/vim-flake8'
 
 "=== Configuration files
 Plug 'cespare/vim-toml' " Vim syntax for TOML
