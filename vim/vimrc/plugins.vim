@@ -14,6 +14,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'mhinz/vim-signify'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'romgrk/barbar.nvim'
+Plug 'f-person/git-blame.nvim'
 
 "=== Language tools
 Plug 'neovim/nvim-lspconfig'
