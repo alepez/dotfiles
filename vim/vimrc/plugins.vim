@@ -15,6 +15,7 @@ Plug 'mhinz/vim-signify'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'romgrk/barbar.nvim'
 Plug 'f-person/git-blame.nvim'
+Plug 'tpope/vim-fugitive'
 
 "=== Language tools
 Plug 'neovim/nvim-lspconfig'
