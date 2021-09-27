@@ -33,7 +33,7 @@ gpaste-client start &>/dev/null </dev/null &
 pasystray &>/dev/null </dev/null &
 
 # External storage manager
-udiskie --no-automount --tray &>/dev/null </dev/null &
+udiskie &>/dev/null </dev/null &
 
 # Bluetooth applet
 blueman-applet &>/dev/null </dev/null &

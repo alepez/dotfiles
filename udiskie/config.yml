@@ -1,0 +1,16 @@
+program_options:
+  tray:             true
+  menu:             flat
+  automount:        false
+  notify:           true
+  password_cache:   false
+  file_manager:     'thunar'
+  terminal:         'alacritty'
+  password_prompt: ["gnome-keyring-query", "get", "{id_uuid}"]
+  notify_command: "notify-send -u low '{event}: {device_presentation}'"
+
+device_config:
+- device_file: /dev/nvme0*
+  ignore:      true
+
+quickmenu_actions: [mount, unmount, browse]
