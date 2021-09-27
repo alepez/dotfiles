@@ -6,7 +6,7 @@ dmenu="$( realpath ~/.dotfiles/bin/dmenu )"
 
 # Use dmenu to select string from the files with list.
 # Reverse lines with `tac` so last used hosts are first.
-string=$( tac "${CONFIG_FILE}" | "${dmenu}" -dmenu -p "String:" "$@" | head -c -1 )
+string=$( tac "${CONFIG_FILE}" | "${dmenu}" -dmenu -p "String" "$@" | head -c -1 )
 
 # Ignore empty lines
 test -n "${string}" || exit

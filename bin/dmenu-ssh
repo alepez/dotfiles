@@ -6,7 +6,7 @@ dmenu="$( realpath ~/.dotfiles/bin/dmenu )"
 
 # Use dmenu to select an host from the files with list.
 # Reverse lines with `tac` so last used hosts are first.
-host="$( tac "${CONFIG_FILE}" | "${dmenu}" -dmenu -p "Host:" "$@" )"
+host="$( tac "${CONFIG_FILE}" | "${dmenu}" -dmenu -p "Host" "$@" )"
 
 # Move the selected line to the end of file.
 sed -i "/^${host}$/d" "${CONFIG_FILE}"
