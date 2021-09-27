@@ -63,7 +63,7 @@ nnoremap <silent> <Nul>w <Esc>:w<CR>
 nnoremap K i<CR><Esc>
 
 " Search current visual selection
-vnoremap // y/<C-R>"<CR>
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 " make < > shifts keep selection
 vnoremap < <gv
