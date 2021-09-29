@@ -239,6 +239,13 @@ bindkey '^Z' fancy_ctrl_z
 ## Wordreference
 function wr { xdg-open http://wordreference.com/$1/$2 &>/dev/null }
 
+## Syntax highlight a file using bat and copy as rich text to the clipboard
+function bat2clip {
+  bat --theme=OneHalfLight --color=always "${1}" \
+    | aha \
+    | xclip -t text/html -selection clipboard;
+}
+
 ## }}}
 
 ## fzf https://github.com/junegunn/fzf
