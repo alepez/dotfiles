@@ -8,10 +8,6 @@ cd /
 # Automatic monitor setup (blocking)
 ~/.dotfiles/bin/monitor-setup auto
 
-# Compositor
-# xcompmgr -a &>/dev/null </dev/null &
-picom --config ~/.dotfiles/wm/picom.conf -b
-
 # Setup keyboard (layout, caps-escape, ...)
 ~/.dotfiles/bin/keyboard-setup &>/dev/null </dev/null &
 
@@ -21,6 +17,15 @@ xbindkeys &>/dev/null </dev/null &
 # Automatic screen lock
 xset s 300 &>/dev/null </dev/null &
 xss-lock -- betterlockscreen -l dim &>/dev/null </dev/null &
+
+# Compositor needs to be launched after monitor layout has changed,
+# delay ti some seconds
+(
+sleep 2
+
+picom --config ~/.dotfiles/wm/picom.conf -b
+
+) &>/dev/null </dev/null &
 
 # Wait some seconds (in background) before launching systray applets
 (
