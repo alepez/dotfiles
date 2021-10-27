@@ -114,6 +114,7 @@
   # tag
   t = tag -n                        # show tags with <n> lines of each tag message
 
+  ignore-tracked = update-index --assume-unchanged
 
 [core]
   excludesfile = ~/.gitignore
