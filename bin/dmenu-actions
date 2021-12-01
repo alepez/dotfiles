@@ -24,9 +24,20 @@ launch_command() {
   alacritty -e bash -c "${1}"
 }
 
-opt="$( list_options | select_option "$@" )"
+main() {
+  opt="$( list_options | select_option "$@" )"
 
-cmd=$( get_command "${opt}" )
+  if [ -z "${opt}" ]; then
+    exit 0
+  fi
 
-echo "${cmd}"
-launch_command "${cmd}"
+  cmd=$( get_command "${opt}" )
+
+  if [ -z "${opt}" ]; then
+    exit 0
+  fi
+
+  launch_command "${cmd}"
+}
+
+main
