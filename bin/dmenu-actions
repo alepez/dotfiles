@@ -17,12 +17,50 @@ list_options() {
   read_conf | sed 's/:.*//'
 }
 
+remove_tags() {
+  sed 's/^\[[a-z,]*\] *//'
+}
+
+remove_name() {
+  sed 's/[^:]*: *//'
+}
+
+take_tags() {
+  grep -o '\[[a-z,]*\]'
+}
+
+match_tag() {
+  local t=$( tr '[' ',' \
+    | tr ']' ',' \
+    | grep -o ",$1," \
+    | tr -d ',' )
+  test "${t}" == "$1"
+}
+
+has_tag() {
+  get_tags $1 \
+    | take_tags \
+    | match_tag $2
+}
+
+find_command() {
+  grep -e "^${1}:"
+}
+
+get_tags() {
+  read_conf | find_command ${1} | remove_name | take_tags
+}
+
 get_command() {
-  read_conf | grep -e "^${1}:" | sed 's/[^:]*: //'
+  read_conf | find_command ${1} | remove_name | remove_tags
 }
 
 launch_command() {
-  alacritty -e bash -c "${1}"
+  if ( echo $2 | match_tag bg ); then
+    nohup bash -c "${1}" 1>/dev/null 2>/dev/null </dev/null &
+  elif ( echo $2 | match_tag terminal ); then
+    alacritty -e bash -c "${1}"
+  fi
 }
 
 main() {
@@ -33,12 +71,13 @@ main() {
   fi
 
   local cmd=$( get_command "${opt}" )
+  local tags=$( get_tags "${opt}" )
 
   if [ -z "${opt}" ]; then
     exit 0
   fi
 
-  launch_command "${cmd}"
+  launch_command "${cmd}" "${tags}"
 }
 
 main
