@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+change_font_size() {
+  local size=$1
+  sed -i -e "s/.*FONT_SIZE_HERE_FOR_AUTOMATIC_EDITING/  size: ${size} # FONT_SIZE_HERE_FOR_AUTOMATIC_EDITING/" \
+    ~/.dotfiles/alacritty/alacritty.yml
+}
+
+help() {
+cat << EOF
+USAGE:
+    ${0} [subcommand] [arguments]...
+
+EXAMPLE:
+    ${0} font_size 13
+
+EOF
+}
+
+main() {
+  local subcommand=$1
+
+  case $subcommand in
+    font-size) change_font_size $2;;
+  esac
+}
+
+main $@
