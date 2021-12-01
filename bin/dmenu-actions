@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-CONFIG_FILE="$( realpath ~/.dotfiles-private/dmenu-actions.conf )"
+PRIVATE_CFG="$( realpath ~/.dotfiles-private/dmenu-actions.conf )"
+PUBLIC_CFG="$( realpath ~/.dotfiles/dmenu-actions.conf )"
 
 dmenu="$( realpath ~/.dotfiles/bin/dmenu )"
 
@@ -9,7 +10,7 @@ select_option() {
 }
 
 read_conf() {
-  cat "${CONFIG_FILE}"
+  cat "${PRIVATE_CFG}" "${PUBLIC_CFG}"
 }
 
 list_options() {
@@ -25,13 +26,13 @@ launch_command() {
 }
 
 main() {
-  opt="$( list_options | select_option "$@" )"
+  local opt="$( list_options | select_option "$@" )"
 
   if [ -z "${opt}" ]; then
     exit 0
   fi
 
-  cmd=$( get_command "${opt}" )
+  local cmd=$( get_command "${opt}" )
 
   if [ -z "${opt}" ]; then
     exit 0
