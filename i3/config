@@ -302,6 +302,9 @@ bindsym $mod+Shift+Return exec --no-startup-id ~/.dotfiles/bin/dmenu-ssh
 # common clipboard text
 bindsym $mod+Shift+c exec --no-startup-id ~/.dotfiles/bin/dmenu-common-clip
 
+# common actions
+bindsym $mod+a exec --no-startup-id ~/.dotfiles/bin/dmenu-actions
+
 # Toggle clipboard manager
 # (Mouse trigger is handled by xbindkeys)
 bindsym $mod+Shift+v exec --no-startup-id gpaste-client ui
