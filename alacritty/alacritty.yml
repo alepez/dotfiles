@@ -33,7 +33,7 @@ colors:
     white:   '0xebdbb2'
 
 font:
-  size: 13
+  size: 13 # FONT_SIZE_HERE_FOR_AUTOMATIC_EDITING
   normal:
     style: Regular
     family: mononoki Nerd Font Mono
