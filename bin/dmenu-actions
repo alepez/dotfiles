@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+CONFIG_FILE="$( realpath ~/.dotfiles-private/dmenu-actions.conf )"
+
+dmenu="$( realpath ~/.dotfiles/bin/dmenu )"
+
+select_option() {
+  "${dmenu}" -dmenu -p "Host" "$@"
+}
+
+read_conf() {
+  cat "${CONFIG_FILE}"
+}
+
+list_options() {
+  read_conf | sed 's/:.*//'
+}
+
+get_command() {
+  read_conf | grep -e "^${1}:" | sed 's/[^:]*: //'
+}
+
+launch_command() {
+  alacritty -e bash -c "${1}"
+}
+
+opt="$( list_options | select_option "$@" )"
+
+cmd=$( get_command "${opt}" )
+
+echo "${cmd}"
+launch_command "${cmd}"
