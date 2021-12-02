@@ -34,12 +34,40 @@ destroy_many() {
   done
 }
 
-if [ "$1" == "destroy" ]; then
+list_all_snapshots_for_destroy() {
+  list_all_snapshots \
+    | grep zroot \
+    | awk '{ print $1 }' \
+    | tr '@' ' ' \
+    | sort -k 2 \
+    | tr ' ' '@'
+}
+
+destroy_from_list() {
+  while read line; do
+    echo $line
+    destroy $line
+  done
+}
+
+die() {
+  echo "$1"
+  exit 1
+}
+
+main() {
+  local subcommand=$1
   shift
-  destroy_many $@
-elif [ "$1" == "list" ]; then
-  shift
-  list_all_snapshots
-else
-  make_snapshots
-fi
+
+  case $subcommand in
+    list) list_all_snapshots;;
+    list_for_destroy) list_all_snapshots_for_destroy;;
+    destroy_from_list) destroy_from_list;;
+    destroy) destroy $@;;
+    "") make_snapshots;;
+    *) die "invalid command";;
+  esac
+
+}
+
+main $@
