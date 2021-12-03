@@ -28,6 +28,7 @@ __pycache__
 .jsbeautifyrc
 .jshintrc
 .Rhistory
+*.hi
 
 # Log
 *.log
