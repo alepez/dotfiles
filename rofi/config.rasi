@@ -1,6 +1,5 @@
 configuration {
   font: "FiraCode Nerd Font 20";
-  theme: "alepez";
 
   timeout {
       action: "kb-cancel";
@@ -12,3 +11,5 @@ configuration {
       sorting-method:    "name";
   }
 }
+
+@theme "alepez"
