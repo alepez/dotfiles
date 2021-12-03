@@ -118,7 +118,7 @@
 
 [core]
   excludesfile = ~/.gitignore
-  autocrlf = input
+  autocrlf = false
   pager = delta
 
 [fetch]
