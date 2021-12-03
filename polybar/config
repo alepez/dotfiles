@@ -197,6 +197,14 @@ format-connected-prefix = " "
 label-connected = %local_ip% %downspeed:9% %upspeed:9%
 format-disconnected =
 
+[module/enp11s0u1]
+type = internal/network
+interface = enp11s0u1
+interval = 3.0
+format-connected-prefix = " "
+label-connected = %downspeed:9% %upspeed:9%
+format-disconnected =
+
 [module/ens1u1]
 type = internal/network
 interface = ens1u1
