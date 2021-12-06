@@ -30,6 +30,7 @@ source ~/.dotfiles/vim/vimrc/treesitter.lua
 source ~/.dotfiles/vim/vimrc/lspconfig.lua
 source ~/.dotfiles/vim/vimrc/compe.lua
 source ~/.dotfiles/vim/vimrc/flake8.vim
+source ~/.dotfiles/vim/vimrc/nvim-tree.lua
 
 " Include local vimrc is file exists
 if filereadable(glob("~/.vimrc.local"))
