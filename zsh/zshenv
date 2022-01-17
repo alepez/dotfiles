@@ -102,16 +102,6 @@ ding() {
   ) >/dev/null 2>/dev/null </dev/null &
 }
 
-## fuzzy find password with `pass` password manager
-## See
-## - http://www.passwordstore.org/
-## - https://github.com/junegunn/fzf
-Pass() {
-  local passpath=$( cd ~/.password-store && git ls-files | grep -v "^\." | fzf-tmux | sed "s/\.gpg$//" );
-  pass -c "${passpath}";
-  pass "${passpath}";
-}
-
 ## Docker {{{
 
 ## I use docker so often I need this
