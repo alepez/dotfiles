@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+## fuzzy find password with `pass` password manager
+## See
+## - http://www.passwordstore.org/
+## - https://github.com/junegunn/fzf
+
+
+only_password() {
+  head -1
+}
+
+only_username() {
+  sed -n '3,1p' | sed 's/[^:]*: //'
+}
+
+to_xclip() {
+  echo "${2}" | xclip -selection clipboard
+  echo "${3}" | xclip -selection primary
+}
+
+to_gpaste() {
+  gpaste-client add "${2}"
+  gpaste-client add-password "${1}" "${3}"
+}
+
+copy_tokens() {
+  local name="${1}"
+  local input=$( cat )
+  local password=$( echo "${input}" | only_password )
+  local username=$( echo "${input}" | only_username )
+  to_gpaste "${passpath}" "${username}" "${password}"
+}
+
+main() {
+  local passpath=$( cd ~/.password-store && git ls-files | grep -v "^\." | fzf-tmux | sed "s/\.gpg$//" );
+  local txt=$( pass "${passpath}" ) 
+  echo "${txt}" | copy_tokens "${passpath}"
+  echo "${txt}"
+}
+
+main $@
