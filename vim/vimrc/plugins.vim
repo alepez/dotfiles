@@ -28,7 +28,7 @@ Plug 'nvie/vim-flake8'
 Plug 'cespare/vim-toml' " Vim syntax for TOML
 
 "=== Text/Markdown
-Plug 'davidgranstrom/nvim-markdown-preview'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'godlygeek/tabular' " Vim script for text filtering and alignment. Note: must come before vim-markdown
 Plug 'plasticboy/vim-markdown' " Markdown Vim Mode (must come after tabular)
 
