@@ -1,5 +1,5 @@
 "=== General
-Plug 'sainnhe/gruvbox-material' " Color scheme
+Plug 'catppuccin/nvim', {'as': 'catppuccin'} " Color scheme
 Plug 'tpope/vim-commentary' " Comment stuff out
 Plug 'tpope/vim-surround' " surround.vim: quoting/parenthesizing made simple
 Plug 'Raimondi/delimitMate' " automatically close quotes, parens, brackets, etc.
