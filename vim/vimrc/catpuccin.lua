@@ -57,4 +57,8 @@ catppuccin.setup({
   }
 })
 
+
+local colors = require'catppuccin.api.colors'.get_colors() -- fetch colors with API
+catppuccin.remap({ ColorColumn = { bg = colors.black1 }, })
+
 vim.cmd[[colorscheme catppuccin]]
