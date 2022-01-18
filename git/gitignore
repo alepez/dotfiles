@@ -69,7 +69,6 @@ project.yml
 build
 *.dump
 .clangd
-coc-settings.json
 .cache
 /.vs
 /CMakeSettings.json
