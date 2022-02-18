@@ -62,11 +62,14 @@ font:
 
 draw_bold_text_with_bright_colors: true
 
-background_opacity: 0.95
-
 mouse:
   hide_when_typing: true
 
 selection:
   # When set to `true`, selected text will be copied to the primary clipboard.
   save_to_clipboard: true
+
+window:
+  opacity: 0.95
+
+
