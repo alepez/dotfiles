@@ -16,6 +16,8 @@ Plug 'hoob3rt/lualine.nvim'
 Plug 'romgrk/barbar.nvim'
 Plug 'f-person/git-blame.nvim'
 Plug 'tpope/vim-fugitive'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
 
 "=== Language tools
 Plug 'neovim/nvim-lspconfig'
