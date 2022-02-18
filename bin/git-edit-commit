@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# Thanks to https://stackoverflow.com/a/1186549/786186
+
+cat <<EOF
+In the editor, modify 'pick' to 'edit' in the line mentioning the
+commit you want to edit.
+
+Save the file and exit: git will interpret and automatically execute the
+commands in the file. You will find yourself in the previous situation in which
+you just had created the commit.
+
+At this point you can easily amend it. Make your changes and then commit them
+with the command:
+
+    git commit --all --amend --no-edit
+
+After that, type:
+
+    git rebase --continue
+
+To return back to the previous HEAD commit.
+
+EOF
+
+git rebase --interactive "${1}^"
