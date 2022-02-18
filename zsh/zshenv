@@ -28,6 +28,8 @@ alias add_timestamp='while read line; do echo "$(date +%Y-%m-%dT%H:%M:%S.$( date
 
 alias pi='echo 3.14159265359'
 
+alias leave='sleep 10 && exit'
+
 # Create new tmp directory and cd into it
 # Dir name is current UTC time, without special characters as : to be
 # compatible with PATH env var (so you can add this tmp directory to PATH)
