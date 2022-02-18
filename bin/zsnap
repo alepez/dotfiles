@@ -19,7 +19,14 @@ make_snapshots() {
 }
 
 list_all_snapshots() {
-  for i in ROOT/default data/home data/sdk; do
+  for i in \
+    cache \
+    data/home \
+    data/workspace \
+    ROOT/default \
+    vbox-machines \
+    ; do
+    echo -e "\n=== ${i} ==="
     list_snapshots ${i}
   done
 }
