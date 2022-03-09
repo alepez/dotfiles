@@ -52,10 +52,6 @@ main() {
     layout=$( auto_detect_layout )
   fi
 
-  if [ "${layout}" == "auto" ]; then
-    layout=$( auto_detect_layout )
-  fi
-
   if [ "${layout}" == "manual" ]; then
     arandr
   else
