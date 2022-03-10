@@ -20,8 +20,8 @@ to_xclip() {
 }
 
 to_gpaste() {
-  gpaste-client add "${2}"
-  gpaste-client add-password "${1}" "${3}"
+  gpaste-client add "${2}" 2>/dev/null
+  gpaste-client add-password "${1}" "${3}" 2>/dev/null
 }
 
 copy_tokens() {
@@ -35,6 +35,11 @@ copy_tokens() {
 main() {
   local passpath=$( cd ~/.password-store && git ls-files | grep -v "^\." | fzf-tmux | sed "s/\.gpg$//" );
   local txt=$( pass "${passpath}" ) 
+  clear
+  echo "================================================================================"
+  echo "${passpath}"
+  echo "================================================================================"
+  echo
   echo "${txt}" | copy_tokens "${passpath}"
   echo "${txt}"
 }
