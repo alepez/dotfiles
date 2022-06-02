@@ -27,7 +27,14 @@ auto_detect_layout() {
   local dp1_2=$( xrandr | grep "DP1-2 connected" &>/dev/null && echo 1 )
   local hdmi2=$( xrandr | grep "HDMI2 connected" &>/dev/null && echo 1 )
 
+  local hdmi_1=$( xrandr | grep "HDMI-1 connected" &>/dev/null && echo 1 )
+  local dp_1=$( xrandr | grep "DP-1 connected" &>/dev/null && echo 1 )
+
   if [ $dp1_1 ] && [ $dp1_2 ]; then
+    # home - laptop on dock
+    result=home
+  elif [ $dp_1 ] && [ $hdmi_1 ]; then
+    # home - desktop
     result=home
   elif [ $hdmi2 ]; then
     result=ext-right
