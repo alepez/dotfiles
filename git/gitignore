@@ -65,7 +65,6 @@ cmake-build-*
 compile_commands.json
 /.tags
 .vscode
-project.yml
 build
 *.dump
 .clangd
