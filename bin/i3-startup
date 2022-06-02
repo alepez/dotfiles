@@ -18,8 +18,7 @@ xbindkeys &>/dev/null </dev/null &
 xset s 300 &>/dev/null </dev/null &
 xss-lock -- betterlockscreen -l dim &>/dev/null </dev/null &
 
-# Compositor needs to be launched after monitor layout has changed,
-# delay ti some seconds
+# Compositor needs to be launched after monitor layout has changed
 (
 sleep 2
 
