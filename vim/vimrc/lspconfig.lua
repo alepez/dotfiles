@@ -87,6 +87,7 @@ local servers = {
   "jedi_language_server",
   "rust_analyzer",
   "sumneko_lua",
+  "tsserver",
 }
 
 for _, server in ipairs(servers) do
