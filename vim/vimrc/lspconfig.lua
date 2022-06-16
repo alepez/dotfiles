@@ -85,9 +85,11 @@ local custom_opts = {
 local servers = {
   "clangd",
   "jedi_language_server",
+  "hls",
   "rust_analyzer",
   "sumneko_lua",
   "tsserver",
+  "zls",
 }
 
 for _, server in ipairs(servers) do
