@@ -211,7 +211,7 @@ mode $resize_mode {
 ###############################################################################
 # Screenshots
 ###############################################################################
-bindsym --release Print exec --no-startup-id flameshot gui -p ~/Pictures/screenshots
+bindsym --release Print exec --no-startup-id ~/.dotfiles/bin/flameshot-wrapper
 
 ###############################################################################
 # Workspaces
