@@ -289,7 +289,7 @@ animation-discharging-framerate = 500
 
 [module/temperature]
 type = internal/temperature
-thermal-zone = 0
+thermal-zone = 1
 warn-temperature = 65
 
 label = %temperature-c%
