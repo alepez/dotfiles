@@ -343,38 +343,22 @@ bindsym $mod+0 [instance="dropdown"] scratchpad show
 ###############################################################################
 # Special windows
 ###############################################################################
+assign [class="MyHome"] $workspace_3
 for_window [class="Arandr"] floating enable
-for_window [instance="pinentry-gtk-2"] floating enable, sticky enable, border pixel 4000, focus
-for_window [title="Wi-Fi Network Authentication Required"] floating enable, sticky enable, border pixel 4000, focus
-for_window [title="Unlock Login Keyring"] floating enable, sticky enable, border pixel 4000, focus
-for_window [class="rdesktop"] floating disable
-for_window [class="VirtualBox Manager"] floating enable
-for_window [class="Nm-connection-editor"] floating enable
-for_window [class="blueman-manager"] floating enable
 for_window [class="Blueman-manager"] floating enable
+for_window [class="Nm-connection-editor"] floating enable
+for_window [class="VirtualBox Machine"] floating enable
+for_window [class="VirtualBox Manager"] floating enable
+for_window [class="blueman-manager"] floating enable
+for_window [class="jetbrains-.*"] floating enable border none
+for_window [class="org.remmina.Remmina"] floating enable
 for_window [class="qemu-system-x86_64"] floating enable
+for_window [class="rdesktop"] floating disable
 for_window [class="sun-awt-X11-XWindowPeer"] floating enable
 for_window [class="zoom"] floating enable
-for_window [class="VirtualBox Machine"] floating enable
-for_window [class="VirtualBox Machine"] resize set 1920 1080
-for_window [class="jetbrains-.*" title="win0"] floating enable border none
-for_window [class="org.remmina.Remmina"] floating enable
-
-assign [class="VirtualBox Machine"] $workspace_7
-assign [class="rdesktop"] $workspace_7
-assign [class="Mailspring"] $workspace_8
-assign [class="Chromium"] $workspace_2
-assign [class="discord"] $workspace_9
-
-# FIXME Personal projects, these lines should go in a config.local file >>>
-for_window [class="ESA Universal"] floating enable
-for_window [class="ESA Universal"] resize set 1024 600
-for_window [class="QtQmlViewer"] floating enable
-assign [class="ESA Universal"] $workspace_3
-assign [class="QtQmlViewer"] $workspace_3
-assign [class="MyHome"] $workspace_3
-assign [class="VirtualBox Machine"] $workspace_7
-# <<< FIXME
+for_window [instance="pinentry-gtk-2"] floating enable, sticky enable, border pixel 4000, focus
+for_window [title="Unlock Login Keyring"] floating enable, sticky enable, border pixel 4000, focus
+for_window [title="Wi-Fi Network Authentication Required"] floating enable, sticky enable, border pixel 4000, focus
 
 ###############################################################################
 # Startup
