@@ -83,11 +83,13 @@ local custom_opts = {
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = {
+  "bashls",
   "clangd",
   "jedi_language_server",
   "hls",
   "rust_analyzer",
   "sumneko_lua",
+  "taplo",
   "tsserver",
   "zls",
 }
