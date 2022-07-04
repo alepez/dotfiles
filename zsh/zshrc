@@ -188,28 +188,12 @@ function ssh-time-pull {
 }
 ## }}}
 
-## Record screen with ffmpeg {{{
-function screencast {
-	ffmpeg -video_size $1 -framerate 25 -f x11grab -i :0.0+$2 \
-		-nostats -loglevel quiet \
-		~/screencast-$( date +%Y%m%d-%H%M%S ).mp4
-}
-
-function screencast-mic {
-	ffmpeg -video_size $1 -framerate 25 -f x11grab -i :0.0+$2 \
-		-f pulse -i default \
-		-nostats -loglevel quiet \
-		~/screencast-$( date +%Y%m%d-%H%M%S ).mp4
-}
-
-
 ## video to gif
 function video2gif {
 	local gif="${1%.*}.gif"
 	ffmpeg -i ${1} -vf fps=5,scale=640:-1:flags=lanczos,palettegen palette.png
 	ffmpeg -i ${1} -i palette.png -filter_complex "fps=5,scale=640:-1:flags=lanczos[x];[x][1:v]paletteuse" ${gif}
 }
-## }}}
 
 ## Convert markdown to other formats with pandoc {{{
 ## \param 1 markdown source file path
