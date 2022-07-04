@@ -237,10 +237,10 @@ type = custom/script
 tail = true
 label-padding = 2
 label-foreground = ${colors.foreground}
-exec = pulseaudio-control --icons-volume " , " --icon-muted " " --sink-nicknames-from "device.description" listen
+exec = pulseaudio-control --icons-volume " , " --icon-muted " " --node-nicknames-from "device.description" listen
 click-right = exec pavucontrol &
 click-left = pulseaudio-control togmute
-click-middle = pulseaudio-control next-sink
+click-middle = pulseaudio-control next-node
 scroll-up = pulseaudio-control --volume-max 100 up
 scroll-down = pulseaudio-control --volume-max 100 down
 
