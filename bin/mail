@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Launch the preferred mail client (mailspring) in its workspace
+# Launch the preferred mail client in its workspace
 
 i3-msg 'workspace --no-auto-back-and-forth 8'
-mailspring
+thunderbird
