@@ -1,109 +1,95 @@
 * {
-    /* Theme settings */
-    highlight: bold italic;
-    scrollbar: true;
+    bg-col:  #303446;
+    bg-col-t:  #303446dd;
+    bg-col-light: #303446;
+    border-col: #303446;
+    selected-col: #303446;
+    blue: #8caaee;
+    fg-col: #c6d0f5;
+    fg-col2: #e78284;
+    grey: #737994;
+    font: "FiraCode Nerd Font 24";
+}
 
-    /* Gruvbox dark colors */
-    gruvbox-dark-bg0-soft: #32302f;
-    gruvbox-dark-bg1: #3c3836;
-    gruvbox-dark-bg3: #665c54;
-    gruvbox-dark-fg0: #fbf1c7;
-    gruvbox-dark-fg1: #ebdbb2;
-    gruvbox-dark-red-dark: #cc241d;
-    gruvbox-dark-red-light: #fb4934;
-    gruvbox-dark-yellow-dark: #d79921;
-    gruvbox-dark-yellow-light: #fabd2f;
-    gruvbox-dark-gray: #a89984;
-
-    gruvbox-dark-bg0-soft-t: #32302fdd;
-
-    /* Theme colors */
-    background: @gruvbox-dark-bg0-soft-t;
-    foreground: @gruvbox-dark-fg1;
-    foreground-selected: @gruvbox-dark-yellow-light;
-
-    background-color: transparent;
+element-text, element-icon , mode-switcher {
+    background-color: inherit;
+    text-color:       inherit;
 }
 
 window {
     padding: 200;
     fullscreen: true;
-    font: "FiraCode Nerd Font 24";
-    background-color: @background;
+    background-color: @bg-col-t;
 }
 
 mainbox {
-    border: 0;
-    padding: 0;
     background-color: transparent;
 }
 
-message {
-    border: 0;
-    padding: 10px;
+inputbar {
+    children: [prompt,entry];
     background-color: transparent;
+    border-radius: 5px;
+    padding: 2px;
 }
 
-textbox {
-    highlight: @foreground;
-    text-color: @foreground;
+prompt {
+    background-color: @blue;
+    padding: 6px;
+    text-color: @bg-col;
+    border-radius: 3px;
+    margin: 20px 0px 0px 20px;
+}
+
+textbox-prompt-colon {
+    expand: false;
+    str: ":";
+}
+
+entry {
+    padding: 6px;
+    margin: 20px 0px 0px 10px;
+    text-color: @fg-col;
     background-color: transparent;
 }
 
 listview {
-    border: 0;
-    padding: 2px 0 0;
-    spacing: 20px;
-    scrollbar: @foreground;
+    border: 0px 0px 0px;
+    padding: 6px 0px 0px;
+    margin: 10px 0px 0px 20px;
+    columns: 1;
+    lines: 5;
     background-color: transparent;
 }
 
 element {
-    border: 0;
-    padding: 2px;
-    background-color: @background;
-    text-color: @foreground;
+    padding: 5px;
     background-color: transparent;
+    text-color: @fg-col  ;
 }
 
-element selected.normal {
-    background-color: transparent;
-    text-color: @foreground-selected;
+element-icon {
+    size: 25px;
 }
 
-scrollbar {
-    width: 24px;
-    border: 0;
-    handle-color: @foreground;
-    handle-width: 24px;
-    padding: 0;
+element selected {
+    background-color:  @selected-col ;
+    text-color: @fg-col2  ;
 }
 
-inputbar {
+mode-switcher {
     spacing: 0;
-    text-color: @foreground;
-    padding: 0 0 40px 0;
-    children: [ prompt, textbox-prompt-sep, entry, case-indicator ];
-    background-color: transparent;
 }
 
-case-indicator,
-entry,
-prompt,
 button {
-    spacing: 0;
-    text-color: @foreground;
-    background-color: transparent;
+    padding: 10px;
+    background-color: @bg-col-light;
+    text-color: @grey;
+    vertical-align: 0.5;
+    horizontal-align: 0.5;
 }
 
-textbox-prompt-sep {
-    expand: false;
-    str: ":";
-    text-color: @foreground;
-    margin: 0 0.3em 0 0;
-}
-
-element-text, element-icon {
-    background-color: inherit;
-    text-color: inherit;
+button selected {
+    background-color: @bg-col;
+    text-color: @blue;
 }
