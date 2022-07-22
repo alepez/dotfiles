@@ -1,15 +1,17 @@
 local catppuccin = require("catppuccin")
 
+vim.g.catppuccin_flavour = "frappe"
+
 catppuccin.setup({
   dim_inactive = {
     enabled = false,
     shade = "dark",
     percentage = 0.15,
   },
-  transparent_background = false,
+  transparent_background = true,
   term_colors = false,
   compile = {
-    enabled = false,
+    enabled = true,
     path = vim.fn.stdpath "cache" .. "/catppuccin",
   },
   styles = {
@@ -47,9 +49,9 @@ catppuccin.setup({
     lsp_trouble = false,
     cmp = true,
     lsp_saga = false,
-    gitgutter = false,
+    gitgutter = true,
     gitsigns = true,
-    leap = false,
+    leap = true,
     telescope = true,
     nvimtree = {
       enabled = true,
@@ -57,7 +59,7 @@ catppuccin.setup({
       transparent_panel = false,
     },
     neotree = {
-      enabled = false,
+      enabled = true,
       show_root = true,
       transparent_panel = false,
     },
@@ -90,8 +92,5 @@ catppuccin.setup({
   },
 })
 
-
-local colors = require'catppuccin.api.colors'.get_colors() -- fetch colors with API
-catppuccin.remap({ ColorColumn = { bg = colors.black1 }, })
 
 vim.cmd[[colorscheme catppuccin]]
