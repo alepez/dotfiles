@@ -18,47 +18,6 @@
 # Style
 ###############################################################################
 
-# grubox color theme
-set $dark0_hard       #1d2021
-set $dark0            #282828
-set $dark0_soft       #32302f
-set $dark1            #3c3836
-set $dark2            #504945
-set $dark3            #665c54
-set $dark4            #7c6f64
-set $gray_245         #928374
-set $gray_244         #928374
-set $light0_hard      #f9f5d7
-set $light0           #fbf1c7
-set $light0_soft      #f2e5bc
-set $light1           #ebdbb2
-set $light2           #d5c4a1
-set $light3           #bdae93
-set $light4           #a89984
-set $bright_red       #fb4934
-set $bright_green     #b8bb26
-set $bright_yellow    #fabd2f
-set $bright_blue      #83a598
-set $bright_purple    #d3869b
-set $bright_aqua      #8ec07c
-set $bright_orange    #fe8019
-set $neutral_red      #cc241d
-set $neutral_green    #98971a
-set $neutral_yellow   #d79921
-set $neutral_blue     #458588
-set $neutral_purple   #b16286
-set $neutral_aqua     #689d6a
-set $neutral_orange   #d65d0e
-set $faded_red        #9d0006
-set $faded_green      #79740e
-set $faded_yellow     #b57614
-set $faded_blue       #076678
-set $faded_purple     #8f3f71
-set $faded_aqua       #427b58
-set $faded_orange     #af3a03
-set $transparent      #00000000
-set $dark0_transparent #282828ff
-
 ###############################################################################
 # i3 keyboard bindings
 ###############################################################################
@@ -315,11 +274,19 @@ bindsym $mod+e exec $filemanager
 
 ###############################################################################
 # Colors
+# Based on catppuccin
 ###############################################################################
-client.focused            $neutral_orange  $neutral_orange  $dark0       $dark0
-client.focused_inactive   $dark0_hard      $dark0_hard      $gray_245    $dark0
-client.unfocused          $dark0_soft      $dark0_soft      $gray_245    $dark0
-client.urgent             $neutral_orange  $neutral_orange  $light1      $dark0
+set $catppuccin_mauve #ca9ee6
+set $catppuccin_peach #ef9f76
+set $catppuccin_mantle #292c3c
+set $catppuccin_crust #232634
+set $catppuccin_overlay2 #949cbb
+set $catppuccin_base #303446
+set $catppuccin_sky #99d1db
+client.focused          $catppuccin_mauve $catppuccin_mauve $catppuccin_mantle   $catppuccin_mantle
+client.focused_inactive $catppuccin_crust $catppuccin_crust $catppuccin_overlay2 $catppuccin_mantle
+client.unfocused        $catppuccin_base  $catppuccin_base  $catppuccin_overlay2 $catppuccin_mantle
+client.urgent           $catppuccin_peach $catppuccin_peach $catppuccin_sky      $catppuccin_mantle
 
 ###############################################################################
 # Gaps
