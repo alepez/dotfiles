@@ -42,6 +42,14 @@ table.insert(lua_runtime_path, "lua/?.lua")
 table.insert(lua_runtime_path, "lua/?/init.lua")
 
 local custom_opts = {
+  ["html"] = {
+    configurationSection = { "html", "css", "javascript" },
+    embeddedLanguages = {
+      css = true,
+      javascript = true
+    },
+    provideFormatter = true,
+  },
   ["rust-analyzer"] = {
     procMacro = {
       enable = true
@@ -87,6 +95,7 @@ local servers = {
   "clangd",
   "jedi_language_server",
   "hls",
+  "html",
   "rust_analyzer",
   "sumneko_lua",
   "taplo",
