@@ -141,7 +141,7 @@
 
 [frame]
     width = 0
-    color = "#ebdbb2"
+    color = "#8CAAEE" # catppuccin
 
 [shortcuts]
 
@@ -165,18 +165,19 @@
     context = ctrl+shift+period
 
 [urgency_low]
-    background = "#ebdbb2"
-    foreground = "#282828"
+    background = "#303446" # catppuccin
+    foreground = "#C6D0F5" # catppuccin
     timeout = 10
 
 [urgency_normal]
-    background = "#fabd2f"
-    foreground = "#282828"
+    background = "#303446" # catppuccin
+    foreground = "#C6D0F5" # catppuccin
     timeout = 10
 
 [urgency_critical]
-    background = "#fb4934"
-    foreground = "#282828"
+    background = "#303446" # catppuccin
+    foreground = "#C6D0F5" # catppuccin
+    frame_color = "#EF9F76" # catppuccin
     timeout = 0
 
 # vim: ft=cfg
