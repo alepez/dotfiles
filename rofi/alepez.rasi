@@ -1,3 +1,6 @@
+/* Based on catppuccin */
+/* See https://github.com/catppuccin/rofi */
+
 * {
     bg-col:  #303446;
     bg-col-t:  #303446dd;
