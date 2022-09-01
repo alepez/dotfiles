@@ -1,7 +1,7 @@
 set autoindent " always set autoindenting on
 set autoread " Make Vim automatically open changed files
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
-set clipboard=unnamed " yank to clipboard
+"set clipboard=unnamed " yank to clipboard
 set cmdheight=2 " Give more space for displaying messages.
 set colorcolumn=80,120 " show columns at 80 and 120
 set completeopt=menuone,noselect " complete menu visibility

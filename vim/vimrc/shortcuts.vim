@@ -79,9 +79,12 @@ nnoremap gC I/* A */
 nmap <F8> :TagbarToggle<CR>
 
 " Copy/Paste system from/to clipboard in visual mode
-vmap <Leader>y "+y
-vmap <Leader>p "+p
-vmap <Leader>P "+P
+vmap <leader>y "+y
+nmap <leader>p "+p
+nmap <leader>P "+P
+
+" Copy the whole buffer to clipboard
+nmap <leader>ay gg"+yG
 
 " Autocompletion
 inoremap <silent><expr> <C-Space> compe#complete()
