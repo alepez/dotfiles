@@ -291,7 +291,7 @@ client.urgent           $catppuccin_peach $catppuccin_peach $catppuccin_sky     
 ###############################################################################
 # Gaps
 ###############################################################################
-gaps inner 6
+gaps inner 5
 gaps outer 0
 default_border pixel 4
 default_floating_border pixel 6
