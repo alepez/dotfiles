@@ -71,6 +71,7 @@
   # log
   l = log --graph --pretty=format:'%C(yellow)%h %C(blue)%ad %C(reset)%s %Cred%d %C(blue) %an' --date='format-local:%Y-%m-%d %H:%M'
   ll = log --graph --date=short
+  lf = log --follow --find-renames --pretty=format:'%C(yellow)%h %C(blue)%ad %C(reset)%s %Cred%d %C(blue) %an' --date='format-local:%Y-%m-%d %H:%M'
   changes = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status
   short = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\"
   simple = log --pretty=format:\" * %s\"
