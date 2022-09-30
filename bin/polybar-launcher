@@ -37,8 +37,8 @@ bar_from_profile() {
   local profile_monitor=${1}
   case "${profile_monitor}" in
     home-youtube-coding_DP1-2) echo top_workspaces_only;;
-    home_HDMI-1) echo top_workspaces_only;;
-    home_DP-1) echo top_default;;
+    home_HDMI-1) echo top_default;;
+    home_DP-1) echo top_light;;
     *) echo top_default;;
   esac
 }
