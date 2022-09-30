@@ -37,6 +37,8 @@ bar_from_profile() {
   local profile_monitor=${1}
   case "${profile_monitor}" in
     home-youtube-coding_DP1-2) echo top_workspaces_only;;
+    home_HDMI-1) echo top_workspaces_only;;
+    home_DP-1) echo top_default;;
     *) echo top_default;;
   esac
 }
@@ -45,7 +47,8 @@ launch_all_polybars() {
   local profile=${1}
   local m
   for m in $( list_connected_screens ); do
-    local bar=$( bar_from_profile ${profile}_${m} )
+    local profile_m=${profile}_${m}
+    local bar=$( bar_from_profile ${profile_m} )
     MONITOR=$m launch_polybar ${bar}
   done
 }
