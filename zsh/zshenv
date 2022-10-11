@@ -188,6 +188,7 @@ alias gdu='gd'                # show Unstaged changes
 alias gdc='git dc'            # show Unstaged changes
 alias gds='git diff --stat' # show Staged changes
 alias gpl='git pull'          # Pull
+alias gpll='git pull --recurse-submodules --jobs=10'
 alias gps='git push'          # Push
 alias gnb='git nb'            # New Branch aka checkout -b
 alias gco='git co'            # Checkout
