@@ -45,8 +45,11 @@ blueman-applet &>/dev/null </dev/null &
 # NetworkManager applet
 nm-applet &>/dev/null </dev/null &
 
-# ProtonMail Bridge
-/usr/bin/protonmail-bridge --no-window --noninteractive &>/dev/null </dev/null &
+# Protonmail bridge
+nohup protonmail-bridge --no-window &>/dev/null </dev/null &
+
+# Thunderbird systray (birdtray)
+nohup birdtray &>/dev/null </dev/null &
 
 ) &>/dev/null </dev/null &
 
