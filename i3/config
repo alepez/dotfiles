@@ -326,6 +326,8 @@ for_window [class="qemu-system-x86_64"] floating enable
 for_window [class="rdesktop"] floating disable
 for_window [class="sun-awt-X11-XWindowPeer"] floating enable
 for_window [class="zoom"] floating enable
+for_window [class="proton-bridge"] floating enable
+for_window [title="Proton Mail Bridge"] floating enable
 for_window [title="Unlock Login Keyring"] floating enable, sticky enable, focus
 for_window [title="Wi-Fi Network Authentication Required"] floating enable, sticky enable, focus
 
