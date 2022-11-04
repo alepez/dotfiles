@@ -2,4 +2,23 @@
 
 # Get current internet connection information using nordvpn
 
-curl -s 'https://nordvpn.com/wp-admin/admin-ajax.php?action=get_user_info_data' | jq
+full() {
+  curl -s 'https://nordvpn.com/wp-admin/admin-ajax.php?action=get_user_info_data' | jq
+}
+
+fast() {
+  local addr=$( dig +short myip.opendns.com @resolver1.opendns.com )
+  local location=$( geoiplookup "${addr}" | sed 's/.*: //' )
+
+  echo "{ \"ip\": \"${addr}\", \"location\": \"${location}\" }" | jq
+}
+
+main() {
+  case $1 in
+    full) full;;
+    fast) fast;;
+    *) fast;;
+  esac
+}
+
+main $@
