@@ -16,7 +16,6 @@ filetype plugin indent on    " required
 
 source ~/.dotfiles/nvim/vimrc/hacks.vim
 source ~/.dotfiles/nvim/vimrc/shortcuts.vim
-source ~/.dotfiles/nvim/vimrc/test.vim
 source ~/.dotfiles/nvim/vimrc/ignore.vim
 source ~/.dotfiles/nvim/vimrc/settings.vim
 source ~/.dotfiles/nvim/vimrc/markdown.vim
