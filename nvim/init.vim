@@ -14,9 +14,6 @@ source ~/.dotfiles/nvim/vimrc/colors.vim
 
 filetype plugin indent on    " required
 
-" Plugins not handled by plugin manager
-source ~/.dotfiles/nvim/vimrc/plugins-special.vim
-
 source ~/.dotfiles/nvim/vimrc/hacks.vim
 source ~/.dotfiles/nvim/vimrc/shortcuts.vim
 source ~/.dotfiles/nvim/vimrc/test.vim
