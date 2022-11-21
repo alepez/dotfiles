@@ -1,14 +1,8 @@
 " Change leader to a more efficient button
 let mapleader = "\<Space>"
 
-" Save and make
-nnoremap <silent> <leader>e <Esc>:update<CR>:Make<CR>
-
 " Search with ag, the silver searcher
 nnoremap <leader>f :Ack!<space>
-
-" Search yanked text with the silver searcher
-nnoremap <leader>F :Ack! '<C-r>0'<CR>
 
 " Search visual selection with ag
 vnoremap <leader>f y:Ack! '<C-r>0'<CR>
@@ -51,7 +45,6 @@ nnoremap <silent> <leader>x :bd<CR>
 
 " Save without pain
 nnoremap <silent> <leader>w :w<CR>
-nnoremap <silent> z<space> :w<CR>
 
 " I've mapped all ctrl to esc. Sometimes I hit <c-space>w instead of
 " <esc><space>w when saving in insert mode.
@@ -69,15 +62,6 @@ vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 vnoremap < <gv
 vnoremap > >gv
 
-" Search without escaping slash
-command! -nargs=1 Ss let @/ = <q-args>|set hlsearch
-nnoremap <leader>/ :Ss<space>
-
-nnoremap gC I/* A */
-
-" tagbar
-nmap <F8> :TagbarToggle<CR>
-
 " Copy/Paste system from/to clipboard in visual mode
 vmap <leader>y "+y
 nmap <leader>p "+p
@@ -85,7 +69,3 @@ nmap <leader>P "+P
 
 " Copy the whole buffer to clipboard
 nmap <leader>ay gg"+yG
-
-" Autocompletion
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm('<CR>')
