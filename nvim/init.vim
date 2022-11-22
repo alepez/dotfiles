@@ -29,8 +29,3 @@ source ~/.dotfiles/nvim/vimrc/flake8.vim
 source ~/.dotfiles/nvim/vimrc/nvim-tree.lua
 source ~/.dotfiles/nvim/vimrc/catpuccin.lua
 source ~/.dotfiles/nvim/vimrc/diagnostic.lua
-
-" Include local vimrc is file exists
-if filereadable(glob("~/.vimrc.local"))
-	source ~/.vimrc.local
-endif
