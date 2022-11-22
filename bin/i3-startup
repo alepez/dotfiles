@@ -43,13 +43,13 @@ udiskie &>/dev/null </dev/null &
 blueman-applet &>/dev/null </dev/null &
 
 # NetworkManager applet
-nm-applet &>/dev/null </dev/null &
+which nm-applet && nm-applet &>/dev/null </dev/null &
 
 # Protonmail bridge
-nohup protonmail-bridge --no-window &>/dev/null </dev/null &
+which protonmail-bridge && nohup protonmail-bridge --no-window &>/dev/null </dev/null &
 
 # Thunderbird systray (birdtray)
-nohup birdtray &>/dev/null </dev/null &
+which birdtray && nohup birdtray &>/dev/null </dev/null &
 
 ) &>/dev/null </dev/null &
 
