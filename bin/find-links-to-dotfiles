@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && cd ../ && pwd )"
+
+list_dotfiles() {
+  find "${ROOT_DIR}" -not -path "${ROOT_DIR}/.git/*" -not -path "${ROOT_DIR}/.git"
+  # git ls-files | while read f; do
+  #   echo "${ROOT_DIR}/${f}"
+  # done
+}
+
+find_links_to_file() {
+  find -L "${HOME}" -xdev -xtype l -samefile "${1}"
+}
+
+list_dotfiles_with_links() {
+  list_dotfiles | while read f; do
+    echo ">>> ${f}"
+    find_links_to_file "${f}"
+    echo "==="
+    echo ""
+  done
+}
+
+main() {
+  list_dotfiles_with_links
+}
+
+main $@
