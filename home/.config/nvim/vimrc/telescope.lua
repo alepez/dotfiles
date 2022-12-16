@@ -8,5 +8,10 @@ require('telescope').setup{
         ["<C-j>"] = actions.move_selection_next,
       },
     },
-  }
+  },
+  pickers = {
+    find_files = {
+      find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+    },
+  },
 }
