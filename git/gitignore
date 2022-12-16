@@ -71,3 +71,4 @@ build
 .cache
 /.vs
 /CMakeSettings.json
+tarpaulin-report.html
