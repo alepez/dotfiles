@@ -336,31 +336,19 @@ ramp-1 = 
 ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
 
-[module/spotify-status]
-type = custom/script
-interval = 1
-format = <label>
-exec = ~/.dotfiles/polybar/scripts/spotify-status/spotify_status.py
-format-underline = #1db954
-
-[module/vpn-nordvpn-status]
-type = custom/script
-exec = ~/.dotfiles/polybar/scripts/vpn-nordvpn-status/vpn-nordvpn-status.sh
-interval = 5
-
 [module/system-cpu-frequency]
 type = custom/script
-exec = ~/.dotfiles/polybar/scripts/system-cpu-frequency/system-cpu-frequency.sh
+exec = ~/.config/polybar/scripts/system-cpu-frequency/system-cpu-frequency.sh
 interval = 5
 
 [module/keyboard-battery]
 type = custom/script
-exec = ~/.dotfiles/polybar/scripts/devices-power/devices-power.py ':Keychron K2'
+exec = ~/.config/polybar/scripts/devices-power/devices-power.py ':Keychron K2'
 interval = 60
 
 [module/mouse-battery]
 type = custom/script
-exec = ~/.dotfiles/polybar/scripts/devices-power/devices-power.py ':MX Master'
+exec = ~/.config/polybar/scripts/devices-power/devices-power.py ':MX Master'
 interval = 60
 
 [settings]
