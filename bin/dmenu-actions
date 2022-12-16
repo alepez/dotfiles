@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 PRIVATE_CFG="$( realpath ~/.dotfiles-private/dmenu-actions.conf )"
-PUBLIC_CFG="$( realpath ~/.dotfiles/dmenu-actions.conf )"
+PUBLIC_CFG="$( realpath ~/.dotfiles/more/dmenu-actions.conf )"
 
 dmenu="$( realpath ~/.dotfiles/bin/dmenu )"
 
