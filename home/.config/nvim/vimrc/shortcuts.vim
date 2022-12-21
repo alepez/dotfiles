@@ -1,12 +1,6 @@
 " Change leader to a more efficient button
 let mapleader = "\<Space>"
 
-" Search with ag, the silver searcher
-nnoremap <leader>f :Ack!<space>
-
-" Search visual selection with ag
-vnoremap <leader>f y:Ack! '<C-r>0'<CR>
-
 " Nerd Tree shortcut
 nnoremap <leader>ne :NvimTreeToggle<cr>
 
@@ -16,6 +10,7 @@ nnoremap <leader>o <cmd>Telescope buffers<cr>
 nnoremap <C-p>     <cmd>Telescope find_files<cr>
 nnoremap <leader>q <cmd>Telescope quickfix<cr>
 nnoremap <leader>s <cmd>Telescope lsp_workspace_symbols<cr>
+nnoremap <leader>f <cmd>Telescope live_grep<cr>
 
 " turn off search highlight and close quickfix
 fu! SmartRefresh()
