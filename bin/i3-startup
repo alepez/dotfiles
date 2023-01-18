@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source "$( dirname "${BASH_SOURCE[0]}" )/.utils.sh"
+
 # TODO Why is this needed now? I'm sure this wasn't needed before 479ee15. May be a bug in systemd, lightdm or dbus
 export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 
@@ -9,48 +11,44 @@ cd /
 ~/.dotfiles/bin/monitor-setup auto
 
 # Setup keyboard (layout, caps-escape, ...)
-~/.dotfiles/bin/keyboard-setup &>/dev/null </dev/null &
+start_bg ~/.dotfiles/bin/keyboard-setup
 
 # Mouse bindings
-xbindkeys &>/dev/null </dev/null &
+start_bg xbindkeys
 
 # Automatic screen lock
-xset s 300 &>/dev/null </dev/null &
-xss-lock -- betterlockscreen -l dim &>/dev/null </dev/null &
+start_bg xset s 300
+start_bg xss-lock -- betterlockscreen -l dim
 
 # Compositor needs to be launched after monitor layout has changed
-(
-sleep 2
-
-picom -b
-
-) &>/dev/null </dev/null &
+start_bg_with_delay 2 picom -b
 
 # Wait some seconds (in background) before launching systray applets
 (
 sleep 5
 
 # Clipboard manager (gpaste)
-gpaste-client start &>/dev/null </dev/null &
+start_bg gpaste-client start
 
 # PulseAudio applet
-pasystray &>/dev/null </dev/null &
+start_bg pasystray
 
 # External storage manager
-udiskie &>/dev/null </dev/null &
+start_bg udiskie
 
 # Bluetooth applet
-blueman-applet &>/dev/null </dev/null &
+start_bg blueman-applet
 
 # NetworkManager applet
-which nm-applet && nm-applet &>/dev/null </dev/null &
+start_bg nm-applet
 
 # Protonmail bridge
-which protonmail-bridge && nohup protonmail-bridge --no-window &>/dev/null </dev/null &
+start_bg protonmail-bridge --no-window
 
 # Thunderbird systray (birdtray)
-which birdtray && nohup birdtray &>/dev/null </dev/null &
+start_bg nohup birdtray
 
-) &>/dev/null </dev/null &
+# ) &>/dev/null </dev/null &
+) &>/tmp/pez-i3-startup.log </dev/null &
 
 exit 0
