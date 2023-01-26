@@ -136,38 +136,17 @@ dkup() {
 
 ## NodeJS {{{
 
-# # Pre-setup nvm
+# Pre-setup nvm
 
-nvminit() {
+nvm() {
   if [ -e /usr/share/nvm/init-nvm.sh ]; then
     source /usr/share/nvm/init-nvm.sh
+    # Once sourced, nvm is overridden
+    # This is not recursive, because at this point nvm is no more this function.
+    nvm $@
+  else
+    echo "nvm not found"
   fi
-}
-
-# Automatically setup nodejs environment with nvm and start node repl
-node_setup() {
-  # Note: zsh >= 5.3 should use `-v` to check if NVM_BIN is available, but I'm
-  # still using older zsh in some host.
-  # if ! [[ -v NVM_BIN ]]; then
-  if [ -z "${NVM_BIN+1}" ]; then
-    nvminit && nvm use default
-  fi
-}
-
-node() {
-  node_setup
-  "${NVM_BIN}/node" $@
-}
-
-npm() {
-  node_setup
-  "${NVM_BIN}/npm" $@
-}
-
-# vim editor with nodejs environment
-vjs() {
-  node_setup
-  ${EDITOR}
 }
 
 alias npmi="npm install --save"
