@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+help() {
+  echo "${0} <remote_host> <remote_dir> <local_dir>"
+}
+
+main() {
+  local remote_host="${2}"
+  local remote_dir="${3}"
+  local local_dir="${1}"
+
+  if [ -z "${remote_host}" ] || [ -z "${remote_dir}" ] || [ -z "${local_dir}" ]; then
+    help
+    exit 1
+  fi
+
+  echo "remote_host: ${remote_host}"
+  echo "remote_dir: ${remote_dir}"
+  echo "local_dir: ${local_dir}"
+
+  rsync \
+    --verbose \
+    --archive \
+    "${remote_host}:${remote_dir}"/ \
+    "${local_dir}"
+}
+
+main "${@}"
