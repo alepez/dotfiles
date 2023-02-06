@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+main() {
+  local uuid=$( uuidgen )
+  local user_data_dir="${HOME}/tmp/chromium-tmp-dir/${uuid}"
+  chromium \
+    --user-data-dir=${user_data_dir}
+}
+
+main
