@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+start() {
+  jack_control ds alsa
+  jack_control dps device hw:USB
+  jack_control dps rate 48000
+  jack_control dps nperiods 2
+  jack_control dps period 128
+  jack_control start
+}
+
+stop() {
+  jack_control stop
+}
+
+main() {
+  case "${1}" in
+    start) start;;
+    stop) stop;;
+  esac
+}
+
+main "${@}"
