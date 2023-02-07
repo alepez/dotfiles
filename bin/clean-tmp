@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+# Move all files and directories inside tmp directories which are older than
+# 30 days, inside a .trash directory.
+
+list_old_files() {
+  find "${1}" \
+    -mindepth 1 \
+    -maxdepth 1 \
+    \( -path "${2}" \) \
+    -prune \
+    -o \
+    -mtime +30 \
+    -print
+}
+
+clean() {
+  local search_dir="${1}"
+  local trash_dir="${1}/.trash"
+
+  mkdir -p "${trash_dir}"
+
+  local old_files=$( list_old_files "${search_dir}" "${trash_dir}" )
+
+  while IFS= read -r file; do
+    if [ -e "${file}" ]; then
+      echo "${file}"
+      mv "${file}" "${trash_dir}"
+    fi
+  done <<< "${old_files}"
+}
+
+main() {
+  clean "${HOME}/tmp"
+  clean "${HOME}/Downloads"
+}
+
+main "${@}"
