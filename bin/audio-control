@@ -19,6 +19,39 @@ out_mute_toggle() { pactl -- set-sink-mute   @DEFAULT_SINK@ toggle; }
 out_mute()        { pactl -- set-sink-mute   @DEFAULT_SINK@ 1;      }
 out_unmute()      { pactl -- set-sink-mute   @DEFAULT_SINK@ 0;      }
 
+# Not only start jack, but also make sure it is correctly configured
+# I always want hw:USB device with jack
+jack_start() {
+  jack_control ds alsa
+  jack_control dps device hw:USB
+  jack_control dps rate 48000
+  jack_control dps nperiods 2
+  jack_control dps period 128
+  jack_control start
+}
+
+jack_stop() {
+  jack_control stop
+}
+
+pulse_start() {
+ systemctl --user start pulseaudio.socket
+}
+
+pulse_stop() {
+ systemctl --user stop pulseaudio.socket
+}
+
+normal_mode() {
+  jack_stop
+  pulse_start
+}
+
+pro_mode() {
+  pulse_stop
+  jack_start
+}
+
 main() {
   case $1 in
     out_volume_up) out_unmute; out_volume_up;;
@@ -27,6 +60,12 @@ main() {
     out_mute) out_mute;;
     out_unmute) out_unmute;;
     out_get_volume) out_get_volume;;
+    jack_start) jack_start;;
+    jack_stop) jack_stop;;
+    pulse_start) pulse_start;;
+    pulse_stop) pulse_stop;;
+    normal_mode) normal_mode;;
+    pro_mode) pro_mode;;
   esac
 }
 
