@@ -63,7 +63,7 @@ local custom_opts = {
       }
     }
   },
-  ["sumneko_lua"] = {
+  ["lua_ls"] = {
     cmd = {  "/usr/bin/lua-language-server" };
     settings = {
       Lua = {
@@ -97,7 +97,7 @@ local servers = {
   "hls",
   "html",
   "rust_analyzer",
-  "sumneko_lua",
+  "lua_ls",
   "taplo",
   "tsserver",
   "zls",
