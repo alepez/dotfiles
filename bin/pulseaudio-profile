@@ -96,11 +96,11 @@ pa_profile_set_scarlett() {
 
 pa_profile_list() {
   echo builtin;
-  echo dock;
-  echo usb_earphones;
+  # echo dock;
+  # echo usb_earphones;
   echo vi_earphones;
   echo vi_headset;
-  echo vi_scarlett;
+  # echo vi_scarlett;
   echo scarlett;
 }
 
