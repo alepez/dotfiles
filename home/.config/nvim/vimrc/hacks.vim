@@ -23,3 +23,5 @@ augroup vimrcQfClose
     autocmd!
     autocmd FileType qf if mapcheck('<esc>', 'n') ==# '' | nnoremap <buffer><silent> <esc> :cclose<bar>lclose<CR> | endif
 augroup END
+
+:nmap <F1> <nop>
