@@ -1,8 +1,5 @@
-ao=pulse
-vo=gl
-af=scaletempo
-lavdopts=threads=4
-# vc=ffh264vdpau,ffmpeg12vdpau,ffodivxvdpau,ffwmv3vdpau,ffvc1vdpau,ffhevcvdpau
-framedrop = yes
-autosync = 30
-cache = 8192
+ao=jack
+vo=vdpau
+framedrop=yes
+cache=8192
+lirc=no
