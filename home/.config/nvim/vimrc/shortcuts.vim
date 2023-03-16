@@ -4,6 +4,12 @@ let mapleader = "\<Space>"
 " Nerd Tree shortcut
 nnoremap <leader>ne :NvimTreeToggle<cr>
 
+" Search with ag, the silver searcher
+nnoremap <leader>f :Ack!<space>
+
+" Search visual selection with ag
+vnoremap <leader>f y:Ack! '<C-r>0'<CR>
+
 " Telescope
 nnoremap <leader>; <cmd>Telescope commands<cr>
 nnoremap <leader>o <cmd>Telescope buffers<cr>
