@@ -1,10 +1,18 @@
 #!/usr/bin/env bash
 
+cleanup_old() {
+  find "${HOME}/tmp/chromium-tmp-dir" -type d -ctime +2 -exec rm -rf {} \; \
+    2>/dev/null
+}
+
 main() {
   local uuid=$( uuidgen )
   local user_data_dir="${HOME}/tmp/chromium-tmp-dir/${uuid}"
+
   chromium \
-    --user-data-dir=${user_data_dir}
+    --user-data-dir=${user_data_dir} 2>/dev/null 1>/dev/null </dev/null &
+
+  cleanup_old
 }
 
 main
