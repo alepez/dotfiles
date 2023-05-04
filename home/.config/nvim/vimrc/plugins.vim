@@ -5,7 +5,6 @@ Plug 'tpope/vim-surround' " surround.vim: quoting/parenthesizing made simple
 Plug 'Raimondi/delimitMate' " automatically close quotes, parens, brackets, etc.
 Plug 'sjl/gundo.vim' " Gundo is a Vim plugin for visualizing your undo tree to make it usable
 Plug 'mileszs/ack.vim' " search with ag the silver searcher
-Plug 'bronson/vim-trailing-whitespace' " Highlights trailing whitespace in red and provides :FixWhitespace to fix it.
 Plug 'kyazdani42/nvim-tree.lua' " tree explorer
 Plug 'vim-scripts/ingo-library' " Vimscript library of common functions.
 Plug 'nvim-lua/popup.nvim'
