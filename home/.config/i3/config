@@ -320,7 +320,7 @@ for_window [class="VirtualBox Machine"] floating enable
 for_window [class="VirtualBox Manager"] floating enable
 for_window [class="blueman-manager"] floating enable
 for_window [class="lavagna"] floating enable
-for_window [class="org.remmina.Remmina"] floating enable
+# for_window [class="org.remmina.Remmina"] floating enable
 for_window [class="qemu-system-x86_64"] floating enable
 for_window [class="rdesktop"] floating disable
 for_window [class="sun-awt-X11-XWindowPeer"] floating enable
@@ -331,6 +331,13 @@ for_window [title="Unlock Login Keyring"] floating enable, sticky enable, focus
 for_window [title="Wi-Fi Network Authentication Required"] floating enable, sticky enable, focus
 for_window [window_type="dialog"] floating enable
 for_window [title="splash"] floating enable
+
+for_window [class="gauges"] floating enable
+assign [title="Gauges"] $workspace_3
+
+# Default Dioxus application
+for_window [class="App"] floating enable
+assign [class="App"] $workspace_3
 
 ###############################################################################
 # Startup
