@@ -93,6 +93,7 @@ local custom_opts = {
 local servers = {
   "bashls",
   "clangd",
+  "cssls",
   "jedi_language_server",
   "hls",
   "html",
