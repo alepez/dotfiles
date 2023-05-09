@@ -6,44 +6,185 @@ cmd[[filetype plugin on]]
 -- Disable comments on pressing Enter
 cmd[[autocmd FileType * setlocal formatoptions-=cro]]
 
--- Tabs
--- Use spaces by default
+-- always set autoindenting on
+opt.autoindent = true
+
+-- Make Vim automatically open changed files
+opt.autoread = true
+
+-- allow backspacing over everything in insert mode
+opt.backspace = "indent,eol,start"
+
+-- Give more space for displaying messages.
+opt.cmdheight = 2
+
+-- show columns at 80 and 120
+opt.colorcolumn = "80,120"
+
+-- complete menu visibility
+opt.completeopt = "menuone,noselect"
+
+-- Highlight current line
+opt.cursorline = true
+
+-- ???
+-- TODO opt.diffopt+="vertical"
+
+-- expand tabs to spaces
 opt.expandtab = true
--- Set amount of space characters, when we press "<" or ">"
+
+-- per-directory .vimrc files, unsafe commands disabled
+-- TODO opt.exrc = "secure"
+
+-- enable folding
+opt.foldenable = true
+
+-- open most folds by default
+opt.foldlevelstart = 10
+
+-- 10 nested folders max
+opt.foldnestmax = 10
+
+-- assume the /g flag on :s substitutions to replace all matches
+opt.gdefault = true
+
+-- Set hidden to allow buffers to be browsed
+opt.hidden = true
+
+-- With a powerful PC, we can have a huge history.
+opt.history = 8192
+
+-- Highlight search results
+opt.hlsearch = true
+
+-- as I start to search, the file jumps to the match as I type.
+opt.incsearch = true
+
+-- only redraw when needed
+opt.lazyredraw = true
+
+-- Show invisible characters
+opt.list = true
+
+-- Use these symbols for invisible
+opt.listchars = "tab:▸ ,trail:·,nbsp:⎵"
+
+-- The number of lines that is checked for set commands
+opt.modelines = 1
+
+-- Enable
+-- TODO opt.mouse = "a mousemodel=popup"
+
+-- Prevent changing directory when opening files
+-- TODO opt.noautochdir = true
+
+-- disable backups
+-- TODO opt.nobackup = true
+
+-- Disable error bells
+-- TODO opt.noerrorbells = true
+
+-- Disable spell check
+-- TODO opt.nospell = true
+
+-- Don’t reset cursor to start of line when moving around.
+-- TODO opt.nostartofline = true
+
+-- disable swap files
+-- TODO opt.noswapfile = true
+
+-- turn off soft wrap
+-- TODO opt.nowrap = true
+
+-- disable backups
+-- TODO opt.nowritebackup = true
+
+-- Show line number
+opt.number = true
+
+-- ...but show relative numbers except for the current line
+opt.relativenumber = true
+
+-- Show ruler on the statusline
+opt.ruler = true
+
+-- When to start scrolling
+-- TODO opt.scrolloff = "8 sidescrolloff=15 sidescroll=1"
+
+-- use zsh as shell
+opt.shell = "/bin/zsh"
+
+-- indent by 2 spaces
 opt.shiftwidth = 2
--- 1 tab equal 2 spaces
+
+-- I: no intro message.
+opt.shortmess = "I"
+
+-- Show command line
+opt.showcmd = true
+
+-- highlight matching [{()}]
+opt.showmatch = true
+
+-- Show mode
+opt.showmode = true
+
+-- Always show the signcolumn
+-- TODO opt.signcolumn = true
+
+-- ensures new splits are to the right of current
+opt.splitright = true
+
+-- The default is 8 which is MASSIVE!!
 opt.tabstop = 2
+
+-- turn off hard line wrapping
+-- TODO opt.textwidth = "0 wrapmargin=0"
+
+-- Vim sets terminal title
+opt.title = true
+
+-- removes the delay when hitting esc in insert mode
+opt.ttimeout = true
+
+-- removes the delay when hitting esc in insert mode
+opt.ttimeoutlen = 1
+
+-- sends more characters to the screen for fast terminal connections
+opt.ttyfast = true
+
+-- Longer values (default is 4000 ms) lead to poor user experience.
+opt.updatetime = 300
+
+-- visually autocomplete the command menu
+opt.wildmenu = true
+
+-- Show a list of completions
+-- TODO opt.wildmode =  "list:longest,list:full "
+
 -- Turn on smart indentation. See in the docs for more info
 opt.smartindent = true
 
--- Clipboard
 -- Use system clipboard
 opt.clipboard = 'unnamedplus'
+
 -- Turn off appending new line in the end of a file
 opt.fixeol = false
 
 -- Folding
 opt.foldmethod = 'syntax'
 
--- Search
 -- Ignore case if all characters in lower case
 opt.ignorecase = true
+
 -- Join multiple spaces in search
 opt.joinspaces = false
+
 -- When there is a one capital letter search for exact match
 opt.smartcase = true
--- Highlight search instances
-opt.showmatch = true
 
--- Window
 -- Put new windows below current
 opt.splitbelow = true
--- Put new vertical splits to right
-opt.splitright = true
-
--- Wild Menu
-opt.wildmenu = true
-opt.wildmode = "longest:full,full"
 
 -- Default Plugins
 local disabled_built_ins = {
