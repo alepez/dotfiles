@@ -58,6 +58,33 @@ nm('<leader>x', '<cmd>TroubleToggle<CR>')
 nm('gr', '<cmd>Trouble lsp_references<CR>')
 
 -- Toggle file explorer
-nm('<leader>v', '<cmd>NeoTreeFocusToggle<CR>')
+nm('<leader>ne', '<cmd>NeoTreeFocusToggle<CR>')
+
+-- Turn off search highlight and close quickfig
+nm('<leader><leader>', ':call SmartRefresh() | nohlsearch<CR>')
+
+-- To next quickfix line
+nm('<F6>', ':cn<CR>')
+
+-- Close buffer
+nm('<leader>x', ':bd<CR>')
+
+-- Split line under cursor
+nm('K', 'i<CR><Esc>')
+
+-- Search current visual selection
+vm('//', 'y/\\V<C-R>=escape(@",\'/\\\')<CR><CR>')
+
+-- Indent keeping visual selection
+vm('<', '<gv')
+vm('>', '>gv')
+
+-- Copy/Paste
+vm('<leader>y', '"+y')
+nm('<leader>p', '"+p')
+nm('<leader>P', '"+P')
+
+-- Copy the whole buffer to clipboard
+nm('<leader>ay', 'gg"+yG')
 
 -- vim:tabstop=2 shiftwidth=2 expandtab syntax=lua foldmethod=marker foldlevelstart=0 foldlevel=0

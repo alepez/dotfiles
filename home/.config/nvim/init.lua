@@ -5,7 +5,7 @@ require "lazy-bootstrap"
 require "settings"
 require "keybindings"
 
-vim.cmd('source legacy/hacks.vim')
+vim.cmd('source ~/.config/nvim/legacy/hacks.vim')
 
 -- Plugin management
 local lazy = require("lazy")
