@@ -25,3 +25,9 @@ set wildignore+=*/__pycache__
 set wildignore+=*.pyc,*.pyo
 set wildignore+=*.jsc,*.qmlc,*.jsc.*,*.qmlc.*
 set wildignore+=*/node_modules
+
+if executable("rg")
+  set grepprg=rg\ --vimgrep\ --smart-case\ --hidden
+  set grepformat=%f:%l:%c:%m
+endif
+
