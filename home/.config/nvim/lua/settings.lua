@@ -76,28 +76,28 @@ opt.modelines = 1
 -- TODO opt.mouse = "a mousemodel=popup"
 
 -- Prevent changing directory when opening files
--- TODO opt.noautochdir = true
+opt.autochdir = false
 
 -- disable backups
--- TODO opt.nobackup = true
+opt.backup = false
 
 -- Disable error bells
--- TODO opt.noerrorbells = true
+opt.errorbells = false
 
 -- Disable spell check
--- TODO opt.nospell = true
+opt.spell = false
 
 -- Don’t reset cursor to start of line when moving around.
--- TODO opt.nostartofline = true
+opt.startofline = false
 
 -- disable swap files
--- TODO opt.noswapfile = true
+opt.swapfile = false
 
 -- turn off soft wrap
--- TODO opt.nowrap = true
+opt.wrap = false
 
 -- disable backups
--- TODO opt.nowritebackup = true
+opt.writebackup = false
 
 -- Show line number
 opt.number = true
@@ -128,9 +128,6 @@ opt.showmatch = true
 
 -- Show mode
 opt.showmode = true
-
--- Always show the signcolumn
--- TODO opt.signcolumn = true
 
 -- ensures new splits are to the right of current
 opt.splitright = true
