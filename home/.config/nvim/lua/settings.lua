@@ -28,13 +28,10 @@ opt.completeopt = "menuone,noselect"
 opt.cursorline = true
 
 -- ???
--- TODO opt.diffopt+="vertical"
+opt.diffopt = opt.diffopt + "vertical"
 
 -- expand tabs to spaces
 opt.expandtab = true
-
--- per-directory .vimrc files, unsafe commands disabled
--- TODO opt.exrc = "secure"
 
 -- enable folding
 opt.foldenable = true
@@ -73,7 +70,8 @@ opt.listchars = "tab:▸ ,trail:·,nbsp:⎵"
 opt.modelines = 1
 
 -- Enable
--- TODO opt.mouse = "a mousemodel=popup"
+opt.mouse = "a"
+opt.mousemodel = "popup"
 
 -- Prevent changing directory when opening files
 opt.autochdir = false
@@ -109,7 +107,9 @@ opt.relativenumber = true
 opt.ruler = true
 
 -- When to start scrolling
--- TODO opt.scrolloff = "8 sidescrolloff=15 sidescroll=1"
+opt.scrolloff = 8
+opt.sidescrolloff = 15
+opt.sidescroll = 1
 
 -- use zsh as shell
 opt.shell = "/bin/zsh"
@@ -136,7 +136,10 @@ opt.splitright = true
 opt.tabstop = 2
 
 -- turn off hard line wrapping
--- TODO opt.textwidth = "0 wrapmargin=0"
+opt.textwidth = 0 
+
+-- turn off hard line wrapping
+opt.wrapmargin = 0
 
 -- Vim sets terminal title
 opt.title = true
@@ -157,7 +160,7 @@ opt.updatetime = 300
 opt.wildmenu = true
 
 -- Show a list of completions
--- TODO opt.wildmode =  "list:longest,list:full "
+opt.wildmode = "list:longest,list:full"
 
 -- Turn on smart indentation. See in the docs for more info
 opt.smartindent = true
