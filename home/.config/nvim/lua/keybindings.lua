@@ -113,7 +113,7 @@ nm('<leader>P', '"+P')
 nm('<leader>ay', 'gg"+yG')
 
 -- Search
-vim.api.nvim_create_user_command('Grep', 'execute \'silent grep! <args>\' | copen', { nargs = 1 })
+vim.api.nvim_create_user_command('Grep', 'execute \'silent grep! <args>\' | copen | redraw', { nargs = 1 })
 vim.api.nvim_set_keymap('n', '<leader>f', ':Grep ', { noremap = true })
 
 -- vim:tabstop=2 shiftwidth=2 expandtab syntax=lua foldmethod=marker foldlevelstart=0 foldlevel=0
