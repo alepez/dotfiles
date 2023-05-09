@@ -1,26 +1,20 @@
 require'nvim-treesitter.configs'.setup {
-
-  -- Needed parsers
   ensure_installed = {
+    "bash",
     "c",
-    "lua",
-    "typescript",
+    "cpp",
+    "dockerfile",
     "javascript",
+    "lua",
+    "python",
     "rust",
+    "toml",
+    "typescript",
+    "yaml",
   },
-
-  -- Install all parsers synchronously
-  sync_install = false,
-
   highlight = {
-    -- Enabling highlight for all files
     enable = true,
-    disable = {},
+    -- No cpp because C++17 nested namespaces (which I use) are not supported
+    disable = { "cpp" },
   },
-
-  indent = {
-    -- Disabling indentation for all files
-    enable = false,
-    disable = {},
-  }
 }
