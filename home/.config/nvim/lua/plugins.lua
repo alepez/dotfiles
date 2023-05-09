@@ -1,14 +1,6 @@
---[[
-  File: plugins.lua
-  Description: This file needed for loading plugin list into lazy.nvim and loading plugins
-  Info: Use <zo> and <zc> to open and close foldings
-  See: https://github.com/wbthomason/packer.nvim
-]]
-
 require "helpers/globals"
 
 return {
-  -- Mason {{{
   {
     "williamboman/mason.nvim",
     build = ":MasonUpdate",
@@ -20,9 +12,7 @@ return {
       require "extensions.mason"
     end
   },
-  -- }}}
 
-  -- Neo Tree {{{
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
@@ -34,9 +24,7 @@ return {
       require "extensions.neotree"
     end
   },
-  -- }}}
 
-  -- Telescope {{{
   {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.1',
@@ -49,9 +37,7 @@ return {
       require "extensions.telescope"
     end
   },
-  -- }}}
 
-  -- CMP {{{
   {
     'hrsh7th/nvim-cmp',
     event = "InsertEnter",
@@ -69,9 +55,7 @@ return {
       require "extensions.cmp"
     end
   },
-  -- }}}
 
-  -- LSP Kind {{{
   {
     'onsails/lspkind-nvim',
     lazy = true,
@@ -79,9 +63,7 @@ return {
       require "extensions.lspkind"
     end
   },
-  -- }}}
 
-  -- Git Signs{{{
   {
     'lewis6991/gitsigns.nvim',
     lazy = false,
@@ -89,9 +71,7 @@ return {
       require "extensions.gitsigns"
     end
   },
-  -- }}}
 
-  -- Trouble {{{
   {
     "folke/trouble.nvim",
     lazy = true,
@@ -100,9 +80,7 @@ return {
       require "extensions.trouble"
     end,
   },
-  -- }}}
 
-  -- TreeSitter {{{
   {
     "nvim-treesitter/nvim-treesitter",
     lazy = false,
@@ -112,9 +90,7 @@ return {
       require "extensions.treesitter"
     end
   },
-  -- }}}
 
-  -- Theme: Gruvbox Material {{{
   {
     "sainnhe/gruvbox-material",
     lazy = false,
@@ -122,7 +98,6 @@ return {
       require "extensions.colorscheme.gruvbox"
     end
   },
-  -- }}}
 
 }
 
