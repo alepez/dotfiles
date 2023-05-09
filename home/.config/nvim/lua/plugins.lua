@@ -190,6 +190,26 @@ return {
       })
     end
   },
+
+  {
+    "simrat39/rust-tools.nvim",
+    dependencies = { "neovim/nvim-lspconfig", "nvim-lua/plenary.nvim", "mfussenegger/nvim-dap" },
+    opts = function(_, _)
+      require("rust-tools").setup({})
+    end,
+  },
+
+  {
+    "nvim-lua/plenary.nvim",
+  },
+
+  {
+    "mfussenegger/nvim-dap",
+  },
+
+  {
+    "romgrk/barbar.nvim",
+  },
 }
 
 -- vim:tabstop=2 shiftwidth=2 expandtab syntax=lua foldmethod=marker foldlevelstart=0 foldlevel=0

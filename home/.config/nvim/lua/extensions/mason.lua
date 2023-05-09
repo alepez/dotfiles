@@ -11,7 +11,7 @@ mason_lspconfig.setup({
     "jedi_language_server",
     -- "hls",
     "html",
-    "rust_analyzer",
+    -- "rust_analyzer", -- Managed by rust-tools
     "lua_ls",
     "taplo",
     "tsserver",
