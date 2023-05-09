@@ -96,11 +96,8 @@ return {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    opts = { style = "moon" },
-    config = function(_, opts)
-      local tokyonight = require("tokyonight")
-      tokyonight.setup(opts)
-      tokyonight.load()
+    config = function()
+      require "extensions.tokyonight"
     end,
   },
 
@@ -108,49 +105,7 @@ return {
     "numToStr/Comment.nvim",
     lazy = false,
     config = function()
-      require('Comment').setup({
-        -- Add a space b/w comment and the line
-        padding = true,
-        -- Whether the cursor should stay at its position
-        sticky = true,
-        -- Lines to be ignored while (un)comment
-        ignore = nil,
-        -- LHS of toggle mappings in NORMAL mode
-        toggler = {
-          -- Line-comment toggle keymap
-          line = 'gcc',
-          -- Block-comment toggle keymap
-          block = 'gbc',
-        },
-        -- LHS of operator-pending mappings in NORMAL and VISUAL mode
-        opleader = {
-          -- Line-comment keymap
-          line = 'gc',
-          -- Block-comment keymap
-          block = 'gb',
-        },
-        -- LHS of extra mappings
-        extra = {
-          -- Add comment on the line above
-          above = 'gcO',
-          -- Add comment on the line below
-          below = 'gco',
-          -- Add comment at the end of line
-          eol = 'gcA',
-        },
-        -- Enable keybindings
-        -- NOTE: If given `false` then the plugin won't create any mappings
-        mappings = {
-          -- Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
-          basic = true,
-          -- Extra mapping; `gco`, `gcO`, `gcA`
-          extra = true,
-        },
-        -- Function to call before (un)comment
-        pre_hook = nil,
-        -- Function to call after (un)comment
-        post_hook = nil,
-      })
+      require "extensions.comment"
     end
   },
 
@@ -159,40 +114,14 @@ return {
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     config = function()
-      require("nvim-surround").setup()
+      require "extensions.surround"
     end
   },
 
   {
     "nvim-lualine/lualine.nvim",
     config = function()
-      require('lualine').setup({
-        options = {
-          icons_enabled = true,
-          component_separators = { '', '' },
-          section_separators = { '', '' },
-          disabled_filetypes = {},
-          theme = 'tokyonight',
-        },
-        sections = {
-          lualine_a = { 'mode' },
-          lualine_b = { 'branch' },
-          lualine_c = { 'filename' },
-          lualine_x = { 'encoding', 'fileformat', 'filetype' },
-          lualine_y = { 'progress' },
-          lualine_z = { 'location' }
-        },
-        inactive_sections = {
-          lualine_a = {},
-          lualine_b = {},
-          lualine_c = { 'filename' },
-          lualine_x = { 'location' },
-          lualine_y = {},
-          lualine_z = {}
-        },
-        tabline = {},
-        extensions = {}
-      })
+      require "extensions.lualine"
     end
   },
 
