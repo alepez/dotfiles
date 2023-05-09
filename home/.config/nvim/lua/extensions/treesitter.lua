@@ -1,8 +1,3 @@
---[[
-  File: treesitter.lua
-  Description: Configuration of tree-sitter
-  See: https://github.com/tree-sitter/tree-sitter
-]]
 require'nvim-treesitter.configs'.setup {
 
   -- Needed parsers
@@ -11,13 +6,12 @@ require'nvim-treesitter.configs'.setup {
     "lua",
     "typescript",
     "javascript",
-    "rust" 
+    "rust",
   },
 
   -- Install all parsers synchronously
   sync_install = false,
 
-  -- Подсветка
   highlight = {
     -- Enabling highlight for all files
     enable = true,

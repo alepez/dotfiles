@@ -1,9 +1,3 @@
---[[
-  File: cmp.lua
-  Description: CMP plugin configuration (with lspconfig)
-  See: https://github.com/hrsh7th/nvim-cmp
-]]
-
 local cmp = require('cmp')
 local lspkind = require('lspkind')
 
@@ -19,13 +13,17 @@ cmp.setup{
 
     -- Autocompletion menu
     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i' }),
-    ['<CR>'] = cmp.config.disable,                      -- Turn off autocomplete on <CR>
-    ['<C-y>'] = cmp.mapping.confirm({ select = true }), -- Turn on autocomplete on <C-y>
+    -- Turn off autocomplete on <CR>
+    ['<CR>'] = cmp.config.disable,
+    -- Turn on autocomplete on <C-y>
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
 
     -- Use <C-e> to abort autocomplete
     ['<C-e>'] = cmp.mapping({
-      i = cmp.mapping.abort(), -- Abort completion
-      c = cmp.mapping.close(), -- Close completion window
+      -- Abort completion
+      i = cmp.mapping.abort(),
+      -- Close completion window
+      c = cmp.mapping.close(),
     }),
 
     -- Use <C-p> and <C-n> to navigate through completion variants
@@ -34,19 +32,28 @@ cmp.setup{
   },
 
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },                -- LSP
-    { name = 'nvim_lsp_signature_help' }, -- LSP for parameters in functions
-    { name = 'nvim_lua' },                -- Lua Neovim API
-    { name = 'luasnip' },                 -- Luasnip
-    { name = 'buffer' },                  -- Buffers
-    { name = 'path' },                    -- Paths
-    { name = "emoji" },                   -- Emoji
+    -- LSP
+    { name = 'nvim_lsp' },
+    -- LSP for parameters in functions
+    { name = 'nvim_lsp_signature_help' },
+    -- Lua Neovim API
+    { name = 'nvim_lua' },
+    -- Luasnip
+    { name = 'luasnip' },
+    -- Buffers
+    { name = 'buffer' },
+    -- Paths
+    { name = 'path' },
+    -- Emoji
+    { name = "emoji" },
   }, {
   }),
   formatting = {
     format = lspkind.cmp_format({
-      mode = 'symbol', -- Show only symbol annotations
-      maxwidth = 50,   -- Prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+      -- Show only symbol annotations
+      mode = 'symbol',
+      -- Prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+      maxwidth = 50,
     })
   }
 }
