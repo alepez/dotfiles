@@ -92,13 +92,16 @@ return {
   },
 
   {
-    "sainnhe/gruvbox-material",
+    "folke/tokyonight.nvim",
     lazy = false,
-    config = function()
-      require "extensions.colorscheme.gruvbox"
-    end
+    priority = 1000,
+    opts = { style = "moon" },
+    config = function(_, opts)
+      local tokyonight = require("tokyonight")
+      tokyonight.setup(opts)
+      tokyonight.load()
+    end,
   },
-
 
   {
     "numToStr/Comment.nvim",
@@ -167,7 +170,8 @@ return {
           icons_enabled = true,
           component_separators = { '', '' },
           section_separators = { '', '' },
-          disabled_filetypes = {}
+          disabled_filetypes = {},
+          theme = 'tokyonight',
         },
         sections = {
           lualine_a = { 'mode' },
