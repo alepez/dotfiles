@@ -1,4 +1,5 @@
 require "helpers/globals"
+require "helpers/keyboard"
 
 return {
   {
@@ -69,7 +70,7 @@ return {
     lazy = false,
     config = function()
       require "extensions.gitsigns"
-    end
+    end,
   },
 
   {
