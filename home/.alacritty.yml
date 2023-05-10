@@ -8,45 +8,39 @@ env:
 scrolling:
   history: 0 # Disable scrolling, we have tmux for it
 
-# Catppuccin
-# https://github.com/catppuccin/alacritty/blob/main/catppuccin.yml
+# TokyoNight Moon
+# https://github.com/folke/tokyonight.nvim/blob/main/extras/alacritty/tokyonight_moon.yml
 colors:
   # Default colors
   primary:
-    background: '0x1E1D2F'
-    foreground: '0xD9E0EE'
-
-  # Colors the cursor will use if `custom_cursor_colors` is true
-  cursor:
-    text: '0x1E1D2F'
-    cursor: '0xF5E0DC'
+    background: '0x222436'
+    foreground: '0xc8d3f5'
 
   # Normal colors
   normal:
-    black:   '0x6E6C7E'
-    red:     '0xF28FAD'
-    green:   '0xABE9B3'
-    yellow:  '0xFAE3B0'
-    blue:    '0x96CDFB'
-    magenta: '0xF5C2E7'
-    cyan:    '0x89DCEB'
-    white:   '0xD9E0EE'
+    black:   '0x1b1d2b'
+    red:     '0xff757f'
+    green:   '0xc3e88d'
+    yellow:  '0xffc777'
+    blue:    '0x82aaff'
+    magenta: '0xc099ff'
+    cyan:    '0x86e1fc'
+    white:   '0x828bb8'
 
   # Bright colors
   bright:
-    black:   '0x988BA2'
-    red:     '0xF28FAD'
-    green:   '0xABE9B3'
-    yellow:  '0xFAE3B0'
-    blue:    '0x96CDFB'
-    magenta: '0xF5C2E7'
-    cyan:    '0x89DCEB'
-    white:   '0xD9E0EE'
+    black:   '0x444a73'
+    red:     '0xff757f'
+    green:   '0xc3e88d'
+    yellow:  '0xffc777'
+    blue:    '0x82aaff'
+    magenta: '0xc099ff'
+    cyan:    '0x86e1fc'
+    white:   '0xc8d3f5'
 
   indexed_colors:
-    - { index: 16, color: '0xF8BD96' }
-    - { index: 17, color: '0xF5E0DC' }
-    - { index: 18, color: '0x1E1D2F' }
+    - { index: 16, color: '0xff966c' }
+    - { index: 17, color: '0xc53b53' }
 
 font:
   size: 13 # FONT_SIZE_HERE_FOR_AUTOMATIC_EDITING
