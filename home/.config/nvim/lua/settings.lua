@@ -186,6 +186,9 @@ opt.smartcase = true
 -- Put new windows below current
 opt.splitbelow = true
 
+-- Alwayas show the sign
+opt.signcolumn = "yes"
+
 -- Default Plugins
 local disabled_built_ins = {
     "netrw",
