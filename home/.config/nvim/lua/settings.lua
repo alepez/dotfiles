@@ -189,6 +189,11 @@ opt.splitbelow = true
 -- Alwayas show the sign
 opt.signcolumn = "yes"
 
+-- Show a popup when cursor is over a line with diagnostic
+vim.cmd([[
+autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
+]])
+
 -- Default Plugins
 local disabled_built_ins = {
     "netrw",
