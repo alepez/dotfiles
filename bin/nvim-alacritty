@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Launch nvim directly inside the preferred terminal.
+# Use this to open files from graphical applications.
+
+alacritty -e nvim "$@"
