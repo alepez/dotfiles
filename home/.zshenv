@@ -217,6 +217,19 @@ git-huge-finder() {
 ## }}}
 
 ################################################################################
+## cargo aliases
+
+alias ca="cargo"
+alias cab="cargo build"
+alias cac="cargo check"
+alias car="cargo run"
+alias caw="cargo watch"
+alias cact="cargo watch -x check -x test"
+alias cawr="cargo watch -x check -x run"
+
+## }}}
+
+################################################################################
 ## rsync ssh tunnel with ControlPath {{{
 ## see: http://unix.stackexchange.com/a/50515/12662
 ssh-rsync-fast-start() {
