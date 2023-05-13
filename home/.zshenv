@@ -99,7 +99,7 @@ alias noscreensaver='xset -dpms s off'
 # Show a notification
 ding() {
   (
-  notify-send -u low '!'
+  notify-send -u low "! ${1}"
   paplay /usr/share/sounds/freedesktop/stereo/complete.oga
   ) >/dev/null 2>/dev/null </dev/null &
 }
