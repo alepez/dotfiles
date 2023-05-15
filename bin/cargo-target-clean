@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+find_target_dirs() {
+  find -name target -type d
+}
+
+is_cache_dir() {
+  test -e "${1}/CACHEDIR.TAG"
+}
+
+print_with_size() {
+  du -s "${1}"
+}
+
+find_cache_dirs() {
+  find_target_dirs | while read l; do
+    is_cache_dir "${l}" && print_with_size "${l}"
+  done
+}
+
+print_with_size() {
+  du -hs "${1}"
+}
+
+sort_by_size() {
+  sort -h
+}
+
+main() {
+  find_cache_dirs | sort_by_size
+}
+
+main
