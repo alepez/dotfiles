@@ -26,9 +26,9 @@ cmp.setup{
       c = cmp.mapping.close(),
     }),
 
-    -- Use <C-p> and <C-n> to navigate through completion variants
-    ['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
+    -- Navigate through completion variants
     ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
+    ['<C-k>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
   },
 
   sources = cmp.config.sources({
