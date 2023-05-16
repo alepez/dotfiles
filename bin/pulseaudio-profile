@@ -85,7 +85,7 @@ pa_profile_set_vi_scarlett() {
 pa_profile_set_scarlett() {
   pacmd set-card-profile "${CARD_BUILTIN}" off
   pacmd set-card-profile "${CARD_DOCK}" off
-  pacmd set-card-profile "${CARD_SCARLETT}" output:analog-stereo+input:analog-stereo
+  pacmd set-card-profile "${CARD_SCARLETT}" Direct
   pacmd set-card-profile "${CARD_USB}" off
   pacmd set-card-profile "${CARD_VI}" off
   pacmd set-default-sink "${SINK_SCARLETT}"
