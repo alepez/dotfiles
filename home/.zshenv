@@ -30,6 +30,11 @@ alias pi='echo 3.14159265359'
 
 alias leave='sleep 10 && exit'
 
+touchx() {
+  echo '#!/usr/bin/env bash' >> "${1}"
+  chmod +x "${1}"
+}
+
 # Create new tmp directory and cd into it
 # Dir name is current UTC time, without special characters as : to be
 # compatible with PATH env var (so you can add this tmp directory to PATH)
