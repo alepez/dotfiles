@@ -156,6 +156,17 @@ return {
   {
     "romgrk/barbar.nvim",
   },
+
+  {
+    "johnfrankmorgan/whitespace.nvim",
+    config = function()
+      require('whitespace-nvim').setup({
+        highlight = 'DiffDelete',
+        ignored_filetypes = { 'TelescopePrompt', 'Trouble', 'help' },
+        ignore_terminal = true,
+      })
+    end
+  },
 }
 
 -- vim:tabstop=2 shiftwidth=2 expandtab syntax=lua foldmethod=marker foldlevelstart=0 foldlevel=0
