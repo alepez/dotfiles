@@ -101,6 +101,7 @@ local servers = {
   "lua_ls",
   "taplo",
   "tsserver",
+  "yamlls",
   "zls",
 }
 
