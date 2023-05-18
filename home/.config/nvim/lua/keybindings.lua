@@ -116,4 +116,12 @@ nm('<leader>ay', 'gg"+yG')
 vim.api.nvim_create_user_command('Grep', 'execute \'silent grep! <args>\' | copen | redraw', { nargs = 1 })
 vim.api.nvim_set_keymap('n', '<leader>f', ':Grep ', { noremap = true })
 
+-- Trouble
+nm("<leader>xx", "<cmd>TroubleToggle<cr>")
+nm("<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>")
+nm("<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>")
+nm("<leader>xl", "<cmd>TroubleToggle loclist<cr>")
+nm("<leader>xq", "<cmd>TroubleToggle quickfix<cr>")
+nm("gR", "<cmd>TroubleToggle lsp_references<cr>")
+
 -- vim:tabstop=2 shiftwidth=2 expandtab syntax=lua foldmethod=marker foldlevelstart=0 foldlevel=0
