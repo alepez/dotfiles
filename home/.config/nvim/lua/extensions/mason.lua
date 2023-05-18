@@ -15,6 +15,7 @@ mason_lspconfig.setup({
     "lua_ls",
     "taplo",
     "tsserver",
+    "yamlls",
     "zls",
   }
 });
@@ -76,6 +77,15 @@ local custom_opts = {
       },
     },
   },
+  ["yamlls"] = {
+    settings = {
+    --   yaml = {
+    --     schemas = {
+    --       ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+    --     },
+    --   },
+    }
+  }
 }
 
 -- Setup every needed language server in lspconfig
