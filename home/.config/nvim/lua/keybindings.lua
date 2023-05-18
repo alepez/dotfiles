@@ -68,7 +68,7 @@ nm('<leader>F', '<cmd>Telescope live_grep<CR>')
 nm('<leader>o', '<cmd>Telescope buffers<CR>')
 
 -- Telescope, Show all commands
-nm('<leader>;', '<cmd>Telescope<CR>')
+nm('<leader>;', '<cmd>Telescope commands<CR>')
 
 -- Telescope, Search for dynamic symbols
 nm('<leader>s', '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>')
