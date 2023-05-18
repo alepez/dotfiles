@@ -39,6 +39,7 @@ local custom_opts = {
     },
     provideFormatter = true,
   },
+  -- TODO Check if this is working even if managed by rust-tools
   ["rust-analyzer"] = {
     procMacro = {
       enable = true
