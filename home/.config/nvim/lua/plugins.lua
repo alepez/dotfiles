@@ -167,6 +167,39 @@ return {
       })
     end
   },
+
+  {
+    "jackMort/ChatGPT.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("chatgpt").setup({
+        api_key_cmd = "~/.dotfiles/bin/chatgpt-api-key",
+      })
+    end,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim"
+    }
+  },
+
+  {
+    "zbirenbaum/copilot.lua",
+    config = function()
+      require("copilot").setup()
+    end
+  },
+
+  {
+    "zbirenbaum/copilot-cmp",
+    config = function()
+      require("copilot_cmp").setup({
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      }
+      )
+    end
+  },
 }
 
 -- vim:tabstop=2 shiftwidth=2 expandtab syntax=lua foldmethod=marker foldlevelstart=0 foldlevel=0

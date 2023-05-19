@@ -31,5 +31,6 @@ lspkind.init({
     Operator = " ",
     TypeParameter = " ",
     Snippet = "✂",
+    Copilot = "",
   },
 })
