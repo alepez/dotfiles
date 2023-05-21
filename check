@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+info() {
+  ls -dl --full-time "${HOME}/${1}"
+}
+
+pretty_print() {
+  local from=$( echo "${1}" | awk '{ print $9  }' )
+  local to=$( echo "${1}" | awk '{ print $11  }' )
+  printf "%-40s %-40s\n" "${from}" "${to}"
+}
+
+for item in $( cat links ); do
+  pretty_print "$( info "${item}" )"
+done
+
