@@ -14,7 +14,7 @@ cmp.setup{
     -- Autocompletion menu
     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i' }),
     -- Turn off autocomplete
-    ['<Tab>'] = cmp.config.disable,
+    -- ['<Tab>'] = cmp.config.disable,
     -- Turn on autocomplete
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
 
