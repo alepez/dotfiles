@@ -261,3 +261,4 @@ if [ -e ~/.zshrc.local ]; then source ~/.zshrc.local; fi
 ################################################################################
 ## startship
 eval "$(starship init zsh)"
+alias putane="netstat -putane"
