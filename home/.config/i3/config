@@ -339,6 +339,9 @@ assign [title="Gauges"] $workspace_3
 for_window [class="App"] floating enable
 assign [class="App"] $workspace_3
 
+# Wine
+for_window [class="explorer.exe"] floating enable
+
 ###############################################################################
 # Startup
 ###############################################################################
