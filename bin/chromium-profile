@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+main() {
+  local profile="${1}"
+  local user_data_dir="${HOME}/tmp/chromium-profile-dir/${profile}"
+
+  chromium \
+    --user-data-dir=${user_data_dir} 2>/dev/null 1>/dev/null </dev/null &
+}
+
+main "$@"
