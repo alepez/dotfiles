@@ -173,7 +173,7 @@ return {
     event = "VeryLazy",
     config = function()
       require("chatgpt").setup({
-        api_key_cmd = "~/.dotfiles/bin/chatgpt-api-key",
+        api_key_cmd = vim.fn.expand("~/.dotfiles/bin/chatgpt-api-key"),
       })
     end,
     dependencies = {
