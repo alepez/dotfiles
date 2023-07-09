@@ -25,6 +25,7 @@ set_file() {
 }
 
 case $1 in
+  list) list_all;;
   prev) set_prev && load;;
   next) set_next && load;;
   load) load;;
