@@ -230,7 +230,8 @@ alias cac="cargo check"
 alias car="cargo run"
 alias caw="cargo watch -c -x check"
 alias cact="cargo watch -c -x check -x test"
-alias cawr="cargo watch -c -x check -x test -x run"
+alias cawtr="cargo watch -c -x check -x test -x run"
+alias cawr="cargo watch -c -x check -x run"
 alias cawb="cargo watch -c -x check -x build"
 
 ## }}}
