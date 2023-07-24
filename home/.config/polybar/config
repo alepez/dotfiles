@@ -49,7 +49,7 @@ font-4 = "Font Awesome 5 Brands:pixelsize=10;0"
 font-5 = "FiraCode Nerd Font Mono:style=Regular"
 modules-left = i3
 modules-center =
-modules-right = xbacklight memory cpu system-cpu-frequency pulseaudio-control wlp61s0 ens1u1 enp0s31f6 battery mouse-battery keyboard-battery temperature date
+modules-right = xbacklight memory cpu system-cpu-frequency pulseaudio-control wlp61s0 ens1u1 enp0s31f6 battery temperature date
 tray-position = right
 tray-padding = 2
 wm-restack = i3
