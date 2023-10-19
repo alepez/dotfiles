@@ -1,4 +1,4 @@
-ao=jack
+ao=pulse
 vo=vdpau
 framedrop=yes
 cache=8192
