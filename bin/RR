@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+/usr/bin/rustrover "${@}" &>/dev/null </dev/null &
