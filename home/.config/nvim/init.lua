@@ -11,4 +11,7 @@ vim.cmd('source ~/.config/nvim/legacy/hacks.vim')
 local lazy = require("lazy")
 lazy.setup("plugins")
 
+-- Disable Copilot at startup
+vim.cmd(":Copilot disable")
+
 -- vim:tabstop=2 shiftwidth=2 expandtab syntax=lua foldmethod=marker foldlevelstart=0 foldlevel=0
