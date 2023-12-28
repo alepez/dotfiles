@@ -1,0 +1,65 @@
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[[colors.indexed_colors]]
+color = "0xff966c"
+index = 16
+
+[[colors.indexed_colors]]
+color = "0xc53b53"
+index = 17
+
+[colors.bright]
+black = "0x444a73"
+blue = "0x82aaff"
+cyan = "0x86e1fc"
+green = "0xc3e88d"
+magenta = "0xc099ff"
+red = "0xff757f"
+white = "0xc8d3f5"
+yellow = "0xffc777"
+
+[colors.normal]
+black = "0x1b1d2b"
+blue = "0x82aaff"
+cyan = "0x86e1fc"
+green = "0xc3e88d"
+magenta = "0xc099ff"
+red = "0xff757f"
+white = "0x828bb8"
+yellow = "0xffc777"
+
+[colors.primary]
+background = "0x222436"
+foreground = "0xc8d3f5"
+
+[env]
+TERM = "xterm-256color"
+WINIT_X11_SCALE_FACTOR = "1"
+
+[font]
+size = 13
+
+[font.bold]
+family = "mononoki Nerd Font Mono"
+style = "Bold"
+
+[font.italic]
+family = "mononoki Nerd Font Mono"
+style = "Italic"
+
+[font.normal]
+family = "mononoki Nerd Font Mono"
+style = "Regular"
+
+[mouse]
+hide_when_typing = true
+
+[scrolling]
+history = 0
+
+[selection]
+save_to_clipboard = true
+
+[window]
+opacity = 0.95
