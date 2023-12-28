@@ -117,6 +117,9 @@
 
   ignore-tracked = update-index --assume-unchanged
 
+  # delete remote branch
+  remdel = push origin --delete
+
 [core]
   excludesfile = ~/.gitignore
   autocrlf = false
