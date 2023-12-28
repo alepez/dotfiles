@@ -101,6 +101,8 @@ alias dc='cd'
 # Disable screensaver and screen energy saving (e.g.: during a speech)
 alias noscreensaver='xset -dpms s off'
 
+alias py="python"
+
 # Show a notification
 ding() {
   (
