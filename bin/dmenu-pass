@@ -10,10 +10,7 @@ pass_to_clipboard() {
 
 pass_to_passmumbler() {
   local password="${1}"
-  local tmpfile=$(mktemp)
-  pass show "$password" > $tmpfile
-  passmumbler < $tmpfile
-  rm $tmpfile
+  pass show "$password" | passmumbler
 }
 
 main() {
@@ -21,9 +18,9 @@ main() {
 
   dmenu="$( realpath ~/.dotfiles/bin/dmenu )"
 
-  prefix=${PASSWORD_STORE_DIR-~/.password-store}
-  password_files=( "$prefix"/**/*.gpg )
-  password_files=( "${password_files[@]#"$prefix"/}" )
+  local prefix=${PASSWORD_STORE_DIR-~/.password-store}
+  password_files=( "${prefix}"/**/*.gpg )
+  password_files=( "${password_files[@]#"${prefix}"/}" )
   password_files=( "${password_files[@]%.gpg}" )
 
   password=$(printf '%s\n' "${password_files[@]}" | "${dmenu}" -dmenu -p "Password" "$@")
