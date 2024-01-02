@@ -12,9 +12,7 @@ pass_to_passmumbler() {
   local password="${1}"
   local tmpfile=$(mktemp)
   pass show "$password" > $tmpfile
-  local p="$( head -1 $tmpfile )" 
-  local u="$( grep '^username:' $tmpfile | head -1 | awk '{ print $2 }' )"
-  passmumbler -p "${p}" -u "${u}"
+  passmumbler < $tmpfile
   rm $tmpfile
 }
 
