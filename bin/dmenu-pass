@@ -1,20 +1,24 @@
 #!/usr/bin/env bash
 
-shopt -s nullglob globstar
+main() {
+  shopt -s nullglob globstar
 
-dmenu="$( realpath ~/.dotfiles/bin/dmenu )"
+  dmenu="$( realpath ~/.dotfiles/bin/dmenu )"
 
-prefix=${PASSWORD_STORE_DIR-~/.password-store}
-password_files=( "$prefix"/**/*.gpg )
-password_files=( "${password_files[@]#"$prefix"/}" )
-password_files=( "${password_files[@]%.gpg}" )
+  prefix=${PASSWORD_STORE_DIR-~/.password-store}
+  password_files=( "$prefix"/**/*.gpg )
+  password_files=( "${password_files[@]#"$prefix"/}" )
+  password_files=( "${password_files[@]%.gpg}" )
 
-password=$(printf '%s\n' "${password_files[@]}" | "${dmenu}" -dmenu -p "Password" "$@")
+  password=$(printf '%s\n' "${password_files[@]}" | "${dmenu}" -dmenu -p "Password" "$@")
 
-[[ -n $password ]] || exit
+  [[ -n $password ]] || exit
 
-tmpfile=$(mktemp)
-pass show -c1 "$password" > $tmpfile
+  tmpfile=$(mktemp)
+  pass show -c1 "$password" > $tmpfile
 
-notify-send -u low "$( cat $tmpfile )"
-rm $tmpfile
+  notify-send -u low "$( cat $tmpfile )"
+  rm $tmpfile
+}
+
+main $@
