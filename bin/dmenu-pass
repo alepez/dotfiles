@@ -9,8 +9,7 @@ pass_to_clipboard() {
 }
 
 pass_to_passmumbler() {
-  local password="${1}"
-  pass show "$password" | passmumbler
+  pass show "${1}" | passmumbler --stdin
 }
 
 list_passwords() {
