@@ -1,5 +1,23 @@
 #!/usr/bin/env bash
 
+pass_to_clipboard() {
+  local password="${1}"
+  local tmpfile=$(mktemp)
+  pass show -c1 "$password" > $tmpfile
+  notify-send -u low "$( cat $tmpfile )"
+  rm $tmpfile
+}
+
+pass_to_passmumbler() {
+  local password="${1}"
+  local tmpfile=$(mktemp)
+  pass show "$password" > $tmpfile
+  local p="$( head -1 $tmpfile )" 
+  local u="$( grep '^username:' $tmpfile | awk '{ print $2 }' )"
+  passmumbler -p "${p}" -u "${u}"
+  rm $tmpfile
+}
+
 main() {
   shopt -s nullglob globstar
 
@@ -14,11 +32,11 @@ main() {
 
   [[ -n $password ]] || exit
 
-  tmpfile=$(mktemp)
-  pass show -c1 "$password" > $tmpfile
-
-  notify-send -u low "$( cat $tmpfile )"
-  rm $tmpfile
+  if which passmumbler &>/dev/null; then
+    pass_to_passmumbler "${password}"
+  else
+    pass_to_clipboard "${password}"
+  fi
 }
 
 main $@
