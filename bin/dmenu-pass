@@ -13,17 +13,22 @@ pass_to_passmumbler() {
   pass show "$password" | passmumbler
 }
 
-select_password() {
+list_passwords() {
   shopt -s nullglob globstar
 
-  local dmenu="$( realpath ~/.dotfiles/bin/dmenu )"
   local prefix=${PASSWORD_STORE_DIR-~/.password-store}
 
-  password_files=( "${prefix}"/**/*.gpg )
+  local password_files=( "${prefix}"/**/*.gpg )
   password_files=( "${password_files[@]#"${prefix}"/}" )
   password_files=( "${password_files[@]%.gpg}" )
 
-  password=$(printf '%s\n' "${password_files[@]}" | "${dmenu}" -dmenu -p "Password" "$@")
+  printf '%s\n' "${password_files[@]}"
+}
+
+select_password() {
+  local dmenu="$( realpath ~/.dotfiles/bin/dmenu )"
+
+  password=$( list_passwords | "${dmenu}" -dmenu -p "Password" "$@" )
   echo "${password}"
 }
 
