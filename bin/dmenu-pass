@@ -21,14 +21,15 @@ list_passwords() {
   password_files=( "${password_files[@]#"${prefix}"/}" )
   password_files=( "${password_files[@]%.gpg}" )
 
-  printf '%s\n' "${password_files[@]}"
+  printf '%s\n' "${password_files[@]}" ^ \
+    | sed 's/^passwords\///'
 }
 
 select_password() {
   local dmenu="$( realpath ~/.dotfiles/bin/dmenu )"
 
   password=$( list_passwords | "${dmenu}" -dmenu -p "Password" "$@" )
-  echo "${password}"
+  echo "passwords/${password}"
 }
 
 main() {
