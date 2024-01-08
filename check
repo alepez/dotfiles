@@ -7,10 +7,50 @@ info() {
 pretty_print() {
   local from=$( echo "${1}" | awk '{ print $9  }' )
   local to=$( echo "${1}" | awk '{ print $11  }' )
-  printf "%-40s %-40s\n" "${from}" "${to}"
+  local type=F
+
+  if [ -d "${to}" ]; then
+    type=D
+  fi
+
+  printf "%s %-40s %-40s\n" "${type}" "${from}" "${to}"
 }
 
-for item in $( cat links ); do
-  pretty_print "$( info "${item}" )"
-done
+list_tracked_dotfiles() {
+  echo "Tracked files/directories:"
+  echo
+  for item in $( cat links ); do
+    pretty_print "$( info "${item}" )"
+  done
+}
 
+list_untracked_dotfiles() {
+  local tmp_file=$( mktemp )
+  local tmp_file2=$( mktemp )
+
+  # List all files belonging to home directory
+  # These files are expected to be tracked.
+  ( cd home && find -type f ) > "${tmp_file}"
+
+  # Remove all files that are tracked or belong to a tracked directory
+  for item in $( cat links ); do 
+    cp -f "${tmp_file}" "${tmp_file2}"
+    grep -v "/$item" "${tmp_file2}" > "${tmp_file}"
+  done
+
+  # If there are any files left, they are untracked
+  if [ -s "${tmp_file}" ]; then
+    echo "Untracked files:"
+    echo
+    cat "${tmp_file}"
+  fi
+
+  rm "${tmp_file}" "${tmp_file2}"
+}
+
+main() {
+  list_tracked_dotfiles
+  list_untracked_dotfiles
+}
+
+main
