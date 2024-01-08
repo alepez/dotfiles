@@ -2,7 +2,7 @@
 .zshenv
 .mplayer
 .xbindkeysrc
-.alacritty.yml
+.alacritty.toml
 .gitignore
 .zshrc
 .gitconfig
