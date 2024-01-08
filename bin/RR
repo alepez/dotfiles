@@ -2,4 +2,4 @@
 
 ## Starts Rust Rover in the background, with the current directory as the project
 
-/usr/bin/rustrover "${@}" &>/dev/null </dev/null &
+/usr/bin/rustrover . &>/dev/null </dev/null &
