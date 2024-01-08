@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# This is needed to find executables in custom paths
+export PATH=/home/${USER}/.dotfiles/bin:${PATH}
+
+rofi -matching fuzzy -show run
