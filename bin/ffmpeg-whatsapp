@@ -2,4 +2,18 @@
 
 # Encode video for WhatsApp
 
-ffmpeg -i "${1}" -c:v libx264 -profile:v baseline -level 3.0 -pix_fmt yuv420p "${2}"
+main() {
+  local src="${1}"
+  local dst="${2}"
+
+  test -z "${src}" && echo "No source file given" && exit 1
+  test ! -f "${src}" && echo "Source file does not exist" && exit 1
+
+  if [ -z "${dst}" ]; then
+    dst=$( echo "${src}" | sed 's/\.[^.]*$/.whatsapp.mp4/' )
+  fi
+
+  ffmpeg -i "${src}" -c:v libx264 -profile:v baseline -level 3.0 -pix_fmt yuv420p "${dst}"
+}
+
+main "$@"
