@@ -19,7 +19,7 @@ pretty_print() {
 list_tracked_dotfiles() {
   echo "Tracked files/directories:"
   echo
-  for item in $( cat links ); do
+  for item in $( cat tracked ); do
     pretty_print "$( info "${item}" )"
   done
 }
@@ -33,7 +33,7 @@ list_untracked_dotfiles() {
   ( cd home && find -type f ) > "${tmp_file}"
 
   # Remove all files that are tracked or belong to a tracked directory
-  for item in $( cat links ); do 
+  for item in $( cat tracked ); do 
     cp -f "${tmp_file}" "${tmp_file2}"
     grep -v "/$item" "${tmp_file2}" > "${tmp_file}"
   done
