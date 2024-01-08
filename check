@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 info() {
-  ls -dl --full-time "${HOME}/${1}"
+  ls -dl --full-time "${HOME}/${1}" 2>/dev/null
 }
 
-pretty_print() {
+print_linked() {
   local from=$( echo "${1}" | awk '{ print $9  }' )
   local to=$( echo "${1}" | awk '{ print $11  }' )
   local type=F
@@ -16,11 +16,26 @@ pretty_print() {
   printf "%s %-40s %-40s\n" "${type}" "${from}" "${to}"
 }
 
+print_missing() {
+  local to="${1}"
+  local type=F
+
+  if [ -d "${to}" ]; then
+    type=D
+  fi
+
+  printf "%s %-40s %-40s\n" "${type}" "" "${to}"
+}
+
 list_tracked_dotfiles() {
   echo "Tracked files/directories:"
   echo
   for item in $( cat tracked ); do
-    pretty_print "$( info "${item}" )"
+    if [ -e "${HOME}/${item}" ]; then
+      print_linked "$( info "${item}" )"
+    else
+      print_missing "${HOME}/.dotfiles/home/${item}"
+    fi
   done
 }
 
