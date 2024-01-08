@@ -25,7 +25,7 @@ clean() {
   while IFS= read -r file; do
     if [ -e "${file}" ]; then
       echo "${file}"
-      mv "${file}" "${trash_dir}"
+      mv -v "${file}" "${trash_dir}"
     fi
   done <<< "${old_files}"
 }
