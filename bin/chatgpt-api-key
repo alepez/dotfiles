@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
+## Returns the chatgpt api key
+
 pass show tokens/chatgpt | tr -d \\n

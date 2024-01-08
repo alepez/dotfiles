@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+## Starts Chromium with a temporary profile directory
+
 cleanup_old() {
   find "${HOME}/tmp/chromium-tmp-dir" -type d -ctime +2 -exec rm -rf {} \; \
     2>/dev/null

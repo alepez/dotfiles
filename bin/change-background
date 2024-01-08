@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+## Used to change the background image
+
 wallpaper="${HOME}/.wallpaper"
 
 list_all() { find "${HOME}/Pictures/wallpapers"; }

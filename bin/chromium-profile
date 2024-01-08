@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+## Starts Chromium with a named profile directory
+
 main() {
   local profile="${1}"
   local user_data_dir="${HOME}/tmp/chromium-profile-dir/${profile}"

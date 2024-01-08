@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# Move all files and directories inside tmp directories which are older than
-# 30 days, inside a .trash directory.
+## Move all files and directories inside tmp directories which are older than
+## 30 days, inside a .trash directory.
 
 list_old_files() {
   find "${1}" \
