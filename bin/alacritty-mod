@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
+## Used to modify the Alacritty config file with a command
+
 change_font_size() {
   local size=$1
-  sed -i -e "s/.*FONT_SIZE_HERE_FOR_AUTOMATIC_EDITING/  size: ${size} # FONT_SIZE_HERE_FOR_AUTOMATIC_EDITING/" \
-    ~/.dotfiles/alacritty/alacritty.yml
+  sed -i -e "s/.*FONT_SIZE_HERE_FOR_AUTOMATIC_EDITING/size = ${size} # FONT_SIZE_HERE_FOR_AUTOMATIC_EDITING/" \
+    ~/.dotfiles/home/.alacritty.toml
 }
 
 help() {
