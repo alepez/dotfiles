@@ -13,7 +13,7 @@ print_linked() {
     type=D
   fi
 
-  printf "%s %-40s %-40s\n" "${type}" "${from}" "${to}"
+  printf "%s %-60s %-60s\n" "${type}" "${from}" "${to}"
 }
 
 print_missing() {
@@ -24,7 +24,7 @@ print_missing() {
     type=D
   fi
 
-  printf "%s %-40s %-40s\n" "${type}" "" "${to}"
+  printf "%s %-60s %-60s\n" "${type}" "" "${to}"
 }
 
 list_tracked_dotfiles() {

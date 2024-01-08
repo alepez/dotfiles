@@ -149,9 +149,6 @@ if [ -d $HOME/bin ]; then export PATH="$HOME/bin:${PATH}"; fi
 ## Add neovim bin directory to path if it exists
 if [ -d $HOME/.neovim ]; then export PATH="$HOME/.neovim/bin:${PATH}"; fi
 
-## Add dotfiles bin directory to path if it exists
-if [ -d $HOME/.dotfiles/bin ]; then export PATH="$HOME/.dotfiles/bin:${PATH}"; fi
-
 ## Enable true color for neovim
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
 
