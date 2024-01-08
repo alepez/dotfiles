@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# DEPRECATED
+
 # Launch the preferred mail client in its workspace
 
 i3-msg 'workspace --no-auto-back-and-forth 8'

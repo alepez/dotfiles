@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+## Starts rofi with fuzzy matching in dmenu mode
+
 export PATH=/home/${USER}/bin:/home/${USER}/.local/bin:/usr/local/bin:/usr/bin:/bin
 
 rofi -matching fuzzy -dmenu $@

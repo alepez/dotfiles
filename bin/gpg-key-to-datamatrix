@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+## DEPRECATED
+
 # Import or export GPG keys to datamatrix images, so they can be printed
 
 add_caption() {

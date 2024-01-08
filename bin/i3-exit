@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+## Actions to take before exiting i3
+
 grep_umount() {
   mount | grep "${1}" | awk '{ print $3 }' | while read dir; do umount -l $dir; done
 }

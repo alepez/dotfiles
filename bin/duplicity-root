@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# DEPRECATED
+
 # Do a full root backup with duplicity
 # Run this as root
 

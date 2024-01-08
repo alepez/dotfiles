@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+## Cleans cmake target directories
+
 find_target_dirs() {
   find -name 'cmake-*' -type d
 }

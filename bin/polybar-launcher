@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+## Launches polybar
+
 # Terminate already running bar instances
 kill_old_polybars() {
   killall -q polybar

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+## Selects a pulseaudio profile
+
 CARD_BUILTIN='alsa_card.pci-0000_00_1f.3'
 CARD_DOCK='alsa_card.usb-Lenovo_ThinkPad_Thunderbolt_3_Dock_USB_Audio_000000000000-00'
 CARD_SCARLETT='alsa_card.usb-Focusrite_Scarlett_2i2_USB-00'

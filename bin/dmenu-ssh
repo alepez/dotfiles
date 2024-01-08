@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+## Selects a host from ~/.config/remote-terminal and opens a terminal with ssh
+
 CONFIG_FILE="$( realpath ~/.config/remote-terminal )"
 
 dmenu="$( realpath ~/.dotfiles/bin/dmenu )"

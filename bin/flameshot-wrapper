@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+## Takes a screenshot with flameshot and archives old screenshots
+
 DIR="${HOME}/Pictures/Screenshots"
 ARCHIVE="${HOME}/Pictures/Screenshots/archive"
 

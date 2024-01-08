@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+## Actions to perform when i3 starts
+
 source "$( dirname "${BASH_SOURCE[0]}" )/.common.sh"
 
 # TODO Why is this needed now? I'm sure this wasn't needed before 479ee15. May be a bug in systemd, lightdm or dbus

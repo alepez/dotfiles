@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# DEPRECATED
+
 ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && cd ../ && pwd )"
 
 list_dotfiles() {

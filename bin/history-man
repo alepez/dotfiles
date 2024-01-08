@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Manages zsh history in multiple logs
+## Manages zsh history in multiple logs
 
 HIST=/home/pez/.history
 HIST_DIR=/home/pez/.config/zsh-history

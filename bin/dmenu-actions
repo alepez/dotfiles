@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+## Creates a dmenu prompt with actions
+
 PRIVATE_CFG="$( realpath ~/.dotfiles-private/dmenu-actions.conf )"
 PUBLIC_CFG="$( realpath ~/.dotfiles/more/dmenu-actions.conf )"
 

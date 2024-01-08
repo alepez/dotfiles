@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+## Pulls files from a remote host
+
 help() {
   echo "${0} <remote_host> <remote_dir> <local_dir>"
 }

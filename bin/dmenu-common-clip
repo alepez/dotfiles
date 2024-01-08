@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+## Selects a string from a list of strings, and copies it to clipboard
+
 CONFIG_FILE="$( realpath ~/.config/common-clip-dmenu )"
 
 dmenu="$( realpath ~/.dotfiles/bin/dmenu )"

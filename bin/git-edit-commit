@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-# Thanks to https://stackoverflow.com/a/1186549/786186
+## Edits a commit
+## Thanks to https://stackoverflow.com/a/1186549/786186
 
 cat <<EOF
 In the editor, modify 'pick' to 'edit' in the line mentioning the

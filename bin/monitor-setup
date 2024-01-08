@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# Setup screens layout. Also takes care of relaunching polybar, reload
-# background and other amenities.
+## Setup screens layout. Also takes care of relaunching polybar, reload
+## background and other amenities.
 
 post_setup() {
   local layout=${1}
