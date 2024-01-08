@@ -15,3 +15,14 @@ Example:
 ```sh
 ln -nfs ~/.dotfiles/home/.zshrc ~/.zshrc
 ```
+
+## Check consistency
+
+This command should print a list of tracked configurations files and the linked
+file in home directory, if it exists.
+
+```sh
+./check
+```
+
+
