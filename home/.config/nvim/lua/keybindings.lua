@@ -73,12 +73,6 @@ nm('<leader>;', '<cmd>Telescope commands<CR>')
 -- Telescope, Search for dynamic symbols
 nm('<leader>s', '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>')
 
--- Telescope, Show all problems in project (with help of LSP)
--- nm('<leader>x', '<cmd>TroubleToggle<CR>') TODO collision with buffer close
-
--- Telescope, Show use of object in project
-nm('gr', '<cmd>Trouble lsp_references<CR>')
-
 -- Toggle file explorer
 nm('<leader>ne', '<cmd>NeoTreeFocusToggle<CR>')
 
@@ -117,11 +111,11 @@ vim.api.nvim_create_user_command('Grep', 'execute \'silent grep! <args>\' | cope
 vim.api.nvim_set_keymap('n', '<leader>f', ':Grep ', { noremap = true })
 
 -- Trouble
-nm("<leader>xx", "<cmd>TroubleToggle<cr>")
-nm("<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>")
-nm("<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>")
-nm("<leader>xl", "<cmd>TroubleToggle loclist<cr>")
-nm("<leader>xq", "<cmd>TroubleToggle quickfix<cr>")
+nm("<leader>gx", "<cmd>TroubleToggle<cr>")
+nm("<leader>gw", "<cmd>TroubleToggle workspace_diagnostics<cr>")
+nm("<leader>gd", "<cmd>TroubleToggle document_diagnostics<cr>")
+nm("<leader>gl", "<cmd>TroubleToggle loclist<cr>")
+nm("<leader>gq", "<cmd>TroubleToggle quickfix<cr>")
 nm("gR", "<cmd>TroubleToggle lsp_references<cr>")
 
 -- vim:tabstop=2 shiftwidth=2 expandtab syntax=lua foldmethod=marker foldlevelstart=0 foldlevel=0
