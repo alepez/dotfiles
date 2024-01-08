@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Force size of virtualbox machine
+## Force size of virtualbox machine
 
 machine="${1}"
 width="${2}"

@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
+## Starts Rust Rover in the background
+
 /usr/bin/rustrover "${@}" &>/dev/null </dev/null &
