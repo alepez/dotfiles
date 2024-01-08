@@ -5,7 +5,6 @@
 ## - http://www.passwordstore.org/
 ## - https://github.com/junegunn/fzf
 
-
 only_password() {
   head -1
 }
