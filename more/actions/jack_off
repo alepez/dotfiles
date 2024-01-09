@@ -1,2 +1,0 @@
-#!/usr/bin/env bash
-~/.dotfiles/bin/audio-control jack_stop
