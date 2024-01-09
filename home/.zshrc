@@ -480,6 +480,8 @@ backup_cp() { cp -a "${1}" "${1}~$( date +%Y%m%d-%H%M%S )~"; }
 backup_mv() { mv "${1}" "${1}~$( date +%Y%m%d-%H%M%S )~"; }
 zipr() { zip "${1}.zip" "${1}" -r; }
 
+alias history="fc -il -t'%F %T' 1"
+
 ################################################################################
 # minecraft
 minecraft-backup() {
