@@ -1,4 +1,4 @@
-## @filename: ~/.zshrc
+# @filename: ~/.zshrc
 
 # This file is read and executed every time a new interactive shell session is
 # started. It is typically used for defining aliases, setting environment
@@ -6,42 +6,42 @@
 # It is a good place to put customizations that are specific to a particular
 # user or machine.
 
-## Path to your oh-my-zsh installation.
+# Path to your oh-my-zsh installation.
 export ZSH=/usr/share/oh-my-zsh
 
-## Path to custom themes/plugins etc...
+# Path to custom themes/plugins etc...
 export ZSH_CUSTOM=~/.dotfiles/more/zsh/oh-my-zsh
 
-## Set name of the theme to load.
-## Look in $ZSH/themes/
+# Set name of the theme to load.
+# Look in $ZSH/themes/
 # ZSH_THEME="pez"
 
-## Uncomment the following line to use case-sensitive completion.
+# Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
 
-## Uncomment the following line to disable bi-weekly auto-update checks.
+# Uncomment the following line to disable bi-weekly auto-update checks.
 DISABLE_AUTO_UPDATE="true"
 
-## Uncomment the following line to disable auto-setting terminal title.
+# Uncomment the following line to disable auto-setting terminal title.
 DISABLE_AUTO_TITLE="true"
 
-## Uncomment the following line to disable command auto-correction.
+# Uncomment the following line to disable command auto-correction.
 DISABLE_CORRECTION="true"
 
-## Uncomment the following line to display red dots whilst waiting for completion.
+# Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
-## disable marking untracked files under VCS as dirty. This makes repository
-## status check for large repositories much, much faster.
+# disable marking untracked files under VCS as dirty. This makes repository
+# status check for large repositories much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-## Notify
+# Notify
 
 x_notify() {
   notify-send $1
 }
 
-## tmux
+# tmux
 if [ "${ZSH_NO_TMUX}" != "true" ]; then
   ZSH_TMUX_AUTOSTART=true
   ZSH_TMUX_AUTOCONNECT=false
@@ -52,8 +52,8 @@ cd() {
     tmux refresh-client -S
 }
 
-## plugins
-## Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# plugins
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(
   archlinux
   rust
@@ -72,53 +72,48 @@ fpath+=~/.zfunc
 source $ZSH/oh-my-zsh.sh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# Override `l`
-# alias l='exa --color always --oneline'
-# alias ll='exa --color always --long --header'
-# alias la='exa --color always --long --header --all'
-
-## History
+# History
 HISTFILE=~/.history
 HISTSIZE=10000
 SAVEHIST=10000
 HIST_STAMPS="yyyy-mm-dd"
 
-## append to history
+# append to history
 setopt appendhistory
 
-## ignore duplicates
+# ignore duplicates
 setopt hist_ignore_all_dups
 
-## zsh options
+# zsh options
 
-## cd to directory without writing cd
+# cd to directory without writing cd
 setopt autocd
 
-## put a # in front of line and it is ignored. Useful when you want to write
-## a command, but execute it later
+# put a # in front of line and it is ignored. Useful when you want to write
+# a command, but execute it later
 setopt interactivecomments
 
-## background jobs will be left alone
+# background jobs will be left alone
 setopt no_hup
 
-## disable beep
+# disable beep
 unsetopt beep
 
-## disable extended glob
+# disable extended glob
 unsetopt extendedglob
 
-## key bindings
+# key bindings
 bindkey "^[[5~" history-beginning-search-backward
 bindkey "^[[6~" history-beginning-search-forward
 
-## cache
+# cache
 
-## use this directory for zsh cache. I keep this in RAM (tmpfs)
+# use this directory for zsh cache. I keep this in RAM (tmpfs)
 mkdir -p ~/.cache/zsh
 zstyle ':completion:*' use-cache yes
 zstyle ':completion:*' cache-path ~/.cache/zsh
 
-## Editor
+# Editor
 
 if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
@@ -127,27 +122,27 @@ else
   export EDITOR=vim
 fi
 
-## Environment
+# Environment
 
-## Add user's bin directory to path if it exists
+# Add user's bin directory to path if it exists
 if [ -d $HOME/.local/bin ]; then export PATH="$HOME/.local/bin:${PATH}"; fi
 
-## Add user's bin directory to path if it exists
+# Add user's bin directory to path if it exists
 if [ -d $HOME/bin ]; then export PATH="$HOME/bin:${PATH}"; fi
 
-## Add neovim bin directory to path if it exists
+# Add neovim bin directory to path if it exists
 if [ -d $HOME/.neovim ]; then export PATH="$HOME/.neovim/bin:${PATH}"; fi
 
-## Enable true color for neovim
+# Enable true color for neovim
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
 
-## flow control
+# flow control
 stty stop undef
 stty start undef
 
-## miscellaneus functions
+# miscellaneus functions
 
-## Find a file in current directory or parents
+# Find a file in current directory or parents
 function findup {
   path=$(pwd)
   while [[ "$path" != "" && ! -e "$path/$1" ]]; do
@@ -156,37 +151,37 @@ function findup {
   echo "$path/$1"
 }
 
-## Push my time to a remote machine via ssh
+# Push my time to a remote machine via ssh
 function ssh-time-push {
 	datetime=$( date --utc +%m%d%H%M%Y )
 	ssh $@ "( date --utc $datetime; /sbin/hwclock --systohc )"
 }
 
-## Use time from a remote machine to set my local time.
+# Use time from a remote machine to set my local time.
 function ssh-time-pull {
 	datetime=$( ssh $@ "date --utc +%m%d%H%M%Y" )
 	sudo date --utc $datetime; sudo /sbin/hwclock --systohc
 }
 
-## video to gif
+# video to gif
 function video2gif {
 	local gif="${1%.*}.gif"
 	ffmpeg -i ${1} -vf fps=5,scale=640:-1:flags=lanczos,palettegen palette.png
 	ffmpeg -i ${1} -i palette.png -filter_complex "fps=5,scale=640:-1:flags=lanczos[x];[x][1:v]paletteuse" ${gif}
 }
 
-## Convert markdown to other formats with pandoc
-## \param 1 markdown source file path
-## \param 2 output format, as file extension (default: pdf)
+# Convert markdown to other formats with pandoc
+# \param 1 markdown source file path
+# \param 2 output format, as file extension (default: pdf)
 ##
-## Creates a new file, with the same name as the source and the output extension
+# Creates a new file, with the same name as the source and the output extension
 function doconv {
 	local out="$( basename "${1}" .md ).${2:=pdf}";
 	pandoc -f markdown -s -o "${out}" $1 && xdg-open "${out}";
 }
 
-## switch from console to vim
-## http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
+# switch from console to vim
+# http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
 function fancy_ctrl_z {
   if [[ $#BUFFER -eq 0 ]]; then
     BUFFER=" fg"
@@ -199,20 +194,20 @@ function fancy_ctrl_z {
 zle -N fancy_ctrl_z
 bindkey '^Z' fancy_ctrl_z
 
-## Wordreference
+# Wordreference
 function wr { xdg-open http://wordreference.com/$1/$2 &>/dev/null }
 
-## Syntax highlight a file using bat and copy as rich text to the clipboard
+# Syntax highlight a file using bat and copy as rich text to the clipboard
 function bat2clip {
   bat --theme=OneHalfLight --color=always "${1}" \
     | aha \
     | xclip -t text/html -selection clipboard;
 }
 
-## fzf https://github.com/junegunn/fzf
+# fzf https://github.com/junegunn/fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-## Set ag, the silver searcher, as the default command, so it can skip files in
-## ~/.agignore
+# Set ag, the silver searcher, as the default command, so it can skip files in
+# ~/.agignore
 export FZF_DEFAULT_COMMAND='ag -g ""'
 
 # Autocompletion
@@ -332,16 +327,16 @@ ding() {
   ) >/dev/null 2>/dev/null </dev/null &
 }
 
-## Docker
+# Docker
 
-## I use docker so often I need this
+# I use docker so often I need this
 alias dk="docker"
 alias dkps="docker ps --format \"table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}\""
 alias dklog='docker logs --tail 10 -f'
 
-## A better docker stat
-## Thanks to rbravo-avantrip
-## https://github.com/docker/docker/issues/20973#issuecomment-245036858
+# A better docker stat
+# Thanks to rbravo-avantrip
+# https://github.com/docker/docker/issues/20973#issuecomment-245036858
 dkstats() {
   while true; do
     TEXT=$(docker stats --no-stream $(docker ps --format={{.Names}}));
@@ -360,7 +355,7 @@ dkup() {
     docker-compose up -d --no-deps ${1}
 }
 
-## NodeJS
+# NodeJS
 
 # Pre-setup nvm
 
@@ -379,8 +374,8 @@ alias npmi="npm install --save"
 alias npmid="npm install --save-dev"
 
 ################################################################################
-## Git Aliases
-## See ~/.gitconfig
+# Git Aliases
+# See ~/.gitconfig
 alias ga='git add'            # Add files to the index
 alias gap='git add --patch'   # Chunk by chunk
 alias gA='git add -A'         # Add all files, remove from index deleted files
@@ -404,25 +399,25 @@ alias gll='git ll'
 # Quick merge from origin/master, no fast forward
 gqm() { if [ -z "${1}" ]; then git status -bs; echo -e "\nbranch?"; return; fi; git fetch ; git merge origin/${1} --no-ff }
 
-## Commit, message as arguments, quotes not needed
+# Commit, message as arguments, quotes not needed
 gcm() { git commit -m "$*" }
 
-## Clean all untracked files
+# Clean all untracked files
 git-superclean() { read -q "REPLY?Sure? "; if [ "${REPLY}" = 'y' ]; then echo && git reset --hard && git clean -ffdx; fi }
 
-## Difference with commond ancestor
+# Difference with commond ancestor
 git-diffanc() {
   local main_branch;
   test -n "${2}" && main_branch="${2}" || main_branch="$( git rev-parse --abbrev-ref HEAD )"
   git diff $( git merge-base "${1}" "${main_branch}" ) "${1}"
 }
 
-## Update recursively all submodules
+# Update recursively all submodules
 git-subsync() {
   git submodule sync --recursive && git submodule update --recursive --remote
 }
 
-## Git pull, also submodules
+# Git pull, also submodules
 gPL() {
   git pull "$@" &&
     git submodule sync --recursive &&
@@ -439,7 +434,7 @@ git-huge-finder() {
 }
 
 ################################################################################
-## cargo aliases
+# cargo aliases
 
 alias ca="cargo"
 alias cab="cargo build"
@@ -452,8 +447,8 @@ alias cawr="cargo watch -c -x check -x run"
 alias cawb="cargo watch -c -x check -x build"
 
 ################################################################################
-## rsync ssh tunnel with ControlPath
-## see: http://unix.stackexchange.com/a/50515/12662
+# rsync ssh tunnel with ControlPath
+# see: http://unix.stackexchange.com/a/50515/12662
 ssh-rsync-fast-start() {
   mkdir -p ~/.ssh/ctl
   ssh -nNf -o ControlMaster=yes -o ControlPath="$HOME/.ssh/ctl/%L-%r@%h:%p" $@
@@ -468,7 +463,7 @@ ssh-rsync-fast-stop() {
 }
 
 ################################################################################
-## SSH
+# SSH
 alias sshpubkey="ssh-add -L |  head -1 | xclip"
 
 sshconf() {
@@ -477,7 +472,7 @@ sshconf() {
   ${EDITOR} ${HOME}/.ssh/config ${args}
 }
 
-## scaling governor
+# scaling governor
 governor() {
   if [  -n "${1}" ]; then
     for c in $(ls -d /sys/devices/system/cpu/cpu[0-9]*); do
@@ -489,7 +484,7 @@ governor() {
   fi
 }
 
-## backup
+# backup
 backup_tar() { tar cpvf "${1}~$( date +%Y%m%d-%H%M%S ).tar" "${1}"; }
 backup_zip() { zip -r "${1}~$( date +%Y%m%d-%H%M%S ).zip" "${1}"; }
 backup_cp() { cp -a "${1}" "${1}~$( date +%Y%m%d-%H%M%S )~"; }
@@ -497,7 +492,7 @@ backup_mv() { mv "${1}" "${1}~$( date +%Y%m%d-%H%M%S )~"; }
 zipr() { zip "${1}.zip" "${1}" -r; }
 
 ################################################################################
-## minecraft
+# minecraft
 minecraft-backup() {
   local root_dir="${HOME}/.minecraft"
   local src_dir="saves"
@@ -512,14 +507,14 @@ minecraft-backup() {
 alias putane="netstat -putane"
 
 ###############################################################################
-## Source local configurations
+# Source local configurations
 if [ -e ~/.zshrc.local ]; then source ~/.zshrc.local; fi
 
 ################################################################################
-## start starship
+# start starship
 eval "$(starship init zsh)"
 
-## Remove unwanted aliases from plugins
+# Remove unwanted aliases from plugins
 unalias duf
 
 # vim:foldmethod=marker:foldlevel=0
