@@ -248,15 +248,17 @@ cd() {
 export cd
 
 alias cwd='cd $( cat ~/.cache/cwd )'
+alias putane="netstat -putane"
 
 ###############################################################################
 ## Source local configurations
 if [ -e ~/.zshrc.local ]; then source ~/.zshrc.local; fi
 
-# vim:foldmethod=marker:foldlevel=0
-
 ################################################################################
-## startship
+## start starship
 eval "$(starship init zsh)"
-alias putane="netstat -putane"
+
+## Remove unwanted aliases from plugins
 unalias duf
+
+# vim:foldmethod=marker:foldlevel=0
