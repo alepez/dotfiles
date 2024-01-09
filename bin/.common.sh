@@ -11,14 +11,6 @@ start_bg() {
     print_error "Command $1 does not exist"
     return
   fi
-  "$@"
-}
-
-start_bg() {
-  if ! command_exists $1; then
-    print_error "Command $1 does not exist"
-    return
-  fi
   nohup "$@" &>/dev/null </dev/null &
 }
 
