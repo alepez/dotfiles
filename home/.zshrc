@@ -1,7 +1,5 @@
 ## @filename: ~/.zshrc
 
-## oh-my-zsh {{{
-
 ## Path to your oh-my-zsh installation.
 export ZSH=/usr/share/oh-my-zsh
 
@@ -31,17 +29,13 @@ COMPLETION_WAITING_DOTS="true"
 ## status check for large repositories much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-## }}}
-
 ## Notify
 
 x_notify() {
   notify-send $1
 }
 
-## }}}
-
-## tmux {{{
+## tmux
 if [ "${ZSH_NO_TMUX}" != "true" ]; then
   ZSH_TMUX_AUTOSTART=true
   ZSH_TMUX_AUTOCONNECT=false
@@ -52,9 +46,7 @@ cd() {
     tmux refresh-client -S
 }
 
-## }}}
-
-## plugins {{{
+## plugins
 ## Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(
   archlinux
@@ -79,9 +71,7 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # alias ll='exa --color always --long --header'
 # alias la='exa --color always --long --header --all'
 
-## }}}
-
-## History {{{
+## History
 HISTFILE=~/.history
 HISTSIZE=10000
 SAVEHIST=10000
@@ -92,9 +82,8 @@ setopt appendhistory
 
 ## ignore duplicates
 setopt hist_ignore_all_dups
-## }}}
 
-## zsh options {{{
+## zsh options
 
 ## cd to directory without writing cd
 setopt autocd
@@ -112,22 +101,18 @@ unsetopt beep
 ## disable extended glob
 unsetopt extendedglob
 
-## }}}
-
-## key bindings {{{
+## key bindings
 bindkey "^[[5~" history-beginning-search-backward
 bindkey "^[[6~" history-beginning-search-forward
-## }}}
 
-## cache {{{
+## cache
 
 ## use this directory for zsh cache. I keep this in RAM (tmpfs)
 mkdir -p ~/.cache/zsh
 zstyle ':completion:*' use-cache yes
 zstyle ':completion:*' cache-path ~/.cache/zsh
-## }}}
 
-## Editor {{{
+## Editor
 
 if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
@@ -136,9 +121,7 @@ else
   export EDITOR=vim
 fi
 
-## }}}
-
-## Environment {{{
+## Environment
 
 ## Add user's bin directory to path if it exists
 if [ -d $HOME/.local/bin ]; then export PATH="$HOME/.local/bin:${PATH}"; fi
@@ -152,16 +135,13 @@ if [ -d $HOME/.neovim ]; then export PATH="$HOME/.neovim/bin:${PATH}"; fi
 ## Enable true color for neovim
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
 
-## }}}
-
-## flow control {{{
+## flow control
 stty stop undef
 stty start undef
-## }}}
 
 ## miscellaneus functions
 
-## Find a file in current directory or parents {{{
+## Find a file in current directory or parents
 function findup {
   path=$(pwd)
   while [[ "$path" != "" && ! -e "$path/$1" ]]; do
@@ -169,21 +149,18 @@ function findup {
   done
   echo "$path/$1"
 }
-## }}}
 
-## Push my time to a remote machine via ssh {{{
+## Push my time to a remote machine via ssh
 function ssh-time-push {
 	datetime=$( date --utc +%m%d%H%M%Y )
 	ssh $@ "( date --utc $datetime; /sbin/hwclock --systohc )"
 }
-## }}}
 
-## Use time from a remote machine to set my local time. {{{
+## Use time from a remote machine to set my local time.
 function ssh-time-pull {
 	datetime=$( ssh $@ "date --utc +%m%d%H%M%Y" )
 	sudo date --utc $datetime; sudo /sbin/hwclock --systohc
 }
-## }}}
 
 ## video to gif
 function video2gif {
@@ -192,7 +169,7 @@ function video2gif {
 	ffmpeg -i ${1} -i palette.png -filter_complex "fps=5,scale=640:-1:flags=lanczos[x];[x][1:v]paletteuse" ${gif}
 }
 
-## Convert markdown to other formats with pandoc {{{
+## Convert markdown to other formats with pandoc
 ## \param 1 markdown source file path
 ## \param 2 output format, as file extension (default: pdf)
 ##
@@ -201,9 +178,8 @@ function doconv {
 	local out="$( basename "${1}" .md ).${2:=pdf}";
 	pandoc -f markdown -s -o "${out}" $1 && xdg-open "${out}";
 }
-## }}}
 
-## switch from console to vim {{{
+## switch from console to vim
 ## http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
 function fancy_ctrl_z {
   if [[ $#BUFFER -eq 0 ]]; then
@@ -226,8 +202,6 @@ function bat2clip {
     | aha \
     | xclip -t text/html -selection clipboard;
 }
-
-## }}}
 
 ## fzf https://github.com/junegunn/fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
