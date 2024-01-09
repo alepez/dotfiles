@@ -14,12 +14,25 @@ select_option() {
 }
 
 list_actions() {
-  ls ${PUBLIC_ACTIONS}
+  # ls ${PUBLIC_ACTIONS}
   ls ${PRIVATE_ACTIONS}
 }
 
+list_available_actions() {
+  for action in $( list_actions ); do
+    if [ -e "${PRIVATE_ACTIONS}/${action}" ]; then
+      . "${PRIVATE_ACTIONS}/${action}" 
+    elif [ -e "${PUBLIC_ACTIONS}/${action}" ]; then
+      . "${PUBLIC_ACTIONS}/${action}" 
+    fi
+    if action_available; then
+      echo $action
+    fi
+  done
+}
+
 main() {
-  local selected_action="$( list_actions | sort -u | select_option )"
+  local selected_action="$( list_available_actions | sort -u | select_option )"
 
   if [ -z "${selected_action}" ]; then
     exit 0
