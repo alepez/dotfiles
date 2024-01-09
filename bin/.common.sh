@@ -22,3 +22,7 @@ start_bg_with_delay() {
   start_bg "$@"
   ) &> /dev/null </dev/null &
 }
+
+run_on_new_terminal() {
+  alacritty -e bash -c "${@}"
+}

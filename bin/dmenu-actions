@@ -1,85 +1,38 @@
 #!/usr/bin/env bash
 
+source "$( dirname "${BASH_SOURCE[0]}" )/.common.sh"
+
 ## Creates a dmenu prompt with actions
 
-PRIVATE_CFG="$( realpath ~/.dotfiles-private/dmenu-actions.conf )"
-PUBLIC_CFG="$( realpath ~/.dotfiles/more/dmenu-actions.conf )"
+PRIVATE_ACTIONS="$( realpath ~/.dotfiles-private/dmenu-actions.sh )"
+PUBLIC_ACTIONS="$( realpath ~/.dotfiles/more/dmenu-actions.sh )"
+
+. ${PUBLIC_ACTIONS}
+. ${PRIVATE_ACTIONS}
 
 dmenu="$( realpath ~/.dotfiles/bin/dmenu )"
 
 select_option() {
-  "${dmenu}" -dmenu -p "Host" "$@"
+  "${dmenu}" -p "Action"
 }
 
-read_conf() {
-  cat "${PRIVATE_CFG}" "${PUBLIC_CFG}"
+filter_action_name() {
+  grep ACTION -A1 | grep -v ACTION | grep -v '\--' | sed 's/(.*//'
 }
 
 list_options() {
-  read_conf | sed 's/:.*//'
-}
-
-remove_tags() {
-  sed 's/^\[[a-z,]*\] *//'
-}
-
-remove_name() {
-  sed 's/[^:]*: *//'
-}
-
-take_tags() {
-  grep -o '\[[a-z,]*\]'
-}
-
-match_tag() {
-  local t=$( tr '[' ',' \
-    | tr ']' ',' \
-    | grep -o ",$1," \
-    | tr -d ',' )
-  test "${t}" == "$1"
-}
-
-has_tag() {
-  get_tags $1 \
-    | take_tags \
-    | match_tag $2
-}
-
-find_command() {
-  grep -e "^${1}:"
-}
-
-get_tags() {
-  read_conf | find_command ${1} | remove_name | take_tags
-}
-
-get_command() {
-  read_conf | find_command ${1} | remove_name | remove_tags
-}
-
-launch_command() {
-  if ( echo $2 | match_tag bg ); then
-    nohup bash -c "${1}" 1>/dev/null 2>/dev/null </dev/null &
-  elif ( echo $2 | match_tag terminal ); then
-    alacritty -e bash -c "${1}"
-  fi
+  cat ${PUBLIC_ACTIONS} | filter_action_name
+  cat ${PRIVATE_ACTIONS} | filter_action_name
 }
 
 main() {
-  local opt="$( list_options | select_option "$@" )"
+  local selected_action="$( list_options | select_option )"
 
-  if [ -z "${opt}" ]; then
+  if [ -z "${selected_action}" ]; then
     exit 0
   fi
 
-  local cmd=$( get_command "${opt}" )
-  local tags=$( get_tags "${opt}" )
-
-  if [ -z "${opt}" ]; then
-    exit 0
-  fi
-
-  launch_command "${cmd}" "${tags}"
+  ${selected_action}
 }
 
 main
