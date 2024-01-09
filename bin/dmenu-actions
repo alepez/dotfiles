@@ -13,13 +13,13 @@ select_option() {
   "${dmenu}" -p "Action"
 }
 
-list_options() {
+list_actions() {
   ls ${PUBLIC_ACTIONS}
   ls ${PRIVATE_ACTIONS}
 }
 
 main() {
-  local selected_action="$( list_options | sort -u | select_option )"
+  local selected_action="$( list_actions | sort -u | select_option )"
 
   if [ -z "${selected_action}" ]; then
     exit 0
