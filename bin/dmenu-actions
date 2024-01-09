@@ -26,10 +26,12 @@ main() {
   fi
 
   if [ -e "${PRIVATE_ACTIONS}/${selected_action}" ]; then
-    "${PRIVATE_ACTIONS}/${selected_action}" 
+    . "${PRIVATE_ACTIONS}/${selected_action}" 
   elif [ -e "${PUBLIC_ACTIONS}/${selected_action}" ]; then
-    "${PUBLIC_ACTIONS}/${selected_action}" 
+    . "${PUBLIC_ACTIONS}/${selected_action}" 
   fi
+
+  action_run
 }
 
 main

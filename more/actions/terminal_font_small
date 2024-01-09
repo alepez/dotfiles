@@ -1,2 +1,9 @@
 #!/usr/bin/env bash
-~/.dotfiles/bin/alacritty-mod font-size 13
+
+action_run() {
+  ~/.dotfiles/bin/alacritty-mod font-size 13
+}
+
+action_available() {
+  true
+}

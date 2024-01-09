@@ -1,2 +1,9 @@
 #!/usr/bin/env bash
-~/.dotfiles/bin/audio-control pro_mode
+
+action_run() {
+  ~/.dotfiles/bin/audio-control pro_mode
+}
+
+action_available() {
+  true
+}
