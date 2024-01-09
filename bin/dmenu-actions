@@ -4,11 +4,8 @@ source "$( dirname "${BASH_SOURCE[0]}" )/.common.sh"
 
 ## Creates a dmenu prompt with actions
 
-PRIVATE_ACTIONS="$( realpath ~/.dotfiles-private/dmenu-actions.sh )"
-PUBLIC_ACTIONS="$( realpath ~/.dotfiles/more/dmenu-actions.sh )"
-
-. ${PUBLIC_ACTIONS}
-. ${PRIVATE_ACTIONS}
+PRIVATE_ACTIONS="$( realpath ~/.dotfiles-private/actions )"
+PUBLIC_ACTIONS="$( realpath ~/.dotfiles/more/actions )"
 
 dmenu="$( realpath ~/.dotfiles/bin/dmenu )"
 
@@ -16,23 +13,23 @@ select_option() {
   "${dmenu}" -p "Action"
 }
 
-filter_action_name() {
-  grep ACTION -A1 | grep -v ACTION | grep -v '\--' | sed 's/(.*//'
-}
-
 list_options() {
-  cat ${PUBLIC_ACTIONS} | filter_action_name
-  cat ${PRIVATE_ACTIONS} | filter_action_name
+  ls ${PUBLIC_ACTIONS}
+  ls ${PRIVATE_ACTIONS}
 }
 
 main() {
-  local selected_action="$( list_options | select_option )"
+  local selected_action="$( list_options | sort -u | select_option )"
 
   if [ -z "${selected_action}" ]; then
     exit 0
   fi
 
-  ${selected_action}
+  if [ -e "${PRIVATE_ACTIONS}/${selected_action}" ]; then
+    "${PRIVATE_ACTIONS}/${selected_action}" 
+  elif [ -e "${PUBLIC_ACTIONS}/${selected_action}" ]; then
+    "${PUBLIC_ACTIONS}/${selected_action}" 
+  fi
 }
 
 main

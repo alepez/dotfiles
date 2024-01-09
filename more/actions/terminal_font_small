@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+~/.dotfiles/bin/alacritty-mod font-size 13
