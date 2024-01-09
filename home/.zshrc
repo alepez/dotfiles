@@ -1,5 +1,11 @@
 ## @filename: ~/.zshrc
 
+# This file is read and executed every time a new interactive shell session is
+# started. It is typically used for defining aliases, setting environment
+# variables, and configuring shell options specific to the user's preferences.
+# It is a good place to put customizations that are specific to a particular
+# user or machine.
+
 ## Path to your oh-my-zsh installation.
 export ZSH=/usr/share/oh-my-zsh
 
