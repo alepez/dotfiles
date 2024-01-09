@@ -10,7 +10,7 @@
 export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 
 ################################################################################
-## alias {{{
+## alias
 
 export EDITOR='nvim'
 
@@ -117,7 +117,7 @@ ding() {
   ) >/dev/null 2>/dev/null </dev/null &
 }
 
-## Docker {{{
+## Docker
 
 ## I use docker so often I need this
 alias dk="docker"
@@ -145,9 +145,7 @@ dkup() {
     docker-compose up -d --no-deps ${1}
 }
 
-## }}}
-
-## NodeJS {{{
+## NodeJS
 
 # Pre-setup nvm
 
@@ -165,10 +163,8 @@ nvm() {
 alias npmi="npm install --save"
 alias npmid="npm install --save-dev"
 
-## }}}
-
 ################################################################################
-## Git Aliases {{{
+## Git Aliases
 ## See ~/.gitconfig
 alias ga='git add'            # Add files to the index
 alias gap='git add --patch'   # Chunk by chunk
@@ -227,8 +223,6 @@ git-huge-finder() {
     | numfmt --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest
 }
 
-## }}}
-
 ################################################################################
 ## cargo aliases
 
@@ -242,10 +236,8 @@ alias cawtr="cargo watch -c -x check -x test -x run"
 alias cawr="cargo watch -c -x check -x run"
 alias cawb="cargo watch -c -x check -x build"
 
-## }}}
-
 ################################################################################
-## rsync ssh tunnel with ControlPath {{{
+## rsync ssh tunnel with ControlPath
 ## see: http://unix.stackexchange.com/a/50515/12662
 ssh-rsync-fast-start() {
   mkdir -p ~/.ssh/ctl
@@ -259,10 +251,9 @@ ssh-rsync-fast() {
 ssh-rsync-fast-stop() {
   ssh -O exit -o ControlPath="$HOME/.ssh/ctl/%L-%r@%h:%p" $@
 }
-## }}}
 
 ################################################################################
-## SSH {{{
+## SSH
 alias sshpubkey="ssh-add -L |  head -1 | xclip"
 
 sshconf() {
@@ -270,9 +261,8 @@ sshconf() {
   if [ -n "${1}" ]; then args="-c /Host ${1}"; fi
   ${EDITOR} ${HOME}/.ssh/config ${args}
 }
-## }}}
 
-## scaling governor {{{
+## scaling governor
 governor() {
   if [  -n "${1}" ]; then
     for c in $(ls -d /sys/devices/system/cpu/cpu[0-9]*); do
@@ -283,18 +273,16 @@ governor() {
     cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors
   fi
 }
-## }}}
 
-## backup {{{
+## backup
 backup_tar() { tar cpvf "${1}~$( date +%Y%m%d-%H%M%S ).tar" "${1}"; }
 backup_zip() { zip -r "${1}~$( date +%Y%m%d-%H%M%S ).zip" "${1}"; }
 backup_cp() { cp -a "${1}" "${1}~$( date +%Y%m%d-%H%M%S )~"; }
 backup_mv() { mv "${1}" "${1}~$( date +%Y%m%d-%H%M%S )~"; }
 zipr() { zip "${1}.zip" "${1}" -r; }
-## }}}
 
 ################################################################################
-## minecraft {{{
+## minecraft
 minecraft-backup() {
   local root_dir="${HOME}/.minecraft"
   local src_dir="saves"
@@ -304,7 +292,6 @@ minecraft-backup() {
   echo "Saving to ${archive}"
   cd ${root_dir} && tar cpvf ${archive} ${src_dir} && ls -lh ${archive}
 }
-## }}}
 
 ###############################################################################
 ## Source local configurations
