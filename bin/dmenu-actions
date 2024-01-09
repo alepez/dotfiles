@@ -25,7 +25,7 @@ list_available_actions() {
     elif [ -e "${PUBLIC_ACTIONS}/${action}" ]; then
       . "${PUBLIC_ACTIONS}/${action}" 
     fi
-    if action_available; then
+    if action_available &>/dev/null; then
       echo $action
     fi
   done
