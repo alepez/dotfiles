@@ -35,22 +35,11 @@ COMPLETION_WAITING_DOTS="true"
 # status check for large repositories much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Notify
-
-x_notify() {
-  notify-send $1
-}
-
 # tmux
 if [ "${ZSH_NO_TMUX}" != "true" ]; then
   ZSH_TMUX_AUTOSTART=true
   ZSH_TMUX_AUTOCONNECT=false
 fi
-
-cd() {
-    builtin cd $1
-    tmux refresh-client -S
-}
 
 # plugins
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
