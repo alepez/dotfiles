@@ -14,7 +14,7 @@ select_option() {
 }
 
 list_actions() {
-  # ls ${PUBLIC_ACTIONS}
+  ls ${PUBLIC_ACTIONS}
   ls ${PRIVATE_ACTIONS}
 }
 
