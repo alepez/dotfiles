@@ -266,7 +266,7 @@ genpassword() {
   xclip -i < "${file}";
   xclip -i -selection clipboard "${file}";
   cat "${file}";
-  rm "${file}";
+  /usr/bin/rm "${file}";
   notify-send "Password copied to clipboard";
 }
 

@@ -19,12 +19,19 @@ print_linked() {
 print_missing() {
   local to="${1}"
   local type=F
+  local from="$( echo "${1}" | sed 's/\.dotfiles\/home\///' )"
 
   if [ -d "${to}" ]; then
     type=D
   fi
 
-  printf "%s %-60s %-60s\n" "${type}" "" "${to}"
+  echo -ne "\e[31m"
+  printf "%s %-60s %-60s\n" "${type}" "${missing}" "${to}"
+  echo -ne "\e[0m"
+  echo -ne "\e[33m"
+  echo "Use this command to create:"
+  echo "    ln -s ${to} ${HOME}/.local/bin/genpassword"
+  echo -ne "\e[0m"
 }
 
 list_tracked_dotfiles() {
