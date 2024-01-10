@@ -108,15 +108,6 @@ stty start undef
 # Autocompletion
 compinit
 
-# Remember last working directory
-cd() {
-  builtin cd "$@";
-  tmux refresh-client -S
-  echo "${PWD}" > ~/.cache/cwd
-}
-
-export cd
-
 for f in ~/.dotfiles/more/zsh/*; do
   source "${f}"
 done

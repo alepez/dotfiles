@@ -1,5 +1,14 @@
 #!/usr/bin/env zsh
 
+# Remember last working directory
+cd() {
+  builtin cd "$@";
+  tmux refresh-client -S
+  echo "${PWD}" > ~/.cache/cwd
+}
+
+export cd
+
 alias cwd='cd $( cat ~/.cache/cwd )'
 
 # Create directory and cd into it
