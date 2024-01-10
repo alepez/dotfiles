@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+action_run() {
+  telegram-desktop
+}
+
+action_available() {
+  true
+}
