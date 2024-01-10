@@ -299,13 +299,12 @@ smart_gaps on
 hide_edge_borders smart
 
 ###############################################################################
-# Dropdown/Scratchpad
+# Scratchpad
 ###############################################################################
 
-exec --no-startup-id ~/.dotfiles/bin/dropdown-terminal alacritty --class=dropdown -e tmux
-#exec --no-startup-id ~/.dotfiles/bin/dropdown-terminal kitty --name=dropdown -e tmux
-for_window [instance="dropdown"] floating enable, move scratchpad, scratchpad show, resize set 1500 500, move position center, move scratchpad
-bindsym $mod+0 [instance="dropdown"] scratchpad show
+exec --no-startup-id ~/.dotfiles/bin/scratchpad-terminal alacritty --class=scratchpad-terminal -e tmux
+for_window [instance="scratchpad-terminal"] floating enable, move scratchpad, scratchpad show, resize set 1500 500, move position center, move scratchpad
+bindsym $mod+0 [instance="scratchpad-terminal"] scratchpad show
 
 ###############################################################################
 # Special windows
