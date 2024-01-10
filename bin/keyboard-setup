@@ -81,7 +81,7 @@ standard_mode() {
 # Needed because it may be accidentally on when remampping
 # the keyboard.
 turn_off_caps_lock() {
-  ~/.local/bin/xkb_unlock
+  xkb_unlock
 }
 
 # This sleep is needed because, when keyboard is attached, caps lock is ON

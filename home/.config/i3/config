@@ -138,11 +138,11 @@ set $lights_mode "select lights layout  [w] window [d] desktop [r] relax [a] 
 bindsym $mod+Shift+o mode $lights_mode
 
 mode $lights_mode  {
-  bindsym w exec --no-startup-id "i3-msg mode default; ~/.local/bin/office-lights office_window"
-  bindsym d exec --no-startup-id "i3-msg mode default; ~/.local/bin/office-lights office_desk"
-  bindsym r exec --no-startup-id "i3-msg mode default; ~/.local/bin/office-lights office_relax"
-  bindsym a exec --no-startup-id "i3-msg mode default; ~/.local/bin/office-lights all_on"
-  bindsym o exec --no-startup-id "i3-msg mode default; ~/.local/bin/office-lights all_off"
+  bindsym w exec --no-startup-id "i3-msg mode default; office-lights office_window"
+  bindsym d exec --no-startup-id "i3-msg mode default; office-lights office_desk"
+  bindsym r exec --no-startup-id "i3-msg mode default; office-lights office_relax"
+  bindsym a exec --no-startup-id "i3-msg mode default; office-lights all_on"
+  bindsym o exec --no-startup-id "i3-msg mode default; office-lights all_off"
 
   # back to normal: Enter or Escape
   bindsym Return mode "default"
