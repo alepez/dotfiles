@@ -203,18 +203,6 @@ for f in ~/.dotfiles/more/zsh/*; do
   source "${f}"
 done
 
-# scaling governor
-governor() {
-  if [  -n "${1}" ]; then
-    for c in $(ls -d /sys/devices/system/cpu/cpu[0-9]*); do
-      echo "${1}" | sudo tee $c/cpufreq/scaling_governor > /dev/null
-    done
-  else
-    echo "Available governors:"
-    cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors
-  fi
-}
-
 # backup
 backup_tar() { tar cpvf "${1}~$( date +%Y%m%d-%H%M%S ).tar" "${1}"; }
 backup_zip() { zip -r "${1}~$( date +%Y%m%d-%H%M%S ).zip" "${1}"; }
