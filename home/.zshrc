@@ -223,20 +223,48 @@ alias npmid="npm install --save-dev"
 ################################################################################
 # Git Aliases
 # See ~/.gitconfig
-alias ga='git add'            # Add files to the index
-alias gap='git add --patch'   # Chunk by chunk
-alias gA='git add -A'         # Add all files, remove from index deleted files
-alias grv='git remote -v'     # show all Remotes Verbosely
-alias gl='git l'            # log --graph --date=short
-alias gdh='git diff HEAD'     # show all changes from Head
-alias gdu='gd'                # show Unstaged changes
-alias gdc='git dc'            # show Unstaged changes
-alias gds='git diff --stat' # show Staged changes
-alias gpl='git pull'          # Pull
+
+# Add files to the index
+alias ga='git add'
+
+# Chunk by chunk
+alias gap='git add --patch'
+
+# Add all files, remove from index deleted files
+alias gA='git add -A'
+
+# show all Remotes Verbosely
+alias grv='git remote -v'
+
+# log --graph --date=short
+alias gl='git l'
+
+# show all changes from Head
+alias gdh='git diff HEAD'
+
+# show Unstaged changes
+alias gdu='gd'
+
+# show Unstaged changes
+alias gdc='git dc'
+
+# show Staged changes
+alias gds='git diff --stat'
+
+# Pull
+alias gpl='git pull'
+
 alias gpll='git pull --recurse-submodules --jobs=10'
-alias gps='git push'          # Push
-alias gnb='git nb'            # New Branch aka checkout -b
-alias gco='git co'            # Checkout
+
+# Push
+alias gps='git push'
+
+# New Branch aka checkout -b
+alias gnb='git nb'
+
+# Checkout
+alias gco='git co'
+
 alias gamend='git commit --amend'
 alias gh='git show'
 alias gd='git diff'
