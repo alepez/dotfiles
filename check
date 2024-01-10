@@ -30,7 +30,7 @@ print_missing() {
   echo -ne "\e[0m"
   echo -ne "\e[33m"
   echo "Use this command to create:"
-  echo "    ln -s ${to} ${HOME}/.local/bin/genpassword"
+  echo "    ln -s ${to} ${from}"
   echo -ne "\e[0m"
 }
 
@@ -53,6 +53,7 @@ list_untracked_dotfiles() {
   # List all files belonging to home directory
   # These files are expected to be tracked.
   ( cd home && find -type f ) > "${tmp_file}"
+  ( cd home && find -type l ) > "${tmp_file}"
 
   # Remove all files that are tracked or belong to a tracked directory
   for item in $( cat tracked ); do 
@@ -62,7 +63,10 @@ list_untracked_dotfiles() {
 
   # If there are any files left, they are untracked
   if [ -s "${tmp_file}" ]; then
+    echo
+    echo -ne "\e[33m"
     echo "Untracked files:"
+    echo -ne "\e[0m"
     echo
     cat "${tmp_file}"
   fi
