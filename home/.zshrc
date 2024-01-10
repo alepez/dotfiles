@@ -116,9 +116,7 @@ done
 if [ -e ~/.zshrc.local ]; then source ~/.zshrc.local; fi
 
 # start starship
-eval "$(starship init zsh)"
+eval "$( starship init zsh )"
 
 # Remove unwanted aliases from plugins
 unalias duf
-
-# vim:foldmethod=marker:foldlevel=0
