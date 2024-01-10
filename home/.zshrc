@@ -105,12 +105,6 @@ export NVIM_TUI_ENABLE_TRUE_COLOR=1
 stty stop undef
 stty start undef
 
-# fzf https://github.com/junegunn/fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# Set ag, the silver searcher, as the default command, so it can skip files in
-# ~/.agignore
-export FZF_DEFAULT_COMMAND='ag -g ""'
-
 # Autocompletion
 compinit
 
