@@ -4,7 +4,7 @@
 
 main() {
   (
-  notify-send -u low "! ${1}"
+  notify-send -u low "$( date +%H:%M:%S --utc | tr -d \\n ) ${1}"
   paplay /usr/share/sounds/freedesktop/stereo/complete.oga
   ) &>/dev/null </dev/null &
 }
