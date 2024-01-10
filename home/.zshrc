@@ -44,7 +44,6 @@ if [ "${ZSH_NO_TMUX}" != "true" ]; then
 fi
 
 # plugins
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(
   archlinux
   rust
@@ -58,8 +57,6 @@ plugins=(
   tmux
 )
 
-fpath+=~/.zfunc
-
 source $ZSH/oh-my-zsh.sh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
@@ -67,15 +64,12 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 HISTFILE=~/.history
 HISTSIZE=10000
 SAVEHIST=10000
-HIST_STAMPS="yyyy-mm-dd"
 
 # append to history
 setopt appendhistory
 
 # ignore duplicates
 setopt hist_ignore_all_dups
-
-# zsh options
 
 # cd to directory without writing cd
 setopt autocd
@@ -97,21 +91,10 @@ unsetopt extendedglob
 bindkey "^[[5~" history-beginning-search-backward
 bindkey "^[[6~" history-beginning-search-forward
 
-# cache
-
-# use this directory for zsh cache. I keep this in RAM (tmpfs)
+# use this directory for zsh cache
 mkdir -p ~/.cache/zsh
 zstyle ':completion:*' use-cache yes
 zstyle ':completion:*' cache-path ~/.cache/zsh
-
-# Editor
-
-if type nvim > /dev/null 2>&1; then
-  alias vim='nvim'
-  export EDITOR=nvim
-else
-  export EDITOR=vim
-fi
 
 # Environment
 
