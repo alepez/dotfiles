@@ -1,13 +1,9 @@
-#!/usr/bin/env bash
-
-. ~/.dotfiles/env.sh
-
-if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-fi
+. $HOME/.dotfiles/env.sh
 
 # Used by i3-sensible-terminal
-TERMINAL=alacritty
+export TERMINAL=alacritty
 
 ## Source local configurations
-if [ -e ~/.xprofile.local ]; then source ~/.xprofile.local; fi
+if [ -e $HOME/.xprofile.local ]; then
+  . $HOME/.xprofile.local;
+fi

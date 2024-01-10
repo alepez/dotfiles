@@ -20,6 +20,13 @@ if [ -z "${DOTFILES_ENV_SET}" ]; then
 
   # Also source private env file if it exists
   if [ -e ~/.dotfiles-private/env.sh ]; then
-    source ~/.dotfiles-private/env.sh 
+    source ~/.dotfiles-private/env.sh
+  fi
+
+  # SSH Agent
+  # https://wiki.archlinux.org/title/GnuPG#Set_SSH_AUTH_SOCK
+  unset SSH_AGENT_PID
+  if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+    export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
   fi
 fi
