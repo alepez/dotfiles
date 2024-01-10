@@ -259,17 +259,6 @@ DD() {
 # Change directory to last created directory in tmp
 alias last_tmp='cd ~/tmp/$( ls -t ~/tmp | head -1 )'
 
-# Generate strong password and copy to clipboard
-genpassword() {
-  file=$( mktemp );
-  pwgen --capitalize --numerals --ambiguous --symbols 16 1 -1 > "${file}";
-  xclip -i < "${file}";
-  xclip -i -selection clipboard "${file}";
-  cat "${file}";
-  /usr/bin/rm "${file}";
-  notify-send "Password copied to clipboard";
-}
-
 alias CLIP='xclip -i -selection clipboard'
 
 # Shortcut for my favorite editor

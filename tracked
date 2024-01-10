@@ -37,3 +37,4 @@
 .local/bin/ttyplot-csv
 .local/bin/VBoxFixWinSize
 .local/bin/watch_do
+.local/bin/genpassword
