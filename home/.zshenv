@@ -6,7 +6,7 @@
 # important system-wide variables like PATH, which determines the directories
 # where the shell looks for executable files.
 
-. $HOME/.dotfiles/more/env.sh
+. $HOME/.dotfiles/env.sh
 
 ###############################################################################
 ## Source local configurations

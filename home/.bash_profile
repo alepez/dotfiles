@@ -1,1 +1,1 @@
-. $HOME/.dotfiles/more/env.sh
+. $HOME/.dotfiles/env.sh
