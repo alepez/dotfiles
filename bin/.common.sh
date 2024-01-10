@@ -1,3 +1,5 @@
+export PATH=$HOME/.dotfiles/bin:$PATH
+
 print_error() {
   echo "$@" >&2
 }
