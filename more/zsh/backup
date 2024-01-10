@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+backup_tar() { tar cpvf "${1}~$( date +%Y%m%d-%H%M%S ).tar" "${1}"; }
+backup_zip() { zip -r "${1}~$( date +%Y%m%d-%H%M%S ).zip" "${1}"; }
+backup_cp() { cp -a "${1}" "${1}~$( date +%Y%m%d-%H%M%S )~"; }
+backup_mv() { mv "${1}" "${1}~$( date +%Y%m%d-%H%M%S )~"; }
+zipr() { zip "${1}.zip" "${1}" -r; }

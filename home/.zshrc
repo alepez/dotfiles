@@ -123,103 +123,13 @@ cd() {
 
 export cd
 
-alias cwd='cd $( cat ~/.cache/cwd )'
-
-# Create directory and cd into it
-D() { mkdir -p $1 && cd $1 }
-
-# Go to workspace
-alias W='cd ~/workspace'
-
-# Open file with default application
-alias O='xdg-open'
-
-# Start editing dotfiles
-alias dot='cd ~/.dotfiles && vim'
-
-# time and date
-alias today='date +%Y-%m-%d --utc | tr -d \\n'
-alias now='date +%Y-%m-%dT%H-%M-%S --utc | tr -d \\n'
-
-alias add_timestamp='while read line; do echo "$(date +%Y-%m-%dT%H:%M:%S.$( date +%N | sed 's/......$//' ) --utc) $line"; done'
-
-alias pi='echo 3.14159265359'
-
-alias leave='sleep 10 && exit'
-
-# Dir name is current UTC time, without special characters as : to be
-# compatible with PATH env var (so you can add this tmp directory to PATH)
-# If first argument is defined, it is used as a suffix
-# Note: this must be a function: it changes dir in the current shell
-DD() {
-  date="$( date +%Y%m%dT%H%M%S --utc | tr -d \\n )"
-  p="${HOME}/tmp/${date}"
-  if [ -n "${1}" ]; then
-    p="${p}-${1}"
-  fi
-  mkdir "${p}"
-  cd "${p}"
-}
-
-# Change directory to last created directory in tmp
-alias last_tmp='cd ~/tmp/$( ls -t ~/tmp | head -1 )'
-
-alias CLIP='xclip -i -selection clipboard'
-
-# Shortcut for my favorite editor
-alias v="${EDITOR}"
-alias sv="sudo ${EDITOR}"
-
-# Filesystem usage, human readable
-alias df='df -h'
-alias du='du -sh'
-
-# Brutally kill
-alias ka9='killall -9'
-alias k9='kill -9'
-
-# sudo last command
-alias fuck='sudo $(fc -ln -1)'
-
-# Highlight
-highlight() { grep --color -E "$1|\$"; }
-
-# Grep without buffer
-alias nbgrep='stdbuf -o0 -oL grep'
-
-# Disable buffering
-alias nb='stdbuf -i0 -o0 -e0'
-
-# I don't use dc, and sometime i mispell cd
-alias dc='cd'
-
-# Disable screensaver and screen energy saving (e.g.: during a speech)
-alias noscreensaver='xset -dpms s off'
-
-# I often need a python shell for quick math and stuff
-alias py="python"
-
 for f in ~/.dotfiles/more/zsh/*; do
   source "${f}"
 done
 
-# backup
-backup_tar() { tar cpvf "${1}~$( date +%Y%m%d-%H%M%S ).tar" "${1}"; }
-backup_zip() { zip -r "${1}~$( date +%Y%m%d-%H%M%S ).zip" "${1}"; }
-backup_cp() { cp -a "${1}" "${1}~$( date +%Y%m%d-%H%M%S )~"; }
-backup_mv() { mv "${1}" "${1}~$( date +%Y%m%d-%H%M%S )~"; }
-zipr() { zip "${1}.zip" "${1}" -r; }
-
-alias history="fc -il -t'%F %T' 1"
-
-# the most used (pun not intended) netstat configuration
-alias putane="netstat -putane"
-
-###############################################################################
 # Source local configurations
 if [ -e ~/.zshrc.local ]; then source ~/.zshrc.local; fi
 
-################################################################################
 # start starship
 eval "$(starship init zsh)"
 
