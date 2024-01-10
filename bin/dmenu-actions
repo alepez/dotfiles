@@ -5,7 +5,7 @@ source "$( dirname "${BASH_SOURCE[0]}" )/.common.sh"
 ## Creates a dmenu prompt with actions
 
 PRIVATE_ACTIONS="$( realpath ~/.dotfiles-private/actions )"
-PUBLIC_ACTIONS="$( realpath ~/.dotfiles/more/actions )"
+PUBLIC_ACTIONS="$( realpath ~/.dotfiles/actions )"
 
 dmenu="$( realpath ~/.dotfiles/bin/dmenu )"
 
