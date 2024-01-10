@@ -52,8 +52,8 @@ list_untracked_dotfiles() {
 
   # List all files belonging to home directory
   # These files are expected to be tracked.
-  ( cd home && find -type f ) > "${tmp_file}"
-  ( cd home && find -type l ) > "${tmp_file}"
+  ( cd home && find -type f ) >> "${tmp_file}"
+  ( cd home && find -type l ) >> "${tmp_file}"
 
   # Remove all files that are tracked or belong to a tracked directory
   for item in $( cat tracked ); do 
