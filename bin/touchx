@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Like touch, but make the file executable and add an hash bang
+
+main() {
+  for i in ${@}; do
+    echo '#!/usr/bin/env bash' >> "${i}"
+    chmod +x "${i}"
+  done
+}
+
+main "${@}"
