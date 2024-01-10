@@ -11,6 +11,9 @@ export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 
 export EDITOR='nvim'
 
+# Add user's bin directory to path if it exists
+if [ -d $HOME/.local/bin ]; then export PATH="$HOME/.local/bin:${PATH}"; fi
+
 ###############################################################################
 ## Source local configurations
 if [ -e ~/.zshenv.local ]; then source ~/.zshenv.local; fi

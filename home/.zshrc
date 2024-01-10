@@ -96,25 +96,14 @@ mkdir -p ~/.cache/zsh
 zstyle ':completion:*' use-cache yes
 zstyle ':completion:*' cache-path ~/.cache/zsh
 
-# Environment
-
-# Add user's bin directory to path if it exists
-if [ -d $HOME/.local/bin ]; then export PATH="$HOME/.local/bin:${PATH}"; fi
-
-# Add user's bin directory to path if it exists
-if [ -d $HOME/bin ]; then export PATH="$HOME/bin:${PATH}"; fi
-
-# Add neovim bin directory to path if it exists
-if [ -d $HOME/.neovim ]; then export PATH="$HOME/.neovim/bin:${PATH}"; fi
-
 # Enable true color for neovim
+# TODO Still needed?
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
 
-# flow control
+# Disable freeze/unfreeze of terminal
+# With tmux, there are better ways
 stty stop undef
 stty start undef
-
-# miscellaneus functions
 
 # Find a file in current directory or parents
 function findup {
