@@ -44,3 +44,7 @@
 .local/bin/ssh-time-pull
 .local/bin/bat2clip
 .local/bin/ssh-time-push
+.local/bin/ding
+.local/bin/touchx
+.local/bin/dkup
+.local/bin/dkstats

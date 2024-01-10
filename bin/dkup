@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# Rebuild and restart a single container with docker-compose
+# or just do not specify the container name and all containers in the docker-compose
+# file will be rebuilded and restarted.
+
+main() {
+  docker-compose build ${1} && \
+    docker-compose stop ${1} && \
+    docker-compose up -d --no-deps ${1}
+}
+
+main $1

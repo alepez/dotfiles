@@ -204,31 +204,8 @@ alias dk="docker"
 alias dkps="docker ps --format \"table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}\""
 alias dklog='docker logs --tail 10 -f'
 
-# A better docker stat
-# Thanks to rbravo-avantrip
-# https://github.com/docker/docker/issues/20973#issuecomment-245036858
-dkstats() {
-  while true; do
-    TEXT=$(docker stats --no-stream $(docker ps --format={{.Names}}));
-    sleep 0.5;
-    clear;
-    echo "$TEXT";
-  done
-}
-
-# Rebuild and restart a single container with docker-compose
-# or just do not specify the container name and all containers in the docker-compose
-# file will be rebuilded and restarted.
-dkup() {
-  docker-compose build ${1} && \
-    docker-compose stop ${1} && \
-    docker-compose up -d --no-deps ${1}
-}
-
-# NodeJS
-
-# Pre-setup nvm
-
+# Node Version Manager
+# Note: this must be a function: it changes the current shell environment
 nvm() {
   if [ -e /usr/share/nvm/init-nvm.sh ]; then
     source /usr/share/nvm/init-nvm.sh
@@ -362,18 +339,6 @@ backup_mv() { mv "${1}" "${1}~$( date +%Y%m%d-%H%M%S )~"; }
 zipr() { zip "${1}.zip" "${1}" -r; }
 
 alias history="fc -il -t'%F %T' 1"
-
-################################################################################
-# minecraft
-minecraft-backup() {
-  local root_dir="${HOME}/.minecraft"
-  local src_dir="saves"
-  local dir="${HOME}/.minecraft-backup"
-  local archive_dir="${HOME}/.minecraft-backup"
-  local archive="${archive_dir}/$( date +%Y%m%d-%H%M%S ).tar"
-  echo "Saving to ${archive}"
-  cd ${root_dir} && tar cpvf ${archive} ${src_dir} && ls -lh ${archive}
-}
 
 # the most used (pun not intended) netstat configuration
 alias putane="netstat -putane"
