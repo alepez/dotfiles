@@ -49,3 +49,4 @@
 .local/bin/dkup
 .local/bin/dkstats
 .local/bin/dmenu
+.bash_profile
