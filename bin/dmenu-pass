@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# This is needed to override dmenu with the one in dotfiles/bin
-export PATH=/home/${USER}/.dotfiles/bin:${PATH}
+source "$( dirname "${BASH_SOURCE[0]}" )/.common.sh"
 
 passmumbler select -p passwords/

@@ -1,4 +1,4 @@
-export PATH=$HOME/.dotfiles/bin:$PATH
+export PATH=$HOME/.dotfiles/bin:$HOME/.local/bin:$PATH
 
 print_error() {
   echo "$@" >&2

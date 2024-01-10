@@ -1,16 +1,14 @@
 #!/usr/bin/env bash
 
-source "$( dirname "${BASH_SOURCE[0]}" )/.common.sh"
-
 ## Creates a dmenu prompt with actions
+
+source "$( dirname "${BASH_SOURCE[0]}" )/.common.sh"
 
 PRIVATE_ACTIONS="$( realpath ~/.dotfiles-private/actions )"
 PUBLIC_ACTIONS="$( realpath ~/.dotfiles/actions )"
 
-dmenu="$( realpath ~/.dotfiles/bin/dmenu )"
-
 select_option() {
-  "${dmenu}" -p "Action"
+  dmenu -p "Action"
 }
 
 list_actions() {
