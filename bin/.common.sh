@@ -26,3 +26,7 @@ start_bg_with_delay() {
 run_on_new_terminal() {
   alacritty -e bash -c "${@}"
 }
+
+run_on_new_floating_terminal() {
+  alacritty --class floating-terminal -e bash -c "${@}"
+}

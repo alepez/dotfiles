@@ -302,7 +302,7 @@ hide_edge_borders smart
 # Scratchpad
 ###############################################################################
 
-exec --no-startup-id ~/.dotfiles/bin/scratchpad-terminal alacritty --class=scratchpad-terminal -e tmux
+exec --no-startup-id ~/.dotfiles/bin/scratchpad-terminal
 for_window [instance="scratchpad-terminal"] floating enable, move scratchpad, scratchpad show, resize set 1500 500, move position center, move scratchpad
 bindsym $mod+0 [instance="scratchpad-terminal"] scratchpad show
 
@@ -330,6 +330,7 @@ for_window [title="Unlock Login Keyring"] floating enable, sticky enable, focus
 for_window [title="Wi-Fi Network Authentication Required"] floating enable, sticky enable, focus
 for_window [window_type="dialog"] floating enable
 for_window [title="splash"] floating enable
+for_window [instance="floating-terminal"] floating enable, move position center
 
 for_window [class="passmumbler"] floating enable, sticky enable, focus, move position mouse
 
