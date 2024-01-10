@@ -13,10 +13,19 @@ fast() {
   echo "{ \"ip\": \"${addr}\", \"location\": \"${location}\" }" | jq
 }
 
+pretty() {
+  local f=$( mktemp )
+  fast > $f
+  jq -r '.ip' < $f | tr '\n' ' '
+  jq -r '.location' < $f
+  rm $f
+}
+
 main() {
   case $1 in
     full) full;;
     fast) fast;;
+    pretty) pretty;;
     *) fast;;
   esac
 }
