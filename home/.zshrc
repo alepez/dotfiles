@@ -174,13 +174,6 @@ alias sv="sudo ${EDITOR}"
 alias df='df -h'
 alias du='du -sh'
 
-# neomutt instead of mutt
-alias mutt="neomutt"
-alias E="neomutt"
-
-# exa instead of classi ls
-lslast() { exa --sort=newest --reverse --color always $@ | head ; }
-
 # Brutally kill
 alias ka9='killall -9'
 alias k9='kill -9'
@@ -194,6 +187,7 @@ highlight() { grep --color -E "$1|\$"; }
 # Grep without buffer
 alias nbgrep='stdbuf -o0 -oL grep'
 
+# Disable buffering
 alias nb='stdbuf -i0 -o0 -e0'
 
 # I don't use dc, and sometime i mispell cd
@@ -202,17 +196,8 @@ alias dc='cd'
 # Disable screensaver and screen energy saving (e.g.: during a speech)
 alias noscreensaver='xset -dpms s off'
 
+# I often need a python shell for quick math and stuff
 alias py="python"
-
-# Show a notification
-ding() {
-  (
-  notify-send -u low "! ${1}"
-  paplay /usr/share/sounds/freedesktop/stereo/complete.oga
-  ) >/dev/null 2>/dev/null </dev/null &
-}
-
-# Docker
 
 # I use docker so often I need this
 alias dk="docker"

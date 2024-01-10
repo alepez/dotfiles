@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Show and play a notification
+
+main() {
+  (
+  notify-send -u low "! ${1}"
+  paplay /usr/share/sounds/freedesktop/stereo/complete.oga
+  ) &>/dev/null </dev/null &
+}
+
+main "${@}"
