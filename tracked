@@ -48,3 +48,4 @@
 .local/bin/touchx
 .local/bin/dkup
 .local/bin/dkstats
+.local/bin/dmenu
