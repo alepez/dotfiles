@@ -1,6 +1,3 @@
 #!/usr/bin/env bash
 
-# This is needed to find executables in custom paths
-export PATH=/home/${USER}/.local/bin:${PATH}
-
 rofi -matching fuzzy -sort -sorting-method fzf -show run $@
