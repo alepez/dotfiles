@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Use time from a remote machine to set my local time.
+
+main() {
+  datetime=$( ssh $@ "date --utc +%m%d%H%M%Y" )
+  sudo date --utc $datetime; sudo /sbin/hwclock --systohc
+}
+
+main "${@}"

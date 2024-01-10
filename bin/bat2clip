@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Syntax highlight a file using bat and copy as rich text to the clipboard
+
+main() {
+  bat --theme=OneHalfLight --color=always "${1}" \
+    | aha \
+    | xclip -t text/html -selection clipboard;
+}
+
+main "${@}"

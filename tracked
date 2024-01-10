@@ -38,3 +38,9 @@
 .local/bin/VBoxFixWinSize
 .local/bin/watch_do
 .local/bin/genpassword
+.local/bin/doconv
+.local/bin/ffmpeg-gif
+.local/bin/findup
+.local/bin/ssh-time-pull
+.local/bin/bat2clip
+.local/bin/ssh-time-push

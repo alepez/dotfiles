@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Convert markdown to other formats with pandoc
+# Creates a new file, with the same name as the source and the output extension
+#
+# \param 1 markdown source file path
+# \param 2 output format, as file extension (default: pdf)
+
+main() {
+  local out="$( basename "${1}" .md ).${2:=pdf}";
+  pandoc -f markdown -s -o "${out}" $1 && xdg-open "${out}";
+}
+
+main "${@}"

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# video to gif
+
+main() {
+  local gif="${1%.*}.gif"
+  ffmpeg -i ${1} -vf fps=5,scale=640:-1:flags=lanczos,palettegen palette.png
+  ffmpeg -i ${1} -i palette.png -filter_complex "fps=5,scale=640:-1:flags=lanczos[x];[x][1:v]paletteuse" ${gif}
+}
+
+main "${@}"

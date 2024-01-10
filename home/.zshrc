@@ -105,68 +105,6 @@ export NVIM_TUI_ENABLE_TRUE_COLOR=1
 stty stop undef
 stty start undef
 
-# Find a file in current directory or parents
-function findup {
-  path=$(pwd)
-  while [[ "$path" != "" && ! -e "$path/$1" ]]; do
-    path=${path%/*}
-  done
-  echo "$path/$1"
-}
-
-# Push my time to a remote machine via ssh
-function ssh-time-push {
-	datetime=$( date --utc +%m%d%H%M%Y )
-	ssh $@ "( date --utc $datetime; /sbin/hwclock --systohc )"
-}
-
-# Use time from a remote machine to set my local time.
-function ssh-time-pull {
-	datetime=$( ssh $@ "date --utc +%m%d%H%M%Y" )
-	sudo date --utc $datetime; sudo /sbin/hwclock --systohc
-}
-
-# video to gif
-function video2gif {
-	local gif="${1%.*}.gif"
-	ffmpeg -i ${1} -vf fps=5,scale=640:-1:flags=lanczos,palettegen palette.png
-	ffmpeg -i ${1} -i palette.png -filter_complex "fps=5,scale=640:-1:flags=lanczos[x];[x][1:v]paletteuse" ${gif}
-}
-
-# Convert markdown to other formats with pandoc
-# \param 1 markdown source file path
-# \param 2 output format, as file extension (default: pdf)
-##
-# Creates a new file, with the same name as the source and the output extension
-function doconv {
-	local out="$( basename "${1}" .md ).${2:=pdf}";
-	pandoc -f markdown -s -o "${out}" $1 && xdg-open "${out}";
-}
-
-# switch from console to vim
-# http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
-function fancy_ctrl_z {
-  if [[ $#BUFFER -eq 0 ]]; then
-    BUFFER=" fg"
-    zle accept-line
-  else
-    zle push-input
-    zle clear-screen
-  fi
-}
-zle -N fancy_ctrl_z
-bindkey '^Z' fancy_ctrl_z
-
-# Wordreference
-function wr { xdg-open http://wordreference.com/$1/$2 &>/dev/null }
-
-# Syntax highlight a file using bat and copy as rich text to the clipboard
-function bat2clip {
-  bat --theme=OneHalfLight --color=always "${1}" \
-    | aha \
-    | xclip -t text/html -selection clipboard;
-}
-
 # fzf https://github.com/junegunn/fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # Set ag, the silver searcher, as the default command, so it can skip files in

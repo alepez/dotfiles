@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Push my time to a remote machine via ssh
+
+main() {
+  datetime=$( date --utc +%m%d%H%M%Y )
+  ssh $@ "( date --utc $datetime; /sbin/hwclock --systohc )"
+}
+
+main "${@}"
