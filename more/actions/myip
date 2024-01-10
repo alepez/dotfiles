@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+action_run() {
+  run_on_new_terminal '~/.dotfiles/bin/myip pretty ; read'
+}
+
+action_available() {
+  true
+}
