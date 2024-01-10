@@ -12,27 +12,29 @@ export ZSH=/usr/share/oh-my-zsh
 # Path to custom themes/plugins etc...
 export ZSH_CUSTOM=~/.dotfiles/more/zsh/oh-my-zsh
 
-# Set name of the theme to load.
-# Look in $ZSH/themes/
-# ZSH_THEME="pez"
-
-# Uncomment the following line to use case-sensitive completion.
+# Use case-sensitive completion.
+# https://github.com/ohmyzsh/ohmyzsh/wiki/Settings#case_sensitive
 CASE_SENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
+# Disable bi-weekly auto-update checks.
+# TODO DEPRECATED https://github.com/ohmyzsh/ohmyzsh/wiki/Settings#update-settings
 DISABLE_AUTO_UPDATE="true"
 
-# Uncomment the following line to disable auto-setting terminal title.
+# Disable auto-setting terminal title.
+# https://github.com/ohmyzsh/ohmyzsh/wiki/Settings#automatic-title
 DISABLE_AUTO_TITLE="true"
 
-# Uncomment the following line to disable command auto-correction.
+# Disable command auto-correction.
+# TODO Still valid? It's here since (at least) 2015. I cannot find a reference.
 DISABLE_CORRECTION="true"
 
-# Uncomment the following line to display red dots whilst waiting for completion.
+# Display red dots whilst waiting for completion.
+# https://github.com/ohmyzsh/ohmyzsh/wiki/Settings#completion_waiting_dots
 COMPLETION_WAITING_DOTS="true"
 
 # disable marking untracked files under VCS as dirty. This makes repository
 # status check for large repositories much, much faster.
+# https://github.com/ohmyzsh/ohmyzsh/wiki/Settings#disable_untracked_files_dirty
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # tmux
