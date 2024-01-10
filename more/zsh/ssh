@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+alias sshpubkey="ssh-add -L |  head -1 | xclip"
+
+sshconf() {
+  local args='';
+  if [ -n "${1}" ]; then args="-c /Host ${1}"; fi
+  ${EDITOR} ${HOME}/.ssh/config ${args}
+}

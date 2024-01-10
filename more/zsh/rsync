@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+
+################################################################################
+# rsync ssh tunnel with ControlPath
+# see: http://unix.stackexchange.com/a/50515/12662
+ssh-rsync-fast-start() {
+  mkdir -p ~/.ssh/ctl
+  ssh -nNf -o ControlMaster=yes -o ControlPath="$HOME/.ssh/ctl/%L-%r@%h:%p" $@
+}
+
+ssh-rsync-fast() {
+  rsync -e "ssh -o 'ControlPath=$HOME/.ssh/ctl/%L-%r@%h:%p'" $@
+}
+
+ssh-rsync-fast-stop() {
+  ssh -O exit -o ControlPath="$HOME/.ssh/ctl/%L-%r@%h:%p" $@
+}

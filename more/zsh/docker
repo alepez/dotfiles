@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+# I use docker so often I need this
+alias dk="docker"
+alias dkps="docker ps --format \"table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}\""
+alias dklog='docker logs --tail 10 -f'
+

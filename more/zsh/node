@@ -1,0 +1,18 @@
+#!/usr/bin/env zsh
+
+# Node Version Manager
+# Note: this must be a function: it changes the current shell environment
+nvm() {
+  if [ -e /usr/share/nvm/init-nvm.sh ]; then
+    source /usr/share/nvm/init-nvm.sh
+    # Once sourced, nvm is overridden
+    # This is not recursive, because at this point nvm is no more this function.
+    nvm $@
+  else
+    echo "nvm not found"
+  fi
+}
+
+alias npmi="npm install --save"
+alias npmid="npm install --save-dev"
+

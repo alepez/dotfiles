@@ -1,0 +1,86 @@
+# Git Aliases
+# See ~/.gitconfig
+
+# Add files to the index
+alias ga='git add'
+
+# Chunk by chunk
+alias gap='git add --patch'
+
+# Add all files, remove from index deleted files
+alias gA='git add -A'
+
+# show all Remotes Verbosely
+alias grv='git remote -v'
+
+# log --graph --date=short
+alias gl='git l'
+
+# show all changes from Head
+alias gdh='git diff HEAD'
+
+# show Unstaged changes
+alias gdu='gd'
+
+# show Unstaged changes
+alias gdc='git dc'
+
+# show Staged changes
+alias gds='git diff --stat'
+
+# Pull
+alias gpl='git pull'
+
+alias gpll='git pull --recurse-submodules --jobs=10'
+
+# Push
+alias gps='git push'
+
+# New Branch aka checkout -b
+alias gnb='git nb'
+
+# Checkout
+alias gco='git co'
+
+alias gamend='git commit --amend'
+alias gh='git show'
+alias gd='git diff'
+alias gs='git status'
+alias gll='git ll'
+
+# Quick merge from origin/master, no fast forward
+gqm() { if [ -z "${1}" ]; then git status -bs; echo -e "\nbranch?"; return; fi; git fetch ; git merge origin/${1} --no-ff }
+
+# Commit, message as arguments, quotes not needed
+gcm() { git commit -m "$*" }
+
+# Clean all untracked files
+git-superclean() { read -q "REPLY?Sure? "; if [ "${REPLY}" = 'y' ]; then echo && git reset --hard && git clean -ffdx; fi }
+
+# Difference with commond ancestor
+git-diffanc() {
+  local main_branch;
+  test -n "${2}" && main_branch="${2}" || main_branch="$( git rev-parse --abbrev-ref HEAD )"
+  git diff $( git merge-base "${1}" "${main_branch}" ) "${1}"
+}
+
+# Update recursively all submodules
+git-subsync() {
+  git submodule sync --recursive && git submodule update --recursive --remote
+}
+
+# Git pull, also submodules
+gPL() {
+  git pull "$@" &&
+    git submodule sync --recursive &&
+    git submodule update --init --recursive
+}
+
+git-huge-finder() {
+  git rev-list --objects --all \
+    | git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' \
+    | sed -n 's/^blob //p' \
+    | sort --numeric-sort --key=2 \
+    | cut -c 1-12,41- \
+    | numfmt --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest
+}
