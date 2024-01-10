@@ -4,4 +4,4 @@
 
 export PATH=/home/${USER}/bin:/home/${USER}/.local/bin:/usr/local/bin:/usr/bin:/bin
 
-rofi -matching fuzzy -dmenu $@
+rofi -matching fuzzy -sort -sorting-method fzf -dmenu $@
