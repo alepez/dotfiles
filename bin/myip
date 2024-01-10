@@ -15,7 +15,7 @@ fast() {
 
 pretty() {
   local f=$( mktemp )
-  fast > $f
+  full > $f
   jq -r '.ip' < $f | tr '\n' ' '
   jq -r '.location' < $f
   rm $f
