@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 action_run() {
-  run_on_new_terminal '~/.dotfiles/bin/myip pretty ; read'
+  notify-send "$( ~/.dotfiles/bin/myip pretty )"
 }
 
 action_available() {
