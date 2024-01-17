@@ -2,4 +2,18 @@
 
 ## Starts Rust Rover in the background, with the current directory as the project
 
-/usr/bin/rustrover . &>/dev/null </dev/null &
+main() {
+  # Use default Rust Rover
+  cmd=/usr/bin/rustrover
+
+  # Try to use EAP if not found
+  if [ ! -e ${cmd} ]; then
+    cmd=/usr/bin/rustrover-eap
+  fi
+
+
+  echo "Starting Rust Rover in the background..."
+  ${cmd} . &>/dev/null </dev/null &
+}
+
+main
