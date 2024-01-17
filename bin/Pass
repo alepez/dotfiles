@@ -5,42 +5,31 @@
 ## - http://www.passwordstore.org/
 ## - https://github.com/junegunn/fzf
 
-only_password() {
-  head -1
+title() {
+  local txt="$1"
+  local padding_length=$((80 - ${#txt}))
+  local padding=$(printf "%${padding_length}s" " ")
+  local bar=$(printf "%80s" " ")
+  echo -e "\e[30;42m$bar\e[0m"
+  echo -e "\e[30;42m$txt$padding\e[0m"
+  echo -e "\e[30;42m$bar\e[0m"
 }
 
-only_username() {
-  sed -n '3,1p' | sed 's/[^:]*: //'
-}
-
-to_xclip() {
-  echo "${2}" | xclip -selection clipboard
-  echo "${3}" | xclip -selection primary
-}
-
-to_gpaste() {
-  gpaste-client add "${2}" 2>/dev/null
-  gpaste-client add-password "${1}" "${3}" 2>/dev/null
-}
-
-copy_tokens() {
-  local name="${1}"
-  local input=$( cat )
-  local password=$( echo "${input}" | only_password )
-  local username=$( echo "${input}" | only_username )
-  to_gpaste "${passpath}" "${username}" "${password}"
+more() {
+  echo
+  echo -e "\e[1;32m"
+  echo "Edit with:"
+  echo "    pass edit '${1}'"
+  echo -e "\e[0m"
 }
 
 main() {
   local passpath=$( cd ~/.password-store && git ls-files | grep -v "^\." | fzf-tmux | sed "s/\.gpg$//" );
   local txt=$( pass "${passpath}" ) 
   clear
-  echo "================================================================================"
-  echo "${passpath}"
-  echo "================================================================================"
-  echo
-  echo "${txt}" | copy_tokens "${passpath}"
-  echo "${txt}"
+  title "${passpath}"
+  pass "${passpath}"
+  more "${passpath}"
 }
 
 main $@
