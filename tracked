@@ -50,3 +50,4 @@
 .local/bin/dkstats
 .local/bin/dmenu
 .bash_profile
+.local/bin/haskell

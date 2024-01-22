@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Having Haskell Stack installed in Arch Linux is a mess
+# Just use a Docker container
+
+docker run --rm -ti haskell:9
