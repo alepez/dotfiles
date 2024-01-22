@@ -22,7 +22,7 @@
 .local/bin/chromium-clean
 .local/bin/chromium-profile
 .local/bin/clean-tmp
-.local/bin/clion
+.local/bin/CL
 .local/bin/cmake-target-clean
 .local/bin/ffmpeg-whatsapp
 .local/bin/git-edit-commit
