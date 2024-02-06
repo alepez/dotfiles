@@ -52,3 +52,4 @@
 .bash_profile
 .local/bin/haskell
 .local/bin/teams
+.local/bin/add-timestamps

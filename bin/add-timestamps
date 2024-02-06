@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+while IFS= read -r line; do
+    timestamp=$(date +"%Y-%m-%d %H:%M:%S")
+    echo "$timestamp $line"
+done
