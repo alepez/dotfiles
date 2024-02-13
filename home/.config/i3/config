@@ -344,6 +344,10 @@ assign [class="App"] $workspace_3
 # Wine
 for_window [class="explorer.exe"] floating enable
 
+# Canbusnoop
+for_window [class="Canbusnoop"] floating enable
+assign [class="Canbusnoop"] $workspace_3
+
 ###############################################################################
 # Startup
 ###############################################################################
