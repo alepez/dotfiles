@@ -25,8 +25,12 @@ if [ -z "${DOTFILES_ENV_SET}" ]; then
 
   # SSH Agent
   # https://wiki.archlinux.org/title/GnuPG#Set_SSH_AUTH_SOCK
-  unset SSH_AGENT_PID
-  if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-    export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+  # Launch gpg-agent SSH_AUTH_SOCK only if is not set, to avoid conflicts with
+  # ssh-agent.
+  if [ -z "${SSH_AUTH_SOCK}" ]; then
+    unset SSH_AGENT_PID
+    if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+      export SSH_AUTH_SOCK="$( gpgconf --list-dirs agent-ssh-socket )"
+    fi
   fi
 fi
