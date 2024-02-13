@@ -101,7 +101,7 @@ opt.writebackup = false
 opt.number = true
 
 -- ...but show relative numbers except for the current line
-opt.relativenumber = true
+-- opt.relativenumber = true
 
 -- Show ruler on the statusline
 opt.ruler = true
