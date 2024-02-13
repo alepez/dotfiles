@@ -39,6 +39,8 @@ return {
     end
   },
 
+  { "nvim-telescope/telescope-ui-select.nvim" },
+
   {
     'hrsh7th/nvim-cmp',
     event = "InsertEnter",
