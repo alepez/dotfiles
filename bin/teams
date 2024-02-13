@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Starts Chromium with Microsoft Teams in a dedicated profile
+# I'm using Chromium instead of Firefox because it's faster and more stable
+# than Firefox on my machine.
+
+main() {
+  local profile="teams_alessandro_at_pezzato_dot_net"
+  local user_data_dir="${HOME}/tmp/chromium-profile-dir/${profile}"
+
+  chromium \
+    --user-data-dir=${user_data_dir} \
+    https://teams.microsoft.com \
+    2>/dev/null 1>/dev/null </dev/null &
+}
+
+main "$@"

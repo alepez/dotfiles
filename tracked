@@ -51,3 +51,4 @@
 .local/bin/dmenu
 .bash_profile
 .local/bin/haskell
+.local/bin/teams
