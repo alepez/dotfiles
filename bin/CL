@@ -2,7 +2,6 @@
 
 ## Starts CLion in the background, with the current directory as the project
 
-/usr/bin/clion . &>/dev/null </dev/null &
 main() {
   # Use default CLion
   cmd=/usr/bin/clion
