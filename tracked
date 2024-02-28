@@ -53,3 +53,4 @@
 .local/bin/haskell
 .local/bin/teams
 .local/bin/add-timestamps
+.local/bin/cmake-now

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -e
+
+main() {
+  cmake -B build
+  cmake --build build --parallel
+}
+
+main "${@}"
