@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+THIS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+is_cargo_cache_dir() {
+  test -e "${1}/CACHEDIR.TAG"
+}
+
+is_cmake_cache_dir() {
+  test -e "${1}/CMakeCache.txt"
+}
+
+filter_disposable_dirs() {
+  while read l; do
+    if is_cmake_cache_dir "${l}" || is_cargo_cache_dir "${l}"; then
+      echo "${l}"
+    fi
+  done
+}
+
+add_size() {
+  while read l; do
+    du -hs "${l}"
+  done
+}
+
+sort_by_size() {
+  sort -h -r
+}
+
+find_dirs() {
+  find "${1}" -type d
+}
+
+find_dirs_to_clean() {
+  find_dirs "${HOME}" | filter_disposable_dirs | add_size | sort_by_size
+}
+
+main() {
+  echo "system clean"
+  find_dirs_to_clean | tee "/tmp/system-clean.log"
+  echo "Now you can review /tmp/system-clean.log and remove the directories you want to clean up."
+}
+
+main "${@}"
