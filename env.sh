@@ -33,4 +33,10 @@ if [ -z "${DOTFILES_ENV_SET}" ]; then
       export SSH_AUTH_SOCK="$( gpgconf --list-dirs agent-ssh-socket )"
     fi
   fi
+
+  # Always use the adapter that uses the least possible power.
+  # This is often an integrated GPU.
+  # https://docs.rs/wgpu/latest/wgpu/
+  # Added for bevy
+  export WGPU_POWER_PREF=low
 fi
