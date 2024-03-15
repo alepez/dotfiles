@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# Repeat a command when Enter is pressed, clears tmux and terminal.
+#
+# Example:
+#
+#     again cargo test
+
+while read x; do 
+  tmux clear-history; 
+  clear; 
+  "${@}"
+done

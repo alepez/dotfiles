@@ -54,3 +54,4 @@
 .local/bin/teams
 .local/bin/add-timestamps
 .local/bin/cmake-now
+.local/bin/again
