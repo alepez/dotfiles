@@ -6,8 +6,23 @@
 #
 #     again cargo test
 
-while read x; do 
+title() {
+  local txt="$1"
+  local cols=$( tput cols )
+  local padding_length=$((${cols} - ${#txt}))
+  local padding=$(printf "%${padding_length}s" " ")
+  local bar=$(printf "%${cols}s" " ")
+  echo -e "\e[30;42m$bar\e[0m"
+  echo -e "\e[30;42m$txt$padding\e[0m"
+  echo -e "\e[30;42m$bar\e[0m"
+}
+
+while true; do 
   tmux clear-history; 
   clear; 
-  "${@}"
+  title "$( echo ${@} )"
+  eval "${@}"
+  echo
+  echo -e "\e[32mPress Enter to run again, Ctrl+C to exit.\e[0m"
+  read
 done
