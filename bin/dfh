@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+main() {
+  df -l --sync \
+    | tail -n +2 \
+    | awk '{ print $3 " " $6 }' \
+    | sort --sort=human-numeric --reverse
+}
+
+main

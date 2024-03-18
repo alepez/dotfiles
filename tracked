@@ -55,3 +55,4 @@
 .local/bin/add-timestamps
 .local/bin/cmake-now
 .local/bin/again
+.local/bin/dfh
