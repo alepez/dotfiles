@@ -80,12 +80,12 @@ local custom_opts = {
   },
   ["yamlls"] = {
     settings = {
-    -- TODO This may be useful, but yamlls does not work if enabled
-    --   yaml = {
-    --     schemas = {
-    --       ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
-    --     },
-    --   },
+      yaml = {
+        keyOrdering = false,
+        schemas = {
+          ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+        },
+      },
     }
   }
 }
