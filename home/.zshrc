@@ -125,5 +125,9 @@ if [ -e ~/.zshrc.local ]; then source ~/.zshrc.local; fi
 # start starship
 eval "$( starship init zsh )"
 
+if [ -n "${TMUX}" ]; then
+  alias clear="tmux clear-history ; clear"
+fi
+
 # Remove unwanted aliases from plugins
 unalias duf
