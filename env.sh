@@ -39,4 +39,7 @@ if [ -z "${DOTFILES_ENV_SET}" ]; then
   # https://docs.rs/wgpu/latest/wgpu/
   # Added for bevy
   export WGPU_POWER_PREF=low
+
+  # Prevent pip or poetry trying to access a keyring
+  export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
 fi
