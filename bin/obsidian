@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Custom launcher for obsidian, so I can disable smooth scrolling which
+# is getting me mad.
+
+OBSIDIAN_USER_FLAGS_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/obsidian/user-flags.conf"
+
+# Allow users to override command-line options
+if [[ -f "${OBSIDIAN_USER_FLAGS_FILE}" ]]; then
+   OBSIDIAN_USER_FLAGS=$(grep -v '^#' "$OBSIDIAN_USER_FLAGS_FILE")
+fi
+
+# Launch
+exec electron28 --disable-smooth-scrolling /usr/lib/obsidian/app.asar $OBSIDIAN_USER_FLAGS "$@"
