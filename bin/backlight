@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+increment() {
+  xbacklight -inc 10
+}
+
+decrement() {
+  if [[ $( xbacklight -get ) -gt 10 ]]; then
+    xbacklight -dec 10
+  fi
+}
+
+interactive() {
+  while read -n1 x; do
+    case $x in
+      +|k) increment;;
+      -|j) decrement;;
+      q) break;;
+    esac
+  done
+}
+
+main() {
+  case $1 in
+    i|interactive) interactive;;
+  esac
+}
+
+main "${@}"

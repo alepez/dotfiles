@@ -57,3 +57,5 @@
 .local/bin/again
 .local/bin/dfh
 .local/bin/obsidian
+.local/bin/backlight
+.config/systemd
