@@ -54,6 +54,8 @@ gqm() { if [ -z "${1}" ]; then git status -bs; echo -e "\nbranch?"; return; fi; 
 # Commit, message as arguments, quotes not needed
 gcm() { git commit -m "$*" }
 
+gCM() { gA && gcm $(now) }
+
 # Clean all untracked files
 git-superclean() { read -q "REPLY?Sure? "; if [ "${REPLY}" = 'y' ]; then echo && git reset --hard && git clean -ffdx; fi }
 
