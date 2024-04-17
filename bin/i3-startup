@@ -41,13 +41,14 @@ start_bg blueman-applet
 # NetworkManager applet
 start_bg nm-applet
 
-# Protonmail bridge
-start_bg protonmail-bridge --no-window
+if [ "${DOTFILES_AUTOSTART_EMAIL_CLIENT}" == "1" ]; then
+  # Protonmail bridge
+  start_bg protonmail-bridge --no-window
 
-# Thunderbird systray (birdtray)
-start_bg_with_delay 60 nohup birdtray
+  # Thunderbird systray (birdtray)
+  start_bg_with_delay 60 nohup birdtray
+fi
 
-# ) &>/dev/null </dev/null &
-) &>/tmp/pez-i3-startup.log </dev/null &
+) &>/dev/null </dev/null &
 
 exit 0
