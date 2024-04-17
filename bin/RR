@@ -11,6 +11,14 @@ main() {
     cmd=/usr/bin/rustrover-eap
   fi
 
+  if [ ! -d .idea ]; then
+    echo ".idea not found"
+    echo "type YES to continue"
+    read o
+    if [ "${o}" != "YES" ]; then
+      return
+    fi
+  fi
 
   echo "Starting Rust Rover in the background..."
   ${cmd} . &>/dev/null </dev/null &
