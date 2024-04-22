@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+main() {
+  local uuid=$( cat /dev/urandom | tr -dc 'A-F0-9' | head -c 32 )
+  local define="X${uuid}"
+  echo "#ifndef ${define}"
+  echo "#define ${define}"
+  echo
+  echo "#endif // ${define}"
+}
+
+main
