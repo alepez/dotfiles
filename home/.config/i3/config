@@ -1,18 +1,4 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
-#
-# Dependencies
-#
-#  - feh
-#  - firefox
-#  - nerd fonts https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/SourceCodePro
-#  - alacritty
-#  - betterlockscreen
-#  - xcape https://github.com/alols/xcape
-#  - dunst
-#
-# Theme:
-#  - Icons: https://github.com/daniruiz/Flat-Remix
-#  - GTK: https://github.com/horst3180/arc-theme
 
 ###############################################################################
 # Style
@@ -70,12 +56,11 @@ bindsym $mod+Shift+r restart
 # Exit mode
 # Ctrl+Alt+Del shows a menu with exit options
 ###############################################################################
-set $exit_mode " [X] Lock [L] Logout [P] poweroff [R] reboot [S] suspend"
+set $exit_mode "[P] poweroff [R] reboot [S] suspend"
 bindsym Control+Mod1+Delete mode $exit_mode
 bindsym $mod+Shift+x mode $exit_mode
 
 mode $exit_mode {
-  bindsym l exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/i3-exit logout"
   bindsym p exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/i3-exit poweroff"
   bindsym r exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/i3-exit reboot"
   bindsym s exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/i3-exit suspend"
@@ -83,49 +68,6 @@ mode $exit_mode {
   # back to normal: Enter or Escape
   bindsym Return    mode "default"
   bindsym Escape    mode "default"
-}
-
-###############################################################################
-# Monitors layout mode
-# Wind+Shift+S shows a menu with layout options
-###############################################################################
-
-set $monitors_mode "select monitors layout  [a] arandr [h] home [3] home-3 [t] laptop [u] auto [l] external left [r] external right [v] vertical only [w] laptop+vertical"
-bindsym $mod+Shift+s mode $monitors_mode
-
-# Note: both HDMI-1 and HDMI1 because different versions xrandr gives different names
-mode $monitors_mode  {
-  bindsym a exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/monitor-setup manual"
-  bindsym h exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/monitor-setup home"
-  bindsym 3 exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/monitor-setup home-3"
-  bindsym w exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/monitor-setup home-laptop-and-vertical"
-  bindsym t exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/monitor-setup laptop"
-  bindsym q exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/monitor-setup laptop-qhd"
-  bindsym u exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/monitor-setup auto"
-  bindsym l exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/monitor-setup ext-left"
-  bindsym r exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/monitor-setup ext-right"
-  bindsym v exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/monitor-setup vertical-only"
-
-  # back to normal: Enter or Escape
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-}
-
-###############################################################################
-# Desktop Background
-# Wind+Shift+D change background
-###############################################################################
-
-set $background_mode "change background  [j] next [k] prev"
-bindsym $mod+Shift+d mode $background_mode
-
-mode $background_mode  {
-  bindsym k exec --no-startup-id "~/.dotfiles/bin/change-background prev"
-  bindsym j exec --no-startup-id "~/.dotfiles/bin/change-background next"
-
-  # back to normal: Enter or Escape
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
 }
 
 ###############################################################################
@@ -142,24 +84,6 @@ mode $lights_mode  {
   bindsym r exec --no-startup-id "i3-msg mode default; office-lights office_relax"
   bindsym a exec --no-startup-id "i3-msg mode default; office-lights all_on"
   bindsym o exec --no-startup-id "i3-msg mode default; office-lights all_off"
-
-  # back to normal: Enter or Escape
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-}
-
-###############################################################################
-# Resize mode
-###############################################################################
-
-set $resize_mode "resize  hjkl"
-bindsym $mod+r mode $resize_mode
-mode $resize_mode {
-  # These bindings trigger as soon as you enter the resize mode
-  bindsym h resize shrink width 10 px or 10 ppt
-  bindsym j resize grow height 10 px or 10 ppt
-  bindsym k resize shrink height 10 px or 10 ppt
-  bindsym l resize grow width 10 px or 10 ppt
 
   # back to normal: Enter or Escape
   bindsym Return mode "default"
