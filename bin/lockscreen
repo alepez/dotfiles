@@ -77,6 +77,9 @@ start() {
 }
 
 lock() {
+  # Ugly hack to show the lock screen when picom unredir-if-possible=true
+  # Thanks https://askubuntu.com/a/918364
+  ( sleep 1 ; xdotool mousemove_relative 1 0 mousemove_relative -- -1 0 ) &>/dev/null </dev/null &
   betterlockscreen -l
 }
 
