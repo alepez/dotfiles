@@ -75,7 +75,6 @@ bindsym Control+Mod1+Delete mode $exit_mode
 bindsym $mod+Shift+x mode $exit_mode
 
 mode $exit_mode {
-  bindsym x exec --no-startup-id "i3-msg mode default; betterlockscreen -l dim"
   bindsym l exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/i3-exit logout"
   bindsym p exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/i3-exit poweroff"
   bindsym r exec --no-startup-id "i3-msg mode default; ~/.dotfiles/bin/i3-exit reboot"
@@ -221,7 +220,7 @@ bindsym $mod+Return exec --no-startup-id $terminal
 bindsym $mod+c exec --no-startup-id $terminal
 
 # lock screen with Ctrl+Alt+L
-bindsym Control+Mod1+l exec --no-startup-id "betterlockscreen -l dim"
+bindsym Control+Mod1+l exec --no-startup-id "~/.dotfiles/bin/lockscreen lock"
 
 # Browser
 set $browser "firefox -p personal"

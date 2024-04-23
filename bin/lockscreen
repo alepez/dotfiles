@@ -1,0 +1,91 @@
+#!/usr/bin/env bash
+
+THIS_SCRIPT="$( readlink -f "${BASH_SOURCE[0]}" )"
+
+NOTIFICATION_ID=""
+
+# A notification will be shown after this time of inactivity (seconds)
+INACTIVITY_TIMEOUT=60
+
+# After notification, the screen will be locked after this time if no activity
+# is detected (seconds)
+NOTIFICATION_DURATION=10
+
+list_outputs() {
+  xrandr --current | sed -n 's/\([^ ]*\) connected .*/\1/p'
+}
+
+undim_output() {
+  xrandr --output $1 --brightness 1
+}
+
+dim_output() {
+  xrandr --output $1 --brightness 0.5
+}
+
+for_each_output() {
+  for out in $( list_outputs ); do
+    $1 $out
+  done
+}
+
+undim() {
+  for_each_output undim_output
+}
+
+dim() {
+  for_each_output dim_output
+}
+
+notify_new() {
+  NOTIFICATION_ID=$( notify-send --urgency=normal --expire-time=2000 --transient --print-id "${1}" )
+}
+
+notify_replace() {
+  notify-send --urgency=normal --expire-time=500 --transient --replace-id=${NOTIFICATION_ID} "${1}"
+}
+
+stop_lock() {
+  undim
+  if [ -n "$NOTIFICATION_ID" ]; then
+    notify_replace "Screen lock canceled"
+  fi
+}
+
+notify() {
+  notify_new "Screen lock"
+
+  # See xss-lock signal handling for details
+  # The notifier is killed when X signals user activity or when the locker is
+  # started.
+  # So when we receive a TERM signal, we know that the locker is started or
+  # that the user is active.
+  trap "exit 0" TERM INT
+  trap 'stop_lock' EXIT
+
+  dim
+  sleep infinity &
+  wait
+}
+
+start() {
+  # xss-lock: the locker is started after the first screen saver cycle, as set
+  # with `xset s TIMEOUT CYCLE`
+  xset s ${INACTIVITY_TIMEOUT} ${NOTIFICATION_DURATION}
+
+  xss-lock --notifier="${THIS_SCRIPT} notify" ${THIS_SCRIPT} lock &>/dev/null </dev/null &
+}
+
+lock() {
+  betterlockscreen -l
+}
+
+main() {
+  case $1 in
+    start) start;;
+    notify) notify;;
+    lock) lock;;
+  esac
+}
+
+main "$@"

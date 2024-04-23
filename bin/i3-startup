@@ -16,8 +16,7 @@ start_bg ~/.dotfiles/bin/keyboard-setup
 start_bg xbindkeys
 
 # Automatic screen lock
-start_bg xset s 300
-start_bg xss-lock -- betterlockscreen -l dim
+start_bg $HOME/.dotfiles/bin/lockscreen start
 
 # Compositor needs to be launched after monitor layout has changed
 start_bg_with_delay 2 picom -b
