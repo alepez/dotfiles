@@ -74,6 +74,9 @@ start() {
   xset s ${INACTIVITY_TIMEOUT} ${NOTIFICATION_DURATION}
 
   xss-lock --notifier="${THIS_SCRIPT} notify" ${THIS_SCRIPT} lock &>/dev/null </dev/null &
+
+  # inhibit screensaver via DBUS for apps like Zoom
+  xssproxy &>/dev/null </dev/null &
 }
 
 lock() {
