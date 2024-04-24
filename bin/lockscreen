@@ -83,7 +83,9 @@ start() {
   xss-lock --notifier="${THIS_SCRIPT} notify" ${THIS_SCRIPT} lock &>/dev/null </dev/null &
 
   # inhibit screensaver via DBUS for apps like Zoom
-  xssproxy &>/dev/null </dev/null &
+  # TODO Temporarily disabled as it prevent locking if Zoom is running, even
+  # without any meeting.
+  # xssproxy &>/dev/null </dev/null &
 }
 
 lock() {
