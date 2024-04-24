@@ -38,22 +38,19 @@ dim() {
 }
 
 notify_new() {
-  NOTIFICATION_ID=$( notify-send --urgency=normal --expire-time=2000 --transient --print-id "${1}" )
+  NOTIFICATION_ID=$( notify-send --urgency=normal --expire-time=1000 --transient --print-id "${1}" )
 }
 
 notify_replace() {
-  notify-send --urgency=normal --expire-time=500 --transient --replace-id=${NOTIFICATION_ID} "${1}"
+  notify-send --urgency=normal --expire-time=1000 --transient --replace-id=${NOTIFICATION_ID} "${1}"
 }
 
 stop_lock() {
   undim
-  # if [ -n "$NOTIFICATION_ID" ]; then
-  #   notify_replace "Screen lock canceled"
-  # fi
 }
 
 notify() {
-  notify_new "Screen lock"
+  notify_new "Locking in ${NOTIFICATION_DURATION} seconds"
 
   # See xss-lock signal handling for details
   # The notifier is killed when X signals user activity or when the locker is
@@ -64,6 +61,15 @@ notify() {
   trap 'stop_lock' EXIT
 
   dim
+
+  for i in $( seq 1 $((NOTIFICATION_DURATION - 1)) ); do
+    notify_replace "Locking in $((NOTIFICATION_DURATION - i)) seconds"
+    # Background sleep to allow signal handling during sleep (exit as soon as
+    # user activity is detected)
+    sleep 1 &
+    wait
+  done
+
   sleep infinity &
   wait
 }
