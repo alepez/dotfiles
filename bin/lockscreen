@@ -47,9 +47,9 @@ notify_replace() {
 
 stop_lock() {
   undim
-  if [ -n "$NOTIFICATION_ID" ]; then
-    notify_replace "Screen lock canceled"
-  fi
+  # if [ -n "$NOTIFICATION_ID" ]; then
+  #   notify_replace "Screen lock canceled"
+  # fi
 }
 
 notify() {
