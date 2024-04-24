@@ -5,7 +5,7 @@ THIS_SCRIPT="$( readlink -f "${BASH_SOURCE[0]}" )"
 NOTIFICATION_ID=""
 
 # A notification will be shown after this time of inactivity (seconds)
-INACTIVITY_TIMEOUT=60
+INACTIVITY_TIMEOUT=300
 
 # After notification, the screen will be locked after this time if no activity
 # is detected (seconds)
@@ -78,6 +78,7 @@ start() {
   # xss-lock: the locker is started after the first screen saver cycle, as set
   # with `xset s TIMEOUT CYCLE`
   xset s ${INACTIVITY_TIMEOUT} ${NOTIFICATION_DURATION}
+  xset dpms $((INACTIVITY_TIMEOUT*2)) $((INACTIVITY_TIMEOUT*2)) $((INACTIVITY_TIMEOUT*2))
 
   xss-lock --notifier="${THIS_SCRIPT} notify" ${THIS_SCRIPT} lock &>/dev/null </dev/null &
 
