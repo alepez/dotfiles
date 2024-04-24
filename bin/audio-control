@@ -2,18 +2,32 @@
 
 ## Used to control pulseaudio and jack programmatically
 
-get_default_sink() {
-    pacmd list-sinks | awk '/index:/{i++} /* index:/{print i; exit}';
+out_get_volume() {
+  pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '\d+(?=%)' | head -n 1
 }
 
-out_get_volume() {
-    pacmd list-sinks | awk '/^\svolume:/{i++} i=='$(get_default_sink)'{print $5; exit}' | tr -d '%';
+out_get_mute() {
+  pactl get-sink-mute @DEFAULT_SINK@
+}
+
+notify() {
+  dunstify --urgency=low --timeout=1000 --replace=1000 "${1}"
+}
+
+show_mute() {
+  notify "$( out_get_mute )"
+}
+
+show_volume() {
+  notify "$( out_get_volume )%"
 }
 
 out_volume_up()   {
   if [ $(out_get_volume) -lt 100 ]; then
     pactl -- set-sink-volume @DEFAULT_SINK@ +5%;
   fi
+
+  show_volume
 }
 
 out_volume_down() { pactl -- set-sink-volume @DEFAULT_SINK@ -5%;    }
@@ -56,11 +70,11 @@ pro_mode() {
 
 main() {
   case $1 in
-    out_volume_up) out_unmute; out_volume_up;;
-    out_volume_down) out_unmute; out_volume_down;;
-    out_mute_toggle) out_mute_toggle;;
-    out_mute) out_mute;;
-    out_unmute) out_unmute;;
+    out_volume_up) out_unmute; out_volume_up; show_volume;;
+    out_volume_down) out_unmute; out_volume_down; show_volume;;
+    out_mute_toggle) out_mute_toggle; show_mute;;
+    out_mute) out_mute; show_mute;;
+    out_unmute) out_unmute; show_mute;;
     out_get_volume) out_get_volume;;
     jack_start) jack_start;;
     jack_stop) jack_stop;;
