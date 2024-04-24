@@ -59,7 +59,8 @@ hide_when_typing = true
 history = 0
 
 [selection]
-save_to_clipboard = true
+# selected text will be copied to the primary clipboard
+save_to_clipboard = false
 
 [window]
 opacity = 0.90
