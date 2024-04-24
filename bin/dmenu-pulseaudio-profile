@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-## Selects a pulseaudio profile
-
-dmenu="$( realpath ~/.dotfiles/bin/dmenu )"
-
-profile=$( ~/.dotfiles/bin/pulseaudio-profile list | "${dmenu}" -dmenu -p "Profile" "$@")
-
-~/.dotfiles/bin/pulseaudio-profile ${profile}
