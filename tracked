@@ -60,3 +60,4 @@
 .local/bin/backlight
 .config/systemd
 .config/betterlockscreen
+.local/bin/pick
