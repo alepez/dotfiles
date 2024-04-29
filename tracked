@@ -61,3 +61,4 @@
 .config/systemd
 .config/betterlockscreen
 .local/bin/pick
+.config/spotifyd
