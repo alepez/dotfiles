@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+## Starts Firefox with a temporary profile directory
+
+cleanup_old() {
+  find "${HOME}/tmp/firefox-tmp-dir" -type d -ctime +2 -exec rm -rf {} \; \
+    2>/dev/null
+}
+
+main() {
+  local uuid=$( uuidgen )
+  local user_data_dir="${HOME}/tmp/firefox-tmp-dir/${uuid}"
+
+  mkdir -p "${HOME}/tmp/firefox-tmp-dir"
+  cp -a "${HOME}/.mozilla/firefox/clean" "${user_data_dir}"
+
+  firefox \
+    --private-window \
+    --new-instance \
+    --profile ${user_data_dir} 2>/dev/null 1>/dev/null </dev/null &
+
+  cleanup_old
+}
+
+main
