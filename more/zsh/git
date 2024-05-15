@@ -86,3 +86,10 @@ git-huge-finder() {
     | cut -c 1-12,41- \
     | numfmt --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest
 }
+
+git-diff-with-common-ancestor() {
+  local left=$1
+  local right=$2
+  shift 2
+  git diff $( git merge-base $left $right ) $right "$@"
+}
