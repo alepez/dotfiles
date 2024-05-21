@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+setup_serial() {
+  local serial="$1"
+  local baudrate="$2"
+  stty -F "${serial}" ${baudrate} raw -echo
+}
+
+file_to_serial_once() {
+  local file="$1"
+  local serial="$2"
+  local limit="$3"
+
+  local filesize=$( stat -c %s "${file}" )
+
+  cat "${file}" \
+    | pv -s ${filesize} -L ${limit} \
+    > "$2"
+}
+
+main() {
+  local file="$1"
+  local serial="$2"
+  local baudrate="$3"
+  local limit="${4:-${baudrate}}"
+  local forever="${5:-once}"
+
+  setup_serial "${serial}" "${baudrate}"
+
+  file_to_serial_once "${file}" "${serial}" "${limit}"
+
+  if [ "${forever}" = "forever" ]; then
+    while sleep 0.1; do
+      file_to_serial_once "${file}" "${serial}" "${limit}"
+    done
+  fi
+}
+
+main "$@"
