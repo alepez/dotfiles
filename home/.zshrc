@@ -7,7 +7,11 @@
 # user or machine.
 
 # Path to your oh-my-zsh installation.
-export ZSH=/usr/share/oh-my-zsh
+if [ -e /usr/share/oh-my-zsh ]; then
+  export ZSH=/usr/share/oh-my-zsh
+elif [ -e ${HOME}/.oh-my-zsh ]; then
+  export ZSH=${HOME}/.oh-my-zsh
+fi
 
 # Path to custom themes/plugins etc...
 export ZSH_CUSTOM=~/.dotfiles/more/zsh/oh-my-zsh
