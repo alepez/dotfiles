@@ -147,7 +147,7 @@ bindsym $mod+c exec --no-startup-id $terminal
 bindsym Control+Mod1+l exec --no-startup-id "~/.dotfiles/bin/lockscreen lock"
 
 # Browser
-set $browser "firefox -p personal"
+set $browser "~/.dotfiles/bin/firefox-default"
 set $private_browser "~/.dotfiles/bin/firefox-private"
 # Start anywhere
 bindsym $mod+b exec --no-startup-id $browser
