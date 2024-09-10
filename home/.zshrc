@@ -11,6 +11,8 @@ if [ -e /usr/share/oh-my-zsh ]; then
   export ZSH=/usr/share/oh-my-zsh
 elif [ -e ${HOME}/.oh-my-zsh ]; then
   export ZSH=${HOME}/.oh-my-zsh
+elif [ -e ${HOME}/.local/share/oh-my-zsh ]; then
+  export ZSH=${HOME}/.local/share/oh-my-zsh
 fi
 
 # Path to custom themes/plugins etc...
