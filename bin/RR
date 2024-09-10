@@ -12,6 +12,7 @@ main() {
   fi
 
   if [ ! -d .idea ]; then
+    echo "dir: $( pwd )"
     echo ".idea not found"
     echo "type YES to continue"
     read o
