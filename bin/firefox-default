@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+main() {
+  if [ -e ~/.local/bin/firefox-default ]; then
+    ~/.local/bin/firefox-default
+  else
+    ~/.dotfiles/bin/firefox-profile personal
+  fi
+}
+
+main
