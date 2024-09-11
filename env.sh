@@ -23,6 +23,11 @@ if [ -z "${DOTFILES_ENV_SET}" ]; then
     source ~/.dotfiles-private/env.sh
   fi
 
+  # Also source ~/.env.local file if it exists
+  if [ -e ~/.env.local ]; then
+    source ~/.env.local
+  fi
+
   # SSH Agent
   # https://wiki.archlinux.org/title/GnuPG#Set_SSH_AUTH_SOCK
   # Launch gpg-agent SSH_AUTH_SOCK only if is not set, to avoid conflicts with
