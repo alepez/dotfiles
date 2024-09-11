@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+main() {
+  return 0
+}
+
+main "$@"
