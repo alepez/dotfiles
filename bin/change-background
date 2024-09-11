@@ -4,9 +4,16 @@
 
 wallpaper="${HOME}/.wallpaper"
 
-list_all() { find "${HOME}/Pictures/wallpapers"; }
+list_all() { 
+  find "${HOME}/Pictures/wallpapers" -type f \
+    | sort -u
+}
 
-get_neighbours() { ( list_all | grep $( realpath ${wallpaper} ) -C1; list_all | head -1 ) | head -3; }
+get_neighbours() {
+  ( list_all ) \
+    | grep "$( realpath "${wallpaper}" )" -C1 \
+    | sort -u
+}
 
 select_random() { shuf | head -1; }
 
@@ -26,11 +33,16 @@ set_file() {
   echo "${f}"
 }
 
-case $1 in
-  list) list_all;;
-  prev) set_prev && load;;
-  next) set_next && load;;
-  load) load;;
-  f) set_file "${2}" && load;;
-  *) set_random && load;;
-esac
+
+main() {
+  case $1 in
+    list) list_all;;
+    prev) set_prev && load;;
+    next) set_next && load;;
+    load) load;;
+    f) set_file "${2}" && load;;
+    *) set_random && load;;
+  esac
+}
+
+main "${@}"
