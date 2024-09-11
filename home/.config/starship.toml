@@ -1,2 +1,5 @@
 add_newline = false
 command_timeout = 5000
+
+[gcloud]
+disabled = true
