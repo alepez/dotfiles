@@ -2,4 +2,20 @@
 
 ## Returns the chatgpt api key
 
-pass show tokens/chatgpt | tr -d \\n
+print_fallback() {
+  echo 'sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+}
+
+get_from_password_store() {
+  pass show tokens/chatgpt | tr -d \\n
+}
+
+main() {
+  if which pass &>/dev/null; then
+    get_from_password_store
+  else
+    print_fallback
+  fi
+}
+
+main "${@}"
