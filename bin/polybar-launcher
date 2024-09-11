@@ -10,7 +10,15 @@ kill_old_polybars() {
 # Wait until the processes have been shut down
 # Ignore zombie processes
 wait_old_polybars() {
-  while pgrep -x polybar -r D,R,S >/dev/null; do sleep 1; done
+  # Wait all processes found by pgrep, with a timeout
+  timeout=5
+  while pgrep -x polybar -r D,R,S; do
+    sleep 1
+    timeout=$((timeout - 1))
+    if [ $timeout -eq 0 ]; then
+      break
+    fi
+  done
 }
 
 list_connected_screens() {
@@ -38,9 +46,9 @@ launch_polybar() {
 bar_from_profile() {
   local profile_monitor=${1}
   case "${profile_monitor}" in
-    home-youtube-coding_DP1-2) echo top_workspaces_only;;
-    home_HDMI-1) echo top_default;;
-    home_DP-1) echo top_light;;
+    xps14-home-3_eDP-1) echo top_light;;  # Laptop
+    xps14-home-3_DP-1-1) echo top_default;; # Horizontal 32"
+    xps14-home-3_DP-1-3) echo top_light;; # Vertical
     *) echo top_default;;
   esac
 }
@@ -56,10 +64,10 @@ launch_all_polybars() {
 }
 
 main() {
-  local profile=${1}
+  local profile="${1}"
   kill_old_polybars
-  wait_old_polybars
-  launch_all_polybars ${profile}
+  wait_old_polybars &>/dev/null
+  launch_all_polybars "${profile}"
 }
 
-main ${1}
+main ${@}
