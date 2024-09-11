@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 
 main() {
-  return 0
+  notify-send -i display "Display profile" "$AUTORANDR_CURRENT_PROFILE" &>/dev/null </dev/null &
+
+  # After monitor setup, polybar must be reloaded
+  ~/.dotfiles/bin/polybar-launcher "$AUTORANDR_CURRENT_PROFILE" &>/dev/null </dev/null &
+
+  # Wallpaper should be reloaded to fit the screen
+  ~/.dotfiles/bin/wallpaper load &>/dev/null </dev/null &
 }
 
 main "$@"

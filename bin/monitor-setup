@@ -3,46 +3,6 @@
 ## Setup screens layout. Also takes care of relaunching polybar, reload
 ## background and other amenities.
 
-post_setup() {
-  local layout=${1}
-  # Launch in background
-  (
-  # After monitor setup, polybar must be reloaded
-  ~/.dotfiles/bin/polybar-launcher ${layout}
-
-  # And wallpaper should be reloaded to fit
-  ~/.dotfiles/bin/change-background load
-
-  # If we need to setup the monitor, maybe we have a keyboard to set up too
-  ~/.dotfiles/bin/keyboard-setup
-  ) &>/dev/null </dev/null &
-}
-
-auto_detect_layout() {
-  local default_layout=laptop
-  local result=${default_layout}
-  local monitors=$( xrandr )
-
-  local dp1_1=$( xrandr | grep "DP1-1 connected" &>/dev/null && echo 1 )
-  local dp1_2=$( xrandr | grep "DP1-2 connected" &>/dev/null && echo 1 )
-  local hdmi2=$( xrandr | grep "HDMI2 connected" &>/dev/null && echo 1 )
-
-  local hdmi_1=$( xrandr | grep "HDMI-1 connected" &>/dev/null && echo 1 )
-  local dp_1=$( xrandr | grep "DP-1 connected" &>/dev/null && echo 1 )
-
-  if [ $dp1_1 ] && [ $dp1_2 ]; then
-    # home - laptop on dock
-    result=home
-  elif [ $dp_1 ] && [ $hdmi_1 ]; then
-    # home - desktop
-    result=home
-  elif [ $hdmi2 ]; then
-    result=ext-right
-  fi
-
-  echo ${result}
-}
-
 list_layouts() {
   ls ~/.config/autorandr
 }
@@ -56,17 +16,14 @@ main() {
   fi
 
   if [ "${layout}" == "auto" ]; then
-    layout=$( auto_detect_layout )
+    autorandr -c &>/dev/null </dev/null &
   fi
 
   if [ "${layout}" == "manual" ]; then
     arandr
   else
-    notify-send -u low "Layout: ${layout}"
-    autorandr --load "${layout}" --force 2>/dev/null
+    autorandr --load "${layout}" --force &>/dev/null </dev/null &
   fi
-
-  post_setup ${layout}
 }
 
 main $@
