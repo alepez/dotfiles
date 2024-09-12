@@ -65,6 +65,11 @@ launch_all_polybars() {
 
 main() {
   local profile="${1}"
+
+  if [ -z "${profile}" ]; then
+    profile="$( autorandr --current )"
+  fi
+
   kill_old_polybars
   wait_old_polybars &>/dev/null
   launch_all_polybars "${profile}"
