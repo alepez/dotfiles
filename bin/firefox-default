@@ -4,7 +4,7 @@ main() {
   if [ -e ~/.local/bin/firefox-default ]; then
     ~/.local/bin/firefox-default
   else
-    ~/.dotfiles/bin/firefox-profile personal
+    firefox -p personal
   fi
 }
 
