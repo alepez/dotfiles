@@ -4,16 +4,16 @@
 
 source "$( dirname "${BASH_SOURCE[0]}" )/.common.sh"
 
-PRIVATE_ACTIONS="$( realpath ~/.dotfiles-private/actions )"
-PUBLIC_ACTIONS="$( realpath ~/.dotfiles/actions )"
+PRIVATE_ACTIONS=~/.dotfiles-private/actions
+PUBLIC_ACTIONS=~/.dotfiles/actions
 
 select_option() {
   dmenu -p "Action"
 }
 
 list_actions() {
-  ls ${PUBLIC_ACTIONS}
-  ls ${PRIVATE_ACTIONS}
+  ls ${PUBLIC_ACTIONS} 2>/dev/null
+  ls ${PRIVATE_ACTIONS} 2>/dev/null
 }
 
 list_available_actions() {

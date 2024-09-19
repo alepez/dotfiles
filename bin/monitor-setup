@@ -16,7 +16,9 @@ main() {
   fi
 
   if [ "${layout}" == "auto" ]; then
-    autorandr -c &>/dev/null </dev/null &
+    # Let autorandr decide which one is the correct layout
+    # Force loading the profile, so postswitch hooks can run
+    autorandr -c --force &>/dev/null </dev/null &
   fi
 
   if [ "${layout}" == "manual" ]; then

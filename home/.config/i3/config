@@ -226,7 +226,7 @@ hide_edge_borders smart
 ###############################################################################
 
 exec --no-startup-id ~/.dotfiles/bin/scratchpad-terminal
-for_window [instance="scratchpad-terminal"] floating enable, move scratchpad, scratchpad show, resize set 1500 500, move position center, move scratchpad
+for_window [instance="scratchpad-terminal"] floating enable, move scratchpad, scratchpad show, resize set 1000 500, move position center, move scratchpad
 bindsym $mod+0 [instance="scratchpad-terminal"] scratchpad show
 
 ###############################################################################

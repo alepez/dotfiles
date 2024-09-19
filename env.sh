@@ -19,13 +19,13 @@ if [ -z "${DOTFILES_ENV_SET}" ]; then
   fi
 
   # Also source private env file if it exists
-  if [ -e ~/.dotfiles-private/env.sh ]; then
-    source ~/.dotfiles-private/env.sh
+  if [ -e $HOME/.dotfiles-private/env.sh ]; then
+    source $HOME/.dotfiles-private/env.sh
   fi
 
-  # Also source ~/.env.local file if it exists
-  if [ -e ~/.env.local ]; then
-    source ~/.env.local
+  # Also source $HOME/.env.local file if it exists
+  if [ -e $HOME/.env.local ]; then
+    source $HOME/.env.local
   fi
 
   # SSH Agent
