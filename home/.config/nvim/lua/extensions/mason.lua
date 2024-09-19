@@ -7,14 +7,14 @@ mason_lspconfig.setup({
   ensure_installed = {
     "bashls",
     "clangd",
-    "cssls",
+    -- "cssls",
     "jedi_language_server",
     -- "hls",
-    "html",
+    -- "html",
     -- "rust_analyzer", -- Managed by rust-tools
     "lua_ls",
     "taplo",
-    "tsserver",
+    -- "tsserver",
     "yamlls",
     "zls",
   }
