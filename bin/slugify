@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# This bash script defines a function called `slugify` that transforms a given
+# string into a slug format. The function converts the string to lowercase,
+# removes any characters that are not alphanumeric or hyphens, and ensures that
+# there are no leading or trailing hyphens in the resulting slug.
+# The script prompts the user to enter a string, reads the input, and then
+# calls the `slugify` function to transform the input into a slug. Finally, it
+# prints out the slug version of the input string.
+# You can run this script in a terminal to quickly convert any string into a
+# slug format.
+
+slugify() {
+  echo "$1" | tr '[:upper:]' '[:lower:]' | tr -cs '[:alnum:]' '-' | tr -s '-' | sed 's/^-//; s/-$//'
+  echo
+}
+
+slugify "$@"
