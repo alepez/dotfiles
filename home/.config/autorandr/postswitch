@@ -1,13 +1,29 @@
 #!/usr/bin/env bash
 
+LOCKFILE="/tmp/${USER}-autorandr-postswitch.lock"
+
+# Function to clean up the lock file upon exit
+cleanup() {
+    rm -f "${LOCKFILE}"
+}
+
+# Set trap to ensure cleanup function is called on script exit
+trap cleanup EXIT
+
 main() {
-  notify-send -i display "Display profile" "$AUTORANDR_CURRENT_PROFILE" &>/dev/null </dev/null &
+  # Attempt to create a lock file using `ln`
+  if ! ln -s "$$" "${LOCKFILE}" 2>/dev/null; then
+      notify-send "autorandr postswitch already running" "$AUTORANDR_CURRENT_PROFILE" &>/dev/null </dev/null
+      exit 1
+  fi
+
+  notify-send "Display profile" "$AUTORANDR_CURRENT_PROFILE" &>/dev/null </dev/null
 
   # After monitor setup, polybar must be reloaded
-  ~/.dotfiles/bin/polybar-launcher "$AUTORANDR_CURRENT_PROFILE" &>/dev/null </dev/null &
+  ~/.dotfiles/bin/polybar-launcher "$AUTORANDR_CURRENT_PROFILE" &>/dev/null </dev/null
 
   # Wallpaper should be reloaded to fit the screen
-  ~/.dotfiles/bin/wallpaper load &>/dev/null </dev/null &
+  ~/.dotfiles/bin/wallpaper load &>/dev/null </dev/null
 }
 
 main "$@"
