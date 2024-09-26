@@ -22,7 +22,7 @@ wait_old_polybars() {
 }
 
 list_connected_screens() {
-  polybar --list-monitors | sed 's/:.*//'
+  polybar --list-monitors | sed 's/:.*//' | sort -u
 }
 
 launch_polybar_quiet() {
@@ -54,11 +54,13 @@ bar_from_profile() {
 }
 
 launch_all_polybars() {
+  # date > /tmp/polybar-launcher
   local profile=${1}
   local m
   for m in $( list_connected_screens ); do
     local profile_m=${profile}_${m}
     local bar=$( bar_from_profile ${profile_m} )
+    # echo "$profile $m $bar $profile_m" >> /tmp/polybar-launcher
     MONITOR=$m launch_polybar ${bar}
   done
 }
