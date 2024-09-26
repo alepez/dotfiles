@@ -11,7 +11,6 @@ mason_lspconfig.setup({
     "jedi_language_server",
     -- "hls",
     -- "html",
-    -- "rust_analyzer", -- Managed by rust-tools
     "lua_ls",
     "taplo",
     -- "tsserver",
@@ -38,20 +37,6 @@ local custom_opts = {
       javascript = true
     },
     provideFormatter = true,
-  },
-  -- TODO Check if this is working even if managed by rust-tools
-  ["rust-analyzer"] = {
-    procMacro = {
-      enable = true
-    },
-    cargo = {
-      loadOutDirsFromCheck = true,
-    },
-    diagnostics = {
-      disabled = {
-        "unresolved-proc-macro"
-      }
-    }
   },
   ["lua_ls"] = {
     cmd = {  "/usr/bin/lua-language-server" };
