@@ -7,15 +7,10 @@ mason_lspconfig.setup({
   ensure_installed = {
     "bashls",
     "clangd",
-    -- "cssls",
     "jedi_language_server",
-    -- "hls",
-    -- "html",
     "lua_ls",
     "taplo",
-    -- "tsserver",
     "yamlls",
-    "zls",
   }
 });
 
