@@ -8,7 +8,6 @@ require'nvim-treesitter.configs'.setup {
     "lua",
     "python",
     "toml",
-    "typescript",
     "yaml",
   },
   highlight = {
