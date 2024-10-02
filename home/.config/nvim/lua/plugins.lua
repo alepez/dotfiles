@@ -219,6 +219,21 @@ return {
       debug = false -- Prints errors and the command which is run.
     }
   },
+
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^5',
+    lazy = false, -- This plugin is already lazy
+    init = function()
+      vim.g.rustaceanvim = {
+        server = {
+          cmd = function()
+            return { "meta-rust-analyzer" }
+          end,
+        },
+      }
+    end,
+  },
 }
 
 -- vim:tabstop=2 shiftwidth=2 expandtab syntax=lua foldmethod=marker foldlevelstart=0 foldlevel=0
