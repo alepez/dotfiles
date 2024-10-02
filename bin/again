@@ -18,11 +18,12 @@ title() {
 }
 
 while true; do 
-  tmux clear-history; 
-  clear; 
+  tmux clear-history;
+  clear;
   title "$( echo ${@} )"
   eval "${@}"
   echo
   echo -e "\e[32mPress Enter to run again, Ctrl+C to exit.\e[0m"
+  title "$( echo ${@} )"
   read
 done
