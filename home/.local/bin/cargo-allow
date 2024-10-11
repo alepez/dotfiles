@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+cargo clippy --no-deps 2>&1 | rg -o '#\[warn.*\]'  | sort -u | sed 's/#\[warn/#![allow/'
