@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# This scripts exists due to a bug of spotifyd/playerctl
+# https://github.com/Spotifyd/spotifyd/issues/591
+# It is a replacement for playerctl to be used for keyboard shortcuts
+
+main() {
+  case "${1}" in
+    "play-pause")
+      ~/.dotfiles/bin/spotifyctl play-pause
+      ;;
+    "previous")
+      ~/.dotfiles/bin/spotifyctl previous
+      ;;
+    "next")
+      ~/.dotfiles/bin/spotifyctl next
+      ;;
+    *)
+      echo "Unknown command: ${1}"
+      exit 1
+      ;;
+  esac
+}
+
+main "${@}"

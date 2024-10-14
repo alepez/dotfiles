@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+main() {
+  local m=""
+
+  case "${1:-}" in
+    "n","next")
+      m=Next
+      ;;
+
+    "p"|"prev"|"previous")
+      m=Previous
+      ;;
+
+    "P"|"play")
+      m=Play
+      ;;
+
+    "pause")
+      m=Pause
+      ;;
+
+    "t"|"toggle"|"play-pause")
+      m=PlayPause
+      ;;
+
+    *)
+      echo "Usage: $0 next|prev|play|pause|play-pause"
+      exit 1
+      ;;
+
+  esac
+
+  exec dbus-send \
+    --print-reply \
+    --dest="org.mpris.MediaPlayer2.$( playerctl -l | head -n 1 )" \
+    /org/mpris/MediaPlayer2 \
+    "org.mpris.MediaPlayer2.Player.${m}"
+}
+
+main "${@}"
+

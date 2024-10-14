@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+main() {
+  if ! pgrep -f '/usr/lib/slack/slack' > /dev/null; then
+      slack -u &
+  fi
+}
+
+main "${@}"
