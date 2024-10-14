@@ -1,9 +1,6 @@
 require "helpers/globals"
 require "helpers/keyboard"
 
--- Use Space, like key for alternative hotkeys
-g.mapleader = ' '
-
 -- LSP, declaration
 nm('gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>')
 
@@ -12,6 +9,9 @@ nm('gd', '<Cmd>lua vim.lsp.buf.definition()<CR>')
 
 -- LSP, hover
 nm('<F1>', '<Cmd>lua vim.lsp.buf.hover()<CR>')
+
+-- LSP, toggle inlay hints
+nm('<F3>', '<Cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>')
 
 -- LSP,  implementation
 nm('gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
@@ -73,6 +73,9 @@ nm('<leader>;', '<cmd>Telescope commands<CR>')
 -- Telescope, Search for dynamic symbols
 nm('<leader>s', '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>')
 
+-- Telescope, Searc marks
+nm('<leader>m', '<cmd>Telescope marks<CR>')
+
 -- Toggle file explorer
 nm('<leader>ne', '<cmd>NeoTreeFocusToggle<CR>')
 
@@ -94,10 +97,6 @@ nm('K', 'i<CR><Esc>')
 -- Search current visual selection
 vm('//', 'y/\\V<C-R>=escape(@",\'/\\\')<CR><CR>')
 
--- Indent keeping visual selection
-vm('<', '<gv')
-vm('>', '>gv')
-
 -- Copy/Paste
 vm('<leader>y', '"+y')
 nm('<leader>p', '"+p')
@@ -117,5 +116,18 @@ nm("<leader>gd", "<cmd>TroubleToggle document_diagnostics<cr>")
 nm("<leader>gl", "<cmd>TroubleToggle loclist<cr>")
 nm("<leader>gq", "<cmd>TroubleToggle quickfix<cr>")
 nm("gR", "<cmd>TroubleToggle lsp_references<cr>")
+
+-- Marks
+
+-- Use lowercase for global marks too
+local low = function(i) return string.char(97+i) end
+local upp = function(i) return string.char(65+i) end
+
+for i=0,25 do vim.keymap.set("n", "m"..low(i), "m"..upp(i)) end
+for i=0,25 do vim.keymap.set("n", "'"..low(i), "'"..upp(i)) end
+
+nm('<F11>', '<Plug>(Marks-toggle)')
+nm('>', '<Plug>(Marks-next)')
+nm('<', '<Plug>(Marks-prev)')
 
 -- vim:tabstop=2 shiftwidth=2 expandtab syntax=lua foldmethod=marker foldlevelstart=0 foldlevel=0

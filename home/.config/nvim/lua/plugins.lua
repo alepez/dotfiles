@@ -204,6 +204,14 @@ return {
     version = '^5',
     lazy = false, -- This plugin is already lazy
   },
+
+  {
+    "chentoast/marks.nvim",
+    event = "VeryLazy",
+    opts = {
+      default_mappings = true,
+    },
+  },
 }
 
 -- vim:tabstop=2 shiftwidth=2 expandtab syntax=lua foldmethod=marker foldlevelstart=0 foldlevel=0
