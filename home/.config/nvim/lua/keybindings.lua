@@ -126,12 +126,12 @@ local upp = function(i) return string.char(65+i) end
 for i=0,25 do vim.keymap.set("n", "m"..low(i), "m"..upp(i)) end
 for i=0,25 do vim.keymap.set("n", "'"..low(i), "'"..upp(i)) end
 
+nm('<F10>', '<Plug>(Marks-prev)')
 nm('<F11>', '<Plug>(Marks-toggle)')
-nm('>', '<Plug>(Marks-next)')
-nm('<', '<Plug>(Marks-prev)')
+nm('<F12>', '<Plug>(Marks-next)')
 
 -- Leap
 
-nm('s', '<Plug>(leap)')
+vim.api.nvim_set_keymap('n', "'", "<Plug>(leap)", { noremap = true, silent = true, nowait = true })
 
 -- vim:tabstop=2 shiftwidth=2 expandtab syntax=lua foldmethod=marker foldlevelstart=0 foldlevel=0
