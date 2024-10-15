@@ -84,6 +84,7 @@
 
   # Set upstream of current branch to origin branch with same name
   rembra = !"rembra() { b=$( git rev-parse --abbrev-ref HEAD ); git branch --set-upstream-to=origin/$b $b; git pull; }; rembra"
+  rembra2 = !"rembra2() { b=$( git rev-parse --abbrev-ref HEAD ); git branch --set-upstream-to=$1/$b $b; git pull; }; rembra2"
 
   # push
   ps = push                         # push
