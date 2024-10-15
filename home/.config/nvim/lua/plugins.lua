@@ -2,6 +2,9 @@ require "helpers/globals"
 require "helpers/keyboard"
 
 return {
+
+  -- Portable package manager for Neovim that runs everywhere Neovim runs. 
+  -- Easily install and manage LSP servers, DAP servers, linters, and formatters.
   {
     "williamboman/mason.nvim",
     build = ":MasonUpdate",
@@ -14,6 +17,7 @@ return {
     end
   },
 
+  -- Neovim plugin to manage the file system and other tree like structures.
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
@@ -26,6 +30,7 @@ return {
     end
   },
 
+  -- Find, Filter, Preview, Pick. All lua, all the time.
   {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.4',
@@ -39,22 +44,26 @@ return {
     end
   },
 
-  { "nvim-telescope/telescope-ui-select.nvim" },
+  -- { "nvim-telescope/telescope-ui-select.nvim" },
 
+
+  -- A completion engine
   {
     'hrsh7th/nvim-cmp',
     event = "InsertEnter",
     dependencies = {
-      "neovim/nvim-lspconfig",
       "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
-      "hrsh7th/nvim-cmp",
-      "hrsh7th/cmp-nvim-lsp-signature-help",
-      "hrsh7th/cmp-nvim-lua",
-      "L3MON4D3/LuaSnip",
-      "saadparwaiz1/cmp_luasnip",
+      "zbirenbaum/copilot-cmp",
+      "Saecki/crates.nvim",
+      -- "L3MON4D3/LuaSnip",
+      -- "hrsh7th/cmp-buffer",
+      -- "hrsh7th/cmp-cmdline",
+      -- "hrsh7th/cmp-nvim-lsp-signature-help",
+      -- "hrsh7th/cmp-nvim-lua",
+      -- "hrsh7th/nvim-cmp",
+      -- "neovim/nvim-lspconfig",
+      -- "saadparwaiz1/cmp_luasnip",
     },
     config = function()
       require "extensions.cmp"
@@ -95,6 +104,8 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     lazy = false,
+    -- When upgrading the plugin, you must make sure that all installed parsers 
+    -- are updated to the latest version via :TSUpdate
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
     config = function()
@@ -135,6 +146,7 @@ return {
     end
   },
 
+  -- provides various functions for building Neovim plugins
   {
     "nvim-lua/plenary.nvim",
   },
@@ -211,6 +223,27 @@ return {
     opts = {
       default_mappings = true,
     },
+  },
+
+  -- helps managing crates.io dependencies.
+  {
+    "Saecki/crates.nvim",
+  },
+
+  {
+    "nvim-lua/lsp-status.nvim",
+  },
+
+  {
+    "benfowler/telescope-luasnip.nvim",
+    config = function()
+      require("telescope").load_extension("luasnip")
+    end,
+  },
+
+  --  to jump anywhere in a document with as few keystrokes as possible
+  {
+    "ggandor/leap.nvim",
   },
 }
 

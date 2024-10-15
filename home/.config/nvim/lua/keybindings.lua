@@ -130,4 +130,8 @@ nm('<F11>', '<Plug>(Marks-toggle)')
 nm('>', '<Plug>(Marks-next)')
 nm('<', '<Plug>(Marks-prev)')
 
+-- Leap
+
+nm('s', '<Plug>(leap)')
+
 -- vim:tabstop=2 shiftwidth=2 expandtab syntax=lua foldmethod=marker foldlevelstart=0 foldlevel=0
