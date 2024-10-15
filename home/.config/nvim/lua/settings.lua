@@ -169,6 +169,9 @@ opt.wildmode = "list:longest,list:full"
 opt.smartindent = true
 
 -- Use system clipboard
+-- you need to install:
+-- X11: xclip
+-- Wayland: wl-copy and wl-paste (wl-clipboard)
 opt.clipboard = 'unnamedplus'
 
 -- Turn off appending new line in the end of a file
