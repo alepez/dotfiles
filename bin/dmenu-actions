@@ -7,8 +7,10 @@ source "$( dirname "${BASH_SOURCE[0]}" )/.common.sh"
 PRIVATE_ACTIONS=~/.dotfiles-private/actions
 PUBLIC_ACTIONS=~/.dotfiles/actions
 
+dmenu="$( realpath ~/.dotfiles/bin/dmenu )"
+
 select_option() {
-  dmenu -p "Action"
+  ${dmenu} -p "Action"
 }
 
 list_actions() {
