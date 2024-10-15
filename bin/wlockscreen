@@ -79,8 +79,7 @@ start() {
 }
 
 lock() {
-  echo TODO
-  notify-send "TODO"
+  hyprlock
 }
 
 main() {
