@@ -1,5 +1,8 @@
 require "helpers/globals"
 
+-- Use Space, like key for alternative hotkeys
+g.mapleader = ' '
+
 -- Set associating between turned on plugins and filetype
 cmd[[filetype plugin on]]
 

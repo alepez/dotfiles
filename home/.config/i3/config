@@ -165,9 +165,9 @@ bindsym XF86AudioLowerVolume exec --no-startup-id ~/.dotfiles/bin/audio-control 
 bindsym XF86AudioMute        exec --no-startup-id ~/.dotfiles/bin/audio-control out_mute_toggle
 
 # Control audio players (like Spotify) using playerctl
-bindsym XF86AudioPrev exec --no-startup-id playerctl previous
-bindsym XF86AudioNext exec --no-startup-id playerctl next
-bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioPrev exec --no-startup-id ~/.dotfiles/bin/playerctl previous
+bindsym XF86AudioNext exec --no-startup-id ~/.dotfiles/bin/playerctl next
+bindsym XF86AudioPlay exec --no-startup-id ~/.dotfiles/bin/playerctl play-pause
 
 # run dmenu/rofi (a program launcher, see https://davedavenport.github.io/rofi/)
 bindsym $mod+space exec --no-startup-id ~/.dotfiles/bin/dmenu-run

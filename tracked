@@ -19,6 +19,7 @@
 .gnupg/gpg-agent.conf
 .tmux.conf
 .local/bin/cargo-target-clean
+.local/bin/cargo-allow
 .local/bin/chromium-clean
 .local/bin/chromium-profile
 .local/bin/clean-tmp

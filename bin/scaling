@@ -13,6 +13,6 @@ list_governor() {
 }
 
 case $1 in
-  ls) list_governor;;
+  ""|ls) list_governor;;
   *) apply_governor $1;;
 esac
