@@ -32,16 +32,13 @@ nm('<F5>', '<cmd>lua vim.lsp.buf.code_action()<CR>')
 nm('gr', '<cmd>lua vim.lsp.buf.references()<CR>')
 
 -- LSP, diagnostic
-nm('<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
+-- TODO nm('<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
 
 -- LSP, prev
 nm('[g', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
 
 -- LSP, next
 nm(']g', '<cmd>lua vim.diagnostic.goto_next()<CR>')
-
--- LSP, loclist
-nm('<leader>g', '<cmd>lua vim.diagnostic.setloclist()<CR>')
 
 -- LSP, auto format
 nm('<leader>af', "<cmd>lua vim.lsp.buf.format()<CR>")
@@ -110,12 +107,8 @@ vim.api.nvim_create_user_command('Grep', 'execute \'silent grep! <args>\' | cope
 vim.api.nvim_set_keymap('n', '<leader>f', ':Grep ', { noremap = true })
 
 -- Trouble
-nm("<leader>gx", "<cmd>TroubleToggle<cr>")
-nm("<leader>gw", "<cmd>TroubleToggle workspace_diagnostics<cr>")
-nm("<leader>gd", "<cmd>TroubleToggle document_diagnostics<cr>")
-nm("<leader>gl", "<cmd>TroubleToggle loclist<cr>")
-nm("<leader>gq", "<cmd>TroubleToggle quickfix<cr>")
-nm("gR", "<cmd>TroubleToggle lsp_references<cr>")
+nm("<leader>g", "<cmd>Trouble local_errors toggle<cr>")
+nm("<leader>G", "<cmd>Trouble local_warnings toggle<cr>")
 
 -- Marks
 
