@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+action_run() {
+  systemctl suspend
+}
+
+action_available() {
+  true
+}

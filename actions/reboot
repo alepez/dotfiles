@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+action_run() {
+  systemctl reboot
+}
+
+action_available() {
+  true
+}
