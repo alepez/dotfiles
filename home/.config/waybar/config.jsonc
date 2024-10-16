@@ -1,6 +1,6 @@
 // -*- mode: jsonc -*-
 {
-    "height": 30,
+    "height": 25,
     "spacing": 4,
     // Choose the order of the modules
     "modules-left": [
