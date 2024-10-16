@@ -94,11 +94,42 @@ return {
 
   {
     "folke/trouble.nvim",
-    lazy = true,
+    opts = {
+      warn_no_results = false,
+      open_no_results = true,
+      auto_preview = false,
+      modes = {
+        local_errors = {
+          mode = 'diagnostics',
+          filter = {
+            severity = vim.diagnostic.severity.ERROR,
+            function(item)
+              return item.filename:find((vim.loop or vim.uv).cwd(), 1, true)
+            end,
+          },
+          preview = {
+            type = "split",
+            relative = "win",
+            position = "right",
+            size = 0.3,
+          },
+        },
+        local_warnings = {
+          win = {
+            position = 'left',
+            size = 80,
+          },
+          mode = 'diagnostics',
+          filter = {
+            function(item)
+              return item.filename:find((vim.loop or vim.uv).cwd(), 1, true)
+            end,
+          },
+        },
+      },
+    },
+    cmd = "Trouble",
     dependencies = "kyazdani42/nvim-web-devicons",
-    config = function()
-      require "extensions.trouble"
-    end,
   },
 
   {
@@ -215,6 +246,9 @@ return {
     'mrcjkb/rustaceanvim',
     version = '^5',
     lazy = false, -- This plugin is already lazy
+    config = function()
+      require "extensions.rustaceanvim"
+    end
   },
 
   {
@@ -244,6 +278,10 @@ return {
   --  to jump anywhere in a document with as few keystrokes as possible
   {
     "ggandor/leap.nvim",
+  },
+
+  {
+    "nvim-telescope/telescope-ui-select.nvim"
   },
 }
 
