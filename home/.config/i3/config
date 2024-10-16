@@ -237,6 +237,8 @@ bindsym $mod+Shift+z move window to scratchpad
 for_window [all] border pixel 4 # workaround https://github.com/i3/i3/issues/5149
 assign [class="MyHome"] $workspace_3
 assign [class="lavagna"] $workspace_3
+assign [class="rerun"] $workspace_4
+for_window [class="rerun"] floating enable
 for_window [class="Arandr"] floating enable
 for_window [class="Blueman-manager"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
