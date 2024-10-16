@@ -63,3 +63,6 @@
 .config/betterlockscreen
 .local/bin/pick
 .config/spotifyd
+.local/bin/flatten-dir
+.config/waybar
+.config/hypr
