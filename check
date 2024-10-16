@@ -25,12 +25,19 @@ print_missing() {
     type=D
   fi
 
+  local cmd="    ln -s ${to} ${from}"
+
   echo -ne "\e[31m"
   printf "%s %-60s %-60s\n" "${type}" "${missing}" "${to}"
   echo -ne "\e[0m"
   echo -ne "\e[33m"
   echo "Use this command to create:"
   echo "    ln -s ${to} ${from}"
+  echo "Apply?"
+  read answer
+  if [ "${answer}" == "y" ]; then
+    ${cmd}
+  fi
   echo -ne "\e[0m"
 }
 
