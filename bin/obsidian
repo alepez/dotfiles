@@ -10,7 +10,7 @@ if [[ -f "${OBSIDIAN_USER_FLAGS_FILE}" ]]; then
    OBSIDIAN_USER_FLAGS=$(grep -v '^#' "$OBSIDIAN_USER_FLAGS_FILE")
 fi
 
-rm -r ~/.config/obsidian/GPUCache
+rm -rf ~/.config/obsidian/GPUCache
 
 # Launch
-exec electron28 --disable-smooth-scrolling /usr/lib/obsidian/app.asar $OBSIDIAN_USER_FLAGS "$@"
+exec electron30 --disable-smooth-scrolling /usr/lib/obsidian/app.asar $OBSIDIAN_USER_FLAGS "$@"
