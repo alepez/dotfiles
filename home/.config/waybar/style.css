@@ -1,6 +1,6 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-family: Roboto, FontAwesome, Helvetica, Arial, sans-serif;
     font-size: 15px;
     color: #ffffff;
 }
@@ -48,7 +48,7 @@ button:hover {
     background: rgba(0, 0, 0, 0.2);
 }
 
-#workspaces button.focused {
+#workspaces button.active {
     box-shadow: inset 0 -3px #ffffff;
 }
 
