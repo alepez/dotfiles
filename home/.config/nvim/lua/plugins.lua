@@ -44,9 +44,6 @@ return {
     end
   },
 
-  -- { "nvim-telescope/telescope-ui-select.nvim" },
-
-
   -- A completion engine
   {
     'hrsh7th/nvim-cmp',
@@ -117,7 +114,7 @@ return {
         local_warnings = {
           win = {
             position = 'left',
-            size = 80,
+            size = 70,
           },
           mode = 'diagnostics',
           filter = {
@@ -184,10 +181,6 @@ return {
 
   {
     "mfussenegger/nvim-dap",
-  },
-
-  {
-    "romgrk/barbar.nvim",
   },
 
   {

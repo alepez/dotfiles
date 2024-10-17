@@ -107,24 +107,15 @@ vim.api.nvim_create_user_command('Grep', 'execute \'silent grep! <args>\' | cope
 vim.api.nvim_set_keymap('n', '<leader>f', ':Grep ', { noremap = true })
 
 -- Trouble
-nm("<leader>g", "<cmd>Trouble local_errors toggle<cr>")
-nm("<leader>G", "<cmd>Trouble local_warnings toggle<cr>")
+nm('<leader>g', "<cmd>Trouble local_errors toggle<cr>")
+nm('<leader>G', "<cmd>Trouble local_warnings toggle<cr>")
 
 -- Marks
-
--- Use lowercase for global marks too
-local low = function(i) return string.char(97+i) end
-local upp = function(i) return string.char(65+i) end
-
-for i=0,25 do vim.keymap.set("n", "m"..low(i), "m"..upp(i)) end
-for i=0,25 do vim.keymap.set("n", "'"..low(i), "'"..upp(i)) end
-
-nm('<F10>', '<Plug>(Marks-prev)')
-nm('<F11>', '<Plug>(Marks-toggle)')
+nm('<C-F11>', '<Plug>(Marks-toggle)')
 nm('<F12>', '<Plug>(Marks-next)')
 
 -- Leap
 
-vim.api.nvim_set_keymap('n', "'", "<Plug>(leap)", { noremap = true, silent = true, nowait = true })
+vim.api.nvim_set_keymap('n', '<F4>', '<Plug>(leap)', { noremap = true, silent = true, nowait = true })
 
 -- vim:tabstop=2 shiftwidth=2 expandtab syntax=lua foldmethod=marker foldlevelstart=0 foldlevel=0
