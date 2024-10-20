@@ -93,7 +93,7 @@ mode $lights_mode  {
 ###############################################################################
 # Screenshots
 ###############################################################################
-bindsym --release Print exec --no-startup-id ~/.dotfiles/bin/flameshot-wrapper
+bindsym --release Print exec --no-startup-id ~/.dotfiles/bin/screenshot-edit
 
 ###############################################################################
 # Workspaces
