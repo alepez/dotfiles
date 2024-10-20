@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+main() {
+  cliphist list | rofi -dmenu | cliphist decode | wl-copy
+}
+
+main
