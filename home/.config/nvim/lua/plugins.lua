@@ -49,18 +49,18 @@ return {
     'hrsh7th/nvim-cmp',
     event = "InsertEnter",
     dependencies = {
+      -- nvim-cmp source for neovim's built-in language server client.
       "hrsh7th/cmp-nvim-lsp",
+      -- nvim-cmp source for filesystem paths
       "hrsh7th/cmp-path",
+      -- This repository transforms https://github.com/zbirenbaum/copilot.lua into a cmp source.
       "zbirenbaum/copilot-cmp",
+      -- helps managing crates.io dependencies
       "Saecki/crates.nvim",
-      -- "L3MON4D3/LuaSnip",
-      -- "hrsh7th/cmp-buffer",
-      -- "hrsh7th/cmp-cmdline",
-      -- "hrsh7th/cmp-nvim-lsp-signature-help",
-      -- "hrsh7th/cmp-nvim-lua",
-      -- "hrsh7th/nvim-cmp",
-      -- "neovim/nvim-lspconfig",
-      -- "saadparwaiz1/cmp_luasnip",
+      -- nvim-cmp source for buffer words.
+      "hrsh7th/cmp-buffer",
+      -- nvim-cmp source for displaying function signatures with the current parameter emphasized
+      "hrsh7th/cmp-nvim-lsp-signature-help",
     },
     config = function()
       require "extensions.cmp"
