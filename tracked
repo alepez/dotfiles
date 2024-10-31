@@ -66,3 +66,5 @@
 .local/bin/flatten-dir
 .config/waybar
 .config/hypr
+.local/share/applications
+.config/mimeapps.list
