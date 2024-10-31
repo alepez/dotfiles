@@ -14,7 +14,6 @@ table.insert(vimgrep_arguments, "!**/.git/*")
 
 telescope.setup{
   defaults = {
-    path_display = { "shorten" },
     file_sorter = sorters.get_fzy_sorter,
     generic_sorter = sorters.get_fzy_sorter,
     vimgrep_arguments = vimgrep_arguments,
