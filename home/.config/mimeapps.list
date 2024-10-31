@@ -1,0 +1,13 @@
+[Default Applications]
+text/html=firefox.desktop
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
+x-scheme-handler/about=firefox.desktop
+x-scheme-handler/unknown=firefox.desktop
+x-scheme-handler/tonsite=org.telegram.desktop.desktop
+x-scheme-handler/terminal=alacritty.desktop
+
+[Added Associations]
+text/plain=neovim.desktop;nvim.desktop;
+x-scheme-handler/tonsite=org.telegram.desktop.desktop;
+application/pdf=org.gnome.Evince.desktop;

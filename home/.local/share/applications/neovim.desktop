@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=NeoVim Text Editor
+Comment=Edit text files
+Exec=/usr/bin/alacritty --command /usr/bin/nvim
+Type=Application
+Categories=Utility;TextEditor;
+StartupNotify=true
+MimeType=text/plain;
