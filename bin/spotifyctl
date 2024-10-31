@@ -6,7 +6,7 @@ main() {
   local m=""
 
   case "${1:-}" in
-    "n","next")
+    "n"|"next")
       m=Next
       ;;
 
