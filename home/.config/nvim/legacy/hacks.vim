@@ -6,6 +6,9 @@ augroup END
 
 " turn off search highlight and close quickfix
 fu! SmartRefresh()
+  " Clear LSP highlight
+  lua vim.lsp.buf.clear_references()
+
   " Close quickfix window
   ccl
   " Close location window
