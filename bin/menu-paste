@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
 main() {
+  # Check if cliphist is installed
+  if ! command -v cliphist &> /dev/null; then
+    notify-send "cliphist is not installed"
+    exit 1
+  fi
+
   cliphist list | rofi -dmenu | cliphist decode | wl-copy
 }
 
