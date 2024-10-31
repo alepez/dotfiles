@@ -104,23 +104,21 @@ return {
               return item.filename:find((vim.loop or vim.uv).cwd(), 1, true)
             end,
           },
-          preview = {
-            type = "split",
-            relative = "win",
-            position = "right",
-            size = 0.3,
-          },
-        },
-        local_warnings = {
           win = {
             position = 'left',
             size = 70,
           },
+        },
+        local_warnings = {
           mode = 'diagnostics',
           filter = {
             function(item)
               return item.filename:find((vim.loop or vim.uv).cwd(), 1, true)
             end,
+          },
+          win = {
+            position = 'left',
+            size = 70,
           },
         },
       },
