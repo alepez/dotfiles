@@ -6,30 +6,11 @@
 DIR="${HOME}/Pictures/Screenshots"
 ARCHIVE="${HOME}/Pictures/Screenshots/archive"
 
-list_old_screenshots() {
-  find "${DIR}" -maxdepth 1 -name '*.png' -mtime +1
-}
-
-move_to_archive() {
-  local name=$( basename "${1}" )
-  local year=${name:0:4}
-  local month=${name:4:2}
-  local new_dir="${ARCHIVE}/${year}/${month}"
-  mkdir -p "${new_dir}"
-  mv "${1}" "${new_dir}/$name"
-}
-
-archive_old_screenshots() {
-  list_old_screenshots | while read f; do
-    move_to_archive "${f}"
-  done
-}
-
 launch_wayland() {
   which grim &>/dev/null || notify-send "grim not found"
   which slurp &>/dev/null || notify-send "slurp not found"
   which swappy &>/dev/null || notify-send "swappy not found"
-  grim -g "$(slurp)" - | swappy -f -
+  grim - | swappy -f -
 }
 
 launch_x11() {
@@ -43,8 +24,6 @@ main() {
   else
     launch_x11
   fi
-
-  archive_old_screenshots
 }
 
 main
