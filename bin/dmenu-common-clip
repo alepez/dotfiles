@@ -14,7 +14,7 @@ string=$( tac "${CONFIG_FILE}" | "${dmenu}" -dmenu -p "String" "$@" | head -c -1
 test -n "${string}" || exit
 
 # Copy to clipboard
-echo -n "${string}" | xclip -i -selection clipboard
+echo -n "${string}" | wl-copy
 
 # Move the selected line to the end of file.
 sed -i "/^${string}$/d" "${CONFIG_FILE}"
