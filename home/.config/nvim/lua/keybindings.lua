@@ -87,6 +87,7 @@ nm('<leader>x', ':bd<CR>')
 
 -- Save
 nm('<leader>w', ':w<CR>')
+nm('<leader>W', ':wall<CR>')
 
 -- Split line under cursor
 nm('K', 'i<CR><Esc>')
@@ -115,7 +116,6 @@ nm('<C-F11>', '<Plug>(Marks-toggle)')
 nm('<F12>', '<Plug>(Marks-next)')
 
 -- Leap
-
-vim.api.nvim_set_keymap('n', '<F4>', '<Plug>(leap)', { noremap = true, silent = true, nowait = true })
+vim.api.nvim_set_keymap('n', '<F4>', '<Plug>(leap)', {noremap = true, silent = true})
 
 -- vim:tabstop=2 shiftwidth=2 expandtab syntax=lua foldmethod=marker foldlevelstart=0 foldlevel=0
