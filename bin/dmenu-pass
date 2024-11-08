@@ -2,4 +2,4 @@
 
 source "$( dirname "${BASH_SOURCE[0]}" )/.common.sh"
 
-passmumbler select -p passwords/
+passmumbler select -p passwords/ -i rofi
