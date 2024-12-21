@@ -2,7 +2,7 @@
 [
   {
     "output": [
-      "DP-5"
+      "eDP-1"
     ],
     "height": 25,
     "spacing": 4,
@@ -108,7 +108,6 @@
   },
   {
     "output": [
-      "eDP-1",
       "DP-7"
     ],
     "spacing": 4,
