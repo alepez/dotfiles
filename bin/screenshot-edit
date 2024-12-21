@@ -29,7 +29,9 @@ launch_wayland() {
   which grim &>/dev/null || notify-send "grim not found"
   which slurp &>/dev/null || notify-send "slurp not found"
   which swappy &>/dev/null || notify-send "swappy not found"
-  grim -g "$(slurp)" - | swappy -f -
+
+  local now=$( date +%Y-%m-%dT%H-%M-%S --utc | tr -d \\n )
+  grim -g "$(slurp)" - | swappy -f - -o ${HOME}/Pictures/Screenshots/$( now ).png
 }
 
 launch_x11() {
