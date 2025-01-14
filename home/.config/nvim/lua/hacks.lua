@@ -1,0 +1,3 @@
+-- vim.api.nvim_create_user_command('Cargo', function()
+--   vim.cmd('RustLsp openCargo')
+-- end, {})

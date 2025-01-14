@@ -33,7 +33,6 @@ return {
   -- Find, Filter, Preview, Pick. All lua, all the time.
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.4',
     lazy = false,
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -111,11 +110,7 @@ return {
         },
         local_warnings = {
           mode = 'diagnostics',
-          filter = {
-            function(item)
-              return item.filename:find((vim.loop or vim.uv).cwd(), 1, true)
-            end,
-          },
+          filter = { buf = 0 },
           win = {
             position = 'left',
             size = 70,
@@ -240,14 +235,6 @@ return {
     config = function()
       require "extensions.rustaceanvim"
     end
-  },
-
-  {
-    "chentoast/marks.nvim",
-    event = "VeryLazy",
-    opts = {
-      default_mappings = false,
-    },
   },
 
   -- helps managing crates.io dependencies.

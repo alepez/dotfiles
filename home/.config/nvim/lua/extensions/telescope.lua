@@ -29,6 +29,9 @@ telescope.setup{
     find_files = {
       find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
     },
+    lsp_dynamic_workspace_symbols = {
+      path_display={'smart'},
+    },
   },
   extensions = {
     ["ui-select"] = {

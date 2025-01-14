@@ -38,4 +38,7 @@ vim.g.rustaceanvim = {
   -- DAP configuration
   dap = {
   },
+  tools = {
+    test_executor = "background",
+  },
 }
