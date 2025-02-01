@@ -35,12 +35,10 @@ if [ -z "${DOTFILES_ENV_SET}" ]; then
     # https://wiki.archlinux.org/title/GnuPG#Set_SSH_AUTH_SOCK
     # Launch gpg-agent SSH_AUTH_SOCK only if is not set, to avoid conflicts with
     # ssh-agent.
-    if which gpgconf >/dev/null; then
-      if [ "$( ls ${HOME}/.gnupg/private-keys-v1.d/ | wc -l )" != 0 ]; then
-        unset SSH_AGENT_PID
-        if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-          export SSH_AUTH_SOCK="$( gpgconf --list-dirs agent-ssh-socket )"
-        fi
+    if which gpgconf >/dev/null && [ "$( ls ${HOME}/.gnupg/private-keys-v1.d/ | wc -l )" != 0 ]; then
+      unset SSH_AGENT_PID
+      if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+        export SSH_AUTH_SOCK="$( gpgconf --list-dirs agent-ssh-socket )"
       fi
     elif which ssh-agent >/dev/null; then
       # This will run a ssh-agent process if there is not one already, and save
@@ -65,4 +63,8 @@ if [ -z "${DOTFILES_ENV_SET}" ]; then
 
   # Prevent pip or poetry trying to access a keyring
   export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
+fi
+
+if [[ ! -f "$SSH_AUTH_SOCK" ]] && [ -e "$XDG_RUNTIME_DIR/ssh-agent.env" ]; then
+    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
 fi

@@ -71,7 +71,7 @@ nm('<leader>;', '<cmd>Telescope commands<CR>')
 nm('<leader>s', '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>')
 
 -- Telescope, Searc marks
-nm('<leader>m', '<cmd>Telescope marks<CR>')
+nm('<leader>m', '<cmd>Telescope marks mark_type=global<CR>')
 
 -- Toggle file explorer
 nm('<leader>ne', '<cmd>NeoTreeFocusToggle<CR>')
@@ -84,6 +84,9 @@ nm('<F6>', ':cn<CR>')
 
 -- Close buffer
 nm('<leader>x', ':bd<CR>')
+
+-- Save and close all buffers, reopen the current one
+nm('<leader>X', ':wall | %bd | e#<CR>')
 
 -- Save
 nm('<leader>w', ':w<CR>')
@@ -110,10 +113,6 @@ vim.api.nvim_set_keymap('n', '<leader>f', ':Grep ', { noremap = true })
 -- Trouble
 nm('<leader>g', "<cmd>Trouble local_errors toggle<cr>")
 nm('<leader>G', "<cmd>Trouble local_warnings toggle<cr>")
-
--- Marks
-nm('<C-F11>', '<Plug>(Marks-toggle)')
-nm('<F12>', '<Plug>(Marks-next)')
 
 -- Leap
 vim.api.nvim_set_keymap('n', '<F4>', '<Plug>(leap)', {noremap = true, silent = true})
