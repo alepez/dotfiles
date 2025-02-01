@@ -28,8 +28,33 @@ sort_by_size() {
   sort -h
 }
 
-main() {
+print_only() {
   find_cache_dirs | sort_by_size
 }
 
-main
+remove_everything() {
+  find_target_dirs | while read l; do
+    if is_cache_dir "${l}"; then
+        rm -vrf "${l}"
+    fi
+  done
+}
+
+main() {
+  case $1 in
+    print)
+      print_only
+      ;;
+    rm)
+      remove_everything
+      ;;
+    *)
+      echo "Usage: $0 [print|rm]"
+      echo "  print - print the cache directories and their sizes"
+      echo "  rm    - remove all cache"
+      exit 0
+      ;;
+  esac
+}
+
+main "$@"
