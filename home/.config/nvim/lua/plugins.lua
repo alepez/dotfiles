@@ -261,6 +261,16 @@ return {
   {
     "nvim-telescope/telescope-ui-select.nvim"
   },
+
+  {
+    "axkirillov/easypick.nvim",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+    },
+    config = function()
+      require "extensions.easypick"
+    end,
+  },
 }
 
 -- vim:tabstop=2 shiftwidth=2 expandtab syntax=lua foldmethod=marker foldlevelstart=0 foldlevel=0
