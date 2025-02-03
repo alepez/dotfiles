@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+# Check if the correct number of arguments is provided
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 <docker_image_id> <output_directory>"
+    exit 1
+fi
+
+# Assign arguments to variables
+DOCKER_IMAGE_ID=$1
+OUTPUT_DIRECTORY=$2
+
+# Create a temporary container from the image
+CONTAINER_ID=$(docker create "$DOCKER_IMAGE_ID")
+
+# Check if the container was created successfully
+if [ -z "$CONTAINER_ID" ]; then
+    echo "Failed to create container from image: $DOCKER_IMAGE_ID"
+    exit 1
+fi
+
+# Create the output directory if it doesn't exist
+mkdir -p "$OUTPUT_DIRECTORY"
+
+# Export the container's filesystem and pipe it directly to tar for extraction
+docker export "$CONTAINER_ID" | tar -xpf - -C "$OUTPUT_DIRECTORY"
+
+# Check if the extraction was successful
+if [ $? -ne 0 ]; then
+    echo "Failed to extract container filesystem"
+    docker rm "$CONTAINER_ID"
+    exit 1
+fi
+
+# Clean up: remove the temporary container
+docker rm "$CONTAINER_ID"
+
+echo "Extraction complete. Files are available in: $OUTPUT_DIRECTORY"
