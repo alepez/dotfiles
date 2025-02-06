@@ -94,3 +94,5 @@ alias history="fc -il -t'%F %T' 1"
 # the most used (pun not intended) netstat configuration
 alias putane="netstat -putane"
 
+#
+alias klear="clear ; tmux clear-history ; clear"

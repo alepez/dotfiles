@@ -68,3 +68,4 @@
 .config/hypr
 .local/share/applications
 .config/mimeapps.list
+.local/bin/docker-image-extract
