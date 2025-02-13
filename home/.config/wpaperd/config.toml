@@ -1,0 +1,4 @@
+[default]
+path = "~/.wallpaper.d"
+duration = "10m"
+mode = "center"
