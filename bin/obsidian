@@ -13,4 +13,4 @@ fi
 rm -rf ~/.config/obsidian/GPUCache
 
 # Launch
-exec electron30 --disable-smooth-scrolling /usr/lib/obsidian/app.asar $OBSIDIAN_USER_FLAGS "$@"
+exec electron33 --disable-smooth-scrolling /usr/lib/obsidian/app.asar $OBSIDIAN_USER_FLAGS "$@"
