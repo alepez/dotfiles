@@ -3,7 +3,7 @@ require "helpers/keyboard"
 
 return {
 
-  -- Portable package manager for Neovim that runs everywhere Neovim runs. 
+  -- Portable package manager for Neovim that runs everywhere Neovim runs.
   -- Easily install and manage LSP servers, DAP servers, linters, and formatters.
   {
     "williamboman/mason.nvim",
@@ -89,6 +89,17 @@ return {
   },
 
   {
+    "radyz/telescope-gitsigns",
+    dependencies = {
+      "lewis6991/gitsigns.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+    config = function()
+      require("telescope").load_extension("git_signs")
+    end,
+  },
+
+  {
     "folke/trouble.nvim",
     opts = {
       warn_no_results = false,
@@ -125,7 +136,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     lazy = false,
-    -- When upgrading the plugin, you must make sure that all installed parsers 
+    -- When upgrading the plugin, you must make sure that all installed parsers
     -- are updated to the latest version via :TSUpdate
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },

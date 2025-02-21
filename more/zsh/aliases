@@ -35,6 +35,8 @@ alias pi='echo 3.14159265359'
 
 alias leave='sleep 10 && exit'
 
+alias ip='ip -c'
+
 # Dir name is current UTC time, without special characters as : to be
 # compatible with PATH env var (so you can add this tmp directory to PATH)
 # If first argument is defined, it is used as a suffix
