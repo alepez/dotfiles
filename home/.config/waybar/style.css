@@ -128,3 +128,9 @@ label:focus {
     background-color: #eb4d4b;
 }
 
+#tray menu {
+    color: #ffffff;
+    background: #1b1d2b;
+    border-radius: 10px;
+    opacity: 0.8;
+}
