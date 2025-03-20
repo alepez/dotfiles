@@ -98,3 +98,5 @@ alias putane="netstat -putane"
 
 #
 alias klear="clear ; tmux clear-history ; clear"
+
+alias kc="/usr/bin/kubectl"
