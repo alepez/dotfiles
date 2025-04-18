@@ -71,3 +71,4 @@
 .local/bin/docker-image-extract
 .local/bin/tov
 .config/wpaperd
+.local/bin/wclock
