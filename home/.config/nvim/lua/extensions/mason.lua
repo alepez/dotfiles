@@ -3,6 +3,7 @@ local mason_lspconfig = require("mason-lspconfig")
 local lspconfig = require("lspconfig")
 
 mason.setup()
+
 mason_lspconfig.setup({
   ensure_installed = {
     "bashls",
@@ -13,12 +14,6 @@ mason_lspconfig.setup({
     "yamlls",
   }
 });
-
-local default_opts = {
-  flags = {
-    debounce_text_changes = 150,
-  }
-}
 
 local lua_runtime_path = vim.split(package.path, ';')
 table.insert(lua_runtime_path, "lua/?.lua")
@@ -69,20 +64,4 @@ local custom_opts = {
       },
     }
   }
-}
-
--- Setup every needed language server in lspconfig
-mason_lspconfig.setup_handlers {
-  function (server_name)
-
-    local opts = custom_opts[server_name]
-
-    if opts == nil then
-      opts = default_opts
-    else
-      opts = vim.tbl_extend("keep", opts, default_opts)
-    end
-
-    lspconfig[server_name].setup(opts)
-  end,
 }
