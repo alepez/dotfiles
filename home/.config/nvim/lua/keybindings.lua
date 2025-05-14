@@ -1,6 +1,17 @@
 require "helpers/globals"
 require "helpers/keyboard"
 
+local function custom_hover()
+  local filetype = vim.bo.filetype
+  if filetype == "rust" then
+    -- Call RustLsp for Rust files
+    vim.cmd.RustLsp({'hover', 'actions'})
+  else
+    -- Call the default hover function for other files
+    vim.lsp.buf.hover()
+  end
+end
+
 -- LSP, declaration
 nm('gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>')
 
@@ -8,7 +19,11 @@ nm('gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>')
 nm('gd', '<Cmd>lua vim.lsp.buf.definition()<CR>')
 
 -- LSP, hover
-nm('<F1>', '<Cmd>lua vim.lsp.buf.hover()<CR>')
+vim.api.nvim_set_keymap('n', '<F1>', '', {
+  noremap = true,
+  silent = true,
+  callback = custom_hover
+})
 
 -- LSP, toggle inlay hints
 nm('<F3>', '<Cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>')
