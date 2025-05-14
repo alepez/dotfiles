@@ -5,3 +5,6 @@ alias dk="docker"
 alias dkps="docker ps --format \"table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}\""
 alias dklog='docker logs --tail 10 -f'
 
+dkip() {
+  docker inspect "$1" | jq -r ".[0].NetworkSettings.Networks.[].IPAddress"
+}
