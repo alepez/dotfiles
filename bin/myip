@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-## Get current internet connection information using nordvpn
-
-full() {
-  curl -s 'https://nordvpn.com/wp-admin/admin-ajax.php?action=get_user_info_data' | jq
-}
-
 fast() {
   local addr=$( dig +short myip.opendns.com @resolver1.opendns.com )
   local location=$( geoiplookup "${addr}" | sed 's/.*: //' )
@@ -15,7 +9,7 @@ fast() {
 
 pretty() {
   local f=$( mktemp )
-  full > $f
+  fast > $f
   jq -r '.ip' < $f | tr '\n' ' '
   jq -r '.location' < $f
   rm $f
@@ -23,7 +17,6 @@ pretty() {
 
 main() {
   case $1 in
-    full) full;;
     fast) fast;;
     pretty) pretty;;
     *) fast;;
