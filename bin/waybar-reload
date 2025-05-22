@@ -1,0 +1,77 @@
+#!/usr/bin/env python3
+
+import subprocess
+import os
+
+def get_monitor_info():
+    # Run the command and capture the output
+    result = subprocess.run(['hyprctl', 'monitors', 'all'], capture_output=True, text=True)
+    output = result.stdout
+
+    # Split the output into sections for each monitor
+    monitor_sections = output.strip().split('\n\n')
+
+    monitor_dict = {}
+
+    for section in monitor_sections:
+        lines = section.split('\n')
+        # The first line contains the monitor name
+        monitor_name = lines[0].split()[1]
+        
+        # Find the line that starts with 'description:'
+        description_line = next(line for line in lines if line.strip().startswith('description:'))
+        description = description_line.split(': ', 1)[1]
+
+        # Add to the dictionary
+        monitor_dict[description] = monitor_name
+
+    return monitor_dict
+
+def update_config_file(monitor_dict):
+    config_path = os.path.expanduser('~/.config/waybar/config.jsonc')
+
+    # Read the existing config file
+    with open(config_path, 'r') as file:
+        config_content = file.readlines()
+
+    # Update the monitor names based on the dictionary
+    updated_content = []
+    for line in config_content:
+        if '//' in line:
+            # Extract the description from the comment
+            comment_index = line.index('//')
+            comment = line[comment_index + 2:].strip()
+
+            # Check if the comment starts with 'description:'
+            if comment.startswith('description:'):
+                description = comment.split(': ', 1)[1]
+
+                # Find the corresponding monitor name
+                if description in monitor_dict:
+                    monitor_name = monitor_dict[description]
+                    # Check if there's a comma before the comment
+                    before_comment = line[:comment_index].rstrip()
+                    if before_comment.endswith(','):
+                        line = before_comment.split('"')[0] + f'"{monitor_name}", ' + f'// description: {description}\n'
+                    else:
+                        line = before_comment.split('"')[0] + f'"{monitor_name}" ' + f'// description: {description}\n'
+
+        updated_content.append(line)
+
+    # Write the updated content back to the config file
+    with open(config_path, 'w') as file:
+        file.writelines(updated_content)
+
+def main():
+    # Get the monitor information
+    monitor_dict = get_monitor_info()
+
+    # Update the config file
+    update_config_file(monitor_dict)
+
+    # Restart Waybar
+    subprocess.run(['killall', 'waybar'])
+    subprocess.run(['hyprctl', 'dispatch', 'exec', 'waybar'])
+
+if __name__ == "__main__":
+    main()

@@ -2,7 +2,7 @@
 [
   {
     "output": [
-      "DP-5"
+      "DP-6" // description: Lenovo Group Limited LEN D32q-20B 0x01010101
     ],
     "height": 25,
     "spacing": 4,
@@ -108,8 +108,8 @@
   },
   {
     "output": [
-      "eDP-1",
-      "DP-7"
+      "eDP-1", // description: Samsung Display Corp. 0x41A2
+      "DP-9" // description: Samsung Electric Company SyncMaster H9MZ811524
     ],
     "spacing": 4,
     "modules-left": [
