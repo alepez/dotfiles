@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+exec mpv \
+  --profile=low-latency \
+  --no-cache \
+  --no-audio \
+  --untimed \
+  --no-demuxer-thread \
+  --video-sync=desync \
+  --vd-lavc-threads=1 \
+  --vd-lavc-dr=no \
+  --hwdec=no \
+  --speed=1 \
+  --no-correct-pts \
+  --hr-seek=no \
+  --demuxer-readahead-secs=0 \
+  --rtsp-transport=udp \
+  --demuxer-max-bytes=512K \
+  --rtsp-transport=udp \
+  "${1}"
