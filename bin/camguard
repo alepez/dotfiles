@@ -31,7 +31,7 @@ class EventHandler(pyinotify.ProcessEvent):
         current_time = time.time()
         if current_time - self.last_run >= self.debounce_interval:
             print("Webcam accessed, running v4l2-ctl-manual after 1 second delay")
-            time.sleep(1)  # Sleep for 1 second before running the subprocess
+            time.sleep(2)
             subprocess.run(["v4l2-ctl-manual"])
             self.last_run = current_time
 
