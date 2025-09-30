@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+
+import random
+import sys
+
+def generate_pronounceable_name(length=6):
+    consonants = "bcdfghjklmnpqrstvwxyz"
+    vowels = "aeiou"
+    name = ""
+    use_consonant = random.choice([True, False])
+    for _ in range(length):
+        if use_consonant:
+            name += random.choice(consonants)
+        else:
+            name += random.choice(vowels)
+        use_consonant = not use_consonant
+    return name
+
+if __name__ == "__main__":
+    length = 6
+    if len(sys.argv) > 1:
+        try:
+            length = int(sys.argv[1])
+        except ValueError:
+            print("Invalid length, using default 6.")
+    for _ in range(10):
+        print(generate_pronounceable_name(length))

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+action_run() {
+  firefox-ha --kiosk-monitor 2
+}
+
+action_available() {
+  true
+}
