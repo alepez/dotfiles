@@ -38,6 +38,21 @@ if [ -z "${DOTFILES_ENV_SET}" ]; then
   export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
 fi
 
+# SSH Agent
+# Launch only if not already available (already started or forwarded)
+if [ -z "${SSH_AUTH_SOCK}" ]; then
+  # Use gpg agent only if private keys are available and gpgconf is installed
+  # https://wiki.archlinux.org/title/GnuPG#Set_SSH_AUTH_SOCK
+  # Launch gpg-agent SSH_AUTH_SOCK only if is not set, to avoid conflicts with
+  # ssh-agent.
+  if which gpgconf >/dev/null && [ "$( ls ${HOME}/.gnupg/private-keys-v1.d/ | wc -l )" != 0 ]; then
+    unset SSH_AGENT_PID
+    if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+      export SSH_AUTH_SOCK="$( gpgconf --list-dirs agent-ssh-socket )"
+    fi
+  fi
+fi
+
 # This needs ssh-agent.service to be enabled
 # See https://wiki.archlinux.org/title/SSH_keys
 if [ -e "$XDG_RUNTIME_DIR/ssh-agent.socket" ]; then
