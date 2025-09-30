@@ -122,7 +122,11 @@ nm('<leader>P', '"+P')
 nm('<leader>ay', 'gg"+yG')
 
 -- Search
-vim.api.nvim_create_user_command('Grep', 'execute \'silent grep! <args>\' | copen | redraw', { nargs = 1 })
+vim.api.nvim_create_user_command('Grep', function(opts)
+  vim.cmd('silent grep! ' .. opts.args)
+  vim.cmd('copen')
+  vim.cmd('redraw')
+end, { nargs = 1 })
 vim.api.nvim_set_keymap('n', '<leader>f', ':Grep ', { noremap = true })
 
 -- Trouble
