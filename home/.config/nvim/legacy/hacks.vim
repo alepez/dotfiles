@@ -29,7 +29,7 @@ set wildignore+=*.jsc,*.qmlc,*.jsc.*,*.qmlc.*
 set wildignore+=*/node_modules
 
 if executable("rg")
-  set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ -g\ '!.git/'
+  set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ -g\ '!.git/'\ -F
   set grepformat=%f:%l:%c:%m
 endif
 
