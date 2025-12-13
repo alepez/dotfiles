@@ -2,12 +2,20 @@
 
 ## Starts Chromium with a named profile directory
 
-main() {
-  local profile="${1}"
-  local user_data_dir="${HOME}/tmp/chromium-profile-dir/${profile}"
+# Link chromium-personal to this file, call chromium-personal and chromium with
+# "personal" profile will open.
 
-  chromium \
-    --user-data-dir=${user_data_dir} 2>/dev/null 1>/dev/null </dev/null &
-}
+profile_name="${0#*-}"
+user_data_dir="${HOME}/tmp/chromium-profile-dir/${profile_name}"
 
-main "$@"
+if [ -z "${profile_name}" ]; then
+  exit 1
+fi
+
+command -v chromium >/dev/null 2>&1 || { echo "Chromium not found"; exit 1; }
+
+# See https://github.com/hyprwm/Hyprland/discussions/11961
+
+exec chromium \
+  --disable-features=WaylandWpColorManagerV1 \
+  --user-data-dir="${user_data_dir}" 2>/dev/null 1>/dev/null </dev/null &
