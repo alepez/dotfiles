@@ -1,0 +1,10 @@
+[terminal]
+vt = 1
+
+[default_session]
+command = "agreety --cmd /home/alepez/.dotfiles/bin/start-hyprland"
+user = "greeter"
+
+[initial_session]
+command = "/home/alepez/.dotfiles/bin/start-hyprland"
+user = "alepez"

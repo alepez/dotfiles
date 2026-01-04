@@ -25,4 +25,6 @@ file in home directory, if it exists.
 ./check
 ```
 
+## System configurations
 
+The `root` directory contains system wide configurations.
