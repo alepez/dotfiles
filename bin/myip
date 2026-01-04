@@ -1,7 +1,15 @@
 #!/usr/bin/env bash
 
-fast() {
+# This has stopped working when using proton vpn (2026)
+fast_dig() {
   local addr=$( dig +short myip.opendns.com @resolver1.opendns.com )
+  local location=$( geoiplookup "${addr}" | sed 's/.*: //' )
+
+  echo "{ \"ip\": \"${addr}\", \"location\": \"${location}\" }" | jq
+}
+
+fast() {
+  local addr=$( curl -s ip.me )
   local location=$( geoiplookup "${addr}" | sed 's/.*: //' )
 
   echo "{ \"ip\": \"${addr}\", \"location\": \"${location}\" }" | jq
