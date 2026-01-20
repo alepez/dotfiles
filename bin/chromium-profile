@@ -18,4 +18,6 @@ command -v chromium >/dev/null 2>&1 || { echo "Chromium not found"; exit 1; }
 
 exec chromium \
   --disable-features=WaylandWpColorManagerV1 \
-  --user-data-dir="${user_data_dir}" 2>/dev/null 1>/dev/null </dev/null &
+  --user-data-dir="${user_data_dir}" \
+  "${@}" \
+  2>/dev/null 1>/dev/null </dev/null &

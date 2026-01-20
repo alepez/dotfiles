@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Browser
+Comment=Browser
+Exec=/home/alepez/.local/bin/browser-default
+Terminal=false
+Type=Application
+MimeType=x-scheme-handler/unknown;x-scheme-handler/about;x-scheme-handler/https;x-scheme-handler/http;text/html;

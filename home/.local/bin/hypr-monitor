@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+cd ~/.config/hypr/monitors || exit 1
+
+if [ -z "${1}" ]; then
+  ls
+else
+  if [ -e "${1}" ]; then
+    ln -nfsv "${1}" current.conf
+    ls
+  else
+    echo "${1} does not exist"
+  fi
+fi
