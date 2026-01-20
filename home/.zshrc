@@ -144,3 +144,29 @@ if [ -e "$HOME/.pyenv" ]; then
   [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
 fi
+
+# https://github.com/cursor/cursor/issues/549
+# Fix for Cursor issue #549: ARGV0 gets overwritten by Cursor
+# This causes cargo/rustup to fail with "unknown proxy name" error
+# See: https://github.com/cursor/cursor/issues/549
+if [[ -n "$CURSOR_TRACE_ID" ]] || [[ "$CURSOR_AGENT" == "1" ]]; then
+    cargo() {
+        env -u ARGV0 /usr/bin/env cargo "$@"
+    }
+
+    rustup() {
+        env -u ARGV0 /usr/bin/env rustup "$@"
+    }
+
+    rustc() {
+        env -u ARGV0 /usr/bin/env rustc "$@"
+    }
+
+    rustfmt() {
+        env -u ARGV0 /usr/bin/env rustfmt "$@"
+    }
+
+    clippy-driver() {
+        env -u ARGV0 /usr/bin/env clippy-driver "$@"
+    }
+fi
