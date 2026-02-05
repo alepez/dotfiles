@@ -1,5 +1,7 @@
 #!/bin/bash
 
+rsplash --text 'obsidian' --detach
+
 # Custom launcher for obsidian, so I can disable smooth scrolling which
 # is getting me mad.
 

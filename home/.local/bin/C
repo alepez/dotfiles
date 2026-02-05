@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+rsplash --text 'Loading...' --detach
+nohup cursor . >/dev/null 2>&1 &
