@@ -6,7 +6,6 @@
 .gitignore
 .zshrc
 .gitconfig
-.config/i3
 .config/dunst
 .config/picom.conf
 .config/autorandr
@@ -72,3 +71,15 @@
 .local/bin/tov
 .config/wpaperd
 .local/bin/wclock
+.gtkrc-2.0
+.config/gtk-3.0/settings.ini
+.config/swappy/config
+.config/gtk-4.0/settings.ini
+.local/bin/coolname
+.local/bin/pyproj
+.local/bin/hypr-monitor
+.local/bin/last_dwl
+.local/bin/vsdiff
+.local/bin/wtail
+.local/bin/mpvcam
+.local/bin/C

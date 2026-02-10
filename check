@@ -41,12 +41,32 @@ print_missing() {
   echo -ne "\e[0m"
 }
 
+print_removed() {
+  local removed_item="${1}"
+  local type=F
+
+  if [ -d "${removed_item}" ]; then
+    type=D
+  fi
+
+  local cmd="    ln -s ${to} ${from}"
+
+  echo -ne "\e[31m"
+  printf "%s does not exist in dotfiles\n" "${removed_item}"
+  echo -ne "\e[0m"
+  echo -ne "\e[33m"
+  echo "Please, remove it from tracked files"
+  echo -ne "\e[0m"
+}
+
 list_tracked_dotfiles() {
   echo "Tracked files/directories:"
   echo
   for item in $( cat tracked ); do
     if [ -e "${HOME}/${item}" ]; then
       print_linked "$( info "${item}" )"
+    elif [ ! -e "${HOME}/.dotfiles/home/${item}" ]; then
+      print_removed "${HOME}/.dotfiles/home/${item}"
     else
       print_missing "${HOME}/.dotfiles/home/${item}"
     fi
