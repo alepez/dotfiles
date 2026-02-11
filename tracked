@@ -83,3 +83,5 @@
 .local/bin/wtail
 .local/bin/mpvcam
 .local/bin/C
+.local/bin/spotify
+.local/bin/element-desktop
