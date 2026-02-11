@@ -52,8 +52,6 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       -- nvim-cmp source for filesystem paths
       "hrsh7th/cmp-path",
-      -- This repository transforms https://github.com/zbirenbaum/copilot.lua into a cmp source.
-      "zbirenbaum/copilot-cmp",
       -- helps managing crates.io dependencies
       "Saecki/crates.nvim",
       -- nvim-cmp source for buffer words.
@@ -189,23 +187,6 @@ return {
         ignored_filetypes = { 'TelescopePrompt', 'Trouble', 'help' },
         ignore_terminal = true,
       })
-    end
-  },
-
-  {
-    "zbirenbaum/copilot.lua",
-    config = function()
-      require("copilot").setup({
-        suggestion = { enabled = false },
-        panel = { enabled = false },
-      })
-    end
-  },
-
-  {
-    "zbirenbaum/copilot-cmp",
-    config = function()
-      require("copilot_cmp").setup()
     end
   },
 

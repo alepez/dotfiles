@@ -44,8 +44,6 @@ cmp.setup{
     { name = 'buffer' },
     -- Paths
     { name = 'path' },
-    -- Copilot
-    { name = "copilot" },
   }, {
   }),
   formatting = {

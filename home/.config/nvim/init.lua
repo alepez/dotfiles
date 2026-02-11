@@ -10,9 +10,6 @@ vim.cmd('source ~/.config/nvim/legacy/hacks.vim')
 local lazy = require("lazy")
 lazy.setup("plugins")
 
--- Disable Copilot at startup
-vim.cmd(":Copilot disable")
-
 require "keybindings"
 require "hacks"
 
