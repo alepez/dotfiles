@@ -4,7 +4,8 @@
 cd() {
   builtin cd "$@";
   tmux refresh-client -S
-  echo "${PWD}" > ~/.cache/cwd
+  # Do not fail if this is not writable
+  echo "${PWD}" > ~/.cache/cwd || true
 }
 
 export cd

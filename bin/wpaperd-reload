@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+(
+killall wpaperd
+sleep 1
+wpaperd -d
+) &>/dev/null </dev/null &
