@@ -15,6 +15,10 @@ PROFILES = {
     "whatsapp": {
         "description": "Baseline H.264 mp4 for WhatsApp sharing",
         "default_size": "x720",
+        "h264_ffmpeg_args": [
+            "-profile:v",
+            "baseline",
+        ],
         "ffmpeg_args": [
             "-pix_fmt",
             "yuv420p",
@@ -23,20 +27,28 @@ PROFILES = {
         ],
         "encoder_ffmpeg_args": {
             "libx264": [
-                "-profile:v",
-                "baseline",
                 "-level",
                 "3.0",
             ],
-            "h264_nvenc": [
-                "-profile:v",
-                "baseline",
-            ],
-            "h264_qsv": [
-                "-profile:v",
-                "baseline",
-            ],
         },
+    },
+}
+
+QUALITY_LEVELS = {
+    "low": {
+        "libx264": ["-preset", "veryfast", "-crf", "28"],
+        "h264_nvenc": ["-preset", "p3", "-rc:v", "vbr", "-cq:v", "32", "-b:v", "0"],
+        "h264_qsv": ["-preset", "fast", "-global_quality", "30"],
+    },
+    "medium": {
+        "libx264": ["-preset", "medium", "-crf", "23"],
+        "h264_nvenc": ["-preset", "p4", "-rc:v", "vbr", "-cq:v", "28", "-b:v", "0"],
+        "h264_qsv": ["-preset", "medium", "-global_quality", "23"],
+    },
+    "high": {
+        "libx264": ["-preset", "slow", "-crf", "20"],
+        "h264_nvenc": ["-preset", "p6", "-rc:v", "vbr", "-cq:v", "22", "-b:v", "0"],
+        "h264_qsv": ["-preset", "slow", "-global_quality", "20"],
     },
 }
 
@@ -107,6 +119,34 @@ def ffmpeg_encoders():
     return result.stdout
 
 
+def probe_duration_seconds(path):
+    try:
+        result = subprocess.run(
+            [
+                "ffprobe",
+                "-v",
+                "error",
+                "-show_entries",
+                "format=duration",
+                "-of",
+                "default=noprint_wrappers=1:nokey=1",
+                str(path),
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+    except (OSError, subprocess.CalledProcessError):
+        return None
+
+    try:
+        duration = float(result.stdout.strip())
+    except ValueError:
+        return None
+
+    return duration if duration > 0 else None
+
+
 def nvidia_encoder_available(encoders):
     if "h264_nvenc" not in encoders:
         return False
@@ -159,6 +199,72 @@ def detect_video_encoder():
     return ("libx264", None)
 
 
+def print_progress_bar(progress):
+    width = 40
+    filled = min(width, max(0, round(progress * width)))
+    bar = "#" * filled + "-" * (width - filled)
+    percent = min(100, max(0, round(progress * 100)))
+    print(f"\r[{bar}] {percent:3d}%", end="", flush=True)
+
+
+def run_ffmpeg(command, src):
+    duration = probe_duration_seconds(src)
+    ffmpeg_command = [
+        command[0],
+        "-hide_banner",
+        "-loglevel",
+        "error",
+        "-nostats",
+        "-progress",
+        "pipe:1",
+        *command[1:],
+    ]
+
+    try:
+        process = subprocess.Popen(
+            ffmpeg_command,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+        )
+    except FileNotFoundError:
+        print("ffmpeg is not installed")
+        return 1
+
+    last_progress = None
+    progress_value = 0.0
+
+    assert process.stdout is not None
+    for line in process.stdout:
+        key, _, value = line.strip().partition("=")
+
+        if key == "out_time_ms" and duration:
+            try:
+                progress_value = min(float(value) / 1_000_000 / duration, 1.0)
+            except ValueError:
+                continue
+
+            rounded_progress = round(progress_value, 3)
+            if rounded_progress != last_progress:
+                print_progress_bar(progress_value)
+                last_progress = rounded_progress
+        elif key == "progress" and value == "end":
+            print_progress_bar(1.0)
+
+    stderr_output = ""
+    if process.stderr is not None:
+        stderr_output = process.stderr.read().strip()
+
+    return_code = process.wait()
+    if last_progress is not None:
+        print()
+
+    if return_code != 0 and stderr_output:
+        print(stderr_output, file=sys.stderr)
+
+    return return_code
+
+
 def parse_args():
     parser = argparse.ArgumentParser(
         description="Encode videos to mp4 using named ffmpeg profiles."
@@ -175,10 +281,16 @@ def parse_args():
         type=parse_size,
         help="Resize output using WIDTHxHEIGHT, WIDTHx, or xHEIGHT",
     )
+    parser.add_argument(
+        "--quality",
+        choices=["low", "medium", "high"],
+        default="medium",
+        help="Output quality level",
+    )
     return parser.parse_args()
 
 
-def build_command(src, dst, profile_name, size):
+def build_command(src, dst, profile_name, size, quality):
     profile = PROFILES[profile_name]
     encoder, acceleration_name = detect_video_encoder()
     scale_filter = build_scale_filter(size)
@@ -189,7 +301,9 @@ def build_command(src, dst, profile_name, size):
         command.extend(["-vf", scale_filter])
 
     command.extend(["-c:v", encoder])
+    command.extend(profile.get("h264_ffmpeg_args", []))
     command.extend(profile.get("encoder_ffmpeg_args", {}).get(encoder, []))
+    command.extend(QUALITY_LEVELS[quality].get(encoder, []))
     command.extend(profile["ffmpeg_args"])
     command.append(str(dst))
 
@@ -209,21 +323,18 @@ def main():
         size = parse_size(PROFILES[args.profile]["default_size"])
 
     dst = unique_output_path(default_output_path(src))
-    command, acceleration_name = build_command(src, dst, args.profile, size)
+    command, acceleration_name = build_command(src, dst, args.profile, size, args.quality)
 
     print(f"Encoding to {dst}")
+    print(f"Quality: {args.quality}")
     if acceleration_name:
         print(f"Using {acceleration_name} acceleration")
 
-    try:
-        subprocess.run(command, check=True)
-    except FileNotFoundError:
-        print("ffmpeg is not installed")
-        return 1
-    except subprocess.CalledProcessError as exc:
-        return exc.returncode
+    return_code = run_ffmpeg(command, src)
+    if return_code == 0:
+        print(f"Output: {dst}")
 
-    return 0
+    return return_code
 
 
 if __name__ == "__main__":
