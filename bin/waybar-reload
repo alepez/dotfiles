@@ -71,7 +71,7 @@ def main():
 
     # Restart Waybar
     subprocess.run(['killall', 'waybar'])
-    subprocess.run(['hyprctl', 'dispatch', 'exec', 'waybar'])
+    subprocess.run([ 'hyprctl', 'dispatch', 'hl.dsp.exec_cmd("waybar")' ])
 
 if __name__ == "__main__":
     main()

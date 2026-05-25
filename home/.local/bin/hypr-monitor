@@ -3,12 +3,16 @@
 cd ~/.config/hypr/monitors || exit 1
 
 if [ -z "${1}" ]; then
-  ls
+  ls -- *.lua
 else
-  if [ -e "${1}" ]; then
-    ln -nfsv "${1}" current.conf
-    ls
+  profile="${1}"
+  if [[ "${profile}" != *.lua ]]; then
+    profile="${profile}.lua"
+  fi
+  if [ -e "${profile}" ]; then
+    ln -nfsv "${profile}" current.lua
+    ls -- *.lua
   else
-    echo "${1} does not exist"
+    echo "${profile} does not exist"
   fi
 fi
