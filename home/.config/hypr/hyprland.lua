@@ -158,7 +158,7 @@ local mainMod = "SUPER"
 -- Switch back and forth between two recently used workspaces
 hl.bind(mainMod .. " + tab", hl.dsp.focus({ workspace = "previous" }))
 
-hl.bind(mainMod .. " + q", hl.dsp.window.kill())
+hl.bind(mainMod .. " + q", hl.dsp.window.close())
 
 -- vertical split with minus
 hl.bind(mainMod .. " + minus", hl.dsp.layout("preselect d"))
