@@ -53,6 +53,13 @@ DD() {
   echo "${p}" > ~/tmp/.last
 }
 
+mkdirdate() {
+  local date="$( date +%Y/%Y-%m/%Y-%m-%d --utc | tr -d \\n )"
+  local base_dir="${1-./}"
+  local new_dir="${base_dir}/${date}"
+  mkdir -p "${new_dir}"
+}
+
 # Change directory to last created directory in tmp
 alias last_tmp='cd $( cat ~/tmp/.last )'
 
