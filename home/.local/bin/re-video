@@ -12,10 +12,16 @@ import time
 from pathlib import Path
 
 
+# WhatsApp video share limit; keep a small muxing margin below it.
+WHATSAPP_MAX_BYTES = 180 * 1024 * 1024
+DEFAULT_AUDIO_BITRATE = 128_000
+SIZE_BUDGET_MARGIN = 0.95
+
 PROFILES = {
     "whatsapp": {
-        "description": "Baseline H.264 mp4 for WhatsApp sharing",
+        "description": "Baseline H.264 mp4 for WhatsApp sharing (max 180 MiB)",
         "default_size": "x720",
+        "max_bytes": WHATSAPP_MAX_BYTES,
         "h264_ffmpeg_args": [
             "-profile:v",
             "baseline",
@@ -213,9 +219,31 @@ def probe_video_bitrate(path):
         return None
 
     total_bitrate = int(path.stat().st_size * 8 / duration)
-    audio_bitrate = probe_stream_bitrate(path, "a:0") or 128_000
+    audio_bitrate = probe_stream_bitrate(path, "a:0") or DEFAULT_AUDIO_BITRATE
     video_bitrate = total_bitrate - audio_bitrate
 
+    return max(video_bitrate, 100_000)
+
+
+def format_bytes(num_bytes):
+    units = ["B", "KiB", "MiB", "GiB"]
+    size = float(num_bytes)
+    for unit in units:
+        if size < 1024 or unit == units[-1]:
+            if unit == "B":
+                return f"{int(size)} {unit}"
+            return f"{size:.1f} {unit}"
+        size /= 1024
+
+
+def size_budget_video_bitrate(max_bytes, duration, audio_bitrate=None):
+    if duration is None or duration <= 0 or max_bytes is None:
+        return None
+
+    if audio_bitrate is None:
+        audio_bitrate = DEFAULT_AUDIO_BITRATE
+    budget_bits = int(max_bytes * SIZE_BUDGET_MARGIN * 8)
+    video_bitrate = int(budget_bits / duration) - audio_bitrate
     return max(video_bitrate, 100_000)
 
 
@@ -415,6 +443,11 @@ def parse_args():
             "(fast probe pass, then two-pass VBR at the measured bitrate)"
         ),
     )
+    parser.add_argument(
+        "--no-audio",
+        action="store_true",
+        help="Omit audio from the output file",
+    )
     return parser.parse_args()
 
 
@@ -434,11 +467,15 @@ def build_base_command(src, scale_filter):
     return command
 
 
-def append_video_encode_args(command, profile, encoder, quality_args, dst=None):
+def append_video_encode_args(
+    command, profile, encoder, quality_args, dst=None, no_audio=False
+):
     command.extend(["-c:v", encoder])
     command.extend(profile.get("h264_ffmpeg_args", []))
     command.extend(profile.get("encoder_ffmpeg_args", {}).get(encoder, []))
     command.extend(quality_args)
+    if no_audio:
+        command.append("-an")
     command.extend(profile["ffmpeg_args"])
 
     if dst is not None:
@@ -447,7 +484,7 @@ def append_video_encode_args(command, profile, encoder, quality_args, dst=None):
     return command
 
 
-def build_command(src, dst, profile_name, size, quality):
+def build_command(src, dst, profile_name, size, quality, no_audio=False):
     profile, encoder, acceleration_name, scale_filter = encoding_context(
         profile_name, size
     )
@@ -458,6 +495,7 @@ def build_command(src, dst, profile_name, size, quality):
         encoder,
         QUALITY_LEVELS[quality].get(encoder, []),
         dst,
+        no_audio=no_audio,
     )
 
     return command, acceleration_name
@@ -468,43 +506,39 @@ def cleanup_passlog_files(logfile):
         path.unlink(missing_ok=True)
 
 
-def run_slow_encode(src, dst, profile, encoder, scale_filter, quality):
-    if encoder not in TWO_PASS_SLOW_ENCODERS:
-        command = build_base_command(src, scale_filter)
-        quality_args = SLOW_FINAL_PRESETS[encoder] + quality_rate_args(
-            encoder, quality
-        )
-        append_video_encode_args(command, profile, encoder, quality_args, dst)
-        print("Slow mode: using slower preset (two-pass unavailable on QSV)")
-        return run_ffmpeg(command, src)
+def run_quality_encode(
+    src, dst, profile, encoder, scale_filter, quality, presets=None, no_audio=False
+):
+    command = build_base_command(src, scale_filter)
+    if presets is None:
+        quality_args = QUALITY_LEVELS[quality].get(encoder, [])
+    else:
+        quality_args = presets + quality_rate_args(encoder, quality)
+    append_video_encode_args(
+        command, profile, encoder, quality_args, dst, no_audio=no_audio
+    )
+    return run_ffmpeg(command, src)
 
-    temp_path = unique_temp_path(src.parent, ".mp4")
 
-    probe_command = build_base_command(src, scale_filter)
-    probe_args = SLOW_PROBE_PRESETS[encoder] + quality_rate_args(encoder, quality)
-    append_video_encode_args(probe_command, profile, encoder, probe_args, temp_path)
-
-    total_passes = 3 if encoder == "libx264" else 2
-    print(f"Pass 1/{total_passes}: measuring bitrate budget...")
-    return_code = run_ffmpeg(probe_command, src)
-    if return_code != 0:
-        temp_path.unlink(missing_ok=True)
-        return return_code
-
-    video_bitrate = probe_video_bitrate(temp_path)
-    temp_path.unlink(missing_ok=True)
-    if video_bitrate is None:
-        print("Could not measure video bitrate from probe pass", file=sys.stderr)
-        return 1
-
+def run_bitrate_encode(
+    src,
+    dst,
+    profile,
+    encoder,
+    scale_filter,
+    video_bitrate,
+    presets,
+    label_prefix="",
+    no_audio=False,
+):
     bitrate_k = max(video_bitrate // 1000, 100)
-    print(f"Target video bitrate: {bitrate_k}k")
+    print(f"{label_prefix}Target video bitrate: {bitrate_k}k")
 
     if encoder == "libx264":
         logfile = src.parent / f"re-video-{secrets.token_hex(8)}"
         try:
             pass1_command = build_base_command(src, scale_filter)
-            pass1_args = SLOW_FINAL_PRESETS[encoder] + [
+            pass1_args = presets + [
                 "-b:v",
                 f"{bitrate_k}k",
                 "-an",
@@ -516,13 +550,13 @@ def run_slow_encode(src, dst, profile, encoder, scale_filter, quality):
             append_video_encode_args(pass1_command, profile, encoder, pass1_args)
             pass1_command.extend(["-f", "null", "-"])
 
-            print("Pass 2/3: analysis pass...")
+            print(f"{label_prefix}Analysis pass...")
             return_code = run_ffmpeg(pass1_command, src)
             if return_code != 0:
                 return return_code
 
             pass2_command = build_base_command(src, scale_filter)
-            pass2_args = SLOW_FINAL_PRESETS[encoder] + [
+            pass2_args = presets + [
                 "-b:v",
                 f"{bitrate_k}k",
                 "-pass",
@@ -531,27 +565,208 @@ def run_slow_encode(src, dst, profile, encoder, scale_filter, quality):
                 str(logfile),
             ]
             append_video_encode_args(
-                pass2_command, profile, encoder, pass2_args, dst
+                pass2_command,
+                profile,
+                encoder,
+                pass2_args,
+                dst,
+                no_audio=no_audio,
             )
 
-            print("Pass 3/3: final encode...")
+            print(f"{label_prefix}Final encode...")
             return run_ffmpeg(pass2_command, src)
         finally:
             cleanup_passlog_files(logfile)
 
-    pass2_command = build_base_command(src, scale_filter)
-    pass2_args = SLOW_FINAL_PRESETS[encoder] + [
-        "-rc:v",
-        "vbr",
+    if encoder == "h264_nvenc":
+        pass2_command = build_base_command(src, scale_filter)
+        pass2_args = presets + [
+            "-rc:v",
+            "vbr",
+            "-b:v",
+            f"{bitrate_k}k",
+            "-maxrate",
+            f"{bitrate_k}k",
+        ]
+        append_video_encode_args(
+            pass2_command,
+            profile,
+            encoder,
+            pass2_args,
+            dst,
+            no_audio=no_audio,
+        )
+        print(f"{label_prefix}Final encode (multipass)...")
+        return run_ffmpeg(pass2_command, src)
+
+    command = build_base_command(src, scale_filter)
+    quality_args = presets + [
         "-b:v",
         f"{bitrate_k}k",
         "-maxrate",
         f"{bitrate_k}k",
     ]
-    append_video_encode_args(pass2_command, profile, encoder, pass2_args, dst)
+    append_video_encode_args(
+        command, profile, encoder, quality_args, dst, no_audio=no_audio
+    )
+    print(f"{label_prefix}Final encode...")
+    return run_ffmpeg(command, src)
 
-    print("Pass 2/2: final encode (multipass)...")
-    return run_ffmpeg(pass2_command, src)
+
+def run_slow_encode(
+    src,
+    dst,
+    profile,
+    encoder,
+    scale_filter,
+    quality,
+    max_bytes=None,
+    no_audio=False,
+):
+    if max_bytes is not None:
+        return run_size_budget_encode(
+            src,
+            dst,
+            profile,
+            encoder,
+            scale_filter,
+            quality,
+            max_bytes,
+            no_audio=no_audio,
+            slow=True,
+        )
+
+    if encoder not in TWO_PASS_SLOW_ENCODERS:
+        print("Slow mode: using slower preset (two-pass unavailable on QSV)")
+        return run_quality_encode(
+            src,
+            dst,
+            profile,
+            encoder,
+            scale_filter,
+            quality,
+            presets=SLOW_FINAL_PRESETS[encoder],
+            no_audio=no_audio,
+        )
+
+    temp_path = unique_temp_path(src.parent, ".mp4")
+
+    print("Pass 1: measuring bitrate budget...")
+    return_code = run_quality_encode(
+        src,
+        temp_path,
+        profile,
+        encoder,
+        scale_filter,
+        quality,
+        presets=SLOW_PROBE_PRESETS[encoder],
+        no_audio=no_audio,
+    )
+    if return_code != 0:
+        temp_path.unlink(missing_ok=True)
+        return return_code
+
+    video_bitrate = probe_video_bitrate(temp_path)
+    temp_path.unlink(missing_ok=True)
+    if video_bitrate is None:
+        print("Could not measure video bitrate from probe pass", file=sys.stderr)
+        return 1
+
+    return run_bitrate_encode(
+        src,
+        dst,
+        profile,
+        encoder,
+        scale_filter,
+        video_bitrate,
+        SLOW_FINAL_PRESETS[encoder],
+        label_prefix="Pass 2: ",
+        no_audio=no_audio,
+    )
+
+
+def quality_preset_args(encoder, quality):
+    args = QUALITY_LEVELS[quality].get(encoder, [])
+    preset = []
+    skip_next = False
+
+    for arg in args:
+        if skip_next:
+            preset.append(arg)
+            skip_next = False
+            continue
+        if arg == "-preset":
+            preset.append(arg)
+            skip_next = True
+
+    return preset
+
+
+def bitrate_presets(encoder, quality, slow=False):
+    if slow and encoder in SLOW_FINAL_PRESETS:
+        return SLOW_FINAL_PRESETS[encoder]
+
+    presets = quality_preset_args(encoder, quality)
+    if encoder == "h264_nvenc":
+        if not presets:
+            presets = ["-preset", "p4"]
+        if "-multipass" not in presets:
+            presets = [*presets, "-multipass", "fullres"]
+        return presets
+
+    return presets or ["-preset", "medium"]
+
+
+def run_size_budget_encode(
+    src,
+    dst,
+    profile,
+    encoder,
+    scale_filter,
+    quality,
+    max_bytes,
+    no_audio=False,
+    slow=False,
+):
+    duration = probe_duration_seconds(src)
+    audio_bitrate = 0 if no_audio else DEFAULT_AUDIO_BITRATE
+    video_bitrate = size_budget_video_bitrate(max_bytes, duration, audio_bitrate)
+    if video_bitrate is None:
+        print(
+            "Could not determine duration for size budget",
+            file=sys.stderr,
+        )
+        return 1
+
+    print(
+        f"Targeting ~{format_bytes(int(max_bytes * SIZE_BUDGET_MARGIN))} "
+        f"({format_bytes(max_bytes)} limit, {duration:.1f}s)"
+    )
+
+    return_code = run_bitrate_encode(
+        src,
+        dst,
+        profile,
+        encoder,
+        scale_filter,
+        video_bitrate,
+        bitrate_presets(encoder, quality, slow=slow),
+        label_prefix="Size-budget encode: ",
+        no_audio=no_audio,
+    )
+    if return_code != 0:
+        return return_code
+
+    if dst.exists():
+        final_size = dst.stat().st_size
+        print(f"Output size {format_bytes(final_size)}")
+        if final_size > max_bytes:
+            print(
+                f"Warning: output exceeds {format_bytes(max_bytes)} limit",
+                file=sys.stderr,
+            )
+
+    return 0
 
 
 def main():
@@ -562,32 +777,56 @@ def main():
         print("Source file does not exist")
         return 1
 
+    profile = PROFILES[args.profile]
     size = args.size
-    if size is None and PROFILES[args.profile]["default_size"]:
-        size = parse_size(PROFILES[args.profile]["default_size"])
+    if size is None and profile["default_size"]:
+        size = parse_size(profile["default_size"])
 
     dst = unique_output_path(default_output_path(src))
+    max_bytes = profile.get("max_bytes")
+    no_audio = args.no_audio
 
     print(f"Encoding to {dst}")
     print(f"Quality: {args.quality}")
+    if no_audio:
+        print("Audio: disabled")
+    if max_bytes is not None:
+        print(f"Size limit: {format_bytes(max_bytes)}")
     if args.slow:
         print("Slow mode: enabled")
 
+    profile_cfg, encoder, acceleration_name, scale_filter = encoding_context(
+        args.profile, size
+    )
+    if acceleration_name:
+        print(f"Using {acceleration_name} acceleration")
+
     if args.slow:
-        profile, encoder, acceleration_name, scale_filter = encoding_context(
-            args.profile, size
-        )
-        if acceleration_name:
-            print(f"Using {acceleration_name} acceleration")
         return_code = run_slow_encode(
-            src, dst, profile, encoder, scale_filter, args.quality
+            src,
+            dst,
+            profile_cfg,
+            encoder,
+            scale_filter,
+            args.quality,
+            max_bytes=max_bytes,
+            no_audio=no_audio,
+        )
+    elif max_bytes is not None:
+        return_code = run_size_budget_encode(
+            src,
+            dst,
+            profile_cfg,
+            encoder,
+            scale_filter,
+            args.quality,
+            max_bytes,
+            no_audio=no_audio,
         )
     else:
-        command, acceleration_name = build_command(
-            src, dst, args.profile, size, args.quality
+        command, _ = build_command(
+            src, dst, args.profile, size, args.quality, no_audio=no_audio
         )
-        if acceleration_name:
-            print(f"Using {acceleration_name} acceleration")
         return_code = run_ffmpeg(command, src)
 
     if return_code == 0:
