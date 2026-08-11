@@ -226,7 +226,7 @@ return {
 
   --  to jump anywhere in a document with as few keystrokes as possible
   {
-    "ggandor/leap.nvim",
+    url = "https://codeberg.org/andyg/leap.nvim",
   },
 
   {
