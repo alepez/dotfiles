@@ -5,7 +5,7 @@ cd() {
   builtin cd "$@";
   tmux refresh-client -S
   # Do not fail if this is not writable
-  echo "${PWD}" > ~/.cache/cwd || true
+  echo "${PWD}" > ~/.cache/cwd 2>/dev/null || true
 }
 
 export cd
@@ -54,10 +54,15 @@ DD() {
 }
 
 mkdirdate() {
-  local date="$( date +%Y/%Y-%m/%Y-%m-%d --utc | tr -d \\n )"
   local base_dir="${1-./}"
-  local new_dir="${base_dir}/${date}"
-  mkdir -p "${new_dir}"
+  local date_iso="${2-}"
+  local date_path
+  if [[ -n "${date_iso}" ]]; then
+    date_path="$( date +%Y/%Y-%m/%Y-%m-%d --utc -d "${date_iso}" | tr -d \\n )"
+  else
+    date_path="$( date +%Y/%Y-%m/%Y-%m-%d --utc | tr -d \\n )"
+  fi
+  mkdir -p "${base_dir}/${date_path}"
 }
 
 # Change directory to last created directory in tmp
