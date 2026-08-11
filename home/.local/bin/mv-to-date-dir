@@ -1,0 +1,38 @@
+#!/usr/bin/env python3
+
+import os
+import shutil
+import sys
+from datetime import datetime
+
+def move_to_date_dir(files):
+    for file_path in files:
+        if not os.path.isfile(file_path):
+            print(f"Skipping {file_path}: not a valid file.")
+            continue
+
+        # Get the creation time of the file
+        creation_time = os.path.getctime(file_path)
+        creation_date = datetime.fromtimestamp(creation_time)
+
+        # Format the date into the required directory structure
+        year = creation_date.strftime('%Y')
+        year_month = creation_date.strftime('%Y-%m')
+        year_month_day = creation_date.strftime('%Y-%m-%d')
+
+        # Create the directory structure
+        target_dir = os.path.join(year, year_month, year_month_day)
+        os.makedirs(target_dir, exist_ok=True)
+
+        # Move the file to the new directory
+        file_name = os.path.basename(file_path)
+        target_path = os.path.join(target_dir, file_name)
+        shutil.move(file_path, target_path)
+
+        print(f"Moved {file_path} to {target_path}")
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("Usage: mv-to-date-dir <file1> <file2> ...")
+    else:
+        move_to_date_dir(sys.argv[1:])
