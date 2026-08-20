@@ -18,8 +18,11 @@ filename() {
 
 main() {
   local f="$( filename )"
+  local d="$( dirname "${f}" )"
   wf-recorder -g "$( slurp )" -f "${f}"
-  echo "$f"
+  echo "file: \"$f\""
+  echo "dir: \"$d\""
+  thunar "$d" &>/dev/null </dev/null &
 }
 
 main
