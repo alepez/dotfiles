@@ -1,5 +1,4 @@
 ao=pulse
-vo=vdpau
 framedrop=yes
 cache=8192
 lirc=no

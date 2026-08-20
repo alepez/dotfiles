@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-alias sshpubkey="ssh-add -L |  head -1 | xclip"
+alias sshpubkey="ssh-add -L | head -1 | wl-copy"
 
 sshconf() {
   local args='';

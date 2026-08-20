@@ -1,29 +1,12 @@
 #!/usr/bin/env bash
 
-# Takes a screenshot with flameshot (X11) or swappy (Wayland) and archives old
-# screenshots.
+# Takes a full-screen screenshot with grim and edits with swappy.
 
-DIR="${HOME}/Pictures/Screenshots"
-ARCHIVE="${HOME}/Pictures/Screenshots/archive"
-
-launch_wayland() {
+main() {
   which grim &>/dev/null || notify-send "grim not found"
   which slurp &>/dev/null || notify-send "slurp not found"
   which swappy &>/dev/null || notify-send "swappy not found"
   grim - | swappy -f -
-}
-
-launch_x11() {
-  which flameshot &>/dev/null || notify-send "flameshot not found"
-  flameshot gui
-}
-
-main() {
-  if [ "${XDG_SESSION_TYPE}" == "wayland" ]; then
-    launch_wayland
-  else
-    launch_x11
-  fi
 }
 
 main

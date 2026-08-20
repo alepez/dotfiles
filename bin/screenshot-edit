@@ -1,50 +1,31 @@
 #!/usr/bin/env bash
 
-# Takes a screenshot with flameshot (X11) or swappy (Wayland) and archives old
-# screenshots.
+# Takes a region screenshot with grim/slurp, edits with swappy, then archives
+# PNGs/JPGs in DIR older than one day via mv-to-date-dir into
+# ARCHIVE/YYYY/YYYY-MM/YYYY-MM-DD (by file mtime).
 
 DIR="${HOME}/Pictures/Screenshots"
 ARCHIVE="${HOME}/Pictures/Screenshots/archive"
-
-list_old_screenshots() {
-  find "${DIR}" -maxdepth 1 -name '*.png' -mtime +1
-}
-
-move_to_archive() {
-  local name=$( basename "${1}" )
-  local year=${name:0:4}
-  local month=${name:4:2}
-  local new_dir="${ARCHIVE}/${year}/${month}"
-  mkdir -p "${new_dir}"
-  mv "${1}" "${new_dir}/$name"
-}
+MV_TO_DATE_DIR="${HOME}/.local/bin/mv-to-date-dir"
 
 archive_old_screenshots() {
-  list_old_screenshots | while read f; do
-    move_to_archive "${f}"
-  done
+  local files=()
+  while IFS= read -r f; do
+    [[ -n "${f}" ]] && files+=("${f}")
+  done < <(find "${DIR}" -maxdepth 1 \( -name '*.png' -o -name '*.jpg' \) -mtime +1)
+
+  ((${#files[@]})) || return 0
+
+  "${MV_TO_DATE_DIR}" --dst-root "${ARCHIVE}" "${files[@]}"
 }
 
-launch_wayland() {
+main() {
   which grim &>/dev/null || notify-send "grim not found"
   which slurp &>/dev/null || notify-send "slurp not found"
   which swappy &>/dev/null || notify-send "swappy not found"
 
   local now=$( date +%Y-%m-%dT%H-%M-%S --utc | tr -d \\n )
-  grim -g "$(slurp)" - | swappy -f - -o ${HOME}/Pictures/Screenshots/$( now ).png
-}
-
-launch_x11() {
-  which flameshot &>/dev/null || notify-send "flameshot not found"
-  flameshot gui
-}
-
-main() {
-  if [ "${XDG_SESSION_TYPE}" == "wayland" ]; then
-    launch_wayland
-  else
-    launch_x11
-  fi
+  grim -g "$(slurp)" - | swappy -f - -o "${DIR}/${now}.png"
 
   archive_old_screenshots
 }

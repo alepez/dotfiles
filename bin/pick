@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-/usr/bin/gpick --pick --single --output | xclip -i -selection clipboard
+# Pick a screen color and copy it to the clipboard
+hyprpicker | wl-copy

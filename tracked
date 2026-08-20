@@ -1,18 +1,13 @@
-.xprofile
 .zshenv
 .mplayer
-.xbindkeysrc
 .alacritty.toml
 .gitignore
 .zshrc
 .gitconfig
 .config/dunst
-.config/picom.conf
-.config/autorandr
 .config/rofi
 .config/nvim
 .config/starship.toml
-.config/polybar
 .config/udiskie
 .gnupg/gpg.conf
 .gnupg/gpg-agent.conf
@@ -27,7 +22,6 @@
 .local/bin/ffmpeg-whatsapp
 .local/bin/git-edit-commit
 .local/bin/history-man
-.local/bin/keyboard-setup
 .local/bin/myip
 .local/bin/Pass
 .local/bin/remote-sync-pull
@@ -35,7 +29,6 @@
 .local/bin/scaling
 .local/bin/screencast
 .local/bin/ttyplot-csv
-.local/bin/VBoxFixWinSize
 .local/bin/watch_do
 .local/bin/genpassword
 .local/bin/doconv
@@ -59,7 +52,6 @@
 .local/bin/obsidian
 .local/bin/backlight
 .config/systemd
-.config/betterlockscreen
 .local/bin/pick
 .config/spotifyd
 .local/bin/flatten-dir
@@ -85,3 +77,4 @@
 .local/bin/C
 .local/bin/spotify
 .local/bin/element-desktop
+.local/bin/fix-file-timestamp

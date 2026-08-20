@@ -1,9 +1,0 @@
-. $HOME/.dotfiles/env.sh
-
-# Used by i3-sensible-terminal
-export TERMINAL=alacritty
-
-## Source local configurations
-if [ -e $HOME/.xprofile.local ]; then
-  . $HOME/.xprofile.local;
-fi

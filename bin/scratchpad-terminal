@@ -1,9 +1,0 @@
-#!/bin/sh
-
-# Used by i3 to relaunch a dropdown terminal
-# alacritty class is used to be able to identify the window
-
-while true; do
-  cd
-  alacritty --class=scratchpad-terminal -e tmux
-done

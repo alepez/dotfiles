@@ -5,7 +5,7 @@
 main() {
   bat --theme=OneHalfLight --color=always "${1}" \
     | aha \
-    | xclip -t text/html -selection clipboard;
+    | wl-copy -t text/html
 }
 
 main "${@}"

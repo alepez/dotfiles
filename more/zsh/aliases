@@ -68,7 +68,7 @@ mkdirdate() {
 # Change directory to last created directory in tmp
 alias last_tmp='cd $( cat ~/tmp/.last )'
 
-alias CLIP='xclip -i -selection clipboard'
+alias CLIP='wl-copy'
 
 # Shortcut for my favorite editor
 alias v="${EDITOR}"
