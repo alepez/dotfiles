@@ -8,7 +8,7 @@
     "spacing": 4,
     // Choose the order of the modules
     "modules-left": [
-      "hyprland/workspaces"
+      "ext/workspaces"
     ],
     "modules-center": [
       "clock"
@@ -22,11 +22,10 @@
       "battery#bat2",
       "tray"
     ],
-    // Modules configuration
-    "hyprland/workspaces": {
-      "disable-scroll": true,
+    // Waybar 0.15.0 hyprland/workspaces clicks still use legacy IPC.
+    "ext/workspaces": {
       "all-outputs": false,
-      "warp-on-scroll": false
+      "on-click": "activate"
     },
     "idle_inhibitor": {
       "format": "{icon}",
@@ -113,7 +112,11 @@
     ],
     "spacing": 4,
     "modules-left": [
-      "hyprland/workspaces"
-    ]
+      "ext/workspaces"
+    ],
+    "ext/workspaces": {
+      "all-outputs": false,
+      "on-click": "activate"
+    }
   }
 ]
