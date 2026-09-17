@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+flatten_directory_structure() {
+    src_dir="$1"
+    dst_dir="$2"
+    if [ ! -d "$src_dir" ] || [ ! -d "$dst_dir" ]; then
+        echo "Error: Both parameters must be directories"
+        return 1
+    fi
+    find "$src_dir" -type f -print0 | while IFS= read -r -d '' file; do
+        relative_path=${file#$src_dir/}
+        new_path="$dst_dir/${relative_path//\//--}"
+
+        if [ -e "$new_path" ]; then
+            echo "File '$new_path' already exists. Skipping."
+        else
+            mkdir -p "$(dirname "$new_path")" && mv "$file" "$new_path"
+        fi
+    done
+}
+
+flatten_directory_structure "${@}"

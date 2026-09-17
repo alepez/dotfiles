@@ -1,0 +1,68 @@
+#!/usr/bin/env python3
+
+from __future__ import annotations
+
+import subprocess
+import sys
+from pathlib import Path
+
+HOME = Path.home()
+HYPR_DIR = HOME / ".config/hypr/monitors/profiles"
+WAYBAR_DIR = HOME / ".config/waybar/profiles"
+RELOAD = HOME / ".dotfiles/bin/waybar-reload"
+
+
+def list_profiles() -> list[str]:
+    names = []
+    for hypr in sorted(HYPR_DIR.glob("*.lua")):
+        name = hypr.stem
+        if (WAYBAR_DIR / f"{name}.jsonc").exists():
+            names.append(name)
+    return names
+
+
+def print_profiles() -> None:
+    for name in list_profiles():
+        print(name)
+
+
+def profile_name(raw: str) -> str:
+    name = Path(raw).name
+    if name.endswith(".jsonc"):
+        return name[: -len(".jsonc")]
+    if name.endswith(".lua"):
+        return name[: -len(".lua")]
+    return name
+
+
+def force_symlink(target: str, link: Path) -> None:
+    if link.is_symlink() or link.exists():
+        link.unlink()
+    link.symlink_to(target)
+
+
+def main() -> int:
+    args = sys.argv[1:]
+    if not args:
+        print_profiles()
+        return 0
+
+    name = profile_name(args[0])
+    hypr = HYPR_DIR / f"{name}.lua"
+    waybar = WAYBAR_DIR / f"{name}.jsonc"
+
+    if not hypr.exists():
+        print(f"{name}.lua does not exist", file=sys.stderr)
+        return 1
+    if not waybar.exists():
+        print(f"{name}.jsonc does not exist", file=sys.stderr)
+        return 1
+
+    force_symlink(f"profiles/{name}.lua", HYPR_DIR.parent / "current.lua")
+    force_symlink(f"profiles/{name}.jsonc", WAYBAR_DIR.parent / "config.jsonc")
+    subprocess.run([str(RELOAD)], check=False)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

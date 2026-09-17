@@ -1,3 +1,1 @@
-#!/usr/bin/env bash
-
-find ~/Downloads  -maxdepth 1 -type f -printf '%T@ %p\n' | sort -n | tail -1 | cut -d' ' -f2-
+../../../bin/last_dwl

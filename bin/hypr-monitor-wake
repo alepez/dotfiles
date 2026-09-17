@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Needed to fix the issues about monitors not waking up after power saving,
+# probably caused by buggy dock station.
+
+hyprctl dispatch 'hl.dsp.dpms({ action = "disable" })'
+sleep 10
+hyprctl dispatch 'hl.dsp.dpms({ action = "enable" })'

@@ -4,11 +4,11 @@
 --------------------------------------------------------------------------------
 -- Monitors
 
--- require("monitors.xps14-mobile")
--- require("monitors.xps14-home")
--- require("monitors.xps14-external")
--- require("monitors.xps14-mirror")
--- require("monitors.radon-home")
+-- require("monitors.profiles.xps14-mobile")
+-- require("monitors.profiles.xps14-home")
+-- require("monitors.profiles.xps14-external")
+-- require("monitors.profiles.xps14-mirror")
+-- require("monitors.profiles.radon-home")
 require("monitors.current")
 
 --------------------------------------------------------------------------------

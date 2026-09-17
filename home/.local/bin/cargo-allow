@@ -1,6 +1,1 @@
-#!/usr/bin/env bash
-
-(
-cargo check 2>&1 ;
-cargo clippy --no-deps 2>&1 ; 
-) | grep -o '#\[warn.*\]'  | sort -u | sed 's/#\[warn/#![allow/'
+../../../bin/cargo-allow

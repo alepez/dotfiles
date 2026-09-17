@@ -1,0 +1,169 @@
+#!/usr/bin/env python3
+
+"""Update or create a waybar layout profile from currently connected monitors.
+
+Matches hyprctl descriptions to `// description:` comments, rewrites connector
+names, and appends connected monitors that are not yet in the profile.
+"""
+
+from __future__ import annotations
+
+import json
+import re
+import subprocess
+import sys
+from pathlib import Path
+
+WAYBAR = Path.home() / ".config/waybar"
+PROFILES = WAYBAR / "profiles"
+RELOAD = Path.home() / ".dotfiles/bin/waybar-reload"
+
+DESC_LINE = re.compile(
+    r'^(?P<indent>\s*)"(?P<name>[^"]+)"(?P<comma>,)?\s*// description: (?P<desc>.+?)\s*$'
+)
+
+HELP = """\
+usage: waybar-from-monitors [profile]
+
+Rewrite output connector names in a waybar layout profile from currently
+connected Hyprland monitors. Matching is by `// description:` comments.
+Connected monitors missing from the profile are appended to the last bar.
+
+With no argument, updates the profile that config.jsonc currently points to.
+If profile does not exist, it is created from the current profile.
+"""
+
+
+def connected_monitors() -> list[dict[str, str]]:
+    raw = subprocess.check_output(["hyprctl", "monitors", "-j"], text=True)
+    monitors = []
+    for mon in json.loads(raw):
+        if mon.get("disabled"):
+            continue
+        if mon.get("mirrorOf") not in (None, "none", ""):
+            continue
+        description = (mon.get("description") or "").strip()
+        name = mon.get("name")
+        if not name or not description:
+            continue
+        monitors.append({"name": name, "description": description})
+    return monitors
+
+
+def format_output_line(indent: str, name: str, description: str, comma: bool) -> str:
+    suffix = "," if comma else ""
+    return f'{indent}"{name}"{suffix} // description: {description}\n'
+
+
+def update_names(lines: list[str], by_desc: dict[str, str]) -> tuple[list[str], set[str]]:
+    used: set[str] = set()
+    updated: list[str] = []
+    for line in lines:
+        match = DESC_LINE.match(line.rstrip("\n"))
+        if match:
+            description = match.group("desc").strip()
+            used.add(description)
+            if description in by_desc:
+                line = format_output_line(
+                    match.group("indent"),
+                    by_desc[description],
+                    description,
+                    match.group("comma") is not None,
+                )
+        updated.append(line)
+    return updated, used
+
+
+def append_new_outputs(lines: list[str], new_monitors: list[dict[str, str]]) -> list[str]:
+    last_idx = None
+    last_match = None
+    for idx, line in enumerate(lines):
+        match = DESC_LINE.match(line.rstrip("\n"))
+        if match:
+            last_idx = idx
+            last_match = match
+    if last_idx is None or last_match is None:
+        raise SystemExit("no // description: output lines to append to")
+
+    lines[last_idx] = format_output_line(
+        last_match.group("indent"),
+        last_match.group("name"),
+        last_match.group("desc").strip(),
+        True,
+    )
+    extras = [
+        format_output_line(
+            last_match.group("indent"),
+            mon["name"],
+            mon["description"],
+            idx < len(new_monitors) - 1,
+        )
+        for idx, mon in enumerate(new_monitors)
+    ]
+    return lines[: last_idx + 1] + extras + lines[last_idx + 1 :]
+
+
+def profile_path(name: str) -> Path:
+    if not name.endswith(".jsonc"):
+        name = f"{name}.jsonc"
+    path = PROFILES / name
+    if path.name == "config.jsonc":
+        raise SystemExit("refusing to write config.jsonc; pass a layout profile name")
+    return path
+
+
+def current_profile() -> Path:
+    link = WAYBAR / "config.jsonc"
+    if not link.exists():
+        raise SystemExit(f"{link} does not exist")
+    resolved = link.resolve()
+    if resolved.parent != PROFILES.resolve():
+        raise SystemExit("config.jsonc is not a symlink to a layout profile")
+    return resolved
+
+
+def main() -> int:
+    args = sys.argv[1:]
+    if args and args[0] in ("-h", "--help"):
+        print(HELP, end="")
+        return 0
+    if len(args) > 1:
+        print(HELP, end="", file=sys.stderr)
+        return 2
+
+    monitors = connected_monitors()
+    if not monitors:
+        print("no connected monitors from hyprctl", file=sys.stderr)
+        return 1
+    by_desc = {mon["description"]: mon["name"] for mon in monitors}
+
+    current = current_profile()
+    if args:
+        dest = profile_path(args[0])
+        source = dest if dest.exists() else current
+    else:
+        dest = current
+        source = current
+
+    original = source.read_text()
+    lines = original.splitlines(keepends=True)
+    lines, used = update_names(lines, by_desc)
+    missing = [mon for mon in monitors if mon["description"] not in used]
+    if missing:
+        lines = append_new_outputs(lines, missing)
+
+    text = "".join(lines)
+    if dest.exists() and dest.resolve() == source.resolve() and text == original:
+        print(dest.name)
+        return 0
+
+    dest.write_text(text)
+    print(dest.name)
+
+    if dest.resolve() == current.resolve():
+        subprocess.run([str(RELOAD)], check=False)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

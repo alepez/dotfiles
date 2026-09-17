@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Save stdint to a file and open it with vim
+
+main() {
+  local f=$( mktemp )
+  cat > "$f"
+  vim "$f"
+}
+
+main "${@}"

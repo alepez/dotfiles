@@ -12,7 +12,8 @@ if [[ -f "${OBSIDIAN_USER_FLAGS_FILE}" ]]; then
    OBSIDIAN_USER_FLAGS=$(grep -v '^#' "$OBSIDIAN_USER_FLAGS_FILE")
 fi
 
+# Remove Obsidian's GPUCache to prevent possible rendering glitches or GPU-related issues
 rm -rf ~/.config/obsidian/GPUCache
 
 # Launch
-exec electron39 --disable-smooth-scrolling /usr/lib/obsidian/app.asar $OBSIDIAN_USER_FLAGS "$@"
+exec electron43 --disable-smooth-scrolling /usr/lib/obsidian/app.asar $OBSIDIAN_USER_FLAGS "$@"

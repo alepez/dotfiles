@@ -11,21 +11,20 @@ This repository holds personal Arch Linux **Hyprland / Wayland** dotfiles.
 
 ## Scripts: `bin/` vs `home/.local/bin/`
 
-- **`bin/`** — repo-owned scripts, usually called by full path (`~/.dotfiles/bin/...`). Hyprland, greetd, keybinds, and other session plumbing use this. Not on `PATH` by itself.
-- **`home/.local/bin/`** — what ends up on `PATH` (`env.sh` prepends `~/.local/bin`). Symlink into `~`, then run by name in a shell. Add new entries to [`tracked`](tracked).
+- **`bin/`** — every script lives here as a real file. Hyprland, greetd, keybinds, and other session plumbing call `~/.dotfiles/bin/...`. Not on `PATH` by itself.
+- **`home/.local/bin/`** — **symlinks only** to `../../../bin/<name>`. This is the PATH export list (`env.sh` prepends `~/.local/bin`). Symlink into `~`, then run by name. Add new entries to [`tracked`](tracked).
 
 | Put it in… | When |
 |---|---|
 | `bin/` only | Desktop/session helpers invoked by absolute path (`start-hyprland`, `wlockscreen`, `browser-default`, screenshots, dmenu plugins) |
-| `bin/` + symlink in `home/.local/bin/` | Same script, also wanted as `cmd` on `PATH` (most overlaps are this) |
-| `home/.local/bin/` only | Everyday CLI tools meant to be typed (`mv-to-date-dir`, `re-video`, …) |
+| `bin/` + symlink in `home/.local/bin/` | Same script, also wanted as `cmd` on `PATH` |
 
-Rule of thumb: source of truth for shared/desktop scripts → `bin/`; expose on `PATH` → `home/.local/bin` (file or symlink to `../../../bin/...`).
+Rule of thumb: source of truth → `bin/`; expose on `PATH` → symlink in `home/.local/bin/`.
 
 ## Session source of truth
 
 - Window manager: [`home/.config/hypr/hyprland.lua`](home/.config/hypr/hyprland.lua)
-- Bar: `home/.config/waybar/`
+- Bar: `home/.config/waybar/` (`monitor-profile`, `profiles/*.jsonc`, gitignored `config.jsonc` symlink)
 - Lock / idle: `hyprlock.conf`, `hypridle.conf`
 - Wallpaper: `home/.config/wpaperd/` (not hyprpaper)
 
@@ -43,8 +42,8 @@ Prefer:
 | Screenshots | grim, slurp, swappy |
 | Lock | hyprlock + hypridle + `bin/wlockscreen` |
 | Wallpaper | wpaperd |
-| Status bar | waybar |
-| Monitors | `hypr-monitor` + `home/.config/hypr/monitors/` |
+| Status bar | waybar + `home/.config/waybar/profiles/` (`config.jsonc` symlink; `waybar-from-monitors` to snapshot outputs) |
+| Monitors | `monitor-profile` + `home/.config/hypr/monitors/profiles/` (`current.lua` symlink; also selects the matching waybar profile) |
 
 ## Editing conventions
 

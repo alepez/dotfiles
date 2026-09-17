@@ -1,0 +1,13 @@
+#!/bin/bash
+
+rsplash --text 'spotify' --detach
+
+if [ -e /var/lib/snapd/snap/bin/spotify ]; then
+  exec /var/lib/snapd/snap/bin/spotify &>/dev/null </dev/null &
+else
+  exec chromium \
+    --user-data-dir=/home/pez/tmp/spotify \
+    --app=https://open.spotify.com/ \
+    --no-default-browser-check &>/dev/null </dev/null &
+fi
+

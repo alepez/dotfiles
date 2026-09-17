@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+hhmm() {
+  # Show time as HH:MM in the specified timezone
+  TZ=$1 date +"%H:%M $1"
+}
+
+main() {
+  hhmm "Asia/Tokyo"
+  hhmm "Europe/Rome"
+  hhmm "UTC"
+  hhmm "America/Chicago"
+  hhmm "America/Los_Angeles"
+}
+
+main

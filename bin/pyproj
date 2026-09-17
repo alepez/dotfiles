@@ -1,0 +1,91 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Prompt for project name
+read -p "Enter your project name: " PROJECT
+if [[ -z "$PROJECT" ]]; then
+    echo "Project name cannot be empty."
+    exit 1
+fi
+
+# Create project directory
+mkdir "$PROJECT"
+cd "$PROJECT"
+
+# Initialize git
+git init
+
+# Create .gitignore
+cat > .gitignore <<EOF
+.venv/
+__pycache__/
+*.pyc
+.env
+EOF
+
+# Create virtual environment with uv
+uv venv .venv
+
+# Activate virtual environment
+source .venv/bin/activate
+
+# Create pyproject.toml placeholder
+cat > pyproject.toml <<EOF
+[project]
+name = "$PROJECT"
+version = "0.1.0"
+description = ""
+authors = []
+dependencies = []
+
+[tool.uv]
+EOF
+
+# Optionally install dependencies
+read -p "Enter initial dependencies (space-separated, or leave blank): " DEPS
+if [[ ! -z "$DEPS" ]]; then
+    uv pip install $DEPS
+    uv pip freeze > requirements.txt
+fi
+
+# Create main.py with boilerplate
+cat > main.py <<'EOF'
+#!/usr/bin/env python3
+
+import argparse
+import logging
+import sys
+
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="A boilerplate Python script."
+    )
+    parser.add_argument(
+        "-v", "--verbose", action="store_true", help="Enable verbose output"
+    )
+    parser.add_argument(
+        "name", nargs="?", default="World", help="Name to greet"
+    )
+    return parser.parse_args()
+
+def main():
+    args = parse_args()
+    logging.basicConfig(
+        level=logging.DEBUG if args.verbose else logging.INFO,
+        format="%(levelname)s: %(message)s"
+    )
+    logging.debug("Arguments: %s", args)
+    print(f"Hello, {args.name}!")
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("\nInterrupted by user", file=sys.stderr)
+        sys.exit(1)
+EOF
+
+chmod +x main.py
+
+echo "✅ Project '$PROJECT' bootstrapped with uv!"

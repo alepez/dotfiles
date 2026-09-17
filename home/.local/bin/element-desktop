@@ -1,3 +1,1 @@
-#!/usr/bin/env bash
-
-exec /usr/bin/element-desktop --password-store="gnome-libsecret"
+../../../bin/element-desktop
