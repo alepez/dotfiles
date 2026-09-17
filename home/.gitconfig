@@ -2,6 +2,21 @@
 # Git Config
 ################################################################################
 
+# Usage:
+#
+# Keep this in dotfiles, do not symlink ~/.gitconfig
+#
+# Create ~/.gitconfig with your personal configuration and include this file:
+#
+# ```
+# [user]
+#     email = 877244+alepez@users.noreply.github.com
+#     name = Alessandro Pezzato
+#
+# [include]
+#     path = ~/.dotfiles/home/.gitconfig
+# ```
+
 [push]
 	default = current
 
@@ -131,9 +146,6 @@
 
 [rebase]
   autosquash = true
-
-[include]
-  path = ~/.gitconfig.local
 
 [mergetool]
   prompt = false
