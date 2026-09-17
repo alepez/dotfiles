@@ -1,4 +1,5 @@
 ao=pulse
+vo=gl
 framedrop=yes
 cache=8192
 lirc=no
