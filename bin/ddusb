@@ -48,8 +48,7 @@ main() {
   echo "Writing $image -> $device" >&2
   # oflag=direct: bypass page cache so progress matches real USB speed
   # conv=fsync: flush once at the end without syncing every write
-  pv -- "$image" | dd of="$device" bs=4M iflag=fullblock oflag=direct conv=fsync status=none
-  echo "Done." >&2
+  exec pv -- "$image" | dd of="$device" bs=4M iflag=fullblock oflag=direct conv=fsync status=none
 }
 
 main "$@"
