@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+# Write an image to a block device with pv + dd.
+# Uses O_DIRECT for steady write speed (no page-cache fill) and fsync at the end.
+
+set -euo pipefail
+
+usage() {
+  echo "Usage: ddusb <image> <block_device>" >&2
+  exit 1
+}
+
+main() {
+  if [[ $# -ne 2 ]]; then
+    usage
+  fi
+
+  local image=$1
+  local device=$2
+
+  if [[ ! -f $image ]]; then
+    echo "Error: image is not a regular file: $image" >&2
+    exit 1
+  fi
+
+  if [[ ! -b $device ]]; then
+    echo "Error: not a block device: $device" >&2
+    exit 1
+  fi
+
+  local bus
+  bus=$(udevadm info --query=property --name="$device" --property=ID_BUS)
+  if [[ $bus != usb ]]; then
+    echo "Error: $device is not a USB device (ID_BUS=${bus:-unknown})" >&2
+    exit 1
+  fi
+
+  if ! command -v pv >/dev/null; then
+    echo "Error: pv is required" >&2
+    exit 1
+  fi
+
+  if [[ ! -w $device ]]; then
+    echo "Error: $device is not writable (try sudo)" >&2
+    exit 1
+  fi
+
+  echo "Writing $image -> $device" >&2
+  # oflag=direct: bypass page cache so progress matches real USB speed
+  # conv=fsync: flush once at the end without syncing every write
+  pv -- "$image" | dd of="$device" bs=4M iflag=fullblock oflag=direct conv=fsync status=none
+  echo "Done." >&2
+}
+
+main "$@"

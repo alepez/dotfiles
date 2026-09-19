@@ -74,3 +74,4 @@
 .local/bin/browser-profile
 .local/bin/browser-default
 .local/bin/browser-private-default
+.local/bin/ddusb
