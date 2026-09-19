@@ -1,0 +1,135 @@
+#!/usr/bin/env python3
+
+# Launch or bind machine-local browser profiles under ~/.config/browser/.
+# See docs/browser.md.
+
+from __future__ import annotations
+
+import os
+import sys
+from pathlib import Path
+
+HOME = Path.home()
+BROWSER_DIR = HOME / ".config/browser"
+PROFILES_DIR = BROWSER_DIR / "profiles"
+SLOTS = ("default", "private")
+
+
+def die(msg: str) -> int:
+    print(msg, file=sys.stderr)
+    return 1
+
+
+def list_profiles() -> list[str]:
+    if not PROFILES_DIR.is_dir():
+        return []
+    names = []
+    for path in sorted(PROFILES_DIR.iterdir()):
+        if path.name.startswith("."):
+            continue
+        if path.is_file() or path.is_symlink():
+            names.append(path.name)
+    return names
+
+
+def slot_target(slot: str) -> str | None:
+    link = BROWSER_DIR / slot
+    if not link.is_symlink():
+        return None
+    return Path(os.readlink(link)).name
+
+
+def print_profiles() -> int:
+    if not PROFILES_DIR.is_dir():
+        return die(
+            f"{PROFILES_DIR} does not exist.\n"
+            "Create executable launchers there, then:\n"
+            "  browser-profile default NAME\n"
+            "  browser-profile private NAME\n"
+            "See docs/browser.md."
+        )
+
+    bound = {slot: slot_target(slot) for slot in SLOTS}
+    for name in list_profiles():
+        tags = [slot for slot, target in bound.items() if target == name]
+        if tags:
+            print(f"{name}  [{', '.join(tags)}]")
+        else:
+            print(name)
+    return 0
+
+
+def force_symlink(target: str, link: Path) -> None:
+    link.parent.mkdir(parents=True, exist_ok=True)
+    if link.is_symlink() or link.exists():
+        link.unlink()
+    link.symlink_to(target)
+
+
+def profile_path(name: str) -> Path:
+    return PROFILES_DIR / name
+
+
+def launch(path: Path, args: list[str]) -> int:
+    if not path.exists():
+        return die(f"{path} does not exist")
+    if not os.access(path, os.X_OK):
+        return die(f"{path} is not executable")
+    os.execv(str(path), [str(path), *args])
+    return 1
+
+
+def bind_slot(slot: str, name: str) -> int:
+    path = profile_path(name)
+    if not path.exists():
+        return die(
+            f"profile {name!r} does not exist at {path}.\n"
+            f"Create it, then: browser-profile {slot} {name}"
+        )
+    force_symlink(f"profiles/{name}", BROWSER_DIR / slot)
+    return 0
+
+
+def run_slot(slot: str, args: list[str]) -> int:
+    link = BROWSER_DIR / slot
+    if not link.is_symlink() and not link.exists():
+        return die(
+            f"{link} is not set.\n"
+            f"Bind a profile with: browser-profile {slot} NAME"
+        )
+    return launch(link, args)
+
+
+def main() -> int:
+    args = sys.argv[1:]
+    if not args:
+        return print_profiles()
+
+    first = args[0]
+    rest = args[1:]
+
+    if first in SLOTS:
+        # browser-profile default NAME  → bind when NAME is a known profile
+        # browser-profile default [args…] → launch slot (URLs, flags, …)
+        if len(rest) == 1:
+            name = rest[0]
+            if profile_path(name).exists():
+                return bind_slot(first, name)
+            # Bare token (not a URL/path/flag): treat as a failed bind, not a launch arg.
+            if (
+                not name.startswith("-")
+                and "/" not in name
+                and ":" not in name
+                and "." not in name
+            ):
+                return die(
+                    f"profile {name!r} does not exist at {profile_path(name)}.\n"
+                    f"Create it, then: browser-profile {first} {name}"
+                )
+        return run_slot(first, rest)
+
+    return launch(profile_path(first), rest)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

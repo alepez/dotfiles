@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
-cmd=$( basename ${0} | sed 's/-/ -p /' )
+# Link firefox-<name> to this file to launch that Firefox profile.
+# Example: ln -s ~/.dotfiles/bin/firefox-profile ~/.local/bin/firefox-personal
 
-exec ${cmd} "${@}"
+name="$(basename "$0")"
+profile_name="${name#*-}"
+
+if [ -z "${profile_name}" ] || [ "${name}" = "firefox-profile" ]; then
+  echo "invoke as firefox-<name> (symlink to this script)" >&2
+  exit 1
+fi
+
+exec firefox -p "${profile_name}" "$@"

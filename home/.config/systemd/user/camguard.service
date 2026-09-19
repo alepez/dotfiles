@@ -1,0 +1,11 @@
+[Unit]
+Description=CamGuard - Monitor webcam access and run a script
+
+[Service]
+Type=simple
+ExecStart=%h/.dotfiles/bin/camguard "Logitech Webcam C925e"
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

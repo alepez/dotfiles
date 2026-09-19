@@ -1,11 +1,3 @@
 #!/usr/bin/env bash
 
-main() {
-  if [ -e ~/.local/bin/browser-default ]; then
-    exec ~/.local/bin/browser-default
-  else
-    exec firefox -p personal
-  fi
-}
-
-main
+exec "${HOME}/.dotfiles/bin/browser-profile" default "$@"

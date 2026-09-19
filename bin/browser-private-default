@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+exec "${HOME}/.dotfiles/bin/browser-profile" private "$@"

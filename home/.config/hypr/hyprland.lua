@@ -25,7 +25,7 @@ hl.device({
 local terminal = "alacritty"
 local filemanager = "thunar"
 local browser = os.getenv("HOME") .. "/.dotfiles/bin/browser-default"
-local private_browser = os.getenv("HOME") .. "/.dotfiles/bin/firefox-private"
+local private_browser = os.getenv("HOME") .. "/.dotfiles/bin/browser-private-default"
 local dotfiles = os.getenv("HOME") .. "/.dotfiles/bin"
 
 --------------------------------------------------------------------------------

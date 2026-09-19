@@ -70,3 +70,7 @@
 .local/bin/spotify
 .local/bin/element-desktop
 .local/bin/fix-file-timestamp
+.local/bin/firefox-profile
+.local/bin/browser-profile
+.local/bin/browser-default
+.local/bin/browser-private-default

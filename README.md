@@ -39,6 +39,8 @@ Hyprland (Lua) · waybar · hypridle / hyprlock · wpaperd · grim / slurp / swa
 
 Login: greetd → `bin/start-hyprland`.
 
+Browser launchers: [`docs/browser.md`](docs/browser.md) (machine-local profiles under `~/.config/browser/`).
+
 ## Setup
 
 Clone into your home directory:

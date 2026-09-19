@@ -39,6 +39,22 @@ PROFILES = {
             ],
         },
     },
+    "simple": {
+        "description": "Compatible H.264 mp4 (single-pass CRF, no size limit)",
+        "default_size": None,
+        "max_bytes": None,
+        "two_pass": False,
+        "h264_ffmpeg_args": [
+            "-profile:v",
+            "baseline",
+        ],
+        "ffmpeg_args": [
+            "-pix_fmt",
+            "yuv420p",
+            "-movflags",
+            "+faststart",
+        ],
+    },
 }
 
 QUALITY_LEVELS = {
@@ -304,7 +320,10 @@ def intel_encoder_available(encoders):
     return False
 
 
-def detect_video_encoder():
+def detect_video_encoder(no_hw=False):
+    if no_hw:
+        return ("libx264", None)
+
     encoders = ffmpeg_encoders()
 
     if nvidia_encoder_available(encoders):
@@ -448,12 +467,17 @@ def parse_args():
         action="store_true",
         help="Omit audio from the output file",
     )
+    parser.add_argument(
+        "--no-hw",
+        action="store_true",
+        help="Disable hardware acceleration and encode with libx264",
+    )
     return parser.parse_args()
 
 
-def encoding_context(profile_name, size):
+def encoding_context(profile_name, size, no_hw=False):
     profile = PROFILES[profile_name]
-    encoder, acceleration_name = detect_video_encoder()
+    encoder, acceleration_name = detect_video_encoder(no_hw=no_hw)
     scale_filter = build_scale_filter(size)
     return profile, encoder, acceleration_name, scale_filter
 
@@ -484,9 +508,9 @@ def append_video_encode_args(
     return command
 
 
-def build_command(src, dst, profile_name, size, quality, no_audio=False):
+def build_command(src, dst, profile_name, size, quality, no_audio=False, no_hw=False):
     profile, encoder, acceleration_name, scale_filter = encoding_context(
-        profile_name, size
+        profile_name, size, no_hw=no_hw
     )
     command = build_base_command(src, scale_filter)
     append_video_encode_args(
@@ -636,8 +660,13 @@ def run_slow_encode(
             slow=True,
         )
 
-    if encoder not in TWO_PASS_SLOW_ENCODERS:
-        print("Slow mode: using slower preset (two-pass unavailable on QSV)")
+    if encoder not in TWO_PASS_SLOW_ENCODERS or not profile.get("two_pass", True):
+        reason = (
+            "two-pass unavailable on QSV"
+            if encoder not in TWO_PASS_SLOW_ENCODERS
+            else "two-pass disabled by profile"
+        )
+        print(f"Slow mode: using slower preset ({reason})")
         return run_quality_encode(
             src,
             dst,
@@ -794,9 +823,11 @@ def main():
         print(f"Size limit: {format_bytes(max_bytes)}")
     if args.slow:
         print("Slow mode: enabled")
+    if args.no_hw:
+        print("Hardware acceleration: disabled")
 
     profile_cfg, encoder, acceleration_name, scale_filter = encoding_context(
-        args.profile, size
+        args.profile, size, no_hw=args.no_hw
     )
     if acceleration_name:
         print(f"Using {acceleration_name} acceleration")
@@ -825,7 +856,13 @@ def main():
         )
     else:
         command, _ = build_command(
-            src, dst, args.profile, size, args.quality, no_audio=no_audio
+            src,
+            dst,
+            args.profile,
+            size,
+            args.quality,
+            no_audio=no_audio,
+            no_hw=args.no_hw,
         )
         return_code = run_ffmpeg(command, src)
 

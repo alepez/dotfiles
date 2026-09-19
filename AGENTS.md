@@ -51,3 +51,13 @@ Prefer:
 - When adding or removing something under `home/`, update [`tracked`](tracked).
 - Known migration work is listed in [`TODO.md`](TODO.md). Prefer fixing those over inventing parallel stacks.
 - When completing a migration, remove the matching `TODO` comments in the file and the entry in `TODO.md`.
+
+## Machine-local setup tutorials
+
+When the user asks how to install or migrate a machine-local feature (docs under `docs/`, layouts under `~/.config/…` that are **not** in this repo):
+
+1. Read the matching doc (e.g. [`docs/browser.md`](docs/browser.md)).
+2. Inspect the **live** system: `~/.local/bin` overrides, existing symlinks, and any current `~/.config/…` state — do not invent profile/host names.
+3. Produce a copy-pasteable tutorial that **replicates current behavior** with the new abstraction: PATH links from `home/.local/bin/`, create machine-local files, bind slots/selectors, then a short verify checklist.
+4. Do **not** write those machine-local files from the agent unless the user explicitly asks to change files outside the repo. Prefer instructions; never commit personal/work profile names into the repo.
+5. Call out leftovers (custom `~/.local/bin/…` files that must be replaced by tracked symlinks) and any required slots the user did not specify (e.g. `private`).
