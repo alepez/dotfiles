@@ -64,13 +64,17 @@ chmod +x ~/.config/browser/profiles/*
 
 ## Bind and launch
 
+Binding and opening are separate commands (no heuristics):
+
 ```sh
-browser-profile                 # list profiles; mark default / private
-browser-profile NAME            # launch profiles/NAME
-browser-profile default NAME    # bind default slot → profiles/NAME
-browser-profile private NAME    # bind private slot → profiles/NAME
-browser-default                 # launch the default slot
-browser-private-default         # launch the private slot
+browser-profile                      # list profiles; mark default / private
+browser-profile set default NAME     # bind default slot → profiles/NAME
+browser-profile set private NAME     # bind private slot → profiles/NAME
+browser-profile NAME [url…]          # launch profiles/NAME
+browser-profile default [url…]       # launch the default slot
+browser-profile private [url…]       # launch the private slot
+browser-default [url…]               # same as: browser-profile default
+browser-private-default [url…]       # same as: browser-profile private
 ```
 
 Hyprland uses `~/.dotfiles/bin/browser-default` and
