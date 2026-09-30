@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+hyprctl reload
+~/.dotfiles/bin/waybar-reload
+~/.dotfiles/bin/wpaperd-reload

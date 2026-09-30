@@ -9,7 +9,7 @@ from pathlib import Path
 HOME = Path.home()
 HYPR_DIR = HOME / ".config/hypr/monitors/profiles"
 WAYBAR_DIR = HOME / ".config/waybar/profiles"
-RELOAD = HOME / ".dotfiles/bin/waybar-reload"
+HOOK_AFTER = HOME / ".dotfiles/bin/monitor-profile-after"
 
 
 def list_profiles() -> list[str]:
@@ -60,7 +60,7 @@ def main() -> int:
 
     force_symlink(f"profiles/{name}.lua", HYPR_DIR.parent / "current.lua")
     force_symlink(f"profiles/{name}.jsonc", WAYBAR_DIR.parent / "config.jsonc")
-    subprocess.run([str(RELOAD)], check=False)
+    subprocess.run([str(HOOK_AFTER)], check=False)
     return 0
 
 
