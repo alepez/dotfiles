@@ -1,4 +1,106 @@
-#!/usr/bin/env bash
+#!/usr/bin/env python3
 
-killall waybar 2>/dev/null || true
-hyprctl dispatch 'hl.dsp.exec_cmd("waybar")'
+"""Rewrite current waybar profile connector names, then restart waybar.
+
+Matches hyprctl monitor descriptions to `// description:` comments on
+`output` entries in the profile that config.jsonc points to, then restarts
+waybar. Connector IDs (DP-5 vs DP-6) can change across boots; descriptions
+stay stable.
+"""
+
+from __future__ import annotations
+
+import json
+import re
+import subprocess
+import sys
+from pathlib import Path
+
+WAYBAR = Path.home() / ".config/waybar"
+PROFILES = WAYBAR / "profiles"
+
+DESC_LINE = re.compile(
+    r'^(?P<indent>\s*)"(?P<name>[^"]+)"(?P<comma>,)?\s*// description: (?P<desc>.+?)\s*$'
+)
+
+
+def connected_by_description() -> dict[str, str]:
+    raw = subprocess.check_output(["hyprctl", "monitors", "-j"], text=True)
+    by_desc: dict[str, str] = {}
+    for mon in json.loads(raw):
+        if mon.get("disabled"):
+            continue
+        if mon.get("mirrorOf") not in (None, "none", ""):
+            continue
+        description = (mon.get("description") or "").strip()
+        name = mon.get("name")
+        if name and description:
+            by_desc[description] = name
+    return by_desc
+
+
+def current_profile() -> Path:
+    link = WAYBAR / "config.jsonc"
+    if not link.exists():
+        raise FileNotFoundError(f"{link} does not exist")
+    resolved = link.resolve()
+    if resolved.parent != PROFILES.resolve():
+        raise RuntimeError("config.jsonc is not a symlink to a layout profile")
+    return resolved
+
+
+def format_output_line(indent: str, name: str, description: str, comma: bool) -> str:
+    suffix = "," if comma else ""
+    return f'{indent}"{name}"{suffix} // description: {description}\n'
+
+
+def update_output_names(path: Path, by_desc: dict[str, str]) -> bool:
+    """Rewrite connector names matched by description. Returns True if the file changed."""
+    original = path.read_text()
+    lines: list[str] = []
+    for line in original.splitlines(keepends=True):
+        match = DESC_LINE.match(line.rstrip("\n"))
+        if match and match.group("desc").strip() in by_desc:
+            description = match.group("desc").strip()
+            line = format_output_line(
+                match.group("indent"),
+                by_desc[description],
+                description,
+                match.group("comma") is not None,
+            )
+        lines.append(line)
+    text = "".join(lines)
+    if text == original:
+        return False
+    path.write_text(text)
+    return True
+
+
+def restart_waybar() -> None:
+    subprocess.run(
+        ["killall", "waybar"],
+        check=False,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    subprocess.run(
+        ["hyprctl", "dispatch", 'hl.dsp.exec_cmd("waybar")'],
+        check=False,
+    )
+
+
+def main() -> int:
+    try:
+        by_desc = connected_by_description()
+        if by_desc:
+            update_output_names(current_profile(), by_desc)
+        else:
+            print("no connected monitors from hyprctl", file=sys.stderr)
+    except (subprocess.CalledProcessError, OSError, RuntimeError, FileNotFoundError) as exc:
+        print(f"could not update waybar outputs: {exc}", file=sys.stderr)
+    restart_waybar()
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
