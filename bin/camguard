@@ -5,6 +5,23 @@ import subprocess
 import argparse
 import pyinotify
 
+def notify_msg(message: str) -> None:
+    """
+    Send a desktop notification.
+    """
+    # Keep the timestamp formatting consistent with `bin/ding`.
+    now = subprocess.run(
+        ["date", "+%H:%M:%S", "--utc"],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    timestamp = (now.stdout or "").replace("\n", "")
+    subprocess.run(
+        ["notify-send", "-u", "low", f"{timestamp} {message}"],
+        check=False,
+    )
+
 def get_device_by_name_and_capability(name, capability="MJPG"):
     result = subprocess.run(['v4l2-ctl', '--list-devices'], capture_output=True, text=True)
     devices = result.stdout.split('\n\n')
@@ -30,9 +47,10 @@ class EventHandler(pyinotify.ProcessEvent):
     def process_IN_OPEN(self, event):
         current_time = time.time()
         if current_time - self.last_run >= self.debounce_interval:
-            print("Webcam accessed, running v4l2-ctl-manual after 1 second delay")
+            notify_msg("webcam access detected, reconfiguring webcam after 2 second delay")
             time.sleep(2)
-            subprocess.run(["v4l2-ctl-manual"])
+            subprocess.run(["v4l2-ctl-manual"], check=False)
+            notify_msg("webcam reconfiguration complete")
             self.last_run = current_time
 
 def main():
@@ -44,7 +62,7 @@ def main():
 
     device_path = get_device_by_name_and_capability(args.device_name)
     if not device_path:
-        print(f"Device '{args.device_name}' with MJPG capability not found.")
+        notify_msg(f"Device '{args.device_name}' with MJPG capability not found.")
         exit(1)
 
     # Initialize pyinotify
@@ -53,7 +71,7 @@ def main():
     notifier = pyinotify.Notifier(wm, handler)
     wm.add_watch(device_path, pyinotify.IN_OPEN)
 
-    print(f"Monitoring {device_path} for access...")
+    notify_msg(f"Monitoring {device_path} for access...")
     notifier.loop()
 
 if __name__ == "__main__":
