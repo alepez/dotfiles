@@ -5,7 +5,7 @@ cd() {
   builtin cd "$@";
   tmux refresh-client -S
   # Do not fail if this is not writable
-  echo "${PWD}" > ~/.cache/cwd 2>/dev/null || true
+  ( echo "${PWD}" > ~/.cache/cwd ) 2>/dev/null || true
 }
 
 export cd
