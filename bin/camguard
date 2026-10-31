@@ -5,6 +5,9 @@ import subprocess
 import argparse
 import pyinotify
 
+CONFIG_DELAY_SECONDS = 3
+CONFIG_DELAY_RETRIES = 3
+
 def notify_msg(message: str) -> None:
     """
     Send a desktop notification.
@@ -47,9 +50,10 @@ class EventHandler(pyinotify.ProcessEvent):
     def process_IN_OPEN(self, event):
         current_time = time.time()
         if current_time - self.last_run >= self.debounce_interval:
-            notify_msg("webcam access detected, reconfiguring webcam after 2 second delay")
-            time.sleep(2)
-            subprocess.run(["v4l2-ctl-manual"], check=False)
+            notify_msg(f"webcam access detected, reconfiguring webcam after {CONFIG_DELAY_SECONDS} second delay")
+            for i in range(CONFIG_DELAY_RETRIES):
+                time.sleep(CONFIG_DELAY_SECONDS)
+                subprocess.run(["v4l2-ctl-manual"], check=False)
             notify_msg("webcam reconfiguration complete")
             self.last_run = current_time
 

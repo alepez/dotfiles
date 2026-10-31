@@ -67,7 +67,7 @@ chmod +x ~/.config/browser/profiles/*
 Binding and opening are separate commands (no heuristics):
 
 ```sh
-browser-profile                      # list profiles; mark default / private
+browser-profile                      # interactive: N opens, dN sets default
 browser-profile set default NAME     # bind default slot → profiles/NAME
 browser-profile set private NAME     # bind private slot → profiles/NAME
 browser-profile NAME [url…]          # launch profiles/NAME

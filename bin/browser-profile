@@ -23,10 +23,14 @@ def die(msg: str) -> int:
 def usage() -> int:
     return die(
         "usage:\n"
-        "  browser-profile                     # list profiles\n"
+        "  browser-profile                     # interactive: pick / set default\n"
         "  browser-profile set SLOT NAME       # bind slot → profiles/NAME\n"
         "  browser-profile SLOT [args…]        # launch slot (default|private)\n"
         "  browser-profile NAME [args…]        # launch profiles/NAME\n"
+        "\n"
+        "interactive (no args):\n"
+        "  N     open profiles[N]\n"
+        "  dN    set default → profiles[N]\n"
         "\n"
         f"SLOTS: {', '.join(SLOTS)}"
     )
@@ -51,24 +55,66 @@ def slot_target(slot: str) -> str | None:
     return Path(os.readlink(link)).name
 
 
-def print_profiles() -> int:
-    if not PROFILES_DIR.is_dir():
-        return die(
-            f"{PROFILES_DIR} does not exist.\n"
-            "Create executable launchers there, then:\n"
-            "  browser-profile set default NAME\n"
-            "  browser-profile set private NAME\n"
-            "See docs/browser.md."
-        )
+def ensure_profiles_dir() -> int | None:
+    if PROFILES_DIR.is_dir():
+        return None
+    return die(
+        f"{PROFILES_DIR} does not exist.\n"
+        "Create executable launchers there, then:\n"
+        "  browser-profile set default NAME\n"
+        "  browser-profile set private NAME\n"
+        "See docs/browser.md."
+    )
 
+
+def print_profile_menu(names: list[str]) -> None:
     bound = {slot: slot_target(slot) for slot in SLOTS}
-    for name in list_profiles():
+    for i, name in enumerate(names, start=1):
         tags = [slot for slot, target in bound.items() if target == name]
         if tags:
-            print(f"{name}  [{', '.join(tags)}]")
+            print(f"{i}  {name}  [{', '.join(tags)}]")
         else:
-            print(name)
-    return 0
+            print(f"{i}  {name}")
+
+
+def interactive() -> int:
+    err = ensure_profiles_dir()
+    if err is not None:
+        return err
+
+    names = list_profiles()
+    if not names:
+        return die(f"no profiles in {PROFILES_DIR}")
+
+    print_profile_menu(names)
+    print()
+    print("N   open profile N")
+    print("dN  set default → N")
+    try:
+        choice = input("> ").strip()
+    except EOFError:
+        return 1
+
+    set_default = False
+    raw = choice
+    if raw.startswith("d") or raw.startswith("D"):
+        set_default = True
+        raw = raw[1:].strip()
+
+    if not raw.isdigit():
+        return die(f"invalid choice {choice!r}")
+
+    index = int(raw)
+    if index < 1 or index > len(names):
+        return die(f"index {index} out of range (1–{len(names)})")
+
+    name = names[index - 1]
+    if set_default:
+        rc = bind_slot("default", name)
+        if rc == 0:
+            print(f"default → {name}")
+        return rc
+    return launch(PROFILES_DIR / name, [])
 
 
 def force_symlink(target: str, link: Path) -> None:
@@ -130,7 +176,7 @@ def maybe_hint_old_bind(slot: str, args: list[str]) -> None:
 def main() -> int:
     args = sys.argv[1:]
     if not args:
-        return print_profiles()
+        return interactive()
 
     first = args[0]
     rest = args[1:]
